@@ -183,6 +183,16 @@ void CntrApresentacaoProva::executar(Matricula* matricula) {
                 comando->executar(cntrServicoProva, matricula);
                 delete comando;
                 break;
+            case '3':
+                comando = new ComandoIAProvaConsultarQuestao();
+                comando->executar(cntrServicoProva, matricula);
+                delete comando;
+                break;
+            case '4':
+                comando = new ComandoIAProvaCadastrarQuestao();
+                comando->executar(cntrServicoProva, matricula);
+                delete comando;
+                break;
             case '5':
                 return;
             default:
@@ -245,8 +255,9 @@ bool CntrServicoProva::cadastrarProva(Prova prova){
     return comando.executar(prova);
 }
 
-bool CntrServicoProva::descadastrarProva(Codigo){
-    return false;
+bool CntrServicoProva::descadastrarProva(Codigo codigo){
+    ComandoISProvaDescadastrarProva comando;
+    return comando.executar(codigo);
 }
 
 bool CntrServicoProva::editarProva(Prova prova){
@@ -254,20 +265,24 @@ bool CntrServicoProva::editarProva(Prova prova){
     return comando.executar(prova);
 }
 
-bool CntrServicoProva::cadastrarQuestao(Questao){
-    return false;
+bool CntrServicoProva::cadastrarQuestao(Questao questao){
+    ComandoISProvaCadastrarQuestao comando;
+    return comando.executar(questao);
 }
 
-bool CntrServicoProva::descadastrarQuestao(Codigo){
-    return false;
+bool CntrServicoProva::descadastrarQuestao(Codigo codigo){
+    ComandoISProvaDescadastarQuestao comando;
+    return comando.executar(codigo);
 }
 
-bool CntrServicoProva::editarQuestao(Questao){
-    return false;
+bool CntrServicoProva::editarQuestao(Questao questao){
+    ComandoISProvaEditarQuestao comando;
+    return comando.executar(questao);
 }
 
-bool CntrServicoProva::consultarQuestao(Questao*){
-    return false;
+bool CntrServicoProva::consultarQuestao(Questao* questao){
+    ComandoISProvaConsultarQuestao comando;
+    return comando.executar(questao);
 }
 
 

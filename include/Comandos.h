@@ -45,6 +45,31 @@ public:
     void executar(IServicoProva*, Prova);
 };
 
+class ComandoIAProvaDescadastrarProva {
+public:
+    bool executar(IServicoProva*, Prova);
+};
+
+class ComandoIAProvaConsultarQuestao:public ComandoIAProva {
+public:
+    void executar(IServicoProva*, Matricula*);
+};
+
+class ComandoIAProvaCadastrarQuestao:public ComandoIAProva {
+public:
+    void executar(IServicoProva*, Matricula*);
+};
+
+class ComandoIAProvaEditarQuestao {
+public:
+    void executar(IServicoProva*, Questao);
+};
+
+class ComandoIAProvaDescadastrarQuestao {
+public:
+    bool executar(IServicoProva*, Questao);
+};
+
 class ComandoISProvaConsultarProva {
 public:
     bool executar(Prova* prova);
@@ -58,6 +83,31 @@ public:
 class ComandoISProvaEditarProva {
 public:
     bool executar(Prova);
+};
+
+class ComandoISProvaDescadastrarProva {
+public:
+    bool executar(Codigo);
+};
+
+class ComandoISProvaCadastrarQuestao {
+public:
+    bool executar(Questao);
+};
+
+class ComandoISProvaConsultarQuestao {
+public:
+    bool executar(Questao* questao);
+};
+
+class ComandoISProvaEditarQuestao {
+public:
+    bool executar(Questao);
+};
+
+class ComandoISProvaDescadastarQuestao {
+public:
+    bool executar(Codigo);
 };
 
 

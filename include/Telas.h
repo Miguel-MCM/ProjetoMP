@@ -81,4 +81,19 @@ public:
     void apresentar(Usuario *);
 };
 
+class TelaCadastroQuestao {
+public:
+    void apresentar(Questao*);
+};
+
+class TelaConsultaQuestao {
+public:
+    char apresentar(Questao*);
+};
+
+class TelaEdicaoQuestao {
+public:
+    void apresentar(Questao *);
+};
+
 #endif // TELAS_H_INCLUDED

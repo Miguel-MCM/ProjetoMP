@@ -1,0 +1,3 @@
+echo "Compilando..."
+g++ -o bin/main.exe src/Builders.cpp src/Comandos.cpp src/Containers.cpp src/Controladoras.cpp src/Dominios.cpp src/Entidades.cpp src/Telas.cpp main.cpp ncurses-6.4/lib/libncurses.a -Iinclude
+echo "Sucesso!"
