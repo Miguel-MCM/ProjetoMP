@@ -39,9 +39,9 @@ void ComandoIAUsuarioEditar::executar(IServicoUsuario* cntrServicoUsuario, Matri
     Usuario usuario;
     usuario.setMatricula(*matricula);
     TelaEdicaoUsuario telaEdicaoUsuario;
-    // A seguir, incluir código de interação com o usuário.
+    // A seguir, incluir cï¿½digo de interaï¿½ï¿½o com o usuï¿½rio.
 
-    // Solicitar serviço.
+    // Solicitar serviï¿½o.
     telaEdicaoUsuario.apresentar(&usuario);
     resultado = cntrServicoUsuario->editar(usuario);
 
@@ -63,9 +63,9 @@ void ComandoIAUsuarioConsultar::executar(IServicoUsuario* cntrServicoUsuario, Ma
     Usuario * usuario = new Usuario();
     usuario->setMatricula(*matricula);
 
-    // A seguir, incluir código de interação com o usuário.
+    // A seguir, incluir cï¿½digo de interaï¿½ï¿½o com o usuï¿½rio.
 
-    // Solicitar serviço.
+    // Solicitar serviï¿½o.
 
     resultado = cntrServicoUsuario->consultar(usuario);
 
@@ -85,14 +85,14 @@ void ComandoIAUsuarioConsultar::executar(IServicoUsuario* cntrServicoUsuario, Ma
 
 //IAProjetos
 
-void ComandoIAProjetoConsultarProjeto::executar(IServicoProjeto* cntrServicoProjeto, Matricula* matricula) {
+void ComandoIAProvaConsultarProva::executar(IServicoProva* cntrServicoProva, Matricula* matricula) {
 
-    Projeto* projeto = new Projeto();
+    Prova* prova = new Prova();
     Codigo* codigo = new Codigo();
     TelaCodigo telaCodigo;
     TelaMensagem telaMensagem;
 
-    projeto->SetUsuario(*matricula);
+    prova->SetUsuario(*matricula);
     while (true) {
         try {
             telaCodigo.apresentar(codigo);
@@ -102,17 +102,17 @@ void ComandoIAProjetoConsultarProjeto::executar(IServicoProjeto* cntrServicoProj
             telaMensagem.apresentar("Cogido Invalido.");
         }
     }
-    projeto->setCodigo(*codigo);
+    prova->setCodigo(*codigo);
 
-    if(cntrServicoProjeto->consultarProjeto(projeto)){
+    if(cntrServicoProva->consultarProva(prova)){
         bool continuar = true;
         while(continuar) {
-            TelaConsultaProjeto telaConsultaProjeto;
-            switch(telaConsultaProjeto.apresentar(projeto)) {
+            TelaConsultaProva telaConsultaProva;
+            switch(telaConsultaProva.apresentar(prova)) {
                 case '1':
-                    ComandoIAProjetoEditarProjeto comando;
-                    comando.executar(cntrServicoProjeto, *projeto);
-                    cntrServicoProjeto->consultarProjeto(projeto);
+                    ComandoIAProvaEditarProva comando;
+                    comando.executar(cntrServicoProva, *prova);
+                    cntrServicoProva->consultarProva(prova);
                     break;
                 case '3':
                     continuar = false;
@@ -123,22 +123,22 @@ void ComandoIAProjetoConsultarProjeto::executar(IServicoProjeto* cntrServicoProj
         }
     }
     else {
-        telaMensagem.apresentar("Projeto Nao Encontrado");
+        telaMensagem.apresentar("Prova Nao Encontrado");
     }
     delete codigo;
-    delete projeto;
+    delete prova;
 }
 
-void ComandoIAProjetoCadastrarProjeto::executar(IServicoProjeto* cntrServicoProjeto, Matricula* matricula) {
+void ComandoIAProvaCadastrarProva::executar(IServicoProva* cntrServicoProva, Matricula* matricula) {
 
-    Projeto projeto;
-    projeto.SetUsuario(*matricula);
+    Prova prova;
+    prova.SetUsuario(*matricula);
 
-    TelaCadastroProjeto telaCadastroProjeto;
+    TelaCadastroProva telaCadastroProva;
     TelaMensagem telaMensagem;
     while(true) {
         try {
-            telaCadastroProjeto.apresentar(&projeto);
+            telaCadastroProva.apresentar(&prova);
             break;
         }
         catch (const invalid_argument &exp) {
@@ -146,22 +146,22 @@ void ComandoIAProjetoCadastrarProjeto::executar(IServicoProjeto* cntrServicoProj
         }
     }
 
-    if (cntrServicoProjeto->cadastrarProjeto(projeto)) {
-        telaMensagem.apresentar("Projeto cadastrado.");
+    if (cntrServicoProva->cadastrarProva(prova)) {
+        telaMensagem.apresentar("Prova cadastrado.");
     }
     else {
         telaMensagem.apresentar("Ocorreu um erro durante o cadastramento");
     }
 }
 
-void ComandoIAProjetoEditarProjeto::executar(IServicoProjeto* cntrServicoProjeto, Projeto projeto) {
+void ComandoIAProvaEditarProva::executar(IServicoProva* cntrServicoProva, Prova prova) {
 
-    TelaEdicaoProjeto telaEdicaoProjeto;
+    TelaEdicaoProva telaEdicaoProva;
     TelaMensagem telaMensagem;
 
     while(true) {
         try {
-            telaEdicaoProjeto.apresentar(&projeto);
+            telaEdicaoProva.apresentar(&prova);
             break;
         }
         catch (const invalid_argument &exp) {
@@ -169,34 +169,34 @@ void ComandoIAProjetoEditarProjeto::executar(IServicoProjeto* cntrServicoProjeto
         }
     }
 
-    if (cntrServicoProjeto->editarProjeto(projeto)) {
-        telaMensagem.apresentar("Projeto editado com sucesso.");
+    if (cntrServicoProva->editarProva(prova)) {
+        telaMensagem.apresentar("Prova editado com sucesso.");
     }
     else {
-        telaMensagem.apresentar("Ocorreu um erro durante a edicao do projeto.");
+        telaMensagem.apresentar("Ocorreu um erro durante a edicao do prova.");
     }
 }
 
 // ISProjetos
 
-bool ComandoISProjetoConsultarProjeto::executar(Projeto* projeto) {
-    ContainerProjeto* container;
-    container = ContainerProjeto::getInstancia();
+bool ComandoISProvaConsultarProva::executar(Prova* prova) {
+    ContainerProva* container;
+    container = ContainerProva::getInstancia();
 
-    return container->pesquisar(projeto);
+    return container->pesquisar(prova);
 }
 
-bool ComandoISProjetoCadastrarProjeto::executar(Projeto projeto) {
-    ContainerProjeto* container;
-    container = ContainerProjeto::getInstancia();
+bool ComandoISProvaCadastrarProva::executar(Prova prova) {
+    ContainerProva* container;
+    container = ContainerProva::getInstancia();
 
-    return container->incluir(projeto);
+    return container->incluir(prova);
 }
 
-bool ComandoISProjetoEditarProjeto::executar(Projeto projeto) {
-    ContainerProjeto* container;
-    container = ContainerProjeto::getInstancia();
+bool ComandoISProvaEditarProva::executar(Prova prova) {
+    ContainerProva* container;
+    container = ContainerProva::getInstancia();
 
-    return container->atualizar(projeto);
+    return container->atualizar(prova);
 }
 

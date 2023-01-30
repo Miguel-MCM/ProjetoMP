@@ -7,7 +7,7 @@
 using namespace std;
 ///@brief Entidade que representa um trabalho realizado de uma certa disciplina dentro de um prazo determinado.
 //por: Anita Garcia Lagos OLiveira (211068243)
-class Tarefa {
+class Questao {
     private:
             Texto nome;
             Codigo codigo;
@@ -57,48 +57,48 @@ class Tarefa {
             Disciplina getDisciplina() const;
 };
 
-inline void Tarefa::setNome(const Texto &nome){
+inline void Questao::setNome(const Texto &nome){
     this->nome = nome;
 }
 
-inline Texto Tarefa::getNome() const{
+inline Texto Questao::getNome() const{
     return nome;
 }
 
-inline void Tarefa::setCodigo(const Codigo &codigo){
+inline void Questao::setCodigo(const Codigo &codigo){
     this->codigo = codigo;
 }
 
-inline Codigo Tarefa::getCodigo() const{
+inline Codigo Questao::getCodigo() const{
     return codigo;
 }
 
-inline void Tarefa::setInicio(const Data &inicio){
+inline void Questao::setInicio(const Data &inicio){
     this->inicio = inicio;
 }
 
-inline Data Tarefa::getInicio() const{
+inline Data Questao::getInicio() const{
     return inicio;
 }
 
-inline void Tarefa::setTermino(const Data &termino){
+inline void Questao::setTermino(const Data &termino){
     this->termino = termino;
 }
 
-inline Data Tarefa::getTermino() const{
+inline Data Questao::getTermino() const{
     return termino;
 }
 
-inline void Tarefa::setDisciplina(const Disciplina &disciplina){
+inline void Questao::setDisciplina(const Disciplina &disciplina){
     this->disciplina = disciplina;
 }
 
-inline Disciplina Tarefa::getDisciplina() const{
+inline Disciplina Questao::getDisciplina() const{
     return disciplina;
 }
 
 ///@brief Um projeto é um esforço temporário que tem como finalidade um resultado único e possui recursos delimitados; é identificado no sistema por um código, e possui um nome e uma descrição.
-class Projeto {
+class Prova {
     private:
             Texto nome;
             Codigo codigo;
@@ -130,35 +130,35 @@ class Projeto {
             Matricula getUsuario() const;
 };
 
-inline void Projeto::setNome(const Texto &nome){
+inline void Prova::setNome(const Texto &nome){
     this->nome = nome;
 }
 
-inline Texto Projeto::getNome() const{
+inline Texto Prova::getNome() const{
     return nome;
 }
 
-inline void Projeto::setCodigo(const Codigo &codigo){
+inline void Prova::setCodigo(const Codigo &codigo){
     this->codigo = codigo;
 }
 
-inline Codigo Projeto::getCodigo() const{
+inline Codigo Prova::getCodigo() const{
     return codigo;
 }
 
-inline void Projeto::setDescricao(const Texto &descricao){
+inline void Prova::setDescricao(const Texto &descricao){
     this->descricao = descricao;
 }
 
-inline Texto Projeto::getDescricao() const{
+inline Texto Prova::getDescricao() const{
     return descricao;
 }
 
-inline void Projeto::SetUsuario(const Matricula &usuario){
+inline void Prova::SetUsuario(const Matricula &usuario){
     this->usuario = usuario;
 }
 
-inline Matricula Projeto::getUsuario() const {
+inline Matricula Prova::getUsuario() const {
     return usuario;
 }
 

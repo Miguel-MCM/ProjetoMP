@@ -13,14 +13,14 @@ class CntrApresentacaoControle{
         Matricula matricula;
         IApresentacaoAutenticacao* cntrApresentacaoAutenticacao;
         IApresentacaoUsuario* cntrApresentacaoUsuario;
-        IApresentacaoProjeto* cntrApresentacaoProjeto;
+        IApresentacaoProva* cntrApresentacaoProva;
         void menuAutenticado(Matricula*);
 
     public:
         void executar();
         void setCntrApresentacaoAutenticacao(IApresentacaoAutenticacao*);
         void setCntrApresentacaoUsuario(IApresentacaoUsuario*);
-        void setCntrlApresentacaoProjeto(IApresentacaoProjeto*);
+        void setCntrlApresentacaoProva(IApresentacaoProva*);
 };
 
 inline void CntrApresentacaoControle::setCntrApresentacaoAutenticacao(IApresentacaoAutenticacao* cntr){
@@ -31,8 +31,8 @@ inline void CntrApresentacaoControle::setCntrApresentacaoUsuario(IApresentacaoUs
     cntrApresentacaoUsuario = cntr;
 }
 
-inline void CntrApresentacaoControle::setCntrlApresentacaoProjeto(IApresentacaoProjeto* cntr){
-    cntrApresentacaoProjeto = cntr;
+inline void CntrApresentacaoControle::setCntrlApresentacaoProva(IApresentacaoProva* cntr){
+    cntrApresentacaoProva = cntr;
 }
 
 
@@ -73,16 +73,16 @@ void inline CntrApresentacaoUsuario::setStatusCadastro(bool status) {
     cadastro = status;
 }
 
-class CntrApresentacaoProjeto:public IApresentacaoProjeto {
+class CntrApresentacaoProva:public IApresentacaoProva {
     private:
-        IServicoProjeto* cntrServicoProjeto;
+        IServicoProva* cntrServicoProva;
     public:
         void executar(Matricula*);
-        void setCntrServicoProjeto(IServicoProjeto*);
+        void setCntrServicoProva(IServicoProva*);
 };
 
-void inline CntrApresentacaoProjeto::setCntrServicoProjeto(IServicoProjeto* cntrServicoProjeto){
-    this->cntrServicoProjeto = cntrServicoProjeto;
+void inline CntrApresentacaoProva::setCntrServicoProva(IServicoProva* cntrServicoProva){
+    this->cntrServicoProva = cntrServicoProva;
 }
 
 class CntrServicoAutenticacao:public IServicoAutenticacao{
@@ -98,16 +98,16 @@ class CntrServicoUsuario:public IServicoUsuario{
         bool consultar(Usuario*);
 };
 
-class CntrServicoProjeto:public IServicoProjeto{
+class CntrServicoProva:public IServicoProva{
 public:
-        bool cadastrarProjeto(Projeto);
-        bool descadastrarProjeto(Codigo);
-        bool editarProjeto(Projeto);
-        bool consultarProjeto(Projeto*);
-        bool cadastrarTarefa(Tarefa);
-        bool descadastrarTarefa(Codigo);
-        bool editarTarefa(Tarefa);
-        bool consultarTarefa(Tarefa*);
+        bool cadastrarProva(Prova);
+        bool descadastrarProva(Codigo);
+        bool editarProva(Prova);
+        bool consultarProva(Prova*);
+        bool cadastrarQuestao(Questao);
+        bool descadastrarQuestao(Codigo);
+        bool editarQuestao(Questao);
+        bool consultarQuestao(Questao*);
 };
 
 #endif // CONTROLADORAS_H_INCLUDED

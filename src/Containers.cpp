@@ -6,7 +6,7 @@
 ContainerUsuario* ContainerUsuario::instancia = nullptr;
 
 //------------------------------------------------------------------------------------
-// Implementações de métodos de classe container.
+// Implementaï¿½ï¿½es de mï¿½todos de classe container.
 
 ContainerUsuario* ContainerUsuario::getInstancia() {
     if (instancia == nullptr)
@@ -55,21 +55,21 @@ bool ContainerUsuario::atualizar(Usuario usuario){
 
 
 
-ContainerProjeto* ContainerProjeto::instancia = nullptr;
+ContainerProva* ContainerProva::instancia = nullptr;
 
 
-ContainerProjeto* ContainerProjeto::getInstancia() {
+ContainerProva* ContainerProva::getInstancia() {
     if (instancia == nullptr)
-        instancia = new ContainerProjeto();
+        instancia = new ContainerProva();
     return instancia;
 }
 
-bool ContainerProjeto::incluir(Projeto projeto){
-    return container.insert(make_pair(projeto.getCodigo().getValor(), projeto)).second;
+bool ContainerProva::incluir(Prova prova){
+    return container.insert(make_pair(prova.getCodigo().getValor(), prova)).second;
 }
 
-bool ContainerProjeto::remover(Codigo codigo){
-    map<string, Projeto>::iterator it = container.find(codigo.getValor());
+bool ContainerProva::remover(Codigo codigo){
+    map<string, Prova>::iterator it = container.find(codigo.getValor());
     if(it != container.end()){
         container.erase(it);
         return true;
@@ -77,22 +77,22 @@ bool ContainerProjeto::remover(Codigo codigo){
     return false;
 }
 
-bool ContainerProjeto::pesquisar(Projeto* projeto){
-    map<string, Projeto>::iterator it = container.find(projeto->getCodigo().getValor());
+bool ContainerProva::pesquisar(Prova* prova){
+    map<string, Prova>::iterator it = container.find(prova->getCodigo().getValor());
     if(it != container.end()){
-            if(it->second.getUsuario().getValor() == projeto->getUsuario().getValor()){
-               *projeto = it->second;
+            if(it->second.getUsuario().getValor() == prova->getUsuario().getValor()){
+               *prova = it->second;
                return true;
             }
     }
     return false;
 }
 
-bool ContainerProjeto::atualizar(Projeto projeto){
-    map<string, Projeto>::iterator it = container.find(projeto.getCodigo().getValor());
+bool ContainerProva::atualizar(Prova prova){
+    map<string, Prova>::iterator it = container.find(prova.getCodigo().getValor());
     if(it != container.end()){
-        if(it->second.getUsuario().getValor() == projeto.getUsuario().getValor()){
-        it->second = projeto;
+        if(it->second.getUsuario().getValor() == prova.getUsuario().getValor()){
+        it->second = prova;
         return true;
         }
     }

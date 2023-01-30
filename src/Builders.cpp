@@ -2,29 +2,29 @@
 
 CntrApresentacaoControle* BuilderSistema::construir(){
 
-    // Instanciar controladoras da camada de apresentação.
+    // Instanciar controladoras da camada de apresentaï¿½ï¿½o.
 
     cntrApresentacaoControle = new CntrApresentacaoControle();
     cntrApresentacaoAutenticacao = new CntrApresentacaoAutenticacao();
     cntrApresentacaoUsuario = new CntrApresentacaoUsuario();
-    cntrApresentacaoProjeto = new CntrApresentacaoProjeto();
+    cntrApresentacaoProva = new CntrApresentacaoProva();
 
-    // Instanciar controladoras da camada de serviço.
+    // Instanciar controladoras da camada de serviï¿½o.
 
     cntrServicoUsuario = new CntrServicoUsuario();
     cntrServicoAutenticacao = new CntrServicoAutenticacao();
-    cntrServicoProjeto = new CntrServicoProjeto();
+    cntrServicoProva = new CntrServicoProva();
 
     // Interligar as controladoras.
 
     cntrApresentacaoControle->setCntrApresentacaoAutenticacao(cntrApresentacaoAutenticacao);
     cntrApresentacaoControle->setCntrApresentacaoUsuario(cntrApresentacaoUsuario);
-    cntrApresentacaoControle->setCntrlApresentacaoProjeto(cntrApresentacaoProjeto);
+    cntrApresentacaoControle->setCntrlApresentacaoProva(cntrApresentacaoProva);
     cntrApresentacaoAutenticacao->setCntrServicoAutenticacao(cntrServicoAutenticacao);
     cntrApresentacaoUsuario->setCntrServicoUsuario(cntrServicoUsuario);
-    cntrApresentacaoProjeto->setCntrServicoProjeto(cntrServicoProjeto);
+    cntrApresentacaoProva->setCntrServicoProva(cntrServicoProva);
 
-    // Retornar referência para instância de CntrApresentacaoControle.
+    // Retornar referï¿½ncia para instï¿½ncia de CntrApresentacaoControle.
 
     return cntrApresentacaoControle;
 }
@@ -33,8 +33,8 @@ BuilderSistema::~BuilderSistema(){
         delete cntrApresentacaoControle;
         delete cntrApresentacaoAutenticacao;
         delete cntrApresentacaoUsuario;
-        delete cntrApresentacaoProjeto;
+        delete cntrApresentacaoProva;
         delete cntrServicoAutenticacao;
         delete cntrServicoUsuario;
-        delete cntrServicoProjeto;
+        delete cntrServicoProva;
 }

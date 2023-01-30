@@ -46,7 +46,7 @@ public:
     char apresentar();
 };
 
-class TelaMenuProjeto {
+class TelaMenuProva {
 public:
     char apresentar();
 };
@@ -56,19 +56,19 @@ public:
     void apresentar(Codigo*);
 };
 
-class TelaConsultaProjeto {
+class TelaConsultaProva {
 public:
-    char apresentar(Projeto*);
+    char apresentar(Prova*);
 };
 
-class TelaCadastroProjeto {
+class TelaCadastroProva {
 public:
-    void apresentar(Projeto*);
+    void apresentar(Prova*);
 };
 
-class TelaEdicaoProjeto {
+class TelaEdicaoProva {
 public:
-    void apresentar(Projeto*);
+    void apresentar(Prova*);
 };
 
 class TelaConsultarUsuario {

@@ -6,7 +6,7 @@
 
 class IServicoAutenticacao;
 class IServicoUsuario;
-class IServicoProjeto;
+class IServicoProva;
 
 class IApresentacaoAutenticacao {
     public:
@@ -27,11 +27,11 @@ class IApresentacaoUsuario {
         virtual ~IApresentacaoUsuario(){}
 };
 
-class IApresentacaoProjeto {
+class IApresentacaoProva {
     public:
         virtual void executar(Matricula*) = 0;
-        virtual void setCntrServicoProjeto(IServicoProjeto*) = 0;
-        virtual ~IApresentacaoProjeto(){}
+        virtual void setCntrServicoProva(IServicoProva*) = 0;
+        virtual ~IApresentacaoProva(){}
 };
 
 class IServicoAutenticacao {
@@ -49,17 +49,17 @@ class IServicoUsuario {
         virtual ~IServicoUsuario(){}
 };
 
-class IServicoProjeto {
+class IServicoProva {
     public:
-        virtual bool cadastrarProjeto(Projeto) = 0;
-        virtual bool descadastrarProjeto(Codigo) = 0;
-        virtual bool editarProjeto(Projeto) = 0;
-        virtual bool consultarProjeto(Projeto*) = 0;
-        virtual bool cadastrarTarefa(Tarefa) = 0;
-        virtual bool descadastrarTarefa(Codigo) = 0;
-        virtual bool editarTarefa(Tarefa) = 0;
-        virtual bool consultarTarefa(Tarefa*) = 0;
-        virtual ~IServicoProjeto(){}
+        virtual bool cadastrarProva(Prova) = 0;
+        virtual bool descadastrarProva(Codigo) = 0;
+        virtual bool editarProva(Prova) = 0;
+        virtual bool consultarProva(Prova*) = 0;
+        virtual bool cadastrarQuestao(Questao) = 0;
+        virtual bool descadastrarQuestao(Codigo) = 0;
+        virtual bool editarQuestao(Questao) = 0;
+        virtual bool consultarQuestao(Questao*) = 0;
+        virtual ~IServicoProva(){}
 };
 
 #endif // INTERFACES_H_INCLUDED

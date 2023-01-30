@@ -138,12 +138,12 @@ char TelaControle::apresentar() {
     return dado1[0];
 }
 
-char TelaMenuProjeto::apresentar() {
-    char campo1[]="Gerenciamento de Projetos";
+char TelaMenuProva::apresentar() {
+    char campo1[]="Gerenciamento de Prova";
     char campo2[]="1. Consultar";
     char campo3[]="2. Cadastrar";
 
-    char campo4[]="Gerenciamento de Tarefas";
+    char campo4[]="Gerenciamento de Questão";
     char campo5[]="3. Consultar";
     char campo6[]="4. Cadastrar";
 
@@ -178,7 +178,7 @@ char TelaMenu::apresentar(){
 
     char campo1[]="Tela inicial: ";
     char campo2[]="1 - Servicos de Usuario";
-    char campo3[]="2 - Servicos de Projeto e Tarefa";
+    char campo3[]="2 - Servicos de Prova e Questão";
     char campo4[]="3 - Sair da conta.";
     char campo5[]="Selecione uma opcao: ";
     char dado1[10];
@@ -216,8 +216,8 @@ void TelaCodigo::apresentar(Codigo* codigo) {
     codigo->setValor(dado1);
 }
 
-char TelaConsultaProjeto::apresentar(Projeto* projeto) {
-    char campo1[]="Consulta de Projeto";
+char TelaConsultaProva::apresentar(Prova* prova) {
+    char campo1[]="Consulta de Prova";
 
     char campo2[]="1 - Editar";
     char campo3[]="2 - Descadastrar";
@@ -231,9 +231,9 @@ char TelaConsultaProjeto::apresentar(Projeto* projeto) {
     getmaxyx(stdscr,linha,coluna);
 
     mvprintw(linha/2 - 10,(coluna-strlen(campo1))/2,"%s",campo1);
-    mvprintw(linha/2 - 6,coluna/5,"Nome: %s",projeto->getNome().getValor().c_str());
-    mvprintw(linha/2 - 4,coluna/5,"Codigo: %s",projeto->getCodigo().getValor().c_str());
-    mvprintw(linha/2 - 2,coluna/5,"Descricao: %s",projeto->getDescricao().getValor().c_str());
+    mvprintw(linha/2 - 6,coluna/5,"Nome: %s",prova->getNome().getValor().c_str());
+    mvprintw(linha/2 - 4,coluna/5,"Codigo: %s",prova->getCodigo().getValor().c_str());
+    mvprintw(linha/2 - 2,coluna/5,"Descricao: %s",prova->getDescricao().getValor().c_str());
 
     mvprintw(linha/2 + 2,(coluna-strlen(campo2))/2,"%s",campo2);
     mvprintw(linha/2 + 4,(coluna-strlen(campo3))/2,"%s",campo3);
@@ -269,7 +269,7 @@ char TelaConsultarUsuario::apresentar(Usuario usuario) {
 }
 
 
-void TelaCadastroProjeto::apresentar(Projeto* projeto) {
+void TelaCadastroProva::apresentar(Prova* prova) {
     char campo1[]="Digite o codigo : ";
     char campo2[]="Digite o nome : ";
     char campo3[]="Digite a descricao : ";
@@ -292,18 +292,18 @@ void TelaCadastroProjeto::apresentar(Projeto* projeto) {
 
     Codigo codigo;
     codigo.setValor(dado1);
-    projeto->setCodigo(codigo);
+    prova->setCodigo(codigo);
 
     Texto nome;
     nome.setValor(dado2);
-    projeto->setNome(nome);
+    prova->setNome(nome);
 
     Texto descricao;
     descricao.setValor(dado3);
-    projeto->setDescricao(descricao);
+    prova->setDescricao(descricao);
 }
 
-void TelaEdicaoProjeto::apresentar(Projeto* projeto) {
+void TelaEdicaoProva::apresentar(Prova* prova) {
     char campo1[]="Deixe o campo em branco para manter-lo igual.";
     char campo2[]="Digite o nome : ";
     char campo3[]="Digite a descricao : ";
@@ -325,13 +325,13 @@ void TelaEdicaoProjeto::apresentar(Projeto* projeto) {
     if (dado1[0] != '\0'){
         Texto nome;
         nome.setValor(dado1);
-        projeto->setNome(nome);
+        prova->setNome(nome);
     }
 
     if (dado2[0] != '\0') {
         Texto descricao;
         descricao.setValor(dado2);
-        projeto->setDescricao(descricao);
+        prova->setDescricao(descricao);
     }
 }
 

@@ -7,8 +7,7 @@
 
 using namespace std;
 
-int main()
-{
+int main() {
     // Instanciar Builder.
 
     BuilderSistema* builder;
@@ -19,7 +18,7 @@ int main()
     CntrApresentacaoControle* cntrApresentacaoControle;
     cntrApresentacaoControle = builder->construir();
 
-    // Solicitar serviço de apresentacao.
+    // Solicitar servico de apresentacao.
 
     cntrApresentacaoControle->executar();
 

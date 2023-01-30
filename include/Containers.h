@@ -9,29 +9,29 @@ using namespace std;
 
 class ContainerUsuario{
     private:
-        map<string, Usuario> container;                 // Mapa de usuários.
-        static ContainerUsuario *instancia;             // Ponteiro para instância da classe.
+        map<string, Usuario> container;                 // Mapa de usuï¿½rios.
+        static ContainerUsuario *instancia;             // Ponteiro para instï¿½ncia da classe.
         ContainerUsuario(){};                           // Construtor.
     public:
-        static  ContainerUsuario* getInstancia();       // Método para instanciar classe.
-        bool incluir(Usuario);                          // Métodos responsáveis por prestar serviços.
+        static  ContainerUsuario* getInstancia();       // Mï¿½todo para instanciar classe.
+        bool incluir(Usuario);                          // Mï¿½todos responsï¿½veis por prestar serviï¿½os.
         bool remover(Matricula);
         bool pesquisar(Usuario*);
         bool atualizar(Usuario);
         bool autenticar(Usuario);
 };
 
-class ContainerProjeto{
+class ContainerProva{
     private:
-        map<string, Projeto> container;                 // Mapa de usuários.
-        static ContainerProjeto *instancia;             // Ponteiro para instância da classe.
-        ContainerProjeto(){};                           // Construtor.
+        map<string, Prova> container;                 // Mapa de usuï¿½rios.
+        static ContainerProva *instancia;             // Ponteiro para instï¿½ncia da classe.
+        ContainerProva(){};                           // Construtor.
     public:
-        static  ContainerProjeto* getInstancia();       // Método para instanciar classe.
-        bool incluir(Projeto);                          // Métodos responsáveis por prestar serviços.
+        static  ContainerProva* getInstancia();       // Mï¿½todo para instanciar classe.
+        bool incluir(Prova);                          // Mï¿½todos responsï¿½veis por prestar serviï¿½os.
         bool remover(Codigo);
-        bool pesquisar(Projeto*);
-        bool atualizar(Projeto);
+        bool pesquisar(Prova*);
+        bool atualizar(Prova);
 };
 
 #endif // CONTROLADORAS_H_INCLUDED

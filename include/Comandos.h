@@ -24,40 +24,40 @@ class ComandoIAUsuarioConsultar: public ComandoIAUsuario {
     void executar(IServicoUsuario*, Matricula*);
 };
 
-class ComandoIAProjeto {
+class ComandoIAProva {
 public:
-    virtual void executar(IServicoProjeto*, Matricula*) = 0;
-    virtual ~ComandoIAProjeto(){}
+    virtual void executar(IServicoProva*, Matricula*) = 0;
+    virtual ~ComandoIAProva(){}
 };
 
-class ComandoIAProjetoConsultarProjeto:public ComandoIAProjeto {
+class ComandoIAProvaConsultarProva:public ComandoIAProva {
 public:
-    void executar(IServicoProjeto*, Matricula*);
+    void executar(IServicoProva*, Matricula*);
 };
 
-class ComandoIAProjetoCadastrarProjeto:public ComandoIAProjeto {
+class ComandoIAProvaCadastrarProva:public ComandoIAProva {
 public:
-    void executar(IServicoProjeto*, Matricula*);
+    void executar(IServicoProva*, Matricula*);
 };
 
-class ComandoIAProjetoEditarProjeto {
+class ComandoIAProvaEditarProva {
 public:
-    void executar(IServicoProjeto*, Projeto);
+    void executar(IServicoProva*, Prova);
 };
 
-class ComandoISProjetoConsultarProjeto {
+class ComandoISProvaConsultarProva {
 public:
-    bool executar(Projeto* projeto);
+    bool executar(Prova* prova);
 };
 
-class ComandoISProjetoCadastrarProjeto {
+class ComandoISProvaCadastrarProva {
 public:
-    bool executar(Projeto);
+    bool executar(Prova);
 };
 
-class ComandoISProjetoEditarProjeto {
+class ComandoISProvaEditarProva {
 public:
-    bool executar(Projeto);
+    bool executar(Prova);
 };
 
 

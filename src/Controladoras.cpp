@@ -22,7 +22,7 @@ void CntrApresentacaoControle::executar(){
                         cntrApresentacaoUsuario->executar(&matricula);
                     }
                     else if (opcaoMenu == '2') {
-                        cntrApresentacaoProjeto->executar(&matricula);
+                        cntrApresentacaoProva->executar(&matricula);
                         //cntrApresentacaoProjeto/Tarefa
                     }
                     else if (opcaoMenu == '3') {
@@ -63,7 +63,7 @@ void CntrApresentacaoControle::menuAutenticado(Matricula *matricula) {
             cntrApresentacaoUsuario->executar(matricula);
             break;
         case '2':
-            cntrApresentacaoProjeto->executar(matricula);
+            cntrApresentacaoProva->executar(matricula);
             break;
         case '3':
             return;
@@ -163,24 +163,24 @@ void CntrApresentacaoUsuario::cadastrar() {
     }
 }
 
-void CntrApresentacaoProjeto::executar(Matricula* matricula) {
+void CntrApresentacaoProva::executar(Matricula* matricula) {
 
-    TelaMenuProjeto telaMenuProjeto;
+    TelaMenuProva telaMenuProva;
     char opcao;
-    ComandoIAProjeto* comando;
+    ComandoIAProva* comando;
 
     while(true) {
-        opcao = telaMenuProjeto.apresentar();
+        opcao = telaMenuProva.apresentar();
 
         switch(opcao) {
             case '1':
-                comando = new ComandoIAProjetoConsultarProjeto();
-                comando->executar(cntrServicoProjeto, matricula);
+                comando = new ComandoIAProvaConsultarProva();
+                comando->executar(cntrServicoProva, matricula);
                 delete comando;
                 break;
             case '2':
-                comando = new ComandoIAProjetoCadastrarProjeto();
-                comando->executar(cntrServicoProjeto, matricula);
+                comando = new ComandoIAProvaCadastrarProva();
+                comando->executar(cntrServicoProva, matricula);
                 delete comando;
                 break;
             case '5':
@@ -235,38 +235,38 @@ bool CntrServicoUsuario::consultar(Usuario* usuario) {
     return container->pesquisar(usuario);
 }
 
-bool CntrServicoProjeto::consultarProjeto(Projeto* projeto) {
-    ComandoISProjetoConsultarProjeto comando;
-    return comando.executar(projeto);
+bool CntrServicoProva::consultarProva(Prova* prova) {
+    ComandoISProvaConsultarProva comando;
+    return comando.executar(prova);
 }
 
-bool CntrServicoProjeto::cadastrarProjeto(Projeto projeto){
-    ComandoISProjetoCadastrarProjeto comando;
-    return comando.executar(projeto);
+bool CntrServicoProva::cadastrarProva(Prova prova){
+    ComandoISProvaCadastrarProva comando;
+    return comando.executar(prova);
 }
 
-bool CntrServicoProjeto::descadastrarProjeto(Codigo){
+bool CntrServicoProva::descadastrarProva(Codigo){
     return false;
 }
 
-bool CntrServicoProjeto::editarProjeto(Projeto projeto){
-    ComandoISProjetoEditarProjeto comando;
-    return comando.executar(projeto);
+bool CntrServicoProva::editarProva(Prova prova){
+    ComandoISProvaEditarProva comando;
+    return comando.executar(prova);
 }
 
-bool CntrServicoProjeto::cadastrarTarefa(Tarefa){
+bool CntrServicoProva::cadastrarQuestao(Questao){
     return false;
 }
 
-bool CntrServicoProjeto::descadastrarTarefa(Codigo){
+bool CntrServicoProva::descadastrarQuestao(Codigo){
     return false;
 }
 
-bool CntrServicoProjeto::editarTarefa(Tarefa){
+bool CntrServicoProva::editarQuestao(Questao){
     return false;
 }
 
-bool CntrServicoProjeto::consultarTarefa(Tarefa*){
+bool CntrServicoProva::consultarQuestao(Questao*){
     return false;
 }
 
