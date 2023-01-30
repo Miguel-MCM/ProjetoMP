@@ -1,6 +1,7 @@
 #include "Containers.h"
 #include "Telas.h"
 
+#include <list>
 #include <iostream>
 
 ContainerUsuario* ContainerUsuario::instancia = nullptr;
@@ -99,3 +100,62 @@ bool ContainerProva::atualizar(Prova prova){
     return false;
 }
 
+
+ContainerQuestao* ContainerQuestao::instancia = nullptr;
+
+
+ContainerQuestao* ContainerQuestao::getInstancia() {
+    if (instancia == nullptr)
+        instancia = new ContainerQuestao();
+    return instancia;
+}
+
+bool ContainerQuestao::incluir(Questao questao){
+    return container.insert(make_pair(questao.getCodigo().getValor(), questao)).second;
+}
+
+bool ContainerQuestao::remover(Codigo codigo){
+    map<string, Questao>::iterator it = container.find(codigo.getValor());
+    if(it != container.end()){
+        container.erase(it);
+        return true;
+    }
+    return false;
+}
+
+bool ContainerQuestao::pesquisar(Questao* questao){
+    map<string, Questao>::iterator it = container.find(questao->getCodigo().getValor());
+    if(it != container.end()){
+            if(it->second.getUsuario().getValor() == questao->getUsuario().getValor()){
+               *questao = it->second;
+               return true;
+            }
+    }
+    return false;
+}
+
+bool ContainerQuestao::atualizar(Questao questao){
+    map<string, Questao>::iterator it = container.find(questao.getCodigo().getValor());
+    if(it != container.end()){
+        if(it->second.getUsuario().getValor() == questao.getUsuario().getValor()){
+        it->second = questao;
+        return true;
+        }
+    }
+    return false;
+}
+
+bool ContainerQuestao::removerPorProva(Codigo prova) {
+    //map<string, Questao>::iterator it;
+    list<Codigo> paraRemover;
+    for (map<string, Questao>::iterator it = container.begin(); it != container.end(); ++it) {
+        if (it->second.getProva().getValor() == prova.getValor()) {
+                paraRemover.push_front(it->second.getCodigo());
+        }
+    }
+
+    for (list<Codigo>::iterator it = paraRemover.begin(); it != paraRemover.end(); ++it) {
+        remover(*it);
+    }
+    return true;
+}

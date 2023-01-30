@@ -34,5 +34,19 @@ class ContainerProva{
         bool atualizar(Prova);
 };
 
+class ContainerQuestao {
+    private:
+        map<string, Questao> container;                 // Mapa de usuários.
+        static ContainerQuestao *instancia;             // Ponteiro para instância da classe.
+        ContainerQuestao(){};                           // Construtor.
+    public:
+        static  ContainerQuestao* getInstancia();       // Método para instanciar classe.
+        bool incluir(Questao);                          // Métodos responsáveis por prestar serviços.
+        bool remover(Codigo);
+        bool pesquisar(Questao*);
+        bool atualizar(Questao);
+        bool removerPorProva(Codigo);
+};
+
 #endif // CONTROLADORAS_H_INCLUDED
 

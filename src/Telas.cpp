@@ -363,5 +363,153 @@ void TelaEdicaoUsuario::apresentar(Usuario * usuario) {
     usuario->setSenha(senha);
 }
 
+void TelaCadastroQuestao::apresentar(Questao* questao) {
+    char campo1[]="Digite o codigo : ";
+    char campo2[]="Digite o nome : ";
+    char campo3[]="Digite o codigo do prova : ";
+    char campo4[]="Digite a data de inicio : ";
+    char campo5[]="Digite a data de termino : ";
+    char campo6[]="Digite a disciplina : ";
+    char dado1[80];
+    char dado2[80];
+    char dado3[80];
+    char dado4[80];
+    char dado5[80];
+    char dado6[80];
+    int linha,coluna;
+
+    initscr();
+    getmaxyx(stdscr,linha,coluna);
+
+    mvprintw(linha/3,(coluna-strlen(campo1))/2,"%s",campo1);
+    getstr(dado1);
+    mvprintw(linha/3 + 2,(coluna-strlen(campo2))/2,"%s",campo2);
+    getstr(dado2);
+    mvprintw(linha/3 + 4,(coluna-strlen(campo3))/2,"%s",campo3);
+    getstr(dado3);
+    mvprintw(linha/3 + 6,(coluna-strlen(campo4))/2,"%s",campo4);
+    getstr(dado4);
+    mvprintw(linha/3 + 8,(coluna-strlen(campo5))/2,"%s",campo5);
+    getstr(dado5);
+    mvprintw(linha/3 + 10,(coluna-strlen(campo6))/2,"%s",campo6);
+    getstr(dado6);
+    clear();
+    endwin();
+
+    Codigo codigo;
+    codigo.setValor(dado1);
+    questao->setCodigo(codigo);
+
+    Texto nome;
+    nome.setValor(dado2);
+    questao->setNome(nome);
+
+    Codigo prova;
+    prova.setValor(dado3);
+    questao->setProva(prova);
+
+    Data inicio;
+    inicio.setValor(dado4);
+    questao->setInicio(inicio);
+
+    Data termino;
+    termino.setValor(dado5);
+    questao->setTermino(termino);
+
+    Disciplina disciplina;
+    disciplina.setValor(dado6);
+    questao->setDisciplina(disciplina);
+}
+
+char TelaConsultaQuestao::apresentar(Questao* questao) {
+    char campo1[]="Consulta de Questao";
+
+    char campo2[]="1 - Editar";
+    char campo3[]="2 - Descadastrar";
+    char campo4[]="3 - Voltar";
+    char campo5[]="Selecione uma opcao: ";
+    char dado1[10];
+
+    int linha,coluna;
+
+    initscr();
+    getmaxyx(stdscr,linha,coluna);
+
+    mvprintw(linha/2 - 12,(coluna-strlen(campo1))/2,"%s",campo1);
+    mvprintw(linha/2 - 8,coluna/5,"Nome: %s",questao->getNome().getValor().c_str());
+    mvprintw(linha/2 - 6,coluna/5,"Codigo: %s",questao->getCodigo().getValor().c_str());
+    mvprintw(linha/2 - 4,coluna/5,"Codigo do Prova: %s",questao->getProva().getValor().c_str());
+    mvprintw(linha/2 - 2,coluna/5,"Inicio: %s",questao->getInicio().getValor().c_str());
+    mvprintw(linha/2,coluna/5,"Termino: %s",questao->getTermino().getValor().c_str());
+    mvprintw(linha/2 + 2,coluna/5,"Disciplina: %s",questao->getDisciplina().getValor().c_str());
+
+
+    mvprintw(linha/2 + 4,(coluna-strlen(campo2))/2,"%s",campo2);
+    mvprintw(linha/2 + 6,(coluna-strlen(campo3))/2,"%s",campo3);
+    mvprintw(linha/2 + 8,(coluna-strlen(campo4))/2,"%s",campo4);
+    mvprintw(linha/2 + 10,(coluna-strlen(campo5))/2,"%s",campo5);
+
+    getstr(dado1);
+    clear();
+    endwin();
+
+    return dado1[0];
+}
+
+void TelaEdicaoQuestao::apresentar(Questao* questao) {
+    char campo1[]="Deixe o campo em branco para manter-lo igual.";
+    char campo2[]="Digite o nome : ";
+    char campo3[]="Digite a data de inicio : ";
+    char campo4[]="Digite a data de termino : ";
+    char campo5[]="Digite a disciplina : ";
+
+    char dado1[80];
+    char dado2[80];
+    char dado3[80];
+    char dado4[80];
+
+    int linha,coluna;
+
+    initscr();
+    getmaxyx(stdscr,linha,coluna);
+
+    mvprintw(linha/3 - 2,(coluna-strlen(campo1))/2,"%s",campo1);
+    mvprintw(linha/3,(coluna-strlen(campo2))/2,"%s",campo2);
+    getstr(dado1);
+    mvprintw(linha/3 + 2,(coluna-strlen(campo3))/2,"%s",campo3);
+    getstr(dado2);
+    mvprintw(linha/3 + 4,(coluna-strlen(campo4))/2,"%s",campo4);
+    getstr(dado3);
+    mvprintw(linha/3 + 6,(coluna-strlen(campo5))/2,"%s",campo5);
+    getstr(dado4);
+    clear();
+    endwin();
+
+    if (dado1[0] != '\0'){
+        Texto nome;
+        nome.setValor(dado1);
+        questao->setNome(nome);
+    }
+
+    if (dado2[0] != '\0'){
+        Data inicio;
+        inicio.setValor(dado2);
+        questao->setInicio(inicio);
+    }
+
+    if (dado3[0] != '\0'){
+        Data termino;
+        termino.setValor(dado3);
+        questao->setTermino(termino);
+    }
+
+    if (dado4[0] != '\0'){
+        Disciplina disciplina;
+        disciplina.setValor(dado4);
+        questao->setDisciplina(disciplina);
+    }
+
+}
+
 //TELA DE DADOS
 //TELA DE EDITAR NOME E SENHA

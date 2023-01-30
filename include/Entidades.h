@@ -5,6 +5,72 @@
 #include "Entidades.h"
 
 using namespace std;
+
+///@brief Um prova é um esforço temporário que tem como finalidade um resultado único e possui recursos delimitados; é identificado no sistema por um código, e possui um nome e uma descrição.
+class Prova {
+    private:
+            Texto nome;
+            Codigo codigo;
+            Texto descricao;
+            Matricula usuario;
+    public:
+            /// @brief Armazena o nome do Prova caso o parâmetro passado seguir corretamente a formatação do domínio Texto.
+            /// @param -Texto nome
+            /// @throw -invalid_argument : se o valor passado não cumprir as regras de formatação
+            void setNome(const Texto&);
+            /// @brief Retorna o nome do Prova.
+            /// @return -Texto nome
+            Texto getNome() const;
+            /// @brief Armazena o código do Prova caso o parâmetro passado seguir corretamente a formatação do domínio Código.
+            /// @param -Codigo codigo
+            /// @throw -invalid_argument : se o valor passado não cumprir as regras de formatação
+            void setCodigo(const Codigo&);
+            /// @brief Retorna o código do Prova.
+            /// @return -Codigo codigo
+            Codigo getCodigo() const;
+            /// @brief Armazena a descrição do Prova caso o parâmetro passado seguir corretamente a formatação do domínio Texto.
+            /// @param -Texto descricao
+            /// @throw -invalid_argument : se o valor passado não cumprir as regras de formatação
+            void setDescricao(const Texto&);
+            /// @brief Retorna a descrição do Prova.
+            /// @return -Texto descricao
+            Texto getDescricao() const;
+            void SetUsuario(const Matricula&);
+            Matricula getUsuario() const;
+};
+
+inline void Prova::setNome(const Texto &nome){
+    this->nome = nome;
+}
+
+inline Texto Prova::getNome() const{
+    return nome;
+}
+
+inline void Prova::setCodigo(const Codigo &codigo){
+    this->codigo = codigo;
+}
+
+inline Codigo Prova::getCodigo() const{
+    return codigo;
+}
+
+inline void Prova::setDescricao(const Texto &descricao){
+    this->descricao = descricao;
+}
+
+inline Texto Prova::getDescricao() const{
+    return descricao;
+}
+
+inline void Prova::SetUsuario(const Matricula &usuario){
+    this->usuario = usuario;
+}
+
+inline Matricula Prova::getUsuario() const {
+    return usuario;
+}
+
 ///@brief Entidade que representa um trabalho realizado de uma certa disciplina dentro de um prazo determinado.
 //por: Anita Garcia Lagos OLiveira (211068243)
 class Questao {
@@ -14,48 +80,70 @@ class Questao {
             Data inicio;
             Data termino;
             Disciplina disciplina;
+            Codigo prova;
+            Matricula usuario;
     public:
-            ///@brief Armazena o nome da Tarefa caso o parâmetro passado seguir corretamente a formatação do domínio Texto.
+            ///@brief Armazena o nome da Questao caso o parâmetro passado seguir corretamente a formatação do domínio Texto.
             /// @param - Texto nome
             /// @throw - invalid_argument : se o valor passado não cumprir as regras de formatação
             void setNome(const Texto&);
-            ///@brief Retorna o nome da Tarefa.
+            ///@brief Retorna o nome da Questao.
             /// @return - Texto nome
             Texto getNome() const;
 
-            ///@brief Armazena o código da Tarefa caso o parâmetro passado seguir corretamente a formatação do domínio Código.
+            ///@brief Armazena o código da Questao caso o parâmetro passado seguir corretamente a formatação do domínio Código.
             /// @param - Codigo codigo
             /// @throw - invalid_argument : se o valor passado não cumprir as regras de formatação
             void setCodigo(const Codigo&);
-            /// @brief Retorna o código da Tarefa.
+            /// @brief Retorna o código da Questao.
             /// @return - Codigo codigo
             Codigo getCodigo() const;
 
-            /// @brief Armazena a data de início da Tarefa caso o parâmetro passado seguir corretamente a formatação do domínio Data.
+            /// @brief Armazena a data de início da Questao caso o parâmetro passado seguir corretamente a formatação do domínio Data.
             /// @param - Data inicio
             /// @throw - invalid_argument : se o valor passado não cumprir as regras de formatação
             void setInicio(const Data&);
-            /// @brief Retorna a data de início da Tarefa.
+            /// @brief Retorna a data de início da Questao.
             /// @return - Data inicio
             Data getInicio() const;
 
-            /// @brief Armazena a data de término da Tarefa caso o parâmetro passado seguir corretamente a formatação do domínio Data.
+            /// @brief Armazena a data de término da Questao caso o parâmetro passado seguir corretamente a formatação do domínio Data.
             /// @param - Data termino
             /// @throw - invalid_argument : se o valor passado não cumprir as regras de formatação
             void setTermino(const Data&);
 
-            /// @brief Retorna a data de término da Tarefa.
+            /// @brief Retorna a data de término da Questao.
             /// @return - Data termino
             Data getTermino() const;
 
-            /// @brief Armazena a disciplina da Tarefa caso o parâmetro passado seguir corretamente a formatação do domínio Disciplina.
+            /// @brief Armazena a disciplina da Questao caso o parâmetro passado seguir corretamente a formatação do domínio Disciplina.
             /// @param - Disciplina discipllina
             /// @throw - invalid_argument : se o valor passado não cumprir as regras de formatação
             void setDisciplina(const Disciplina&);
-            /// @brief Retorna a disciplina da Tarefa.
+            /// @brief Retorna a disciplina da Questao.
             /// @return - Disciplina disciplina
             Disciplina getDisciplina() const;
+            void setProva(const Codigo);
+            Codigo getProva() const;
+            Matricula getUsuario() const;
+            void setUsuario(const Matricula);
 };
+
+inline void Questao::setUsuario(const Matricula usuario) {
+    this->usuario = usuario;
+}
+
+inline void Questao::setProva(const Codigo prova) {
+    this->prova = prova;
+}
+
+inline Codigo Questao::getProva() const {
+    return prova;
+}
+
+inline Matricula Questao::getUsuario() const {
+    return usuario;
+}
 
 inline void Questao::setNome(const Texto &nome){
     this->nome = nome;
@@ -97,72 +185,8 @@ inline Disciplina Questao::getDisciplina() const{
     return disciplina;
 }
 
-///@brief Um projeto é um esforço temporário que tem como finalidade um resultado único e possui recursos delimitados; é identificado no sistema por um código, e possui um nome e uma descrição.
-class Prova {
-    private:
-            Texto nome;
-            Codigo codigo;
-            Texto descricao;
-            Matricula usuario;
-    public:
-            /// @brief Armazena o nome do Projeto caso o parâmetro passado seguir corretamente a formatação do domínio Texto.
-            /// @param -Texto nome
-            /// @throw -invalid_argument : se o valor passado não cumprir as regras de formatação
-            void setNome(const Texto&);
-            /// @brief Retorna o nome do Projeto.
-            /// @return -Texto nome
-            Texto getNome() const;
-            /// @brief Armazena o código do Projeto caso o parâmetro passado seguir corretamente a formatação do domínio Código.
-            /// @param -Codigo codigo
-            /// @throw -invalid_argument : se o valor passado não cumprir as regras de formatação
-            void setCodigo(const Codigo&);
-            /// @brief Retorna o código do Projeto.
-            /// @return -Codigo codigo
-            Codigo getCodigo() const;
-            /// @brief Armazena a descrição do Projeto caso o parâmetro passado seguir corretamente a formatação do domínio Texto.
-            /// @param -Texto descricao
-            /// @throw -invalid_argument : se o valor passado não cumprir as regras de formatação
-            void setDescricao(const Texto&);
-            /// @brief Retorna a descrição do Projeto.
-            /// @return -Texto descricao
-            Texto getDescricao() const;
-            void SetUsuario(const Matricula&);
-            Matricula getUsuario() const;
-};
 
-inline void Prova::setNome(const Texto &nome){
-    this->nome = nome;
-}
-
-inline Texto Prova::getNome() const{
-    return nome;
-}
-
-inline void Prova::setCodigo(const Codigo &codigo){
-    this->codigo = codigo;
-}
-
-inline Codigo Prova::getCodigo() const{
-    return codigo;
-}
-
-inline void Prova::setDescricao(const Texto &descricao){
-    this->descricao = descricao;
-}
-
-inline Texto Prova::getDescricao() const{
-    return descricao;
-}
-
-inline void Prova::SetUsuario(const Matricula &usuario){
-    this->usuario = usuario;
-}
-
-inline Matricula Prova::getUsuario() const {
-    return usuario;
-}
-
-///@brief Usuários são agentes externos ao sistema que usufruem da tecnologia para realizar determinado projeto.
+///@brief Usuários são agentes externos ao sistema que usufruem da tecnologia para realizar determinado prova.
 ///Cada usuário pode cadastrar uma conta informando nome, matrícula e senha.
 class Usuario {
     private:
