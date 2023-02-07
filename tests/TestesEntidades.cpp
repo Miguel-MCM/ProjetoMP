@@ -18,7 +18,7 @@ const char* TURMA_DESCRICAO_VALIDA = "Provas de assuntos da materia da turma";
 
 const char* QUESTAO_TEXTO = "Quanto e 1 + 1 ?";
 const int   QUESTAO_RESP_CORRETA = 2;
-string QUESTAO_ALTERNATIVAS[] = {"1", "2", "3"};  // NOLINT
+const list<string> QUESTAO_ALTERNATIVAS({"1", "2", "3"});
 
 TEST(usuario, inserirDadosValido) {
     Usuario usuario;
@@ -101,3 +101,4 @@ TEST(questao, setDadosValidos) {
     questao.setAlternativas(QUESTAO_ALTERNATIVAS);
     ASSERT_EQ(questao.getAlternativas(), QUESTAO_ALTERNATIVAS);
 }
+

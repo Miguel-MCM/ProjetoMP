@@ -115,7 +115,7 @@ class Questao:public Entidade {
     int id_prof;
     int reposta_correta;
     static const int LIMITE_ALTERNATIVAS = 5;
-    string * alternativas;
+    list<string> alternativas;
  public:
     string getTexto() const;
     void setTexto(string);
@@ -123,8 +123,8 @@ class Questao:public Entidade {
     void setIdProf(int);
     int getRespostaCorreta() const;
     void setRespostaCorreta(int);
-    string * getAlternativas() const;
-    void setAlternativas(string *);
+    list<string> getAlternativas() const;
+    void setAlternativas(list<string>);
 };
 
 inline int Questao::getIdProf() const {return id_prof;}
@@ -141,9 +141,9 @@ inline void Questao::setRespostaCorreta(int resposta_correta) {
     this->reposta_correta = resposta_correta;
 }
 
-inline string * Questao::getAlternativas() const {return alternativas;}
+inline list<string> Questao::getAlternativas() const {return alternativas;}
 
-inline void Questao::setAlternativas(string * alternativas) {
+inline void Questao::setAlternativas(list<string> alternativas) {
     this->alternativas = alternativas;
 }
 
