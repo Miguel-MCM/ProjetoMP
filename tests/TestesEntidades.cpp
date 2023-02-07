@@ -22,6 +22,8 @@ const list<string> QUESTAO_ALTERNATIVAS({"1", "2", "3"});
 
 const list<int> PROVA_ID_QUESTOES({1, 2, 3});
 
+const int RESPOSTA_RESPOSTA = 2;
+
 TEST(usuario, inserirDadosValido) {
     Usuario usuario;
     usuario.setId(ID_VALIDO);
@@ -113,3 +115,14 @@ TEST(prova, setDadosValidos) {
     ASSERT_EQ(prova.getIdQuestoes(), PROVA_ID_QUESTOES);
 }
 
+TEST(resposta, setDadosValidos) {
+    Resposta resposta;
+    resposta.setResposta(RESPOSTA_RESPOSTA);
+    ASSERT_EQ(resposta.getResposta(), RESPOSTA_RESPOSTA);
+
+    resposta.setIdEstudante(ID_VALIDO);
+    ASSERT_EQ(resposta.getIdEstudante(), ID_VALIDO);
+
+    resposta.setIdProva(ID_VALIDO);
+    ASSERT_EQ(resposta.getIdProva(), ID_VALIDO);
+}
