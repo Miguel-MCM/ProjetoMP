@@ -46,6 +46,7 @@ class Usuario:public Entidade {
     string const getSenha();
     void setSenha(string);
     string const getCargo();
+    void setCargo(string);
     virtual ~Usuario() {}
 };
 
@@ -68,6 +69,13 @@ inline void Usuario::setSenha(string senha) {
 }
 
 inline string const Usuario::getCargo() {return cargo;}
+
+inline void Usuario::setCargo(string cargo) {
+    if (cargo != "aluno" && cargo != "professor" && cargo != "admin") {
+        throw invalid_argument("Cargo deve ser 'aluno' ou 'professor' ou 'admin'.");
+    }
+    this->cargo = cargo;
+}
 
 class Turma:public Entidade {
  private:
