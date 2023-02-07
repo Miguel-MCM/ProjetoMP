@@ -20,6 +20,8 @@ const char* QUESTAO_TEXTO = "Quanto e 1 + 1 ?";
 const int   QUESTAO_RESP_CORRETA = 2;
 const list<string> QUESTAO_ALTERNATIVAS({"1", "2", "3"});
 
+const list<int> PROVA_ID_QUESTOES({1, 2, 3});
+
 TEST(usuario, inserirDadosValido) {
     Usuario usuario;
     usuario.setId(ID_VALIDO);
@@ -100,5 +102,14 @@ TEST(questao, setDadosValidos) {
 
     questao.setAlternativas(QUESTAO_ALTERNATIVAS);
     ASSERT_EQ(questao.getAlternativas(), QUESTAO_ALTERNATIVAS);
+}
+
+TEST(prova, setDadosValidos) {
+    Prova prova;
+    prova.setIdTurma(ID_VALIDO);
+    ASSERT_EQ(prova.getIdTurma(), ID_VALIDO);
+
+    prova.setIdQuestoes(PROVA_ID_QUESTOES);
+    ASSERT_EQ(prova.getIdQuestoes(), PROVA_ID_QUESTOES);
 }
 
