@@ -16,6 +16,10 @@ const char* USUARIO_CARGO_INVALIDO = "diretor";
 const char* TURMA_NOME_VALIDO = "Matematica";
 const char* TURMA_DESCRICAO_VALIDA = "Provas de assuntos da materia da turma";
 
+const char* QUESTAO_TEXTO = "Quanto e 1 + 1 ?";
+const int   QUESTAO_RESP_CORRETA = 2;
+string QUESTAO_ALTERNATIVAS[] = {"1", "2", "3"};  // NOLINT
+
 TEST(usuario, inserirDadosValido) {
     Usuario usuario;
     usuario.setId(ID_VALIDO);
@@ -80,4 +84,20 @@ TEST(turma, setDescricaoVazia) {
     EXPECT_THROW(turma.setDescricao(STR_VAZIA), invalid_argument);
 }
 
+TEST(questao, setDadosValidos) {
+    Questao questao;
+    questao.setId(ID_VALIDO);
+    ASSERT_EQ(questao.getId(), ID_VALIDO);
 
+    questao.setIdProf(ID_VALIDO);
+    ASSERT_EQ(questao.getIdProf(), ID_VALIDO);
+
+    questao.setTexto(QUESTAO_TEXTO);
+    ASSERT_STREQ(questao.getTexto().c_str(), QUESTAO_TEXTO);
+
+    questao.setRespostaCorreta(QUESTAO_RESP_CORRETA);
+    ASSERT_EQ(questao.getRespostaCorreta(), QUESTAO_RESP_CORRETA);
+
+    questao.setAlternativas(QUESTAO_ALTERNATIVAS);
+    ASSERT_EQ(questao.getAlternativas(), QUESTAO_ALTERNATIVAS);
+}
