@@ -13,6 +13,9 @@ const char* USUARIO_EMAIL_INVALIDO = "email2email.com";
 const char* USUARIO_SENHA_INVALIDA = "123";
 const char* USUARIO_CARGO_INVALIDO = "diretor";
 
+const char* TURMA_NOME_VALIDO = "Matematica";
+const char* TURMA_DESCRICAO_VALIDA = "Provas de assuntos da materia da turma";
+
 TEST(usuario, inserirDadosValido) {
     Usuario usuario;
     usuario.setId(ID_VALIDO);
@@ -50,6 +53,31 @@ TEST(usuario, setDadosInvalidos) {
     ASSERT_STRNE(usuario.getEmail().c_str(), USUARIO_EMAIL_INVALIDO);
     ASSERT_STRNE(usuario.getSenha().c_str(), USUARIO_SENHA_INVALIDA);
     ASSERT_STRNE(usuario.getCargo().c_str(), USUARIO_CARGO_INVALIDO);
+}
+
+TEST(turma, setDadosValidos) {
+    Turma turma;
+    bool estavaAberta = turma.taAberta();
+
+    turma.setId(ID_VALIDO);
+    ASSERT_EQ(turma.getId(), ID_VALIDO);
+
+    turma.setNome(TURMA_NOME_VALIDO);
+    ASSERT_STREQ(turma.getNome().c_str(), TURMA_NOME_VALIDO);
+
+    turma.setDescricao(TURMA_DESCRICAO_VALIDA);
+    ASSERT_STREQ(turma.getDescricao().c_str(), TURMA_DESCRICAO_VALIDA);
+
+    turma.switchAberta();
+    ASSERT_NE(turma.taAberta(), estavaAberta);
+
+    turma.setIdProf(ID_VALIDO);
+    ASSERT_EQ(turma.getIdProf(), ID_VALIDO);
+}
+
+TEST(turma, setDescricaoVazia) {
+    Turma turma;
+    EXPECT_THROW(turma.setDescricao(STR_VAZIA), invalid_argument);
 }
 
 
