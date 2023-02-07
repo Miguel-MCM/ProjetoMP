@@ -1,23 +1,49 @@
-#ifndef TELAS_H_INCLUDED
-#define TELAS_H_INCLUDED
+#ifndef INCLUDE_TELAS_H_
+#define INCLUDE_TELAS_H_
 
 #include "Entidades.h"
-#include <string.h>
 #include <stdlib.h>
+#include <string>
+#include <vector>
 #ifdef WIN32
     #include "curses.h"
 #else
     #include <ncurses.h>
+#endif  // WIN32
 
-#endif // WIN32
+using std::vector;
 
+class Tela {
+ protected:
+    void mostrarLinhas(vector<string>, int, int, int);
+    void mostrarLinhas(vector<string>, int, int);
+};
+
+template <class entidade>
+class TelaApresentacao:public Tela {
+ public:
+    virtual void apresentar(entidade) = 0;
+};
+
+class TelaMenu:public Tela {
+ public:
+    string apresentar(string, vector<string>);
+};
+
+class TelaFormulario:public Tela {
+ public:
+    void apresentar(string, vector<string>, string *);
+};
+
+
+/*
 class TelaAutenticacao {
 public:
     void apresentar(Matricula*, Senha*);
 };
 
-class TelaMensagem {
-public:
+class TelaMensagem:public TelaApresentacao<string> {
+ public:
     void apresentar(string);
 };
 
@@ -95,5 +121,7 @@ class TelaEdicaoQuestao {
 public:
     void apresentar(Questao *);
 };
+*/
 
-#endif // TELAS_H_INCLUDED
+
+#endif  // INCLUDE_TELAS_H_
