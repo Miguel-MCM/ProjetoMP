@@ -37,6 +37,7 @@ void TelaFormulario::apresentar(string titulo, vector<string> campos, string * e
     char dado[20];
     initscr();
     getmaxyx(stdscr, linha, coluna);
+    mvprintw(linha / 2 - 6, (coluna - titulo.length()) / 2, "%s", titulo.c_str());
     for (pair<vector<string>::iterator, int> it(campos.begin(), 0); it.first != campos.end(); ++it.first, it.second++) {
         mvprintw(linha / 2 - 4 + (2 * it.second), (coluna - it.first->length()) / 2, "%s", it.first->c_str());
         getstr(dado);
@@ -47,12 +48,11 @@ void TelaFormulario::apresentar(string titulo, vector<string> campos, string * e
 }
 
 void TelaMensagem::apresentar(string mensagem) {
-
     int linha, coluna;
 
     initscr();                                                                            // Iniciar curses.
     getmaxyx(stdscr, linha, coluna);                                                      // Armazenar quantidade de linhas e de colunas.
-    mvprintw(linha / 2, (coluna - strlen(mensagem.c_str())) / 2, "%s", mensagem.c_str()); // Imprimir dado.
+    mvprintw(linha / 2, (coluna - mensagem.length()) / 2, "%s", mensagem.c_str()); // Imprimir dado.
     noecho();                                                                             // Desabilitar eco.
     getch();                                                                              // Ler caracter digitado.
     echo();                                                                               // Habilitar eco.
@@ -122,11 +122,19 @@ char TelaConsultaUsuario::apresentar(Usuario* usuario) {
         "Email: " + usuario->getEmail(),
         "Cargo: " + usuario->getCargo()
     });
+    string OPCAO_CARGO;
+    
+    if (usuario->getCargo() == "aluno")
+        OPCAO_CARGO = "Entrar turma";
+    else 
+        OPCAO_CARGO = "Criar turma";
 
     const vector<string> OPCOES({
         "1 - Editar",
         "2 - Descadastrar",
-        "3 - Voltar",
+        "3 - Minhas turmas",
+        "4 - " + OPCAO_CARGO,
+        "5 - Voltar",
         "Selecione uma opcao: "
     });
 
@@ -178,6 +186,11 @@ bool TelaConfirmacao::apresentar() {
     
     return confirmou;
 }
+
+void TelaConsultarTurmas::apresentar(map<Turma, string> turmas) {
+    
+}
+
 
 /* teste as telas
 int main() {

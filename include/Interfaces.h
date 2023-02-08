@@ -2,6 +2,7 @@
 #define INCLUDE_INTERFACES_H_
 
 #include "Entidades.h"
+#include <map>
 #include <string>
 #include <list>
 
@@ -72,7 +73,7 @@ class IServicoUsuario {
         virtual bool descadastrar(int) = 0;
         virtual bool editar(Usuario) = 0;
         virtual bool consultar(Usuario*) = 0;
-        virtual bool listarTurmas(int, list<Turma>*) = 0;
+        virtual bool listarTurmas(int, map<Turma, string>*) = 0;
         virtual ~IServicoUsuario() {}
 };
 

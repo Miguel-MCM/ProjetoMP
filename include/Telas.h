@@ -2,7 +2,8 @@
 #define INCLUDE_TELAS_H_
 
 #include "Entidades.h"
-#include <stdlib.h>
+#include <map>
+
 #include <string>
 #include <vector>
 #ifdef WIN32
@@ -59,6 +60,12 @@ class TelaCadastro {
 public:
     void apresentar(Usuario*);
 };
+
+class TelaConsultarTurmas {
+ public:
+    void apresentar(map<Turma, string>);
+};
+
 
 /*
 class TelaMensagem:public TelaApresentacao<string> {

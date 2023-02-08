@@ -1,14 +1,19 @@
 #ifndef INCLUDE_CONTROLADORAS_H_
 #define INCLUDE_CONTROLADORAS_H_
 
+#include <map>
+#include <string>
+#include <list>
 #include "Interfaces.h"
 #include "./curses.h"
+
+using std::list;
 
 class CntrApresentacaoUsuario:public IApresentacaoUsuario {
  private:
     IServicoUsuario * cntrServicoUsuario;
     void editar(Usuario*);
-
+    void minhasTurmas(Usuario*);
  public:
     void executar(Usuario*);
     void cadastrar() {}
@@ -71,6 +76,16 @@ void inline CntrApresentacaoAutenticacao::setCntrServicoAutenticacao(IServicoAut
     this->cntrServicoAutenticacao = cntrServicoAutenticacao;
 }
 
+class CntrApresentacaoTurma:public IApresentacaoTurma {
+ public:
+    void executar(Usuario*);
+    void setCntrServicoTurma(IServicoTurma*);
+
+    ~CntrApresentacaoTurma() {}
+};
+
+inline void CntrApresentacaoTurma::setCntrServicoTurma(IServicoTurma* cntr) {cntrServicoTurma = cntr;}
+
 class CntrApresentacaoProva:public IApresentacaoProva {
  private:
         IServicoProva* cntrServicoProva;
@@ -109,17 +124,33 @@ void inline CntrApresentacaoTurma::setCntrServicoTurma(IServicoTurma *cntrServic
 }
 
 class CntrServicoAutenticacao:public IServicoAutenticacao{
-    public:
+ public:
         bool autenticar(Usuario);
 };
 
 class CntrServicoUsuario:public IServicoUsuario {
  public:
-        bool cadastrar(Usuario);
-        bool descadastrar(Usuario);
-        bool editar(Usuario);
-        bool consultar(Usuario*);
+        bool cadastrar(Usuario){return false;}
+        bool descadastrar(Usuario){return false;}
+        bool editar(Usuario){return false;}
+        bool consultar(Usuario*){return false;}
+        bool listarTurmas(int, map<Turma, string>*){return false;}
+        ~CntrServicoUsuario() {}
 };
+
+class CntrServicoTurma:public IServicoTurma {
+ public:
+    bool cadastrar(Turma) {return false;}
+    bool consultar(Turma*) {return false;}
+    bool descadastrar(int) {return false;}
+    bool editar(Turma) {return false;}
+    bool listarAbertas(list<Turma>*) {return false;}
+    bool listarProvas(int, list<Prova>*) {return false;}
+    bool listarAlunos(int, list<Usuario>*) {return false;}
+
+    ~CntrServicoTurma() {}
+}
+
 
 // class CntrServicoProva:public IServicoProva{
 //  public:

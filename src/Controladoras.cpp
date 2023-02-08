@@ -1,5 +1,9 @@
 #include "Controladoras.h"
 #include "Telas.h"
+#include <string>
+#include <iostream>
+
+using std::list;
 
 void CntrApresentacaoUsuario::executar(Usuario* usuario) {
     
@@ -23,6 +27,12 @@ void CntrApresentacaoUsuario::executar(Usuario* usuario) {
             }
             break;
         case '3':
+            
+            break;
+        case '4':
+
+            break;
+        case '5':
             finalizou = true;
             break;
         default:
@@ -31,6 +41,8 @@ void CntrApresentacaoUsuario::executar(Usuario* usuario) {
         }
     }
 }
+
+void CntrApresentacaoTurma::executar(Usuario* usuario) {}  // fazer depois de apresentacao usuario
 
 void CntrApresentacaoUsuario::editar(Usuario* usuario) {
     TelaMensagem telaMensagem;
