@@ -108,7 +108,7 @@ class CntrApresentacaoAdmin:public IApresentacaoAdmin {
         IApresentacaoProva* cntrApresentacaoProva;
         IApresentacaoTurma* cntrApresentacaoTurma;
  public:
-        void executar();
+        void executar(Usuario*);
 
         void setCntrServicoAdmin(IServicoAdmin*);
         void setCntrApresentacaoUsuario(IApresentacaoUsuario*);
@@ -180,7 +180,7 @@ class CntrServicoAdmin:public IServicoAdmin {
         bool numeroDeRespostas(string*);
 
         bool consultarUsuario(Usuario*);
-        bool consultarTurma(Usuario*);
+        bool consultarTurma(Turma*);
 };
 
 // class CntrServicoProva:public IServicoProva{
