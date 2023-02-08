@@ -18,12 +18,16 @@ void CntrApresentacaoUsuario::executar(Usuario* usuario) {
             editar(usuario);
             break;
         case '2':
-            TelaConfirmacao telaConfirmacao;
-            if(telaConfirmacao.apresentar()) {
-                if(cntrServicoUsuario->descadastrar(usuario->getId()))
-                    finalizou = true;
-                else
-                    telaMensagem.apresentar("Erro no Processo.");
+            if(usuario->getCargo() != "admin") {
+                TelaConfirmacao telaConfirmacao;
+                if(telaConfirmacao.apresentar()) {
+                    if(cntrServicoUsuario->descadastrar(usuario->getId()))
+                        finalizou = true;
+                    else
+                        telaMensagem.apresentar("Erro no Processo.");
+                }
+            } else {
+                telaMensagem.apresentar("O administrador nao pode se descadastrar.");
             }
             break;
         case '3':
@@ -118,7 +122,7 @@ void CntrApresentacaoControle::executar() {
                         if (opcaoMenuAdmin == "1") {
                             cntrApresentacaoUsuario->executar(&usuario);
                         } else if (opcaoMenuAdmin == "2") {
-                            cntrApresentacaoAdmin->executar(&usuario);
+                            cntrApresentacaoAdmin->executar();
                         } else if (opcaoMenuAdmin == "3") {
                             break;
                         } else {
@@ -164,11 +168,11 @@ bool CntrApresentacaoAutenticacao::autenticar(Usuario* usuario) {
 
 void CntrApresentacaoUsuario::cadastrar() {
     bool resultado;
-    Usuario* usuario = new Usuario();
+    Usuario usuario = new Usuario();
     TelaMensagem telaMensagem;
     TelaCadastro telaCadastro;
     string titulo = "Qual o seu cargo?";
-    vector<string> campos({"1 - Aluno", "2 - Professor", "3 - Administrador"});
+    vector<string> campos({"1 - Aluno", "2 - Professor"});
     TelaMenu telaCargo;
     string cargo;
 
@@ -188,8 +192,6 @@ void CntrApresentacaoUsuario::cadastrar() {
             usuario->setCargo("aluno");
         } else if (cargo == "2") {
             usuario->setCargo("professor");
-        } else if (cargo == "3") {
-            usuario->setCargo("admin");
         } else {
             telaMensagem.apresentar("Dado em formato incorreto");
         }
@@ -203,6 +205,77 @@ void CntrApresentacaoUsuario::cadastrar() {
         telaMensagem.apresentar("Falha no cadastro.");
     }
 }
+
+void CntrApresentacaoAdmin::executar(Usuario* usuario) {
+    string titulo = "Menu de administracao";
+    vector<string> campos({
+        "1 - Estatisticas ", 
+        "2 - Gerenciar usuarios", 
+        "3 - Gerenciar turmas", 
+        "4 - Voltar"
+    });
+    TelaMenu telaMenu;
+    string opcaoMenu;
+
+    TelaMensagem telaMensagem;
+    TelaMensagens telaMensagens;
+
+    TelaBusca telaBusca;
+
+    string *pnUsuarios;
+    string *pnProvas;
+    string *pnQuestoes;
+    string *pnRespostas;
+
+
+    while (true) {
+        opcaoMenu = telaMenu.apresentar(titulo, campos);
+        if (opcaoMenu == "1") {
+            cntrServicoAdmin->numeroDeUsuarios(pnUsuarios);
+            cntrServicoAdmin->numeroDeProvas(pnProvas);
+            cntrServicoAdmin->numeroDeQuestoes(pnQuestoes);
+            cntrServicoAdmin->numeroDeRespostas(pnRespostas);
+
+            vector<string> estatisticas({
+                "Numero de Usuarios: " + *pnUsuarios,
+                "Numero de Provas: " + *pnProvas,
+                "Numero de Questoes: " + *pnQuestoes,
+                "Numero de Respostas: " + *pnRespostas,
+            });
+            telaMensagens.apresentar(estatisticas);
+        } else if (opcaoMenu == "2") {
+            string email = telaBusca.apresentar("Email");
+            Usuario* usuario = new Usuario();
+            usuario->setEmail(email);
+
+            bool resultado = cntrServicoAdmin->consultarUsuario(usuario);
+            if (!resultado) {
+                telaMensagem.apresentar("Usuario nao encontrado.");
+            } else {    
+                cntrApresentacaoUsuario->executar(usuario);
+            }
+        } else if (opcaoMenu == "3") {
+            string idTurma = telaBusca.apresentar("Id Turma");
+            Turma* turma = new Turma();
+            turma->setId(stoi(idTurma));
+
+            bool resultado = cntrServicoAdmin->consultarTurma(turma);
+            if (!resultado) {
+                telaMensagem.apresentar("Turma nao encontrada.");
+            } else {   
+                list<int> intTurmaId;
+                intTurmaId.insert(0, stoi(idTurma));
+                usuario->setIdTurmas(intTurmaId);
+                cntrApresentacaoTurma->executar(usuario);
+            }
+        } else if (opcaoMenu == "4") {
+            return;
+        } else {
+            telaMensagem.apresentar("Dado em formato incorreto");
+        }
+    }
+}
+
 
 /*
 

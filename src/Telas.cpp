@@ -56,7 +56,21 @@ void TelaMensagem::apresentar(string mensagem) {
     noecho();                                                                             // Desabilitar eco.
     getch();                                                                              // Ler caracter digitado.
     echo();                                                                               // Habilitar eco.
-    clear();                                                                              // Limpar janela.
+    clear();
+}
+
+void TelaMensagens::apresentar(vector<string> mensagens) {
+    int linha, coluna;
+
+    initscr();                                                                          
+    getmaxyx(stdscr, linha, coluna);                            
+    
+    mostrarLinhas(mensagens, linha, coluna);
+
+    noecho();                                                                           
+    getch();                                                                            
+    echo();                                                                             
+    clear();                                                                            
     endwin();
 }
 
@@ -191,6 +205,23 @@ void TelaConsultarTurmas::apresentar(map<Turma, string> turmas) {
     
 }
 
+
+void TelaBusca::apresentar(string id) {
+    char campo1[]= id + ": ";
+    char dado1[80];
+    int linha,coluna;
+
+    initscr();
+    getmaxyx(stdscr,linha,coluna);
+
+    mvprintw(linha/2,(coluna-strlen(campo1))/2,"%s",campo1);
+    getstr(dado1);
+
+    clear();
+    endwin();
+
+    return dado1;
+}
 
 /* teste as telas
 int main() {
@@ -361,23 +392,6 @@ char TelaMenu::apresentar(){
     endwin();
 
     return dado1[0];
-}
-
-void TelaCodigo::apresentar(Codigo* codigo) {
-    char campo1[]="Codigo: ";
-    char dado1[15];
-    int linha,coluna;
-
-    initscr();
-    getmaxyx(stdscr,linha,coluna);
-
-    mvprintw(linha/2,(coluna-strlen(campo1))/2,"%s",campo1);
-    getstr(dado1);
-
-    clear();
-    endwin();
-
-    codigo->setValor(dado1);
 }
 
 char TelaConsultaProva::apresentar(Prova* prova) {

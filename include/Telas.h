@@ -41,6 +41,11 @@ class TelaMensagem:public Tela {
     void apresentar(string);
 };
 
+class TelaMensagens:public Tela {
+ public:
+    void apresentar(vector<string>);
+};
+
 class TelaConsultaUsuario: public Tela {
  public:
     char apresentar(Usuario*);
@@ -66,6 +71,11 @@ class TelaConsultarTurmas {
     void apresentar(map<Turma, string>);
 };
 
+
+class TelaBusca {
+public:
+    void apresentar(string);
+};
 
 /*
 class TelaMensagem:public TelaApresentacao<string> {
@@ -98,10 +108,7 @@ public:
     char apresentar();
 };
 
-class TelaCodigo {
-public:
-    void apresentar(Codigo*);
-};
+
 
 class TelaConsultaProva {
 public:
