@@ -1,13 +1,12 @@
 #include <string.h>
 #include <stdexcept>
 
-// #include "Interfaces.h"
-// #include "Controladoras.h"
-// #include "Builders.h"
+#include "Interfaces.h"
+#include "Controladoras.h"
+#include "Builders.h"
 
 
 int main() {
-    /*
     // Instanciar Builder.
 
     BuilderSistema* builder;
@@ -25,6 +24,6 @@ int main() {
     // Destruir builder.
 
     delete builder;
-    */
+    
     return 0;
 }

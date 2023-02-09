@@ -5,85 +5,6 @@
 
 using std::list;
 
-void CntrApresentacaoUsuario::executar(Usuario* usuario) {
-    
-    TelaMensagem telaMensagem;
-    TelaConsultaUsuario telaConsultaUsuario;
-
-    bool finalizou = false;
-    while(!finalizou) {
-        cntrServicoUsuario->consultar(usuario);
-        switch (telaConsultaUsuario.apresentar(usuario)) {
-        case '1':
-            editar(usuario);
-            break;
-        case '2':
-            if(usuario->getCargo() != "admin") {
-                TelaConfirmacao telaConfirmacao;
-                if(telaConfirmacao.apresentar()) {
-                    if(cntrServicoUsuario->descadastrar(usuario->getId()))
-                        finalizou = true;
-                    else
-                        telaMensagem.apresentar("Erro no Processo.");
-                }
-            } else {
-                telaMensagem.apresentar("O administrador nao pode se descadastrar.");
-            }
-            break;
-        case '3':
-            cntrApresentacaoTurma->executar(usuario);
-            break;
-        case '4':
-            if (usuario->getCargo() == "professor")
-                cntrApresentacaoTurma->cadastrar(usuario);
-            else if (usuario->getCargo() == "aluno")
-                cntrApresentacaoTurma->entrar(usuario);
-            else
-                telaMensagem.apresentar("Somente os professores podem criar turma");
-            break;
-        case '5':
-            finalizou = true;
-            break;
-        default:
-            telaMensagem.apresentar("Opcao Invalida.");
-            break;
-        }
-    }
-}
-
-void CntrApresentacaoTurma::executar(Usuario* usuario) {}  // fazer depois de apresentacao usuario
-
-void CntrApresentacaoUsuario::editar(Usuario* usuario) {
-    TelaMensagem telaMensagem;
-    TelaFormulario telaFormulario;
-    const string TITULO = "Edicao de Usuario";
-    const vector<string> DADOS({
-        "Nome: ",
-        "Email: ",
-        "Senha: "
-    });
-    string novosDados[DADOS.size()];
-
-    telaFormulario.apresentar(TITULO, DADOS, novosDados);
-    
-    try {
-        if(novosDados[0] != "")
-            usuario->setNome(novosDados[0]);
-
-        if(novosDados[1] != "")
-            usuario->setEmail(novosDados[1]);
-
-        if(novosDados[2] != "")
-            usuario->setSenha(novosDados[2]);
-
-        cntrServicoUsuario->editar(*usuario);
-    }
-    catch (invalid_argument &e) {
-        telaMensagem.apresentar("Dado em Formato Incorreto.");
-
-    }
-}
-
 void CntrApresentacaoControle::executar() {
     string titulo1 = "Aprenda comigo!";
     vector<string> campos1({"1 - Login", "2 - Cadastrar", "3 - Fechar programa"});
@@ -173,7 +94,7 @@ bool CntrApresentacaoAutenticacao::autenticar(Usuario* usuario) {
 
 void CntrApresentacaoUsuario::cadastrar() {
     bool resultado;
-    Usuario usuario = new Usuario();
+    Usuario* usuario = new Usuario();
     TelaMensagem telaMensagem;
     TelaCadastro telaCadastro;
     string titulo = "Qual o seu cargo?";
@@ -211,6 +132,89 @@ void CntrApresentacaoUsuario::cadastrar() {
     }
 }
 
+void CntrApresentacaoUsuario::executar(Usuario* usuario) {
+    
+    TelaMensagem telaMensagem;
+    TelaConsultaUsuario telaConsultaUsuario;
+
+    bool finalizou = false;
+    while(!finalizou) {
+        cntrServicoUsuario->consultar(usuario);
+        switch (telaConsultaUsuario.apresentar(usuario)) {
+        case '1':
+            try {
+                editar(usuario);
+            } catch (invalid_argument &e) {
+                telaMensagem.apresentar("Formato de dado invalido.");
+            }
+            break;
+        case '2':
+            if(usuario->getCargo() != "admin") {
+                TelaConfirmacao telaConfirmacao;
+                if(telaConfirmacao.apresentar()) {
+                    if(cntrServicoUsuario->descadastrar(usuario->getId()))
+                        finalizou = true;
+                    else
+                        telaMensagem.apresentar("Erro no Processo.");
+                }
+            } else {
+                telaMensagem.apresentar("O administrador nao pode se descadastrar.");
+            }
+            break;
+        case '3':
+            cntrApresentacaoTurma->executar(usuario);
+            break;
+        case '4':
+            if (usuario->getCargo() == "professor")
+                cntrApresentacaoTurma->cadastrar(usuario);
+            else if (usuario->getCargo() == "aluno")
+                cntrApresentacaoTurma->entrar(usuario);
+            else
+                telaMensagem.apresentar("Somente os professores podem criar turma");
+            break;
+        case '5':
+            finalizou = true;
+            break;
+        default:
+            telaMensagem.apresentar("Opcao Invalida.");
+            break;
+        }
+    }
+}
+
+void CntrApresentacaoTurma::executar(Usuario* usuario) {}  // fazer depois de apresentacao usuario
+
+void CntrApresentacaoUsuario::editar(Usuario* usuario) {
+    TelaMensagem telaMensagem;
+    TelaFormulario telaFormulario;
+    const string TITULO = "Edicao de Usuario";
+    const vector<string> DADOS({
+        "Nome: ",
+        "Email: ",
+        "Senha: "
+    });
+    string novosDados[DADOS.size()];
+
+    telaFormulario.apresentar(TITULO, DADOS, novosDados);
+    
+    try {
+        if(novosDados[0] != "")
+            usuario->setNome(novosDados[0]);
+
+        if(novosDados[1] != "")
+            usuario->setEmail(novosDados[1]);
+
+        if(novosDados[2] != "")
+            usuario->setSenha(novosDados[2]);
+
+        cntrServicoUsuario->editar(*usuario);
+    }
+    catch (invalid_argument &e) {
+        telaMensagem.apresentar("Dado em Formato Incorreto.");
+
+    }
+}
+
 void CntrApresentacaoAdmin::executar(Usuario* usuario) {
     string titulo = "Menu de administracao";
     vector<string> campos({
@@ -227,25 +231,25 @@ void CntrApresentacaoAdmin::executar(Usuario* usuario) {
 
     TelaBusca telaBusca;
 
-    string *pnUsuarios;
-    string *pnProvas;
-    string *pnQuestoes;
-    string *pnRespostas;
+    string nUsuarios = "Erro";
+    string nProvas = "Erro";
+    string nQuestoes = "Erro";
+    string nRespostas = "Erro";
 
 
     while (true) {
         opcaoMenu = telaMenu.apresentar(titulo, campos);
         if (opcaoMenu == "1") {
-            cntrServicoAdmin->numeroDeUsuarios(pnUsuarios);
-            cntrServicoAdmin->numeroDeProvas(pnProvas);
-            cntrServicoAdmin->numeroDeQuestoes(pnQuestoes);
-            cntrServicoAdmin->numeroDeRespostas(pnRespostas);
+            cntrServicoAdmin->numeroDeUsuarios(&nUsuarios);
+            cntrServicoAdmin->numeroDeProvas(&nProvas);
+            cntrServicoAdmin->numeroDeQuestoes(&nQuestoes);
+            cntrServicoAdmin->numeroDeRespostas(&nRespostas);
 
             vector<string> estatisticas({
-                "Numero de Usuarios: " + *pnUsuarios,
-                "Numero de Provas: " + *pnProvas,
-                "Numero de Questoes: " + *pnQuestoes,
-                "Numero de Respostas: " + *pnRespostas,
+                "Numero de Usuarios: " + nUsuarios,
+                "Numero de Provas: " + nProvas,
+                "Numero de Questoes: " + nQuestoes,
+                "Numero de Respostas: " + nRespostas,
             });
             telaMensagens.apresentar(estatisticas);
         } else if (opcaoMenu == "2") {
@@ -260,11 +264,11 @@ void CntrApresentacaoAdmin::executar(Usuario* usuario) {
                 cntrApresentacaoUsuario->executar(usuario);
             }
         } else if (opcaoMenu == "3") {
-            string idTurma = telaBusca.apresentar("Id Turma");
+            string idTurma = telaBusca.apresentar("Id da Turma");
             Turma* turma = new Turma();
             turma->setId(stoi(idTurma));
 
-            bool resultado = cntrServicoAdmin->consultarTurma(turma);
+            bool resultado = cntrServicoTurma->consultar(turma);
             if (!resultado) {
                 telaMensagem.apresentar("Turma nao encontrada.");
             } else {   
