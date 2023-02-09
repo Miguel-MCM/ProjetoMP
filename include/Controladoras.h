@@ -15,13 +15,16 @@ using std::list;
 class CntrApresentacaoUsuario:public IApresentacaoUsuario {
  private:
     IServicoUsuario * cntrServicoUsuario;
+    IApresentacaoTurma * cntrApresentacaoTurma;
     void editar(Usuario*);
     void minhasTurmas(Usuario*);
  public:
     void executar(Usuario*);
     void cadastrar() {}
+
     void setCntrServicoUsuario(IServicoUsuario*);
     void setCntrServicoAdmin(IServicoAdmin*);
+    void setCntrApresentacaoTurma(IApresentacaoTurma*);
 
     bool getStatusCadastro() {return false;}
     void setStatusCadastro(bool){}
@@ -29,6 +32,9 @@ class CntrApresentacaoUsuario:public IApresentacaoUsuario {
 
 inline void CntrApresentacaoUsuario::setCntrServicoUsuario(IServicoUsuario * cntr) {cntrServicoUsuario = cntr;}
 
+inline void CntrApresentacaoControle::setCntrApresentacaoTurma(IApresentacaoTurma* cntr) {
+    cntrApresentacaoTurma = cntr;
+}
 
 class CntrApresentacaoControle{
  private:
@@ -80,8 +86,12 @@ void inline CntrApresentacaoAutenticacao::setCntrServicoAutenticacao(IServicoAut
 }
 
 class CntrApresentacaoTurma:public IApresentacaoTurma {
+ private:
+    IServicoTurma* cntrServicoTurma;
  public:
     void executar(Usuario*);
+    void cadastrar(Usuario*);
+    void entrar(Usuario*);
     void setCntrServicoTurma(IServicoTurma*);
 
     ~CntrApresentacaoTurma() {}

@@ -31,10 +31,15 @@ void CntrApresentacaoUsuario::executar(Usuario* usuario) {
             }
             break;
         case '3':
-            
+            cntrApresentacaoTurma->executar(usuario);
             break;
         case '4':
-
+            if (usuario->getCargo() == "professor")
+                cntrApresentacaoTurma->cadastrar(usuario);
+            else if (usuario->getCargo() == "aluno")
+                cntrApresentacaoTurma->entrar(usuario);
+            else
+                telaMensagem.apresentar("Somente os professores podem criar turma");
             break;
         case '5':
             finalizou = true;

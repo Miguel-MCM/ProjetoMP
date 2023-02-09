@@ -1,5 +1,5 @@
-#ifndef BUILDERS_H_INCLUDED
-#define BUILDERS_H_INCLUDED
+#ifndef INCLUDE_BUILDERS_H_
+#define INCLUDE_BUILDERS_H_
 
 #include "Interfaces.h"
 #include "Controladoras.h"
@@ -10,14 +10,18 @@ class BuilderSistema {
         IApresentacaoAutenticacao* cntrApresentacaoAutenticacao;
         IApresentacaoUsuario* cntrApresentacaoUsuario;
         IApresentacaoProva* cntrApresentacaoProva;
+        IApresentacaoAdmin* cntrApresentacaoAdmin;
+        IApresentacaoTurma* cntrApresentacaoTurma;
+
         IServicoAutenticacao *cntrServicoAutenticacao;
         IServicoUsuario *cntrServicoUsuario;
         IServicoAdmin *cntrServicoAdmin;
         IServicoProva* cntrServicoProva;
+        IServicoTurma * cntrServicoTurma;
     public:
         CntrApresentacaoControle* construir();
         ~BuilderSistema();
 };
 
-#endif // BUILDERS_H_INCLUDED
+#endif // INCLUDE_BUILDERS_H_
 

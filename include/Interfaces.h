@@ -46,10 +46,11 @@ class IApresentacaoAdmin {
 
 class IApresentacaoTurma {
  public:
-    virtual void executar(Usuario*) = 0;
-    virtual void setCntrServicoTurma(IServicoTurma*) = 0;
-
-    virtual ~IApresentacaoTurma() {}
+        virtual void executar(Usuario*) = 0;
+        virtual void cadastrar(Usuario*) = 0;
+        virtual void entrar(Usuario*) = 0;
+        virtual void setCntrServicoTurma(IServicoTurma*) = 0;
+        virtual ~IApresentacaoTurma() {}
 };
 
 class IApresentacaoProva {
