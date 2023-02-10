@@ -80,12 +80,12 @@ public:
 
 class TelaMenuProva: public Tela {
 public:
-    char apresentar();
+    char apresentar(string);
 };
 
 class TelaConsultaProva: public Tela {
 public:
-    char apresentar(Prova*, int);
+    char apresentar(Prova*);
 };
 
 class TelaCadastroProva: public Tela {
@@ -101,6 +101,11 @@ public:
 class TelaConsultarProvas: public Tela {
 public:
     string apresentar(list<Prova>);
+};
+
+class TelaInfoProvas: public Tela {
+ public:
+    void apresentar(list<Prova>);
 };
 
 class TelaListarAlunos: public Tela {
@@ -138,6 +143,11 @@ class TelaRealizarProva: public Tela {
 class TelaEdicaoProva: public Tela  {
 public:
     char apresentar(Prova*);
+};
+
+class TelaMostrarResultados: public Tela {
+ public:
+    void apresentar(list<Questao>, list<int>);
 };
 
 /*

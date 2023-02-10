@@ -4,6 +4,7 @@
 #include "Interfaces.h"
 #include "Controladoras.h"
 #include "Builders.h"
+#include "Telas.h"
 
 #include "ComandosSQL.h"
 
@@ -47,6 +48,15 @@ int main() {
 
     delete builder;
     */
+   Prova * prova = new Prova;
+   prova->setId(5);
+   prova->setIdProf(7);
+   list<int> ids({1, 2, 3});
+   prova->setIdQuestoes(ids);
+   prova->setIdTurma(9);
+   prova->setNome("Prova de biologia");
+   TelaConsultaProva telaConsultaProva;
+   telaConsultaProva.apresentar(prova);
 
     return 0;
 }

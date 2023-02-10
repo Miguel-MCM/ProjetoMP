@@ -69,7 +69,7 @@ class IApresentacaoTurma {
 
 class IApresentacaoProva {
  public:
-        virtual void executar(Turma*) = 0;
+        virtual void executar(Turma*, Usuario) = 0;
         virtual void gerenciar(Prova*) = 0;
         virtual void editar(Prova*) = 0;
         virtual void setCntrServicoProva(IServicoProva*) = 0;
@@ -110,6 +110,8 @@ class IServicoProva {
         virtual bool editarQuestao(Questao) = 0;
         virtual bool consultarQuestao(Questao*) = 0;
         virtual bool getListaQuestoes(list<int>, list<Questao>*) = 0;
+        virtual bool calcularResultado(Resposta, list<int> *) = 0;
+
         virtual ~IServicoProva() {}
 };
 

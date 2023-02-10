@@ -128,8 +128,10 @@ class CntrApresentacaoProva:public IApresentacaoProva {
  private:
         IServicoTurma* cntrServicoTurma;
         IServicoProva* cntrServicoProva;
+
+        void consultar(Prova*, Turma*, Usuario);
  public:
-        void executar(Turma*);
+        void executar(Turma*, Usuario);
         void gerenciar(Prova*);
         void editar(Prova*);
         void setCntrServicoProva(IServicoProva*);
@@ -242,6 +244,7 @@ class CntrServicoProva:public IServicoProva{
         bool editarQuestao(Questao);
         bool consultarQuestao(Questao*);
         bool getListaQuestoes(list<int>, list<Questao>*);
+        bool calcularResultado(Resposta, list<int> *);
 };
 
 #endif   // INCLUDE_CONTROLADORAS_H_
