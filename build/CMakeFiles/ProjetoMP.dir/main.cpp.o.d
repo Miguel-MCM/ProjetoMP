@@ -183,5 +183,8 @@ CMakeFiles/ProjetoMP.dir/main.cpp.o: \
  /home/thiago/Documents/ProjetoMP/include/./curses.h \
  /home/thiago/Documents/ProjetoMP/include/Builders.h \
  /home/thiago/Documents/ProjetoMP/include/Controladoras.h \
+ /home/thiago/Documents/ProjetoMP/include/Telas.h /usr/include/curses.h \
+ /usr/include/ncurses_dll.h /usr/include/unctrl.h \
+ /home/thiago/Documents/ProjetoMP/include/curses.h \
  /home/thiago/Documents/ProjetoMP/include/ComandosSQL.h \
  /home/thiago/Documents/ProjetoMP/include/sqlite3.h

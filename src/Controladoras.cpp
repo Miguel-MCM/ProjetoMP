@@ -533,7 +533,8 @@ void CntrApresentacaoProva::gerenciar(Prova* prova){
     TelaMensagem telaMensagem;
     TelaConsultaQuestao telaConsultaQuestao;
     list<Questao> *listaQuestao;
-    
+    TelaMostrarResultadosProva telaMostrarResultadosProva;
+
     int *qtdQuestoes;
 
     char opcao;
@@ -546,7 +547,7 @@ void CntrApresentacaoProva::gerenciar(Prova* prova){
         opcao = telaConsultaProva.apresentar(prova);
         switch (opcao){
             case '1':
-                editar(prova);                             
+                editar(prova);
                 break;
             case '2':
                 if (!cntrServicoProva->descadastrarProva(prova->getId())) {   //não implementado
@@ -562,12 +563,22 @@ void CntrApresentacaoProva::gerenciar(Prova* prova){
                 }
                 telaConsultaQuestao.apresentar(*listaQuestao);
                 break;
-            case '4':
+            case '4': {
+                list<int> * notas;
+                list<Usuario> * usuarios;
+                if (!cntrServicoProva->getListaRespostaAluno(*prova, usuarios, notas)) {
+                    telaMensagem.apresentar("Houve um erro ao obter os alunos que realizaram a prova.");
+                    continue;
+                }
+                telaMostrarResultadosProva.apresentar(*prova, *usuarios, *notas);
+                break;
+            }
+            case '5':
                 return;
             default:
                 telaMensagem.apresentar("Dado Invalido");
         }
-    }   
+    }
 }
 
 void CntrApresentacaoProva::editar(Prova* prova){

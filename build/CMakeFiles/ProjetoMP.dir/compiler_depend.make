@@ -224,6 +224,11 @@ CMakeFiles/ProjetoMP.dir/main.cpp.o: ../main.cpp \
   ../include/curses.h \
   ../include/Builders.h \
   ../include/Controladoras.h \
+  ../include/Telas.h \
+  /usr/include/curses.h \
+  /usr/include/ncurses_dll.h \
+  /usr/include/unctrl.h \
+  ../include/curses.h \
   ../include/ComandosSQL.h \
   ../include/sqlite3.h
 
@@ -635,6 +640,8 @@ CMakeFiles/ProjetoMP.dir/src/Controladoras.cpp.o: ../src/Controladoras.cpp \
   /usr/include/c++/11/bits/stl_bvector.h \
   /usr/include/c++/11/bits/vector.tcc \
   ../include/curses.h \
+  ../include/ComandosSQL.h \
+  ../include/sqlite3.h \
   ../include/Telas.h \
   /usr/include/curses.h \
   /usr/include/ncurses_dll.h \
@@ -1078,11 +1085,11 @@ CMakeFiles/ProjetoMP.dir/src/Telas.cpp.o: ../src/Telas.cpp \
 
 ../src/Entidades.cpp:
 
+../src/Controladoras.cpp:
+
 /usr/include/unctrl.h:
 
 /usr/include/ncurses_dll.h:
-
-../src/Controladoras.cpp:
 
 ../include/sqlite3.h:
 

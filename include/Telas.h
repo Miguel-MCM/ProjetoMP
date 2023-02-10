@@ -150,6 +150,11 @@ class TelaMostrarResultados: public Tela {
     void apresentar(list<Questao>, list<int>);
 };
 
+class TelaMostrarResultadosProva: public Tela {
+ public:
+    void apresentar(Prova, list<Usuario>, list<int>);
+}
+
 /*
 class TelaMensagem:public TelaApresentacao<string> {
  public:

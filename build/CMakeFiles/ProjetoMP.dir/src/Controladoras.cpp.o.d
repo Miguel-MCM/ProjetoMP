@@ -163,6 +163,8 @@ CMakeFiles/ProjetoMP.dir/src/Controladoras.cpp.o: \
  /usr/include/c++/11/bits/stl_bvector.h \
  /usr/include/c++/11/bits/vector.tcc \
  /home/thiago/Documents/ProjetoMP/include/./curses.h \
+ /home/thiago/Documents/ProjetoMP/include/ComandosSQL.h \
+ /home/thiago/Documents/ProjetoMP/include/sqlite3.h \
  /home/thiago/Documents/ProjetoMP/include/Telas.h /usr/include/curses.h \
  /usr/include/ncurses_dll.h /usr/include/unctrl.h \
  /home/thiago/Documents/ProjetoMP/include/curses.h \

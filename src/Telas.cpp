@@ -654,8 +654,9 @@ char TelaConsultaProva::apresentar(Prova* prova) {
     char campo2[]="1 - Editar.";
     char campo3[]="2 - Descadastrar.";
     char campo4[]="3 - Acessar questoes.";
-    char campo5[]="4 - Voltar.";
-    char campo6[]="Selecione uma opcao: ";
+    char campo5[]="4 - Ver resultados.";
+    char campo6[]="5 - Voltar.";
+    char campo7[]="Selecione uma opcao: ";
     char dado1[1];
 
     int linha,coluna;
@@ -672,8 +673,9 @@ char TelaConsultaProva::apresentar(Prova* prova) {
     mvprintw(linha/2 + 4,(coluna-strlen(campo3))/2,"%s",campo3);
     mvprintw(linha/2 + 6,(coluna-strlen(campo4))/2,"%s",campo4);
     mvprintw(linha/2 + 8,(coluna-strlen(campo5))/2,"%s",campo5);
+    mvprintw(linha/2 + 8,(coluna-strlen(campo6))/2,"%s",campo6);
     
-    mvprintw(linha/2 + 10,(coluna-strlen(campo6))/2,"%s",campo6);
+    mvprintw(linha/2 + 10,(coluna-strlen(campo7))/2,"%s",campo7);
     getstr(dado1);
     clear();
     endwin();
@@ -753,6 +755,21 @@ void TelaMostrarResultados::apresentar(list<Questao> questoes, list<int> notas) 
     }
 
     campos.push_back("Nota total: " + to_string(notaTotal));
+
+    telaMensagens.apresentar(campos);
+}
+
+void TelaMostrarResultadosProva::apresentar(Prova prova, list<Usuario> alunos, list<int> notas) {
+    TelaMensagens telaMensagens;
+    vector<string> campos;
+    int notaTotalTurma = 0;
+
+    for (pair<list<Usuario>::iterator, list<int>::iterator> it(questoes.begin(), notas.begin()); it.second != notas.end(); ++it.first, ++it.second) {
+        campos.push_back(it.first->getNome() + ": " + to_string(*(it.second)));
+        notaTotalTurma += *(it.second);
+    }
+
+    campos.push_back("Nota media: " + to_string(notaTotalTurma / alunos.size()));
 
     telaMensagens.apresentar(campos);
 }
