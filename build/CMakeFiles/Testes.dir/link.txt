@@ -1,0 +1,1 @@
+/usr/bin/c++  -g -O0 -coverage -fprofile-arcs -ftest-coverage  -coverage -lgcov CMakeFiles/Testes.dir/tests/TestesEntidades.cpp.o -o Testes  lib/libgtest_main.a lib/libgtest.a 

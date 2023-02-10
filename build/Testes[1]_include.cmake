@@ -1,0 +1,5 @@
+if(EXISTS "/home/thiago/Documents/ProjetoMP/build/Testes[1]_tests.cmake")
+  include("/home/thiago/Documents/ProjetoMP/build/Testes[1]_tests.cmake")
+else()
+  add_test(Testes_NOT_BUILT Testes_NOT_BUILT)
+endif()
