@@ -302,6 +302,33 @@ string TelaBusca::apresentar(string id) {
     return dado1;
 }
 
+char TelaDefinicaoTipoQuestao::apresentar() {
+    char campo1[]="Tipos de questao a ser criada : ";
+    char campo2[]="1 - Questao de multipla escolha";
+    char campo3[]="2 - Questao de certo ou errado";
+    char campo4[]="3 - Questao de resposta numerica";
+    char campo5[]="Selecine um tipo : ";
+
+    char dado1[1];
+    int linha,coluna;
+
+    initscr();
+    getmaxyx(stdscr,linha,coluna);
+
+    mvprintw(linha/3 - 2,(coluna-strlen(campo1))/2,"%s",campo1);
+    mvprintw(linha/3,(coluna-strlen(campo2))/2,"%s",campo2);
+    mvprintw(linha/3 + 2,(coluna-strlen(campo3))/2,"%s",campo3);
+    mvprintw(linha/3 + 4,(coluna-strlen(campo4))/2,"%s",campo4);
+
+    mvprintw(linha/4 + 12,(coluna-strlen(campo5))/2,"%s",campo5);
+    getstr(dado1);
+
+    clear();
+    endwin();
+
+    return dado1[0];
+}
+
 void TelaCadastroQuestao::apresentarCriarMultiplaEscolha(Questao* questao) {
     char campo1[]="Digite o titulo da questao : ";
     char campo2[]="Digite o texto da questao : ";

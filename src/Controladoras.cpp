@@ -275,6 +275,50 @@ void CntrApresentacaoAdmin::executar(Usuario* usuario) {
     }
 }
 
+void CntrApresentacaoProva::executar(Turma* turma) {
+    TelaMenuProva telaMenuProva;
+    TelaMensagem telaMensagem;
+    TelaOpcoesProvas telaOpcoesProvas;
+    TelaCadastroProva telaCadastroProva;
+    int idProva;
+    Prova * prova;
+    char opcao;
+    list<Prova> *listaProvas = nullptr;
+
+    while(true) {
+        opcao = telaMenuProva.apresentar();
+
+        switch(opcao) {
+            case '1':                                                               //Consulta servico de provas
+                cntrServicoTurma->listarProvas(turma->getId(), listaProvas);            
+                try{ 
+                    idProva = telaOpcoesProvas.apresentar(*listaProvas);
+                    prova = new Prova;
+                    prova->setId(idProva);
+                    gerenciar(prova);
+                }catch(invalid_argument &e){
+                    telaMensagem.apresentar("Formato de dado invalido.");
+                }
+                break;
+            case '2':                                                                //Cadastrar provas
+                prova = new Prova;
+                try{
+                    prova->setIdProf(turma->getIdProf());
+                    telaCadastroProva.apresentar(prova , turma->getId());
+                    cntrServicoProva->cadastrarProva(*prova);
+                } catch(invalid_argument &e){
+                    telaMensagem.apresentar("Formato de dado invalido.");
+                }
+                break;
+            case '3':
+                return;
+            default:
+                TelaMensagem telaMensagem;
+                telaMensagem.apresentar("Opcao invalida.");
+        }
+    }
+}
+
 void CntrApresentacaoTurma::executar(Usuario* usuario) {
     string cargo = usuario->getCargo();
     string opcao;
@@ -439,39 +483,45 @@ void CntrApresentacaoProva::editar(Prova* prova){
             opcao1 = telaEdicaoProva.apresentar(prova);
             cntrServicoProva->editarProva(*prova);
             switch (opcao1){
-                case '1':
+                case '1': {
                     while(!finalizou){    
                         Questao *questao = new Questao;
                         questao->setIdProf(prova->getIdProf());
                         opcao2 = telaDefinicaoTipoQuestao.apresentar();
                         switch (opcao2){
-                            case '1':
+                            case '1': {
                                 telaCadastroQuestao.apresentarCriarMultiplaEscolha(questao);
                                 cntrServicoProva->cadastrarQuestao(*questao);
                                 finalizou = true;
                                 break;
-                            case '2':
+                            }
+                            case '2': {
                                 telaCadastroQuestao.apresentarCriarCertoErrado(questao);
                                 cntrServicoProva->cadastrarQuestao(*questao);
                                 finalizou = true;
                                 break;
-                            case '3':
+                            }
+                            case '3': {
                                 telaCadastroQuestao.apresentarCriarNumerico(questao);
                                 cntrServicoProva->cadastrarQuestao(*questao);
                                 finalizou = true;
                                 break;
+                            }
                             default:
                                 telaMensagem.apresentar("Opcao Invalida.");
                         }
                     }
                     break;
-                case '2':
+                }
+                case '2': {
                     cntrServicoProva->getListaQuestoes(prova->getIdQuestoes(), listaQuestao);
                     int idQuestao = telaOpcoesQuestoes.apresentar(*listaQuestao);
                     cntrServicoProva->descadastrarQuestao(idQuestao);
                     return;
-                case '3':
-                    return;    
+                }
+                case '3': {
+                    return;
+                }    
                 default:
                     telaMensagem.apresentar("Opcao Invalida.");
             }
@@ -490,47 +540,6 @@ void CntrApresentacaoProva::editar(Prova* prova){
 
 void CntrApresentacaoProva::executar(Matricula* matricula) {
 
-void CntrApresentacaoProva::executar(Turma* turma) {
-    TelaMenuProva telaMenuProva;
-    TelaMensagem telaMensagem;
-    TelaOpcoesProvas telaOpcoesProvas;
-    TelaCadastroProva telaCadastroProva;
-    char opcao;
-    list<Prova> *listaProvas = nullptr;
-
-    while(true) {
-        opcao = telaMenuProva.apresentar();
-
-        switch(opcao) {
-            case '1':                                                               //Consulta servico de provas
-                cntrServicoTurma->listarProvas(turma->getId(), listaProvas);            
-                try{ 
-                    int idProva = telaOpcoesProvas.apresentar(*listaProvas);
-                    Prova *prova = new Prova;
-                    prova->setId(idProva);
-                    gerenciar(prova);
-                }catch(invalid_argument &e){
-                    telaMensagem.apresentar("Formato de dado invalido.");
-                }
-                break;
-            case '2':                                                                //Cadastrar provas
-                Prova *prova = new Prova;
-                try{
-                    prova->setIdProf(turma->getIdProf());
-                    telaCadastroProva.apresentar(prova , turma->getId());
-                    cntrServicoProva->cadastrarProva(*prova);
-                }catch(invalid_argument &e){
-                    telaMensagem.apresentar("Formato de dado invalido.");
-                }
-                break;
-            case '3':
-                return;
-            default:
-                TelaMensagem telaMensagem;
-                telaMensagem.apresentar("Opcao invalida.");
-        }
-    }
-}
 
     container = ContainerUsuario::getInstancia();
 

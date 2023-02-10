@@ -69,7 +69,7 @@ class IApresentacaoTurma {
 
 class IApresentacaoProva {
  public:
-        virtual void executar(Usuario*) = 0;
+        virtual void executar(Turma*) = 0;
         virtual void gerenciar(Prova*) = 0;
         virtual void editar(Prova*) = 0;
         virtual void setCntrServicoProva(IServicoProva*) = 0;
