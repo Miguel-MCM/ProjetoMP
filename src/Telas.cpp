@@ -1,5 +1,78 @@
 #include "Telas.h"
 #include <iostream>
+
+using std::vector;
+using std::pair;
+
+void Tela::mostrarLinhas(vector<string> linhas, int linha, int coluna, int p) {
+    for (pair<vector<string>::iterator, int> it(linhas.begin(), p); it.first != linhas.end(); ++it.first, it.second++) {
+        mvprintw(linha / 2 - 4 + (2 * it.second), (coluna - it.first->length()) / 2, "%s", it.first->c_str());
+    }
+}
+
+void Tela::mostrarLinhas(vector<string> linhas, int linha, int coluna) {
+    mostrarLinhas(linhas, linha, coluna, 0);
+}
+
+string TelaMenu::apresentar(string titulo, vector<string> opcoes) {
+    int linha, coluna;
+    char dado[20];
+    string campo = "Selecione uma opcao: ";
+
+    initscr();
+    getmaxyx(stdscr, linha, coluna);
+    mvprintw(linha / 2 - 6, (coluna - titulo.length()) / 2, "%s", titulo.c_str());
+    mostrarLinhas(opcoes, linha, coluna);
+    mvprintw(linha / 2 - 4 + 2 * (opcoes.size() + 1), (coluna - campo.length()) / 2, "%s", campo.c_str());
+    getstr(dado);
+    clear();
+    endwin();
+
+    return dado;
+}
+
+void TelaFormulario::apresentar(string titulo, vector<string> campos, string * entradas) {
+    int linha, coluna;
+    char dado[20];
+    initscr();
+    getmaxyx(stdscr, linha, coluna);
+    for (pair<vector<string>::iterator, int> it(campos.begin(), 0); it.first != campos.end(); ++it.first, it.second++) {
+        mvprintw(linha / 2 - 4 + (2 * it.second), (coluna - it.first->length()) / 2, "%s", it.first->c_str());
+        getstr(dado);
+        entradas[it.second] = dado;
+    }
+    clear();
+    endwin();
+}
+
+/* teste as telas
+int main() {
+    
+    // teste do menu e apresentar tela
+    string titulo = "Menu de teste";
+    vector<string> campos({"Opcao 1", "Opcao 2", "Opcao 3"});
+    TelaMenu tela_menu;
+    string entrada;
+    entrada = tela_menu.apresentar(titulo, campos);
+    std::cout << entrada << std::endl;
+    
+
+    
+    // teste do formulario
+    string titulo = "Formulario de teste";
+    vector<string> perguntas({"Nome: ", "Email: ", "Senha: "});
+    string respostas[3];
+    TelaFormulario tela_formulario;
+    tela_formulario.apresentar(titulo, perguntas, respostas);
+    for (int i = 0; i < 3; i++) {
+        std::cout << *(respostas + i) << std::endl;
+    }
+    
+    return 0;
+}
+*/
+
+/*
 void TelaAutenticacao::apresentar(Matricula *matricula, Senha *senha) {
 
     char campo1[]="Digite a matricula : ";
@@ -513,3 +586,4 @@ void TelaEdicaoQuestao::apresentar(Questao* questao) {
 
 //TELA DE DADOS
 //TELA DE EDITAR NOME E SENHA
+*/
