@@ -22,8 +22,8 @@ const list<string> QUESTAO_ALTERNATIVAS({"1", "2", "3"});
 
 const list<int> PROVA_ID_QUESTOES({1, 2, 3});
 
-const int RESPOSTA_RESPOSTA = 2;
 
+const map<int, int> RESPOSTA_RESPOSTA({std::make_pair(1, 2)});
 TEST(usuario, inserirDadosValido) {
     Usuario usuario;
     usuario.setId(ID_VALIDO);

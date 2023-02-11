@@ -5,10 +5,12 @@
 #include <string>
 #include <stdexcept>
 #include <list>
+#include <map>
 
 using std::string;
 using std::invalid_argument;
 using std::list;
+using std::map;
 
 class Entidade {
  protected:
@@ -40,6 +42,7 @@ class Usuario:public Entidade {
     string email;
     string senha;
     string cargo;
+    list<int> id_turmas;
  public:
     string const getEmail();
     void setEmail(string);
@@ -47,6 +50,8 @@ class Usuario:public Entidade {
     void setSenha(string);
     string const getCargo();
     void setCargo(string);
+    list<int> const getIdTurmas();
+    void setIdTurmas(list<int>);
     virtual ~Usuario() {}
 };
 
@@ -76,6 +81,10 @@ inline void Usuario::setCargo(string cargo) {
     }
     this->cargo = cargo;
 }
+
+inline list<int> const Usuario::getIdTurmas() {return id_turmas;}
+
+inline void Usuario::setIdTurmas(list<int> id_turmas) {this->id_turmas = id_turmas;}
 
 class Turma:public Entidade {
  private:
@@ -170,16 +179,17 @@ inline void Prova::setIdTurma(int id_turma) {this->id_turma = id_turma;}
 
 class Resposta:public Entidade {
  private:
-    int resposta;
+    map<int, int> resposta;
     int id_estudante;
     int id_prova;
+    static const int NULL_RESPONSE = INT32_MIN;
  public:
     int getIdEstudante() const;
     void setIdEstudante(int);
     int getIdProva() const;
     void setIdProva(int);
-    int getResposta() const;
-    void setResposta(int);
+    map<int, int> getResposta() const;
+    void setResposta(map<int, int>);
 };
 
 inline int Resposta::getIdEstudante() const {return id_estudante;}
@@ -192,9 +202,9 @@ inline int Resposta::getIdProva() const {return id_prova;}
 
 inline void Resposta::setIdProva(int id_prova) {this->id_prova = id_prova;}
 
-inline int Resposta::getResposta() const {return resposta;}
+inline map<int, int> Resposta::getResposta() const {return resposta;}
 
-inline void Resposta::setResposta(int resposta) {this->resposta = resposta;}
+inline void Resposta::setResposta(map<int, int> resposta) {this->resposta = resposta;}
 
 /*
 using namespace std;
