@@ -8,6 +8,13 @@
 using std::string;
 using std::list;
 
+class IServicoUsuario;
+class IServicoAdmin;
+class IServicoAutenticacao;
+class IServicoTurma;
+class IServicoProva;
+class IServicoQuestao;
+
 class IApresentacaoAutenticacao {
  public:
         virtual bool autenticar(Usuario*) = 0;

@@ -1,12 +1,30 @@
 #ifndef INCLUDE_CONTROLADORAS_H_
 #define INCLUDE_CONTROLADORAS_H_
 
-#include <stdexcept>
-
 #include "Interfaces.h"
 #include "./curses.h"
 
+class CntrApresentacaoUsuario:public IApresentacaoUsuario {
+ private:
+    IServicoUsuario * cntrServicoUsuario;
+    IServicoAdmin * cntrServicoAdmin;
+    void editar(Usuario*);
 
+ public:
+    void executar(Usuario*);
+    void cadastrar() {}
+    void setCntrServicoUsuario(IServicoUsuario*);
+    void setCntrServicoAdmin(IServicoAdmin*);
+
+    bool getStatusCadastro() {return false;}
+    void setStatusCadastro(bool){}
+};
+
+inline void CntrApresentacaoUsuario::setCntrServicoUsuario(IServicoUsuario * cntr) {cntrServicoUsuario = cntr;}
+
+inline void CntrApresentacaoUsuario::setCntrServicoAdmin(IServicoAdmin * cntr) {cntrServicoAdmin = cntr;}
+
+/*
 class CntrApresentacaoControle{
  private:
         Matricula matricula;
@@ -108,5 +126,5 @@ class CntrServicoProva:public IServicoProva{
         bool editarQuestao(Questao);
         bool consultarQuestao(Questao*);
 };
-
+*/
 #endif   // INCLUDE_CONTROLADORAS_H_
