@@ -3,9 +3,14 @@
 
 #include "Entidades.h"
 
+#include <list>
+#include <string>
 #include <map>
 
-using namespace std;
+using std::map;
+using std::string;
+using std::list;
+using std::iterator;
 
 class ContainerUsuario{
     private:

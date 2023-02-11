@@ -1,6 +1,10 @@
 #include "Controladoras.h"
 #include "Comandos.h"
 
+#include <exception>
+
+using std::invalid_argument;
+
 void CntrApresentacaoControle::executar(){
 
     TelaControle telaControle;

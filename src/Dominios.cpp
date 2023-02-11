@@ -3,9 +3,21 @@
 #include <stdexcept>
 #include <ctype.h>
 
-using namespace std;
+#include <string>
+#include <list>
+#include <map>
+#include <exception>
 
-void Dominio::setValor(string valor) {
+using std::invalid_argument;
+using std::iterator;
+using std::list;
+using std::map;
+using std::string;
+using std::__cxx11::to_string;
+
+    void
+    Dominio::setValor(string valor)
+{
     validar(valor);
     this->valor = valor;
 }

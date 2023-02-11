@@ -4,7 +4,14 @@
 #include "Dominios.h"
 #include "Entidades.h"
 
-using namespace std;
+#include <string>
+#include <list>
+#include <map>
+
+using std::iterator;
+using std::list;
+using std::map;
+using std::string;
 
 ///@brief Um prova é um esforço temporário que tem como finalidade um resultado único e possui recursos delimitados; é identificado no sistema por um código, e possui um nome e uma descrição.
 class Prova {

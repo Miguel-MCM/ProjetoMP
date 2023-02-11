@@ -2,8 +2,14 @@
 #define DOMINIOS_H
 
 #include <string>
+#include <list>
+#include <map>
 
-using namespace std;
+using std::iterator;
+using std::list;
+using std::map;
+using std::string;
+
 /// @brief Classe abstrata, cujo principal atributo é uma string.
 /// @details Essa classe serve como base para todas as outras classes de domínios do sistema.
 // por: Miguel Carvalho 211068341

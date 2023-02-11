@@ -1,5 +1,9 @@
 #include "Comandos.h"
 
+#include <exception>
+
+using std::invalid_argument;
+
 void ComandoIAUsuarioDescadastrar::executar(IServicoUsuario* cntrServicoUsuario, Matricula* matricula){
 
     TelaMensagem telaMensagem;
