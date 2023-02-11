@@ -45,6 +45,76 @@ void TelaFormulario::apresentar(string titulo, vector<string> campos, string * e
     endwin();
 }
 
+void TelaMensagem::apresentar(string mensagem)
+{
+
+    int linha, coluna;
+
+    initscr();                                                                            // Iniciar curses.
+    getmaxyx(stdscr, linha, coluna);                                                      // Armazenar quantidade de linhas e de colunas.
+    mvprintw(linha / 2, (coluna - strlen(mensagem.c_str())) / 2, "%s", mensagem.c_str()); // Imprimir dado.
+    noecho();                                                                             // Desabilitar eco.
+    getch();                                                                              // Ler caracter digitado.
+    echo();                                                                               // Habilitar eco.
+    clear();                                                                              // Limpar janela.
+    endwin();
+}
+
+void TelaAutenticacao::apresentar(Usuario* usuario) {
+
+    char campo1[]="Digite o email : ";
+    char campo2[]="Digite a senha     : ";
+    char dado1[80];
+    char dado2[80];
+    int linha, coluna;
+    string senha;
+    string email;
+
+    initscr();
+    getmaxyx(stdscr, linha, coluna);
+    mvprintw(linha/2, (coluna-strlen(campo1))/2, "%s", campo1);
+    getstr(dado1);
+    mvprintw(linha/2 + 2, (coluna-strlen(campo2))/2, "%s", campo2);
+    getstr(dado2);
+    clear();
+    endwin();
+
+    email = dado1;
+    senha = dado2;
+    usuario->setEmail(dado1);
+    usuario->setSenha(dado2);
+}
+
+void TelaCadastro::apresentar(Usuario *usuario) {
+
+    char campo1[]="Digite o email : ";
+    char campo2[]="Digite a senha     : ";
+    char campo3[]="Digite o nome     : ";
+    char dado1[80];
+    char dado2[80];
+    char dado3[80];
+    int linha, coluna;
+
+    initscr();
+    getmaxyx(stdscr, linha, coluna);
+
+    mvprintw(linha/3, (coluna-strlen(campo1))/2, "%s", campo1);
+    getstr(dado1);
+    mvprintw(linha/3 + 2, (coluna-strlen(campo2))/2, "%s", campo2);
+    getstr(dado2);
+    mvprintw(linha/3 + 4, (coluna-strlen(campo3))/2, "%s", campo3);
+    getstr(dado3);
+    clear();
+    endwin();
+
+    string email = dado1;
+    string senha = dado2;
+    string nome = dado3;
+    usuario->setEmail(email);
+    usuario->setSenha(senha);
+    usuario->setNome(nome);
+}
+
 /* teste as telas
 int main() {
     
@@ -73,27 +143,6 @@ int main() {
 */
 
 /*
-void TelaAutenticacao::apresentar(Matricula *matricula, Senha *senha) {
-
-    char campo1[]="Digite a matricula : ";
-    char campo2[]="Digite a senha     : ";
-    char dado1[80];
-    char dado2[80];
-    int linha,coluna;
-
-    initscr();
-    getmaxyx(stdscr,linha,coluna);
-    mvprintw(linha/2,(coluna-strlen(campo1))/2,"%s",campo1);
-    getstr(dado1);
-    mvprintw(linha/2 + 2,(coluna-strlen(campo2))/2,"%s",campo2);
-    getstr(dado2);
-    clear();
-    endwin();
-
-    matricula->setValor(dado1);
-    senha->setValor(dado2);
-}
-
 void TelaMensagem::apresentar(string mensagem) {
 
     int linha,coluna;
@@ -106,41 +155,6 @@ void TelaMensagem::apresentar(string mensagem) {
     echo();                                                                         // Habilitar eco.
     clear();                                                                        // Limpar janela.
     endwin();
-}
-
-void TelaCadastro::apresentar(Usuario *usuario) {
-
-    char campo1[]="Digite a matricula : ";
-    char campo2[]="Digite a senha     : ";
-    char campo3[]="Digite o nome     : ";
-    char dado1[80];
-    char dado2[80];
-    char dado3[80];
-    int linha,coluna;
-
-    initscr();
-    getmaxyx(stdscr,linha,coluna);
-
-    mvprintw(linha/3,(coluna-strlen(campo1))/2,"%s",campo1);
-    getstr(dado1);
-    mvprintw(linha/3 + 2,(coluna-strlen(campo2))/2,"%s",campo2);
-    getstr(dado2);
-    mvprintw(linha/3 + 4,(coluna-strlen(campo3))/2,"%s",campo3);
-    getstr(dado3);
-    clear();
-    endwin();
-
-    Matricula matricula;
-    matricula.setValor(dado1);
-    usuario->setMatricula(matricula);
-
-    Senha senha;
-    senha.setValor(dado2);
-    usuario->setSenha(senha);
-
-    Nome nome;
-    nome.setValor(dado3);
-    usuario->setNome(nome);
 }
 
 char TelaMenuUsuario::apresentar() {
