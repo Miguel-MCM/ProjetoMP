@@ -6,8 +6,8 @@
 
 class CntrApresentacaoUsuario:public IApresentacaoUsuario {
  private:
-    IServicoUsuario * cntrServicoUsuario;
-    IServicoAdmin * cntrServicoAdmin;
+    IServicoUsuario* cntrServicoUsuario;
+    IServicoAdmin* cntrServicoAdmin;
     void editar(Usuario*);
 
  public:
@@ -24,7 +24,7 @@ inline void CntrApresentacaoUsuario::setCntrServicoUsuario(IServicoUsuario * cnt
 
 inline void CntrApresentacaoUsuario::setCntrServicoAdmin(IServicoAdmin * cntr) {cntrServicoAdmin = cntr;}
 
-/*
+
 class CntrApresentacaoControle{
     private:
         Usuario usuario;
@@ -50,15 +50,15 @@ inline void CntrApresentacaoControle::setCntrApresentacaoUsuario(IApresentacaoUs
     cntrApresentacaoUsuario = cntr;
 }
 
-inline void CntrApresentacaoControle::setCntrlApresentacaoProva(IApresentacaoProva* cntr) {
+inline void CntrApresentacaoControle::setCntrApresentacaoProva(IApresentacaoProva* cntr) {
     cntrApresentacaoProva = cntr;
 }
 
-inline void CntrApresentacaoControle::setCntrlApresentacaoTurma(IApresentacaoTurma* cntr) {
+inline void CntrApresentacaoControle::setCntrApresentacaoTurma(IApresentacaoTurma* cntr) {
     cntrApresentacaoTurma = cntr;
 }
 
-inline void CntrApresentacaoControle::setCntrlApresentacaoAdmin(IApresentacaoAdmin* cntr) {
+inline void CntrApresentacaoControle::setCntrApresentacaoAdmin(IApresentacaoAdmin* cntr) {
     cntrApresentacaoAdmin = cntr;
 }
 
@@ -74,31 +74,8 @@ void inline CntrApresentacaoAutenticacao::setCntrServicoAutenticacao(IServicoAut
     this->cntrServicoAutenticacao = cntrServicoAutenticacao;
 }
 
-class CntrApresentacaoUsuario:public IApresentacaoUsuario {
- private:
-    IServicoUsuario* cntrServicoUsuario;
-    bool cadastro;
-    void executar(Usuario*);
-    void cadastrar();
-    void setCntrServicoUsuario(IServicoUsuario*);
-    void setCntrServicoAdmin(IServicoAdmin *);
-    bool getStatusCadastro();
-    void setStatusCadastro(bool);
-    void editar();
-};
 
-void inline CntrApresentacaoUsuario::setCntrServicoUsuario(IServicoUsuario* cntrServicoUsuario) {
-    this->cntrServicoUsuario = cntrServicoUsuario;
-}
-
-bool inline CntrApresentacaoUsuario::getStatusCadastro() {
-    return cadastro;
-}
-
-void inline CntrApresentacaoUsuario::setStatusCadastro(bool status) {
-    cadastro = status;
-}
-
+/*
 class CntrApresentacaoProva:public IApresentacaoProva {
  private:
         IServicoProva* cntrServicoProva;
