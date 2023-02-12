@@ -1,89 +1,81 @@
 #include "Controladoras.h"
 #include "Comandos.h"
 
-void CntrApresentacaoControle::executar(){
+void CntrApresentacaoControle::executar() {
+    string titulo1 = "Aprenda comigo!";
+    vector<string> campos1({"1 - Login", "2 - Cadastrar", "3 - Fechar programa"});
+    TelaMenu telaControle;
+    string opcaoControle;
 
-    TelaControle telaControle;
     TelaMensagem telaMensagem;
-    char opcaoControle;
     char opcaoMenu;
 
-    while(true){
+    string titulo2 = "Tela Menu";
+    vector<string> campos2({"1 - Meu Usuario", "2 - Turmas", "3 - Sair"});
+    TelaMenu telaMenu;
+    string opcaoMenu;
 
-        opcaoControle = telaControle.apresentar();
+    string titulo3 = "Tela Menu";
+    vector<string> campos3({"1 - Meu Usuario", "2 - Administracao", "3 - Sair"});
+    TelaMenu telaMenuAdmin;
+    string opcaoMenuAdmin;
 
-        if(opcaoControle == '1') {
-            if (cntrApresentacaoAutenticacao->autenticar(&matricula)) {
-                TelaMenu telaMenu;
+    while (true) {
+        opcaoControle = telaControle.apresentar(titulo1, campos1);
+
+        if (opcaoControle == '1') {
+            if (cntrApresentacaoAutenticacao->autenticar(&usuario)) {
                 cntrApresentacaoUsuario->setStatusCadastro(true);
-                while(cntrApresentacaoUsuario->getStatusCadastro()) {
-                    opcaoMenu = telaMenu.apresentar();
-                    if (opcaoMenu == '1') {
-                        cntrApresentacaoUsuario->executar(&matricula);
+                if (usuario.getCargo() != "admin") {
+                    while (cntrApresentacaoUsuario->getStatusCadastro()) {
+                        opcaoMenu = telaMenu.apresentar(titulo2, campos2);
+                        if (opcaoMenu == '1') {
+                            cntrApresentacaoUsuario->executar(&usuario);
+                        } else if (opcaoMenu == '2') {
+                            cntrApresentacaoTurma->executar(&usuario);
+                        } else if (opcaoMenu == '3') {
+                            break;
+                        } else {
+                            telaMensagem.apresentar("Dado em formato incorreto");
+                        }
                     }
-                    else if (opcaoMenu == '2') {
-                        cntrApresentacaoProva->executar(&matricula);
-                        //cntrApresentacaoProjeto/Tarefa
-                    }
-                    else if (opcaoMenu == '3') {
-                        break;
-                    }
-                    else {
-                        telaMensagem.apresentar("Dado em formato incorreto");
+                } else {
+                    while (cntrApresentacaoUsuario->getStatusCadastro()) {
+                        opcaoMenuAdmin = telaMenuAdmin.apresentar(titulo3, campos3);
+                        if (opcaoMenuAdmin == '1') {
+                            cntrApresentacaoUsuario->executar(&usuario);
+                        } else if (opcaoMenuAdmin == '2') {
+                            cntrApresentacaoAdmin->executar(&usuario);
+                        } else if (opcaoMenuAdmin == '3') {
+                            break;
+                        } else {
+                            telaMensagem.apresentar("Dado em formato incorreto");
+                        }
                     }
                 }
-            }
-            else {
+            } else {
                 telaMensagem.apresentar("Falha na autenticacao");
             }
-        }
-        else if (opcaoControle == '2') {
+        } else if (opcaoControle == '2') {
             cntrApresentacaoUsuario->cadastrar();
-        }
-        else if (opcaoControle == '3') {
+        } else if (opcaoControle == '3') {
             return;
-        }
-        else {
+        } else {
             telaMensagem.apresentar("Opcao invalida.");
         }
     }
     return;
 }
 
-void CntrApresentacaoControle::menuAutenticado(Matricula *matricula) {
-
-    TelaMenu telaMenu;
-    char opcao;
-
-    while(true) {
-        opcao = telaMenu.apresentar();
-
-        switch(opcao) {
-        case '1':
-            cntrApresentacaoUsuario->executar(matricula);
-            break;
-        case '2':
-            cntrApresentacaoProva->executar(matricula);
-            break;
-        case '3':
-            return;
-        default:
-            TelaMensagem telaMensagem;
-            telaMensagem.apresentar("Opcao Invalida");
-        }
-    }
-}
-
-bool CntrApresentacaoAutenticacao::autenticar(Matricula* matricula){
+bool CntrApresentacaoAutenticacao::autenticar(Usuario* usuario) {
 
     bool resultado;
-    Senha* senha = new Senha();
 
-    while(true) {
+    while (true) {
 
         try {
             TelaAutenticacao telaAutenticacao;
-            telaAutenticacao.apresentar(matricula, senha);
+            telaAutenticacao.apresentar(usuario);
             break;
         }
         catch (const invalid_argument &exp) {
@@ -92,10 +84,10 @@ bool CntrApresentacaoAutenticacao::autenticar(Matricula* matricula){
         }
     }
 
-    resultado = cntrServicoAutenticacao->autenticar(*matricula,*senha);
+    resultado = cntrServicoAutenticacao->autenticar(*usuario);
 
     return resultado;
-};
+}
 
 void CntrApresentacaoUsuario::executar(Matricula* matricula){
 
@@ -133,17 +125,19 @@ void CntrApresentacaoUsuario::executar(Matricula* matricula){
                 telaMensagem.apresentar("Escolha uma opcao valida");
         }
     }
-};
+}
 
 void CntrApresentacaoUsuario::cadastrar() {
-
     bool resultado;
     Usuario* usuario = new Usuario();
     TelaMensagem telaMensagem;
     TelaCadastro telaCadastro;
+    string titulo = "Qual o seu cargo?";
+    vector<string> campos({"1 - Aluno", "2 - Professor", "3 - Administrador"});
+    TelaMenu telaCargo;
+    string cargo;
 
-    while(true) {
-
+    while (true) {
         try {
             telaCadastro.apresentar(usuario);
             break;
@@ -153,12 +147,24 @@ void CntrApresentacaoUsuario::cadastrar() {
         }
     }
 
+    while (true) {
+        cargo = telaCargo.apresentar(titulo, campos);
+        if (cargo == '1') {
+            usuario->setCargo("aluno");
+        } else if (cargo == '2') {
+            usuario->setCargo("professor");
+        } else if (cargo == '3') {
+            usuario->setCargo("admin");
+        } else {
+            telaMensagem.apresentar("Dado em formato incorreto");
+        }
+    }
+
     resultado = cntrServicoUsuario->cadastrar(*usuario);
 
     if (resultado) {
         telaMensagem.apresentar("Cadastro realizado com sucesso.");
-    }
-    else {
+    } else {
         telaMensagem.apresentar("Falha no cadastro.");
     }
 }
@@ -202,12 +208,7 @@ void CntrApresentacaoProva::executar(Matricula* matricula) {
     }
 }
 
-bool CntrServicoAutenticacao::autenticar(Matricula matricula, Senha senha) {
-
-    Usuario usuario;
-    usuario.setMatricula(matricula);
-    usuario.setSenha(senha);
-
+bool CntrServicoAutenticacao::autenticar(Usuario usuario) {
     ContainerUsuario* container = ContainerUsuario::getInstancia();
 
     return container->autenticar(usuario);
