@@ -37,7 +37,7 @@ class IApresentacaoUsuario {
 
 class IApresentacaoAdmin {
  public:
-    virtual void executar(Usuario*) = 0;
+    virtual void executar() = 0;
     virtual void setCntrServicoAdmin(IServicoAdmin*) = 0;
 
     virtual ~IApresentacaoAdmin() {}
@@ -112,10 +112,14 @@ class IServicoTurma {
 
 class IServicoAdmin {
  public:
-    virtual int numeroDeUsuarios() = 0;
-    virtual int numeroDeQuestoes() = 0;
-    virtual int numeroDeProvas() = 0;
-    virtual int numeroDeRespostas() = 0;
+    virtual bool numeroDeUsuarios(string*) = 0;
+    virtual bool numeroDeQuestoes(string*) = 0;
+    virtual bool numeroDeProvas(string*) = 0;
+    virtual bool numeroDeRespostas(string*) = 0;
+
+    virtual bool consultarUsuario(Usuario*) = 0;
+    virtual bool consultarTurma(Turma*) = 0;
+
     virtual ~IServicoAdmin() {}
 };
 #endif  //  INCLUDE_INTERFACES_H_

@@ -3,6 +3,9 @@
 
 #include "Interfaces.h"
 #include "./curses.h"
+#include <string>
+
+using std::string;
 
 class CntrApresentacaoUsuario:public IApresentacaoUsuario {
  private:
@@ -84,15 +87,33 @@ void inline CntrApresentacaoProva::setCntrServicoProva(IServicoProva* cntrServic
 }
 
 class CntrApresentacaoAdmin:public IApresentacaoAdmin {
-    private:
+ private:
         IServicoAdmin* cntrServicoAdmin;
-    public:
-        void executar(Usuario*);
-        void setCntrServicoAdmin(IServicoAdmin*);
-};
+        IApresentacaoUsuario* cntrApresentacaoUsuario;
+        IApresentacaoProva* cntrApresentacaoProva;
+        IApresentacaoTurma* cntrApresentacaoTurma;
+ public:
+        void executar();
 
-void inline CntrApresentacaoAdmin::setCntrServicoAdmin(IServicoAdmin* cntrServicoAdmin){
+        void setCntrServicoAdmin(IServicoAdmin*);
+        void setCntrApresentacaoUsuario(IApresentacaoUsuario*);
+        void setCntrApresentacaoProva(IApresentacaoProva*);
+        void setCntrApresentacaoTurma(IApresentacaoTurma*);
+}
+
+inline void CntrApresentacaoAdmin::setCntrServicoAdmin(IServicoAdmin* cntrServicoAdmin) {
     this->cntrServicoAdmin = cntrServicoAdmin;
+}
+inline void CntrApresentacaoControle::setCntrApresentacaoUsuario(IApresentacaoUsuario* cntr) {
+    cntrApresentacaoUsuario = cntr;
+}
+
+inline void CntrApresentacaoControle::setCntrApresentacaoProva(IApresentacaoProva* cntr) {
+    cntrApresentacaoProva = cntr;
+}
+
+inline void CntrApresentacaoControle::setCntrApresentacaoTurma(IApresentacaoTurma* cntr) {
+    cntrApresentacaoTurma = cntr;
 }
 
 class CntrApresentacaoTurma : public IApresentacaoTurma {
@@ -119,6 +140,17 @@ class CntrServicoUsuario:public IServicoUsuario {
         bool descadastrar(Usuario);
         bool editar(Usuario);
         bool consultar(Usuario*);
+};
+
+class CntrServicoAdmin:public IServicoAdmin {
+ public:
+        bool numeroDeUsuarios(string*);
+        bool numeroDeQuestoes(string*);
+        bool numeroDeProvas(string*);
+        bool numeroDeRespostas(string*);
+
+        bool consultarUsuario(Usuario*);
+        bool consultarTurma(Usuario*);
 };
 
 // class CntrServicoProva:public IServicoProva{
