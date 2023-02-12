@@ -31,9 +31,10 @@ add_executable(ProjetoMP
         src/Controladoras.cpp
         src/Entidades.cpp
         src/Telas.cpp
+        src/ComandosSQL.cpp
         )
 
-target_link_libraries(ProjetoMP ${CURSES_LIBRARIES})
+target_link_libraries(ProjetoMP ${CURSES_LIBRARIES} sqlite3)
 target_include_directories(ProjetoMP PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 enable_testing()
