@@ -71,32 +71,6 @@ void inline CntrApresentacaoAutenticacao::setCntrServicoAutenticacao(IServicoAut
     this->cntrServicoAutenticacao = cntrServicoAutenticacao;
 }
 
-class CntrApresentacaoUsuario:public IApresentacaoUsuario {
- private:
-    IServicoUsuario* cntrServicoUsuario;
-    bool cadastro;
- public:
-    void executar(Usuario*);
-    void cadastrar();
-    void setCntrServicoUsuario(IServicoUsuario*);
-    void setCntrServicoAdmin(IServicoAdmin *);
-    bool getStatusCadastro();
-    void setStatusCadastro(bool);
-    void editar(Usuario*);
-};
-
-void inline CntrApresentacaoUsuario::setCntrServicoUsuario(IServicoUsuario* cntrServicoUsuario) {
-    this->cntrServicoUsuario = cntrServicoUsuario;
-}
-
-bool inline CntrApresentacaoUsuario::getStatusCadastro() {
-    return cadastro;
-}
-
-void inline CntrApresentacaoUsuario::setStatusCadastro(bool status) {
-    cadastro = status;
-}
-
 class CntrApresentacaoProva:public IApresentacaoProva {
  private:
         IServicoProva* cntrServicoProva;

@@ -69,9 +69,6 @@ void CntrApresentacaoControle::executar() {
     TelaMenu telaControle;
     string opcaoControle;
 
-    TelaMensagem telaMensagem;
-    string opcaoMenu;
-
     string titulo2 = "Tela Menu";
     vector<string> campos2({"1 - Meu Usuario", "2 - Turmas", "3 - Sair"});
     TelaMenu telaMenu;
@@ -81,6 +78,8 @@ void CntrApresentacaoControle::executar() {
     vector<string> campos3({"1 - Meu Usuario", "2 - Administracao", "3 - Sair"});
     TelaMenu telaMenuAdmin;
     string opcaoMenuAdmin;
+
+    TelaMensagem telaMensagem;
 
     while (true) {
         opcaoControle = telaControle.apresentar(titulo1, campos1);
