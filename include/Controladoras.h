@@ -7,7 +7,6 @@
 class CntrApresentacaoUsuario:public IApresentacaoUsuario {
  private:
     IServicoUsuario * cntrServicoUsuario;
-    IServicoAdmin * cntrServicoAdmin;
     void editar(Usuario*);
 
  public:
@@ -21,8 +20,6 @@ class CntrApresentacaoUsuario:public IApresentacaoUsuario {
 };
 
 inline void CntrApresentacaoUsuario::setCntrServicoUsuario(IServicoUsuario * cntr) {cntrServicoUsuario = cntr;}
-
-inline void CntrApresentacaoUsuario::setCntrServicoAdmin(IServicoAdmin * cntr) {cntrServicoAdmin = cntr;}
 
 
 class CntrApresentacaoControle{
@@ -85,7 +82,7 @@ class CntrApresentacaoUsuario:public IApresentacaoUsuario {
     void setCntrServicoAdmin(IServicoAdmin *);
     bool getStatusCadastro();
     void setStatusCadastro(bool);
-    void editar();
+    void editar(Usuario*);
 };
 
 void inline CntrApresentacaoUsuario::setCntrServicoUsuario(IServicoUsuario* cntrServicoUsuario) {
@@ -150,16 +147,16 @@ class CntrServicoUsuario:public IServicoUsuario {
         bool consultar(Usuario*);
 };
 
-class CntrServicoProva:public IServicoProva{
- public:
-        bool cadastrarProva(Prova);
-        bool descadastrarProva(Codigo);
-        bool editarProva(Prova);
-        bool consultarProva(Prova*);
-        bool cadastrarQuestao(Questao);
-        bool descadastrarQuestao(Codigo);
-        bool editarQuestao(Questao);
-        bool consultarQuestao(Questao*);
-};
+// class CntrServicoProva:public IServicoProva{
+//  public:
+//         bool cadastrarProva(Prova);
+//         bool descadastrarProva(Codigo);
+//         bool editarProva(Prova);
+//         bool consultarProva(Prova*);
+//         bool cadastrarQuestao(Questao);
+//         bool descadastrarQuestao(Codigo);
+//         bool editarQuestao(Questao);
+//         bool consultarQuestao(Questao*);
+// };
 
 #endif   // INCLUDE_CONTROLADORAS_H_

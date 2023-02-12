@@ -70,7 +70,7 @@ void CntrApresentacaoControle::executar() {
     string opcaoControle;
 
     TelaMensagem telaMensagem;
-    char opcaoMenu;
+    string opcaoMenu;
 
     string titulo2 = "Tela Menu";
     vector<string> campos2({"1 - Meu Usuario", "2 - Turmas", "3 - Sair"});
@@ -85,17 +85,17 @@ void CntrApresentacaoControle::executar() {
     while (true) {
         opcaoControle = telaControle.apresentar(titulo1, campos1);
 
-        if (opcaoControle == '1') {
+        if (opcaoControle == "1") {
             if (cntrApresentacaoAutenticacao->autenticar(&usuario)) {
                 cntrApresentacaoUsuario->setStatusCadastro(true);
                 if (usuario.getCargo() != "admin") {
                     while (cntrApresentacaoUsuario->getStatusCadastro()) {
                         opcaoMenu = telaMenu.apresentar(titulo2, campos2);
-                        if (opcaoMenu == '1') {
+                        if (opcaoMenu == "1") {
                             cntrApresentacaoUsuario->executar(&usuario);
-                        } else if (opcaoMenu == '2') {
+                        } else if (opcaoMenu == "2") {
                             cntrApresentacaoTurma->executar(&usuario);
-                        } else if (opcaoMenu == '3') {
+                        } else if (opcaoMenu == "3") {
                             break;
                         } else {
                             telaMensagem.apresentar("Dado em formato incorreto");
@@ -104,11 +104,11 @@ void CntrApresentacaoControle::executar() {
                 } else {
                     while (cntrApresentacaoUsuario->getStatusCadastro()) {
                         opcaoMenuAdmin = telaMenuAdmin.apresentar(titulo3, campos3);
-                        if (opcaoMenuAdmin == '1') {
+                        if (opcaoMenuAdmin == "1") {
                             cntrApresentacaoUsuario->executar(&usuario);
-                        } else if (opcaoMenuAdmin == '2') {
+                        } else if (opcaoMenuAdmin == "2") {
                             cntrApresentacaoAdmin->executar(&usuario);
-                        } else if (opcaoMenuAdmin == '3') {
+                        } else if (opcaoMenuAdmin == "3") {
                             break;
                         } else {
                             telaMensagem.apresentar("Dado em formato incorreto");
@@ -118,9 +118,9 @@ void CntrApresentacaoControle::executar() {
             } else {
                 telaMensagem.apresentar("Falha na autenticacao");
             }
-        } else if (opcaoControle == '2') {
+        } else if (opcaoControle == "2") {
             cntrApresentacaoUsuario->cadastrar();
-        } else if (opcaoControle == '3') {
+        } else if (opcaoControle == "3") {
             return;
         } else {
             telaMensagem.apresentar("Opcao invalida.");
@@ -151,44 +151,6 @@ bool CntrApresentacaoAutenticacao::autenticar(Usuario* usuario) {
     return resultado;
 }
 
-void CntrApresentacaoUsuario::executar(Matricula* matricula){
-
-    ComandoIAUsuario* comando;
-    TelaMenuUsuario telaMenuUsuario;
-    TelaMensagem telaMensagem;
-    char opcao;
-    bool notDone = true;
-    while (notDone) {
-        opcao = telaMenuUsuario.apresentar();
-
-        switch(opcao){
-            case '1': {
-                comando = new ComandoIAUsuarioConsultar();
-                comando->executar(cntrServicoUsuario,matricula);
-                delete comando;
-                return;
-            }
-            case '2': {
-                comando = new ComandoIAUsuarioDescadastrar();
-                comando->executar(cntrServicoUsuario,matricula);
-                cadastro = false;
-                delete comando;
-                return;
-            }
-            case '3': {
-                comando = new ComandoIAUsuarioEditar();
-                comando->executar(cntrServicoUsuario,matricula);
-                delete comando;
-                return;
-            }
-            case '4':
-                return;
-            default:
-                telaMensagem.apresentar("Escolha uma opcao valida");
-        }
-    }
-}
-
 void CntrApresentacaoUsuario::cadastrar() {
     bool resultado;
     Usuario* usuario = new Usuario();
@@ -211,11 +173,11 @@ void CntrApresentacaoUsuario::cadastrar() {
 
     while (true) {
         cargo = telaCargo.apresentar(titulo, campos);
-        if (cargo == '1') {
+        if (cargo == "1") {
             usuario->setCargo("aluno");
-        } else if (cargo == '2') {
+        } else if (cargo == "2") {
             usuario->setCargo("professor");
-        } else if (cargo == '3') {
+        } else if (cargo == "3") {
             usuario->setCargo("admin");
         } else {
             telaMensagem.apresentar("Dado em formato incorreto");
@@ -230,6 +192,8 @@ void CntrApresentacaoUsuario::cadastrar() {
         telaMensagem.apresentar("Falha no cadastro.");
     }
 }
+
+/*
 
 void CntrApresentacaoProva::executar(Matricula* matricula) {
 
@@ -347,4 +311,6 @@ bool CntrServicoProva::consultarQuestao(Questao* questao){
     ComandoISProvaConsultarQuestao comando;
     return comando.executar(questao);
 }
+
+*/
 

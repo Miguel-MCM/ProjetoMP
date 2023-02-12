@@ -27,7 +27,7 @@ class IApresentacaoUsuario {
         virtual void executar(Usuario*) = 0;
         virtual void cadastrar() = 0;
         virtual void setCntrServicoUsuario(IServicoUsuario*) = 0;
-        virtual void setCntrServicoAdmin(IServicoAdmin*) = 0;
+
 
         virtual bool getStatusCadastro() = 0;
         virtual void setStatusCadastro(bool) = 0;
@@ -62,7 +62,7 @@ class IApresentacaoProva {
 
 class IServicoAutenticacao {
  public:
-        virtual bool autenticar(string, string) = 0;
+        virtual bool autenticar(Usuario) = 0;
         virtual ~IServicoAutenticacao() {}
 };
 
