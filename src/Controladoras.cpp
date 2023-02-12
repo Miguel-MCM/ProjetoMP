@@ -110,7 +110,7 @@ void CntrApresentacaoControle::executar() {
                         if (opcaoMenuAdmin == "1") {
                             cntrApresentacaoUsuario->executar(&usuario);
                         } else if (opcaoMenuAdmin == "2") {
-                            cntrApresentacaoAdmin->executar();
+                            cntrApresentacaoAdmin->executar(&usuario);
                         } else if (opcaoMenuAdmin == "3") {
                             break;
                         } else {
@@ -264,6 +264,12 @@ void CntrApresentacaoAdmin::executar(Usuario* usuario) {
     }
 }
 
+bool CntrServicoAutenticacao::autenticar(Usuario usuario) {
+    ContainerUsuario* container = ContainerUsuario::getInstancia();
+
+    return container->autenticar(usuario);
+}
+
 
 /*
 
@@ -304,12 +310,6 @@ void CntrApresentacaoProva::executar(Matricula* matricula) {
                 telaMensagem.apresentar("Opcao invalida.");
         }
     }
-}
-
-bool CntrServicoAutenticacao::autenticar(Usuario usuario) {
-    ContainerUsuario* container = ContainerUsuario::getInstancia();
-
-    return container->autenticar(usuario);
 }
 
 bool CntrServicoUsuario::cadastrar(Usuario usuario) {

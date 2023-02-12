@@ -37,7 +37,7 @@ class IApresentacaoUsuario {
 
 class IApresentacaoAdmin {
  public:
-    virtual void executar() = 0;
+    virtual void executar(Usuario*) = 0;
     virtual void setCntrServicoAdmin(IServicoAdmin*) = 0;
 
     virtual ~IApresentacaoAdmin() {}
