@@ -12,6 +12,7 @@ class BuilderSistema {
         IApresentacaoProva* cntrApresentacaoProva;
         IServicoAutenticacao *cntrServicoAutenticacao;
         IServicoUsuario *cntrServicoUsuario;
+        IServicoAdmin *cntrServicoAdmin;
         IServicoProva* cntrServicoProva;
     public:
         CntrApresentacaoControle* construir();

@@ -49,20 +49,21 @@ class TelaConfirmacao:public Tela {
  public:
     bool apresentar();
 };
-/*
+
 class TelaAutenticacao {
 public:
-    void apresentar(Matricula*, Senha*);
-};
-
-class TelaMensagem:public TelaApresentacao<string> {
- public:
-    void apresentar(string);
+    void apresentar(Usuario*);
 };
 
 class TelaCadastro {
 public:
     void apresentar(Usuario*);
+};
+
+/*
+class TelaMensagem:public TelaApresentacao<string> {
+ public:
+    void apresentar(string);
 };
 
 class TelaMenuUsuario {
