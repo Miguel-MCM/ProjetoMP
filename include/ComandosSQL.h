@@ -72,6 +72,17 @@ class ComandoCadastrarUsuario:public ComandoSQL {
 class ComandoConsultarUsuario:public ComandoSQL {
  public:
     ComandoConsultarUsuario(int);
+    Usuario getResultado();
+};
+
+class ComandoDescadastrarUsuario:public ComandoSQL {
+ public:
+    ComandoDescadastrarUsuario(int);
+};
+
+class ComandoEditarUsuario:public ComandoSQL {
+ public:
+        ComandoEditarUsuario(Usuario);
 };
 
 #endif  //  INCLUDE_COMANDOSSQL_H_

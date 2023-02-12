@@ -9,23 +9,22 @@
 #include "ComandosSQL.h"
 
 int main() {
-    // Usuario usuario;
-    // usuario.setId(1);
-    // usuario.setNome("Miguel");
-    // usuario.setEmail("email@email.com");
-    // usuario.setSenha("123456");
+    Usuario usuario, outroUsuario;
+    usuario.setNome("Miguel");
+    usuario.setEmail("email@email.com");
+    usuario.setSenha("123456");
 
-    // ComandoCadastrarUsuario cmd(usuario);
+    ComandoCadastrarUsuario cmd(usuario);
+    ComandoConsultarUsuario cmdConsultar(1);
+    usuario.setNome("Novo Nome");
+    ComandoEditarUsuario cmdEditar(usuario);
+    ComandoDescadastrarUsuario cmdDescadastrar(14);
 
-    // try {
-    //     cmd.executar();
-    // }
-    // catch(EErroPersistencia &e){
-    //     std::cout << e.what() << std::endl;
-    // }
-
-    ComandoConsultarUsuario cmd(1);
-    cmd.executar();
+    try {
+    }
+    catch(EErroPersistencia &e){
+        std::cout << e.what() << std::endl;
+    }
 
     /*
     // Instanciar Builder.

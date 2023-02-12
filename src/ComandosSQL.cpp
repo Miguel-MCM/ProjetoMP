@@ -1,6 +1,9 @@
 #include "ComandosSQL.h"
 #include <iostream>
 
+using std::to_string;
+using std::stoi;
+
 list<ElementoResultado> ComandoSQL::listaResultado;
 
 void ElementoResultado::setNomeColuna(const string& nomeColuna) {
@@ -57,5 +60,48 @@ ComandoCadastrarUsuario::ComandoCadastrarUsuario(Usuario usuario) {
 
 ComandoConsultarUsuario::ComandoConsultarUsuario(int id) {
     comandoSQL = "SELECT * FROM Usuario WHERE idUsuario = ";
-    comandoSQL += std::to_string(id);
+    comandoSQL += to_string(id);
+}
+
+Usuario ComandoConsultarUsuario::getResultado() {
+        ElementoResultado resultado;
+        Usuario usuario;
+
+        if (listaResultado.empty())
+                throw EErroPersistencia("Lista de resultados vazia.");
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+        usuario.setId(stoi(resultado.getValorColuna()));
+
+        if (listaResultado.empty())
+                throw EErroPersistencia("Lista de resultados vazia.");
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+        usuario.setNome(resultado.getValorColuna());
+
+        if (listaResultado.empty())
+                throw EErroPersistencia("Lista de resultados vazia.");
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+        usuario.setEmail(resultado.getValorColuna());
+
+        if (listaResultado.empty())
+                throw EErroPersistencia("Lista de resultados vazia.");
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+        usuario.setSenha(resultado.getValorColuna());
+        return usuario;
+}
+
+ComandoDescadastrarUsuario::ComandoDescadastrarUsuario(int id) {
+        comandoSQL = "DELETE FROM Usuario WHERE idUsuario = ";
+        comandoSQL += to_string(id);
+}
+
+ComandoEditarUsuario::ComandoEditarUsuario(Usuario usuario) {
+        comandoSQL = "UPDATE Usuario ";
+        comandoSQL += "SET Nome = '" + usuario.getNome();
+        comandoSQL += "', Email = '" + usuario.getEmail();
+        comandoSQL += "', Senha = '" + usuario.getSenha();
+        comandoSQL += "' WHERE idUsuario = " + to_string(usuario.getId());
 }
