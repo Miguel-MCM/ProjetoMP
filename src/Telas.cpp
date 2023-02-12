@@ -45,74 +45,82 @@ void TelaFormulario::apresentar(string titulo, vector<string> campos, string * e
     endwin();
 }
 
-void TelaMensagem::apresentar(string mensagem)
-{
+void TelaMensagem::apresentar(string mensagem) {
 
-    int linha, coluna;
+    int linha,coluna;
 
-    initscr();                                                                            // Iniciar curses.
-    getmaxyx(stdscr, linha, coluna);                                                      // Armazenar quantidade de linhas e de colunas.
-    mvprintw(linha / 2, (coluna - strlen(mensagem.c_str())) / 2, "%s", mensagem.c_str()); // Imprimir dado.
-    noecho();                                                                             // Desabilitar eco.
-    getch();                                                                              // Ler caracter digitado.
-    echo();                                                                               // Habilitar eco.
-    clear();                                                                              // Limpar janela.
+    initscr();                                                                      // Iniciar curses.
+    getmaxyx(stdscr,linha,coluna);                                                  // Armazenar quantidade de linhas e de colunas.
+    mvprintw(linha/2,(coluna-(mensagem.length()))/2,"%s", mensagem.c_str());   // Imprimir dado.
+    noecho();                                                                       // Desabilitar eco.
+    getch();                                                                        // Ler caracter digitado.
+    echo();                                                                         // Habilitar eco.
+    clear();                                                                        // Limpar janela.
     endwin();
 }
 
-void TelaAutenticacao::apresentar(Usuario* usuario) {
+char TelaConsultaUsuario::apresentar(Usuario* usuario) {
+    const string TITULO = "Usuario";
+    const vector<string> DADOS({
+        "Nome: " + usuario->getNome(),
+        "Email: " + usuario->getEmail(),
+        "Cargo: " + usuario->getCargo()
+    });
 
-    char campo1[]="Digite o email : ";
-    char campo2[]="Digite a senha     : ";
-    char dado1[80];
-    char dado2[80];
-    int linha, coluna;
-    string senha;
-    string email;
+    const vector<string> OPCOES({
+        "1 - Editar",
+        "2 - Descadastrar",
+        "3 - Voltar",
+        "Selecione uma opcao: "
+    });
+
+    char dado1[10];
+
+    int linha,coluna;
 
     initscr();
-    getmaxyx(stdscr, linha, coluna);
-    mvprintw(linha/2, (coluna-strlen(campo1))/2, "%s", campo1);
+    getmaxyx(stdscr,linha,coluna);
+
+
+    mvprintw(linha/2 - 6,(coluna-TITULO.length())/2,"%s",TITULO.c_str());
+    mostrarLinhas(DADOS, linha, coluna);
+    mostrarLinhas(OPCOES, linha, coluna, 5);
+
     getstr(dado1);
-    mvprintw(linha/2 + 2, (coluna-strlen(campo2))/2, "%s", campo2);
-    getstr(dado2);
+
     clear();
     endwin();
 
-    email = dado1;
-    senha = dado2;
-    usuario->setEmail(dado1);
-    usuario->setSenha(dado2);
+    return dado1[0];
 }
 
-void TelaCadastro::apresentar(Usuario *usuario) {
+bool TelaConfirmacao::apresentar() {
 
-    char campo1[]="Digite o email : ";
-    char campo2[]="Digite a senha     : ";
-    char campo3[]="Digite o nome     : ";
+    string campo1 = "Deseja confimar o descadastramento? (S/N) ";
     char dado1[80];
-    char dado2[80];
-    char dado3[80];
-    int linha, coluna;
+    bool confirmou;
+    int linha,coluna;
 
     initscr();
-    getmaxyx(stdscr, linha, coluna);
-
-    mvprintw(linha/3, (coluna-strlen(campo1))/2, "%s", campo1);
-    getstr(dado1);
-    mvprintw(linha/3 + 2, (coluna-strlen(campo2))/2, "%s", campo2);
-    getstr(dado2);
-    mvprintw(linha/3 + 4, (coluna-strlen(campo3))/2, "%s", campo3);
-    getstr(dado3);
+    getmaxyx(stdscr,linha,coluna);
+    while (true) {
+        mvprintw(linha/2,(coluna-campo1.length())/2,"%s",campo1.c_str());
+        getstr(dado1);
+        if (dado1[0] == 's' || dado1[0] == 'S') {
+            confirmou = true;
+            break;
+        }
+        if (dado1[0] == 'n' || dado1[0] == 'N') {
+            confirmou = false;
+            break;
+        }
+        clear();
+    }
     clear();
     endwin();
 
-    string email = dado1;
-    string senha = dado2;
-    string nome = dado3;
-    usuario->setEmail(email);
-    usuario->setSenha(senha);
-    usuario->setNome(nome);
+    
+    return confirmou;
 }
 
 /* teste as telas

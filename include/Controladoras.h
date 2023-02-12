@@ -1,13 +1,30 @@
-#ifndef CONTROLADORAS_H_INCLUDED
-#define CONTROLADORAS_H_INCLUDED
+#ifndef INCLUDE_CONTROLADORAS_H_
+#define INCLUDE_CONTROLADORAS_H_
 
 #include "Interfaces.h"
-#include "curses.h"
+#include "./curses.h"
 
-#include <stdexcept>
+class CntrApresentacaoUsuario:public IApresentacaoUsuario {
+ private:
+    IServicoUsuario * cntrServicoUsuario;
+    IServicoAdmin * cntrServicoAdmin;
+    void editar(Usuario*);
 
-using namespace std;
+ public:
+    void executar(Usuario*);
+    void cadastrar() {}
+    void setCntrServicoUsuario(IServicoUsuario*);
+    void setCntrServicoAdmin(IServicoAdmin*);
 
+    bool getStatusCadastro() {return false;}
+    void setStatusCadastro(bool){}
+};
+
+inline void CntrApresentacaoUsuario::setCntrServicoUsuario(IServicoUsuario * cntr) {cntrServicoUsuario = cntr;}
+
+inline void CntrApresentacaoUsuario::setCntrServicoAdmin(IServicoAdmin * cntr) {cntrServicoAdmin = cntr;}
+
+/*
 class CntrApresentacaoControle{
     private:
         Usuario usuario;
@@ -25,7 +42,7 @@ class CntrApresentacaoControle{
         void setCntrApresentacaoTurma(IApresentacaoTurma*);
 };
 
-inline void CntrApresentacaoControle::setCntrApresentacaoAutenticacao(IApresentacaoAutenticacao* cntr){
+inline void CntrApresentacaoControle::setCntrApresentacaoAutenticacao(IApresentacaoAutenticacao* cntr) {
     cntrApresentacaoAutenticacao = cntr;
 }
 
@@ -46,22 +63,21 @@ inline void CntrApresentacaoControle::setCntrlApresentacaoAdmin(IApresentacaoAdm
 }
 
 class CntrApresentacaoAutenticacao:public IApresentacaoAutenticacao {
-private:
+ private:
     IServicoAutenticacao* cntrServicoAutenticacao;
 public:
     bool autenticar(Usuario*);
     void setCntrServicoAutenticacao(IServicoAutenticacao*);
 };
 
-void inline CntrApresentacaoAutenticacao::setCntrServicoAutenticacao(IServicoAutenticacao* cntrServicoAutenticacao){
+void inline CntrApresentacaoAutenticacao::setCntrServicoAutenticacao(IServicoAutenticacao* cntrServicoAutenticacao) {
     this->cntrServicoAutenticacao = cntrServicoAutenticacao;
 }
 
 class CntrApresentacaoUsuario:public IApresentacaoUsuario {
-private:
+ private:
     IServicoUsuario* cntrServicoUsuario;
     bool cadastro;
-public:
     void executar(Usuario*);
     void cadastrar();
     void setCntrServicoUsuario(IServicoUsuario*);
@@ -71,7 +87,7 @@ public:
     void editar();
 };
 
-void inline CntrApresentacaoUsuario::setCntrServicoUsuario(IServicoUsuario* cntrServicoUsuario){
+void inline CntrApresentacaoUsuario::setCntrServicoUsuario(IServicoUsuario* cntrServicoUsuario) {
     this->cntrServicoUsuario = cntrServicoUsuario;
 }
 
@@ -84,14 +100,14 @@ void inline CntrApresentacaoUsuario::setStatusCadastro(bool status) {
 }
 
 class CntrApresentacaoProva:public IApresentacaoProva {
-    private:
+ private:
         IServicoProva* cntrServicoProva;
-    public:
+ public:
         void executar(Matricula*);
         void setCntrServicoProva(IServicoProva*);
 };
 
-void inline CntrApresentacaoProva::setCntrServicoProva(IServicoProva* cntrServicoProva){
+void inline CntrApresentacaoProva::setCntrServicoProva(IServicoProva* cntrServicoProva) {
     this->cntrServicoProva = cntrServicoProva;
 }
 
@@ -125,8 +141,8 @@ class CntrServicoAutenticacao:public IServicoAutenticacao{
         bool autenticar(Usuario);
 };
 
-class CntrServicoUsuario:public IServicoUsuario{
-    public:
+class CntrServicoUsuario:public IServicoUsuario {
+ public:
         bool cadastrar(Usuario);
         bool descadastrar(Matricula);
         bool editar(Usuario);
@@ -134,7 +150,7 @@ class CntrServicoUsuario:public IServicoUsuario{
 };
 
 class CntrServicoProva:public IServicoProva{
-public:
+ public:
         bool cadastrarProva(Prova);
         bool descadastrarProva(Codigo);
         bool editarProva(Prova);
@@ -144,5 +160,5 @@ public:
         bool editarQuestao(Questao);
         bool consultarQuestao(Questao*);
 };
-
-#endif // CONTROLADORAS_H_INCLUDED
+*/
+#endif   // INCLUDE_CONTROLADORAS_H_

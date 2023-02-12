@@ -28,9 +28,9 @@ add_executable(ProjetoMP
         # src/Builders.cpp
         # src/Comandos.cpp
         # src/Containers.cpp
-        # src/Controladoras.cpp
+        src/Controladoras.cpp
         src/Entidades.cpp
-        # src/Telas.cpp
+        src/Telas.cpp
         )
 
 target_link_libraries(ProjetoMP ${CURSES_LIBRARIES})

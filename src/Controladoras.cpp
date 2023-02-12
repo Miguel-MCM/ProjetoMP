@@ -1,11 +1,70 @@
 #include "Controladoras.h"
-#include "Comandos.h"
+#include "Telas.h"
 
-void CntrApresentacaoControle::executar() {
-    string titulo1 = "Aprenda comigo!";
-    vector<string> campos1({"1 - Login", "2 - Cadastrar", "3 - Fechar programa"});
-    TelaMenu telaControle;
-    string opcaoControle;
+void CntrApresentacaoUsuario::executar(Usuario* usuario) {
+    
+    TelaMensagem telaMensagem;
+    TelaConsultaUsuario telaConsultaUsuario;
+
+    bool finalizou = false;
+    while(!finalizou) {
+        cntrServicoUsuario->consultar(usuario);
+        switch (telaConsultaUsuario.apresentar(usuario)) {
+        case '1':
+            editar(usuario);
+            break;
+        case '2':
+            TelaConfirmacao telaConfirmacao;
+            if(telaConfirmacao.apresentar()) {
+                if(cntrServicoUsuario->descadastrar(usuario->getId()))
+                    finalizou = true;
+                else
+                    telaMensagem.apresentar("Erro no Processo.");
+            }
+            break;
+        case '3':
+            finalizou = true;
+            break;
+        default:
+            telaMensagem.apresentar("Opcao Invalida.");
+            break;
+        }
+    }
+}
+
+void CntrApresentacaoUsuario::editar(Usuario* usuario) {
+    TelaMensagem telaMensagem;
+    TelaFormulario telaFormulario;
+    const string TITULO = "Edicao de Usuario";
+    const vector<string> DADOS({
+        "Nome: ",
+        "Email: ",
+        "Senha: "
+    });
+    string novosDados[DADOS.size()];
+
+    telaFormulario.apresentar(TITULO, DADOS, novosDados);
+    
+    try {
+        if(novosDados[0] != "")
+            usuario->setNome(novosDados[0]);
+
+        if(novosDados[1] != "")
+            usuario->setEmail(novosDados[1]);
+
+        if(novosDados[2] != "")
+            usuario->setSenha(novosDados[2]);
+
+        cntrServicoUsuario->editar(*usuario);
+    }
+    catch (invalid_argument &e) {
+        telaMensagem.apresentar("Dado em Formato Incorreto.");
+
+    }
+}
+
+/*
+void CntrApresentacaoControle::executar(){
 
     TelaMensagem telaMensagem;
     char opcaoMenu;
@@ -285,5 +344,5 @@ bool CntrServicoProva::consultarQuestao(Questao* questao){
     ComandoISProvaConsultarQuestao comando;
     return comando.executar(questao);
 }
-
+*/
 
