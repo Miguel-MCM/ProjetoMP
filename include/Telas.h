@@ -35,7 +35,20 @@ class TelaFormulario:public Tela {
     void apresentar(string, vector<string>, string *);
 };
 
+class TelaMensagem:public Tela {
+ public:
+    void apresentar(string);
+};
 
+class TelaConsultaUsuario: public Tela {
+ public:
+    char apresentar(Usuario*);
+};
+
+class TelaConfirmacao:public Tela {
+ public:
+    bool apresentar();
+};
 /*
 class TelaAutenticacao {
 public:
