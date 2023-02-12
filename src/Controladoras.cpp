@@ -63,7 +63,6 @@ void CntrApresentacaoUsuario::editar(Usuario* usuario) {
     }
 }
 
-/*
 void CntrApresentacaoControle::executar(){
 
     TelaControle telaControle;
@@ -347,5 +346,4 @@ bool CntrServicoProva::consultarQuestao(Questao* questao){
     ComandoISProvaConsultarQuestao comando;
     return comando.executar(questao);
 }
-*/
 

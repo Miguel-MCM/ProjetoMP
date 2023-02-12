@@ -24,7 +24,7 @@ inline void CntrApresentacaoUsuario::setCntrServicoUsuario(IServicoUsuario * cnt
 
 inline void CntrApresentacaoUsuario::setCntrServicoAdmin(IServicoAdmin * cntr) {cntrServicoAdmin = cntr;}
 
-/*
+
 class CntrApresentacaoControle{
  private:
         Matricula matricula;
@@ -126,5 +126,5 @@ class CntrServicoProva:public IServicoProva{
         bool editarQuestao(Questao);
         bool consultarQuestao(Questao*);
 };
-*/
+
 #endif   // INCLUDE_CONTROLADORAS_H_
