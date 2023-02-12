@@ -52,17 +52,23 @@ class TelaConfirmacao:public Tela {
 /*
 class TelaAutenticacao {
 public:
-    void apresentar(Matricula*, Senha*);
+    void apresentar(string);
 };
 
-class TelaMensagem:public TelaApresentacao<string> {
- public:
-    void apresentar(string);
+class TelaAutenticacao {
+public:
+    void apresentar(Usuario*);
 };
 
 class TelaCadastro {
 public:
     void apresentar(Usuario*);
+};
+
+/*
+class TelaMensagem:public TelaApresentacao<string> {
+ public:
+    void apresentar(string);
 };
 
 class TelaMenuUsuario {

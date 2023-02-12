@@ -29,18 +29,24 @@ class IApresentacaoUsuario {
         virtual void setCntrServicoUsuario(IServicoUsuario*) = 0;
         virtual void setCntrServicoAdmin(IServicoAdmin*) = 0;
 
-
         virtual bool getStatusCadastro() = 0;
         virtual void setStatusCadastro(bool) = 0;
 
         virtual ~IApresentacaoUsuario(){}
 };
 
+class IApresentacaoAdmin {
+ public:
+    virtual void executar(Usuario*) = 0;
+    virtual void setCntrServicoAdmin(IServicoAdmin*) = 0;
+
+    virtual ~IApresentacaoAdmin() {}
+};
+
 class IApresentacaoTurma {
  public:
     virtual void executar(Usuario*) = 0;
     virtual void setCntrServicoTurma(IServicoTurma*) = 0;
-
 
     virtual ~IApresentacaoTurma() {}
 };

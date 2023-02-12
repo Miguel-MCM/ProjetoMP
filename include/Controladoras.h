@@ -26,18 +26,20 @@ inline void CntrApresentacaoUsuario::setCntrServicoAdmin(IServicoAdmin * cntr) {
 
 /*
 class CntrApresentacaoControle{
- private:
-        Matricula matricula;
+    private:
+        Usuario usuario;
         IApresentacaoAutenticacao* cntrApresentacaoAutenticacao;
         IApresentacaoUsuario* cntrApresentacaoUsuario;
+        IApresentacaoAdmin* cntrApresentacaoAdmin;
         IApresentacaoProva* cntrApresentacaoProva;
-        void menuAutenticado(Matricula*);
-
- public:
+        IApresentacaoTurma* cntrApresentacaoTurma;
+    public:
         void executar();
         void setCntrApresentacaoAutenticacao(IApresentacaoAutenticacao*);
         void setCntrApresentacaoUsuario(IApresentacaoUsuario*);
-        void setCntrlApresentacaoProva(IApresentacaoProva*);
+        void setCntrApresentacaoAdmin(IApresentacaoAdmin*);
+        void setCntrApresentacaoProva(IApresentacaoProva*);
+        void setCntrApresentacaoTurma(IApresentacaoTurma*);
 };
 
 inline void CntrApresentacaoControle::setCntrApresentacaoAutenticacao(IApresentacaoAutenticacao* cntr) {
@@ -52,12 +54,19 @@ inline void CntrApresentacaoControle::setCntrlApresentacaoProva(IApresentacaoPro
     cntrApresentacaoProva = cntr;
 }
 
+inline void CntrApresentacaoControle::setCntrlApresentacaoTurma(IApresentacaoTurma* cntr) {
+    cntrApresentacaoTurma = cntr;
+}
+
+inline void CntrApresentacaoControle::setCntrlApresentacaoAdmin(IApresentacaoAdmin* cntr) {
+    cntrApresentacaoAdmin = cntr;
+}
 
 class CntrApresentacaoAutenticacao:public IApresentacaoAutenticacao {
  private:
     IServicoAutenticacao* cntrServicoAutenticacao;
- public:
-    bool autenticar(Matricula*);
+public:
+    bool autenticar(Usuario*);
     void setCntrServicoAutenticacao(IServicoAutenticacao*);
 };
 
@@ -69,10 +78,10 @@ class CntrApresentacaoUsuario:public IApresentacaoUsuario {
  private:
     IServicoUsuario* cntrServicoUsuario;
     bool cadastro;
- public:
-    void executar(Matricula*);
+    void executar(Usuario*);
     void cadastrar();
     void setCntrServicoUsuario(IServicoUsuario*);
+    void setCntrServicoAdmin(IServicoAdmin *);
     bool getStatusCadastro();
     void setStatusCadastro(bool);
     void editar();
@@ -102,9 +111,34 @@ void inline CntrApresentacaoProva::setCntrServicoProva(IServicoProva* cntrServic
     this->cntrServicoProva = cntrServicoProva;
 }
 
-class CntrServicoAutenticacao:public IServicoAutenticacao {
+class CntrApresentacaoAdmin:public IApresentacaoAdmin {
+    private:
+        IServicoAdmin* cntrServicoAdmin;
+    public:
+        void executar(Usuario*);
+        void setCntrServicoAdmin(IServicoAdmin*);
+};
+
+void inline CntrApresentacaoAdmin::setCntrServicoAdmin(IServicoAdmin* cntrServicoAdmin){
+    this->cntrServicoAdmin = cntrServicoAdmin;
+}
+
+class CntrApresentacaoTurma : public IApresentacaoTurma {
+ private:
+    IServicoTurma *cntrServicoTurma;
+
  public:
-        bool autenticar(Matricula, Senha);
+    void executar(Usuario *);
+    void setCntrServicoTurma(IServicoTurma *);
+};
+
+void inline CntrApresentacaoTurma::setCntrServicoTurma(IServicoTurma *cntrServicoTurma) {
+    this->cntrServicoTurma = cntrServicoTurma;
+}
+
+class CntrServicoAutenticacao:public IServicoAutenticacao{
+    public:
+        bool autenticar(Usuario);
 };
 
 class CntrServicoUsuario:public IServicoUsuario {
