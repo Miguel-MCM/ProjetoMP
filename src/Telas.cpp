@@ -45,6 +45,84 @@ void TelaFormulario::apresentar(string titulo, vector<string> campos, string * e
     endwin();
 }
 
+void TelaMensagem::apresentar(string mensagem) {
+
+    int linha,coluna;
+
+    initscr();                                                                      // Iniciar curses.
+    getmaxyx(stdscr,linha,coluna);                                                  // Armazenar quantidade de linhas e de colunas.
+    mvprintw(linha/2,(coluna-(mensagem.length()))/2,"%s", mensagem.c_str());   // Imprimir dado.
+    noecho();                                                                       // Desabilitar eco.
+    getch();                                                                        // Ler caracter digitado.
+    echo();                                                                         // Habilitar eco.
+    clear();                                                                        // Limpar janela.
+    endwin();
+}
+
+char TelaConsultaUsuario::apresentar(Usuario* usuario) {
+    const string TITULO = "Usuario";
+    const vector<string> DADOS({
+        "Nome: " + usuario->getNome(),
+        "Email: " + usuario->getEmail(),
+        "Cargo: " + usuario->getCargo()
+    });
+
+    const vector<string> OPCOES({
+        "1 - Editar",
+        "2 - Descadastrar",
+        "3 - Voltar",
+        "Selecione uma opcao: "
+    });
+
+    char dado1[10];
+
+    int linha,coluna;
+
+    initscr();
+    getmaxyx(stdscr,linha,coluna);
+
+
+    mvprintw(linha/2 - 6,(coluna-TITULO.length())/2,"%s",TITULO.c_str());
+    mostrarLinhas(DADOS, linha, coluna);
+    mostrarLinhas(OPCOES, linha, coluna, 5);
+
+    getstr(dado1);
+
+    clear();
+    endwin();
+
+    return dado1[0];
+}
+
+bool TelaConfirmacao::apresentar() {
+
+    string campo1 = "Deseja confimar o descadastramento? (S/N) ";
+    char dado1[80];
+    bool confirmou;
+    int linha,coluna;
+
+    initscr();
+    getmaxyx(stdscr,linha,coluna);
+    while (true) {
+        mvprintw(linha/2,(coluna-campo1.length())/2,"%s",campo1.c_str());
+        getstr(dado1);
+        if (dado1[0] == 's' || dado1[0] == 'S') {
+            confirmou = true;
+            break;
+        }
+        if (dado1[0] == 'n' || dado1[0] == 'N') {
+            confirmou = false;
+            break;
+        }
+        clear();
+    }
+    clear();
+    endwin();
+
+    
+    return confirmou;
+}
+
 /* teste as telas
 int main() {
     
