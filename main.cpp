@@ -1,10 +1,9 @@
 #include <string.h>
 #include <stdexcept>
 
-#include <iostream>
-// #include "Interfaces.h"
-// #include "Controladoras.h"
-// #include "Builders.h"
+#include "Interfaces.h"
+#include "Controladoras.h"
+#include "Builders.h"
 
 #include "ComandosSQL.h"
 
@@ -51,6 +50,6 @@ int main() {
     // Destruir builder.
 
     delete builder;
-    */
+    
     return 0;
 }
