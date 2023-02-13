@@ -65,12 +65,12 @@ inline void CntrApresentacaoControle::setCntrApresentacaoProva(IApresentacaoProv
     cntrApresentacaoProva = cntr;
 }
 
-inline void CntrApresentacaoControle::setCntrApresentacaoAdmin(IApresentacaoAdmin* cntr) {
-    cntrApresentacaoAdmin = cntr;
-}
-
 inline void CntrApresentacaoControle::setCntrApresentacaoTurma(IApresentacaoTurma* cntr) {
     cntrApresentacaoTurma = cntr;
+}
+
+inline void CntrApresentacaoControle::setCntrApresentacaoAdmin(IApresentacaoAdmin* cntr) {
+    cntrApresentacaoAdmin = cntr;
 }
 
 class CntrApresentacaoAutenticacao:public IApresentacaoAutenticacao {
@@ -198,10 +198,10 @@ class CntrServicoAdmin:public IServicoAdmin {
 class CntrServicoProva:public IServicoProva{
 public:
         bool cadastrarProva(Prova);
-         bool descadastrarProva(Codigo);
+        bool descadastrarProva(Codigo);
         bool editarProva(Prova);
         bool consultarProva(Prova*);
-        bool getQtdQuestoes(Prova, int*){return false} 
+        bool getQtdQuestoes(Prova, int*){return false;}
         vector<string> getProvas();
 
         bool cadastrarQuestao(Questao);

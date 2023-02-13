@@ -154,7 +154,6 @@ bool CntrApresentacaoAutenticacao::autenticar(Usuario* usuario) {
     bool resultado;
 
     while (true) {
-
         try {
             TelaAutenticacao telaAutenticacao;
             telaAutenticacao.apresentar(usuario);

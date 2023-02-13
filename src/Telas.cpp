@@ -205,7 +205,6 @@ void TelaConsultarTurmas::apresentar(map<Turma, string> turmas) {
     
 }
 
-
 void TelaBusca::apresentar(string id) {
     char campo1[]= id + ": ";
     char dado1[80];
