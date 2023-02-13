@@ -203,10 +203,10 @@ class CntrServicoUsuario:public IServicoUsuario {
 
 class CntrServicoTurma:public IServicoTurma {
  public:
-    bool cadastrar(Turma) {return false;}
-    bool consultar(Turma*) {return false;}
-    bool descadastrar(int) {return false;}
-    bool editar(Turma) {return false;}
+    bool cadastrar(Turma);
+    bool consultar(Turma*);
+    bool descadastrar(int);
+    bool editar(Turma);
     bool listarAbertas(list<Turma>*) {return false;}
     bool listarProvas(int, list<Prova>*) {return false;}
     bool listarAlunos(int, list<Usuario>*) {return false;}

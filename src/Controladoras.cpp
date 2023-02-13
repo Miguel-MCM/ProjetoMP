@@ -226,17 +226,11 @@ bool CntrServicoUsuario::consultar(Usuario *usuario) {
 
 bool CntrServicoUsuario::cadastrar(Usuario usuario) {
     TelaMensagem telaMensagem;
-    ComandoCadastrarUsuario cmdCadastrar(usuario);
+    CadastrarUsuario cmdCadastrar;
     int consulta;
 
     try {
-        cmdCadastrar.executar();
-    } catch (const EErroPersistencia &exp) {
-        return false;
-    }
-
-    try {
-        consulta = cmdCadastrar.getResultado();
+        consulta = cmdCadastrar.executar(usuario);
         return true;
     } catch (const EErroPersistencia &exp) {
         return false;
@@ -483,6 +477,71 @@ void CntrApresentacaoTurma::executar(Usuario* usuario) {
         } else {
             telaMensagem.apresentar("Opcao invalida.");
         }
+    }
+}
+
+bool CntrServicoTurma::cadastrar(Turma turma) {
+    TelaMensagem telaMensagem;
+    ComandoCadastrarTurma cmdCadastrar(turma);
+    int consulta;
+
+    try {
+        cmdCadastrar.executar();
+    } catch (const EErroPersistencia &exp) {
+        return false;
+    }
+
+    try {
+        consulta = cmdCadastrar.getResultado();
+        return true;
+    } catch (const EErroPersistencia &exp) {
+        return false;
+    }
+}
+
+bool CntrServicoTurma::consultar(Turma *turma) {
+    TelaMensagem telaMensagem;
+    ComandoConsultarTurma cmdConsultar(turma->getId());
+    Turma consulta;
+
+    try {
+        cmdConsultar.executar();
+    } catch (const EErroPersistencia &exp) {
+        return false;
+    }
+
+    try {
+        consulta = cmdConsultar.getResultado();
+    } catch (const EErroPersistencia &exp) {
+        return false;
+    }
+
+    *turma = consulta;
+
+    return true;
+}
+
+bool CntrServicoTurma::descadastrar(int id) {
+    TelaMensagem telaMensagem;
+    ComandoDescadastrarTurma cmdDescadastrar(id);
+
+    try {
+        cmdDescadastrar.executar();
+        return true;
+    } catch (const EErroPersistencia &exp) {
+        return false;
+    }
+}
+
+bool CntrServicoTurma::editar(Turma turma) {
+    TelaMensagem telaMensagem;
+    ComandoEditarTurma cmdEditar(turma);
+
+    try {
+        cmdEditar.executar();
+        return true;
+    } catch (const EErroPersistencia &exp) {
+        return false;
     }
 }
 
