@@ -455,15 +455,11 @@ char TelaConsultarUsuario::apresentar(Usuario usuario) {
     clear();
     endwin();
 }
+*/
 
-
-void TelaCadastroProva::apresentar(Prova* prova) {
-    char campo1[]="Digite o codigo : ";
-    char campo2[]="Digite o nome : ";
-    char campo3[]="Digite a descricao : ";
+void TelaCadastroProva::apresentar(Prova* prova, int idTurma) {
+    char campo1[]="Digite o titulo de prova : ";
     char dado1[80];
-    char dado2[80];
-    char dado3[80];
     int linha,coluna;
 
     initscr();
@@ -471,32 +467,18 @@ void TelaCadastroProva::apresentar(Prova* prova) {
 
     mvprintw(linha/3,(coluna-strlen(campo1))/2,"%s",campo1);
     getstr(dado1);
-    mvprintw(linha/3 + 2,(coluna-strlen(campo2))/2,"%s",campo2);
-    getstr(dado2);
-    mvprintw(linha/3 + 4,(coluna-strlen(campo3))/2,"%s",campo3);
-    getstr(dado3);
     clear();
     endwin();
 
-    Codigo codigo;
-    codigo.setValor(dado1);
-    prova->setCodigo(codigo);
-
-    Texto nome;
-    nome.setValor(dado2);
-    prova->setNome(nome);
-
-    Texto descricao;
-    descricao.setValor(dado3);
-    prova->setDescricao(descricao);
+    prova->setNome(dado1);
+    prova->setIdTurma(idTurma);
 }
+
 
 void TelaEdicaoProva::apresentar(Prova* prova) {
     char campo1[]="Deixe o campo em branco para manter-lo igual.";
-    char campo2[]="Digite o nome : ";
-    char campo3[]="Digite a descricao : ";
+    char campo2[]="Digite novo titulo de prova : ";
     char dado1[80];
-    char dado2[80];
     int linha,coluna;
 
     initscr();
@@ -505,24 +487,15 @@ void TelaEdicaoProva::apresentar(Prova* prova) {
     mvprintw(linha/3 - 2,(coluna-strlen(campo1))/2,"%s",campo1);
     mvprintw(linha/3,(coluna-strlen(campo2))/2,"%s",campo2);
     getstr(dado1);
-    mvprintw(linha/3 + 2,(coluna-strlen(campo3))/2,"%s",campo3);
-    getstr(dado2);
     clear();
     endwin();
 
     if (dado1[0] != '\0'){
-        Texto nome;
-        nome.setValor(dado1);
-        prova->setNome(nome);
-    }
-
-    if (dado2[0] != '\0') {
-        Texto descricao;
-        descricao.setValor(dado2);
-        prova->setDescricao(descricao);
+        prova->setNome(dado1);
     }
 }
 
+/*
 void TelaEdicaoUsuario::apresentar(Usuario * usuario) {
     char campo1[]="Edicao do usuario";
     char campo2[]="Digite o nome: ";

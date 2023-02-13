@@ -197,6 +197,7 @@ void CntrApresentacaoProva::executar(Turma* turma) {
     TelaMenuProva telaMenuProva;
     TelaMensagem telaMensagem;
     TelaOpcoesProvas telaOpcoesProvas;
+    TelaCadastroProva telaCadastroProva;
     char opcao;
     list<Prova> *listaProvas = nullptr;
 
@@ -216,7 +217,13 @@ void CntrApresentacaoProva::executar(Turma* turma) {
                 }
                 break;
             case '2':
-
+                Prova *prova = new Prova;
+                try{
+                    telaCadastroProva.apresentar(prova , turma->getId());
+                    cntrServicoProva->cadastrarProva(prova);
+                }catch(invalid_argument &e){
+                    telaMensagem.apresentar("Formato de dado invalido.");
+                }
                 break;
             case '3':
 
@@ -235,6 +242,7 @@ void CntrApresentacaoProva::executar(Turma* turma) {
 
 void CntrApresentacaoProva::gerenciar(Prova* prova){
     TelaConsultaProva telaConsultaProva;
+    TelaMensagem telaMensagem;
     
     int *qtdQuestoes;
     cntrServicoProva->getQtdQuestoes(*prova, qtdQuestoes);
@@ -243,9 +251,16 @@ void CntrApresentacaoProva::gerenciar(Prova* prova){
     while (true){
         opcao = telaConsultaProva.apresentar(prova, *qtdQuestoes);
         switch (opcao){
-        case "1":
+        case '1':
+            try{
+                cntrServicoProva->editarProva(*prova);
+            }catch(invalid_argument &e){
+                telaMensagem.apresentar("Formato de dado invalido.");
+            }
             break;
-        case "2":
+        case '2':
+            cntrServicoProva->descadastrarProva(prova->getId());
+            telaMensagem.apresentar("Prova arquivada.");
             break;
         default:
             break;

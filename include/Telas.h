@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <string>
 #include <vector>
+#include <list>
 #ifdef WIN32
     #include "curses.h"
 #else
@@ -105,7 +106,7 @@ public:
 
 class TelaConsultaProva {
 public:
-    char apresentar(Prova*);
+    char apresentar(Prova*, int);
 };
 
 class TelaCadastroProva {
