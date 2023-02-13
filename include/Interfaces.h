@@ -5,13 +5,20 @@
 #include <map>
 #include <string>
 #include <list>
+#include <vector>
 
 using std::string;
 using std::list;
+using std::vector;
 
+class IApresentacaoAutenticacao;
+class IApresentacaoUsuario;
+class IApresentacaoAdmin;
+class IApresentacaoTurma;
+class IApresentacaoProva;
+class IServicoAutenticacao;
 class IServicoUsuario;
 class IServicoAdmin;
-class IServicoAutenticacao;
 class IServicoTurma;
 class IServicoProva;
 class IServicoQuestao;
@@ -57,12 +64,14 @@ class IApresentacaoTurma {
         virtual void cadastrar(Usuario*) = 0;
         virtual void entrar(Usuario*) = 0;
         virtual void setCntrServicoTurma(IServicoTurma*) = 0;
+        virtual void setCntrServicoUsuario(IServicoUsuario*) = 0;
         virtual ~IApresentacaoTurma() {}
 };
 
 class IApresentacaoProva {
  public:
-        virtual void executar(Usuario*) = 0;
+        virtual void executar(Turma*) = 0;
+        virtual void gereciar(Prova*) = 0;
         virtual void setCntrServicoProva(IServicoProva*) = 0;
         virtual void setCntrServicoQuestao(IServicoQuestao*) = 0;
 
@@ -81,7 +90,7 @@ class IServicoUsuario {
         virtual bool descadastrar(int) = 0;
         virtual bool editar(Usuario) = 0;
         virtual bool consultar(Usuario*) = 0;
-        virtual bool listarTurmas(int, map<Turma, string>*) = 0;
+        virtual bool listarTurmas(int, list<Turma>*) = 0;
         virtual ~IServicoUsuario() {}
 };
 
@@ -94,6 +103,7 @@ class IServicoProva {
         virtual bool consultarResposta(Resposta*) = 0;
         virtual bool cadastrarResposta(Resposta) = 0;
         virtual bool getQtdQuestoes(Prova, int*) = 0;
+        virtual vector<string> getProvas()= 0;
         virtual ~IServicoProva() {}
 };
 

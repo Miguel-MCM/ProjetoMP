@@ -84,7 +84,9 @@ inline void Usuario::setCargo(string cargo) {
 
 inline list<int> const Usuario::getIdTurmas() {return id_turmas;}
 
-inline void Usuario::setIdTurmas(list<int> id_turmas) {this->id_turmas = id_turmas;}
+inline void Usuario::setIdTurmas(list<int> id_turmas) {
+    this->id_turmas = id_turmas;
+}
 
 class Turma:public Entidade {
  private:

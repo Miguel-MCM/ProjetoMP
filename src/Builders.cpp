@@ -23,21 +23,23 @@ CntrApresentacaoControle* BuilderSistema::construir(){
 
     cntrApresentacaoControle->setCntrApresentacaoAutenticacao(cntrApresentacaoAutenticacao);
     cntrApresentacaoControle->setCntrApresentacaoUsuario(cntrApresentacaoUsuario);
-    cntrApresentacaoControle->setCntrlApresentacaoProva(cntrApresentacaoProva);
-    cntrApresentacaoControle->setCntrlApresentacaoAdmin(cntrApresentacaoAdmin);
-    cntrApresentacaoControle->setCntrlApresentacaoTurma(cntrApresentacaoTurma);
+    cntrApresentacaoControle->setCntrApresentacaoProva(cntrApresentacaoProva);
+    cntrApresentacaoControle->setCntrApresentacaoAdmin(cntrApresentacaoAdmin);
+    cntrApresentacaoControle->setCntrApresentacaoTurma(cntrApresentacaoTurma);
 
     cntrApresentacaoAdmin->setCntrApresentacaoUsuario(cntrApresentacaoUsuario);
-    cntrApresentacaoAdmin->setCntrlApresentacaoProva(cntrApresentacaoProva);
-    cntrApresentacaoAdmin->setCntrlApresentacaoTurma(cntrApresentacaoTurma);
+    cntrApresentacaoAdmin->setCntrApresentacaoProva(cntrApresentacaoProva);
+    cntrApresentacaoAdmin->setCntrApresentacaoTurma(cntrApresentacaoTurma);
 
-    cntrApresentacaoUsuario->setCntrlApresentacaoTurma(cntrApresentacaoTurma);
+    cntrApresentacaoUsuario->setCntrApresentacaoTurma(cntrApresentacaoTurma);
+    cntrApresentacaoUsuario->setCntrServicoUsuario(cntrServicoUsuario);
+    cntrApresentacaoUsuario->setCntrServicoAdmin(cntrServicoAdmin);
 
     cntrApresentacaoAutenticacao->setCntrServicoAutenticacao(cntrServicoAutenticacao);
-    cntrApresentacaoUsuario->setCntrServicoUsuario(cntrServicoUsuario);
     cntrApresentacaoProva->setCntrServicoProva(cntrServicoProva);
     cntrApresentacaoAdmin->setCntrServicoAdmin(cntrServicoAdmin);
     cntrApresentacaoTurma->setCntrServicoTurma(cntrServicoTurma);
+    cntrApresentacaoTurma->setCntrServicoUsuario(cntrServicoUsuario);
 
     // Retornar refer�ncia para inst�ncia de CntrApresentacaoControle.
 

@@ -14,6 +14,7 @@
 #endif  // WIN32
 
 using std::vector;
+using std::to_string;
 
 class Tela {
  protected:
@@ -57,60 +58,60 @@ class TelaConfirmacao:public Tela {
     bool apresentar();
 };
 
-class TelaAutenticacao {
+class TelaAutenticacao: public Tela {
 public:
     void apresentar(Usuario*);
 };
 
-class TelaCadastro {
+class TelaCadastro: public Tela {
 public:
     void apresentar(Usuario*);
 };
 
-class TelaConsultarTurmas {
+class TelaConsultarTurmas: public Tela {
  public:
     string apresentar(list<Turma>);
 };
 
-class TelaOpcoesProvas{
+class TelaOpcoesProvas: public Tela {
 public:
     int apresentar(list<Prova>);
 };
 
-class TelaMenuProva {
+class TelaMenuProva: public Tela {
 public:
     char apresentar();
 };
 
-class TelaConsultaProva {
+class TelaConsultaProva: public Tela {
 public:
     char apresentar(Prova*, int);
 };
 
-class TelaCadastroProva {
+class TelaCadastroProva: public Tela {
+public:
+    void apresentar(Prova*,int);
+};
+
+class TelaEdicaoProva: public Tela {
 public:
     void apresentar(Prova*);
 };
 
-class TelaEdicaoProva {
-public:
-    void apresentar(Prova*);
-};
 
-
-class TelaBusca {
+class TelaBusca: public Tela {
 public:
     string apresentar(string);
 };
 
-class TelaConsultarProvas {
+class TelaConsultarProvas: public Tela {
 public:
     string apresentar(list<Prova>);
 };
 
-class TelaListarAlunos {
+class TelaListarAlunos: public Tela {
 public:
-    void apresentar(list<Alunos>);
+    void apresentar(list<Usuario>);
 };
 
 /*

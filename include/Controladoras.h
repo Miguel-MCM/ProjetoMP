@@ -9,7 +9,6 @@
 #include <string>
 
 using std::string;
-
 using std::list;
 
 class CntrApresentacaoUsuario:public IApresentacaoUsuario {
@@ -21,14 +20,14 @@ class CntrApresentacaoUsuario:public IApresentacaoUsuario {
     void minhasTurmas(Usuario*);
  public:
     void executar(Usuario*);
-    void cadastrar() {}
+    void cadastrar();
 
     void setCntrServicoUsuario(IServicoUsuario*);
     void setCntrServicoAdmin(IServicoAdmin*);
     void setCntrApresentacaoTurma(IApresentacaoTurma*);
 
     bool getStatusCadastro() {return false;}
-    void setStatusCadastro(bool){}
+    void setStatusCadastro(bool);
 };
 
 inline void CntrApresentacaoUsuario::setCntrServicoUsuario(IServicoUsuario * cntr) {
@@ -88,24 +87,31 @@ class CntrApresentacaoAutenticacao:public IApresentacaoAutenticacao {
     void setCntrServicoAutenticacao(IServicoAutenticacao*);
 };
 
-void inline CntrApresentacaoAutenticacao::setCntrServicoAutenticacao(IServicoAutenticacao* cntrServicoAutenticacao) {
+inline void CntrApresentacaoAutenticacao::setCntrServicoAutenticacao(IServicoAutenticacao* cntrServicoAutenticacao) {
     this->cntrServicoAutenticacao = cntrServicoAutenticacao;
 }
 
 class CntrApresentacaoTurma:public IApresentacaoTurma {
  private:
     IServicoTurma* cntrServicoTurma;
+    IServicoUsuario* cntrServicoUsuario;
  public:
     void executar(Usuario*);
     void cadastrar(Usuario*);
     void entrar(Usuario*);
 
+    void setCntrServicoUsuario(IServicoUsuario*);
     void setCntrServicoTurma(IServicoTurma*);
-
-    ~CntrApresentacaoTurma() {}
+    
 };
 
-inline void CntrApresentacaoTurma::setCntrServicoTurma(IServicoTurma* cntr) {cntrServicoTurma = cntr;}
+inline void CntrApresentacaoTurma::setCntrServicoTurma(IServicoTurma* cntr) {
+    cntrServicoTurma = cntr;
+}
+
+inline void CntrApresentacaoTurma::setCntrServicoUsuario(IServicoUsuario* cntr) {
+    cntrServicoUsuario = cntr;
+}
 
 class CntrApresentacaoProva:public IApresentacaoProva {
  private:
@@ -141,7 +147,7 @@ class CntrApresentacaoAdmin:public IApresentacaoAdmin {
         void setCntrApresentacaoTurma(IApresentacaoTurma*);
         void setCntrServicoTurma(IServicoTurma*);
         void setCntrServicoProva(IServicoProva*);
-}
+};
 
 inline void CntrApresentacaoAdmin::setCntrServicoAdmin(IServicoAdmin* cntrServicoAdmin) {
     this->cntrServicoAdmin = cntrServicoAdmin;
@@ -159,29 +165,16 @@ inline void CntrApresentacaoAdmin::setCntrServicoProva(IServicoProva* cntrServic
     this->cntrServicoProva = cntrServicoProva;
 }
 
-inline void CntrApresentacaoControle::setCntrApresentacaoUsuario(IApresentacaoUsuario* cntr) {
+inline void CntrApresentacaoAdmin::setCntrApresentacaoUsuario(IApresentacaoUsuario* cntr) {
     cntrApresentacaoUsuario = cntr;
 }
 
-inline void CntrApresentacaoControle::setCntrApresentacaoProva(IApresentacaoProva* cntr) {
+inline void CntrApresentacaoAdmin::setCntrApresentacaoProva(IApresentacaoProva* cntr) {
     cntrApresentacaoProva = cntr;
 }
 
-inline void CntrApresentacaoControle::setCntrApresentacaoTurma(IApresentacaoTurma* cntr) {
+inline void CntrApresentacaoAdmin::setCntrApresentacaoTurma(IApresentacaoTurma* cntr) {
     cntrApresentacaoTurma = cntr;
-}
-
-class CntrApresentacaoTurma : public IApresentacaoTurma {
- private:
-    IServicoTurma *cntrServicoTurma;
-
- public:
-    void executar(Usuario *);
-    void setCntrServicoTurma(IServicoTurma *);
-};
-
-void inline CntrApresentacaoTurma::setCntrServicoTurma(IServicoTurma *cntrServicoTurma) {
-    this->cntrServicoTurma = cntrServicoTurma;
 }
 
 class CntrServicoAutenticacao:public IServicoAutenticacao{
@@ -195,7 +188,7 @@ class CntrServicoUsuario:public IServicoUsuario {
         bool descadastrar(Usuario){return false;}
         bool editar(Usuario){return false;}
         bool consultar(Usuario*){return false;}
-        bool listarTurmas(int, map<Turma, string>*){return false;}
+        bool listarTurmas(int, list<Turma>*){return false;}
         ~CntrServicoUsuario() {}
 };
 
@@ -210,7 +203,7 @@ class CntrServicoTurma:public IServicoTurma {
     bool listarAlunos(int, list<Usuario>*) {return false;}
 
     ~CntrServicoTurma() {}
-}
+};
 
 class CntrServicoAdmin:public IServicoAdmin {
  public:
@@ -226,14 +219,14 @@ class CntrServicoAdmin:public IServicoAdmin {
 class CntrServicoProva:public IServicoProva{
  public:
         bool cadastrarProva(Prova);
-        bool descadastrarProva(Codigo);
+        bool descadastrarProva(Prova);
         bool editarProva(Prova);
         bool consultarProva(Prova*);
         bool getQtdQuestoes(Prova, int*){return false;}
         vector<string> getProvas();
 
         bool cadastrarQuestao(Questao);
-        bool descadastrarQuestao(Codigo);
+        bool descadastrarQuestao(Questao);
         bool editarQuestao(Questao);
         bool consultarQuestao(Questao*);
 };

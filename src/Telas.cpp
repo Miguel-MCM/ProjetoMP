@@ -207,10 +207,10 @@ string TelaConsultarProvas::apresentar(list<Prova> provas) {
 
     char dado1[10];
 
-    for (provas::iterator it = provas.begin(); it != provas.end();) {
-        DADOS.insert(DADOS.end(), "Nome: " + provas->getNome());
+    for (list<Prova>::iterator it = provas.begin(); it != provas.end();++it) {
+        DADOS.insert(DADOS.end(), "Nome: " + it->getNome());
         string id;
-        id = to_string(provas->getId());
+        id = to_string(it->getId());
         
         DADOS.insert(DADOS.end(), "ID: " + id);
     }
@@ -239,17 +239,17 @@ string TelaConsultarTurmas::apresentar(list<Turma> turmas) {
 
     char dado1[10];
 
-    for (turmas::iterator it = turmas.begin(); it != turmas.end();) {
-        DADOS.insert(DADOS.end(), "Nome: " + turmas->getNome());
+    for (list<Turma>::iterator it = turmas.begin(); it != turmas.end(); ++it) {
+        DADOS.insert(DADOS.end(), "Nome: " + it->getNome());
 
-        if (turmas->taAberta()) {        
+        if (it->taAberta()) {        
             DADOS.insert(DADOS.end(), "Status: Aberta");
         } else {
             DADOS.insert(DADOS.end(), "Status: Fechada");
         }
 
         string id;
-        id = to_string(turmas->getId());
+        id = to_string(it->getId());
 
         DADOS.insert(DADOS.end(), "ID: " + id);
     }
@@ -272,12 +272,12 @@ string TelaConsultarTurmas::apresentar(list<Turma> turmas) {
     return dado1;
 }
 
-void TelaListarAlunos(list<Alunos> alunos) {
+void TelaListarAlunos::apresentar(list<Usuario> alunos) {
     const string TITULO = "Alunos";
     vector<string> DADOS;
 
-    for (turmas::iterator it = turmas.begin(); it != turmas.end();) {
-        DADOS.insert(DADOS.end(), "Nome: " + turmas->getNome());
+    for (list<Usuario>::iterator it = alunos.begin(); it != alunos.end();++it) {
+        DADOS.insert(DADOS.end(), "Nome: " + it->getNome());
     }
     int linha,coluna;
 
@@ -442,10 +442,6 @@ void TelaEdicaoProva::apresentar(Prova* prova) {
     if (dado1[0] != '\0'){
         prova->setNome(dado1);
     }
-}
-
-char TelaConsultaProva::apresentar(Prova* prova) {
-    char campo1[]="Consulta de Prova";
 }
 
 /* teste as telas

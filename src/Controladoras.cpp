@@ -5,31 +5,6 @@
 
 using std::list;
 
-void CntrApresentacaoTurma::executar(Usuario* usuario) {
-    string cargo = usuario->getCargo();
-    string opcao;
-
-    if (cargo == "professor") {
-        opcao = "2 - Cadastrar";
-    } else if (cargo == "aluno") {
-        opcao = "2 - Entrar";
-    } else {
-        opcao = "2 - Descadastrar";
-    }
-
-    string titulo = "Menu de Turmas!";
-    vector<string> campos({
-        "1 - Turmas", 
-        opcao, 
-        "3 - Provas",
-        "4 - Editar",
-        "5 - Alunos",
-    });
-    TelaMenu telaMenu;
-    string opcaoMenu;
-
-}
-
 void CntrApresentacaoControle::executar() {
     string titulo1 = "Aprenda comigo!";
     vector<string> campos1({"1 - Login", "2 - Cadastrar", "3 - Fechar programa"});
@@ -206,8 +181,6 @@ void CntrApresentacaoUsuario::executar(Usuario* usuario) {
     }
 }
 
-void CntrApresentacaoTurma::executar(Usuario* usuario) {}  // fazer depois de apresentacao usuario
-
 void CntrApresentacaoUsuario::editar(Usuario* usuario) {
     TelaMensagem telaMensagem;
     TelaFormulario telaFormulario;
@@ -296,8 +269,7 @@ void CntrApresentacaoAdmin::executar(Usuario* usuario) {
             if (!resultado) {
                 telaMensagem.apresentar("Turma nao encontrada.");
             } else {   
-                list<int> intTurmaId;
-                intTurmaId.insert(0, stoi(idTurma));
+                list<int> intTurmaId({stoi(idTurma)});
                 usuario->setIdTurmas(intTurmaId);
                 cntrApresentacaoTurma->executar(usuario);
             }
@@ -306,6 +278,45 @@ void CntrApresentacaoAdmin::executar(Usuario* usuario) {
         } else {
             telaMensagem.apresentar("Dado em formato incorreto");
         }
+    }
+}
+
+void CntrApresentacaoTurma::executar(Usuario* usuario) {
+    string cargo = usuario->getCargo();
+    string opcao;
+
+    if (cargo == "professor") {
+        opcao = "2 - Cadastrar Turma";
+    } else if (cargo == "aluno") {
+        opcao = "2 - Entrar em Turma";
+    } else {
+        opcao = "2 - Descadastrar Turma";
+    }
+
+    string titulo = "Menu de Turmas!";
+    vector<string> campos({
+        "1 -  Minhas Turmas", 
+        opcao, 
+        "3 - Todas as Turmas", 
+    });
+    TelaMenu telaMenu;
+    TelaConsultarTurmas telaMinhasTurmas;
+    TelaMensagem telaMensagem;
+
+    string opcaoMenu;
+
+    bool finalizou = false;
+    while(!finalizou) {
+        opcaoMenu = telaMenu.apresentar(titulo, campos);
+        if (opcaoMenu == "1") {
+            list<Turma> *turmas;
+            if (cntrServicoUsuario->listarTurmas(usuario->getId(), turmas)) {
+                string escolhido = telaMinhasTurmas.apresentar(*turmas);
+            } else {
+                telaMensagem.apresentar("Nenhuma turma foi encontrada");
+            }
+        }
+
     }
 }
 
