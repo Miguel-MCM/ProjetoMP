@@ -38,10 +38,17 @@ class IApresentacaoUsuario {
 
 class IApresentacaoAdmin {
  public:
-    virtual void executar(Usuario*) = 0;
-    virtual void setCntrServicoAdmin(IServicoAdmin*) = 0;
+        virtual void executar(Usuario*) = 0;
+        virtual void setCntrServicoAdmin(IServicoAdmin*) = 0;
+        virtual void setCntrServicoUsuario(IServicoUsuario*) = 0;
+        virtual void setCntrServicoTurma(IServicoTurma*) = 0;
+        virtual void setCntrServicoProva(IServicoProva*) = 0;
+        virtual void setCntrApresentacaoUsuario(IApresentacaoUsuario*) = 0;
+        virtual void setCntrApresentacaoProva(IApresentacaoProva*) = 0;
+        virtual void setCntrApresentacaoTurma(IApresentacaoTurma*) = 0;
 
-    virtual ~IApresentacaoAdmin() {}
+
+        virtual ~IApresentacaoAdmin() {}
 };
 
 class IApresentacaoTurma {

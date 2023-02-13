@@ -15,6 +15,7 @@ using std::list;
 class CntrApresentacaoUsuario:public IApresentacaoUsuario {
  private:
     IServicoUsuario * cntrServicoUsuario;
+    IServicoAdmin* cntrServicoAdmin;
     IApresentacaoTurma * cntrApresentacaoTurma;
     void editar(Usuario*);
     void minhasTurmas(Usuario*);
@@ -30,9 +31,15 @@ class CntrApresentacaoUsuario:public IApresentacaoUsuario {
     void setStatusCadastro(bool){}
 };
 
-inline void CntrApresentacaoUsuario::setCntrServicoUsuario(IServicoUsuario * cntr) {cntrServicoUsuario = cntr;}
+inline void CntrApresentacaoUsuario::setCntrServicoUsuario(IServicoUsuario * cntr) {
+    cntrServicoUsuario = cntr;
+}
 
-inline void CntrApresentacaoControle::setCntrApresentacaoTurma(IApresentacaoTurma* cntr) {
+inline void CntrApresentacaoUsuario::setCntrServicoAdmin(IServicoAdmin * cntr) {
+    cntrServicoAdmin = cntr;
+}
+
+inline void CntrApresentacaoUsuario::setCntrApresentacaoTurma(IApresentacaoTurma* cntr) {
     cntrApresentacaoTurma = cntr;
 }
 
@@ -117,6 +124,10 @@ void inline CntrApresentacaoProva::setCntrServicoProva(IServicoProva* cntrServic
 class CntrApresentacaoAdmin:public IApresentacaoAdmin {
  private:
         IServicoAdmin* cntrServicoAdmin;
+        IServicoUsuario* cntrServicoUsuario;
+        IServicoTurma* cntrServicoTurma;
+        IServicoProva* cntrServicoProva;
+
         IApresentacaoUsuario* cntrApresentacaoUsuario;
         IApresentacaoProva* cntrApresentacaoProva;
         IApresentacaoTurma* cntrApresentacaoTurma;
@@ -124,14 +135,30 @@ class CntrApresentacaoAdmin:public IApresentacaoAdmin {
         void executar(Usuario*);
 
         void setCntrServicoAdmin(IServicoAdmin*);
+        void setCntrServicoUsuario(IServicoUsuario*);
         void setCntrApresentacaoUsuario(IApresentacaoUsuario*);
         void setCntrApresentacaoProva(IApresentacaoProva*);
         void setCntrApresentacaoTurma(IApresentacaoTurma*);
+        void setCntrServicoTurma(IServicoTurma*);
+        void setCntrServicoProva(IServicoProva*);
 }
 
 inline void CntrApresentacaoAdmin::setCntrServicoAdmin(IServicoAdmin* cntrServicoAdmin) {
     this->cntrServicoAdmin = cntrServicoAdmin;
 }
+
+inline void CntrApresentacaoAdmin::setCntrServicoUsuario(IServicoUsuario* cntrServicoUsuario) {
+    this->cntrServicoUsuario = cntrServicoUsuario;
+}
+
+inline void CntrApresentacaoAdmin::setCntrServicoTurma(IServicoTurma* cntrServicoTurma) {
+    this->cntrServicoTurma = cntrServicoTurma;
+}
+
+inline void CntrApresentacaoAdmin::setCntrServicoProva(IServicoProva* cntrServicoProva) {
+    this->cntrServicoProva = cntrServicoProva;
+}
+
 inline void CntrApresentacaoControle::setCntrApresentacaoUsuario(IApresentacaoUsuario* cntr) {
     cntrApresentacaoUsuario = cntr;
 }
@@ -197,7 +224,7 @@ class CntrServicoAdmin:public IServicoAdmin {
 };
 
 class CntrServicoProva:public IServicoProva{
-public:
+ public:
         bool cadastrarProva(Prova);
         bool descadastrarProva(Codigo);
         bool editarProva(Prova);
