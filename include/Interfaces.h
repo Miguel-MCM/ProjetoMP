@@ -86,6 +86,7 @@ class IServicoProva {
         virtual bool consultarProva(Prova*) = 0;
         virtual bool consultarResposta(Resposta*) = 0;
         virtual bool cadastrarResposta(Resposta) = 0;
+        virtual bool getQtdQuestoes(Prova, int*) = 0;
         virtual ~IServicoProva() {}
 };
 
