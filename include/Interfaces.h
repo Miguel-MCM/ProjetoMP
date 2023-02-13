@@ -86,7 +86,7 @@ class IServicoAutenticacao {
 class IServicoUsuario {
  public:
         virtual bool cadastrar(Usuario) = 0;
-        virtual bool descadastrar(int) = 0;
+        virtual bool descadastrar(int, string) = 0;
         virtual bool editar(Usuario) = 0;
         virtual bool consultar(Usuario*) = 0;
         virtual bool entrarNaTurma(Usuario, Turma) = 0;

@@ -193,10 +193,10 @@ class CntrServicoAutenticacao:public IServicoAutenticacao{
 
 class CntrServicoUsuario:public IServicoUsuario {
  public:
-        bool cadastrar(Usuario){return false;}
-        bool descadastrar(Usuario){return false;}
-        bool editar(Usuario){return false;}
-        bool consultar(Usuario*){return false;}
+        bool cadastrar(Usuario);
+        bool descadastrar(int, string); // id e cargo
+        bool editar(Usuario);
+        bool consultar(Usuario*);
         bool listarTurmas(int, list<Turma>*){return false;}
         ~CntrServicoUsuario() {}
 };

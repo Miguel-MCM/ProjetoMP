@@ -94,13 +94,17 @@ bool CntrApresentacaoAutenticacao::autenticar(Usuario* usuario) {
 bool CntrServicoAutenticacao::autenticar(Usuario usuario) {
     TelaMensagem telaMensagem;
     ComandoConsultarUsuario cmdConsultar(usuario.getEmail());
-    cmdConsultar.executar();
+    
     Usuario consulta;
-
+    try {
+        cmdConsultar.executar();
+    } catch (const EErroPersistencia &exp) {
+        return false;
+    }
+    
     try {
         consulta = cmdConsultar.getResultado();
     } catch (const EErroPersistencia &exp) {
-        telaMensagem.apresentar("Lista de resultados vazia.");
         return false;
     }
 
@@ -158,40 +162,96 @@ void CntrApresentacaoUsuario::executar(Usuario* usuario) {
 
     bool finalizou = false;
     while(!finalizou) {
-        cntrServicoUsuario->consultar(usuario);
-        switch (telaConsultaUsuario.apresentar(usuario)) {
-        case '1':
-            try {
-                editar(usuario);
-            } catch (invalid_argument &e) {
-                telaMensagem.apresentar("Formato de dado invalido.");
-            }
-            break;
-        case '2':
-            if(usuario->getCargo() != "admin") {
-                TelaConfirmacao telaConfirmacao;
-                if(telaConfirmacao.apresentar()) {
-                    if(cntrServicoUsuario->descadastrar(usuario->getId())) {
-                        setStatusCadastro(false);
-                        finalizou = true;
-                    } else {
-                        telaMensagem.apresentar("Erro no Processo.");
-                    }
+        if (cntrServicoUsuario->consultar(usuario)) {
+            switch (telaConsultaUsuario.apresentar(usuario)) {
+            case '1':
+                try {
+                    editar(usuario);
+                } catch (invalid_argument &e) {
+                    telaMensagem.apresentar("Formato de dado invalido.");
                 }
-            } else {
-                telaMensagem.apresentar("O administrador nao pode se descadastrar.");
+                break;
+            case '2':
+                if(usuario->getCargo() != "admin") {
+                    TelaConfirmacao telaConfirmacao;
+                    if(telaConfirmacao.apresentar()) {
+                        if(cntrServicoUsuario->descadastrar(usuario->getId(), usuario->getCargo())) {
+                            setStatusCadastro(false);
+                            finalizou = true;
+                        } else {
+                            telaMensagem.apresentar("Erro no Processo.");
+                        }
+                    }
+                } else {
+                    telaMensagem.apresentar("O administrador nao pode se descadastrar.");
+                }
+                break;
+            case '3':
+                cntrApresentacaoTurma->executar(usuario);
+                break;
+            case '4':
+                finalizou = true;
+                break;
+            default:
+                telaMensagem.apresentar("Opcao Invalida.");
+                break;
             }
-            break;
-        case '3':
-            cntrApresentacaoTurma->executar(usuario);
-            break;
-        case '4':
-            finalizou = true;
-            break;
-        default:
-            telaMensagem.apresentar("Opcao Invalida.");
-            break;
+        } else {
+            telaMensagem.apresentar("Nenhum usuario encontrado.");
         }
+    }
+}
+
+bool CntrServicoUsuario::consultar(Usuario *usuario) {
+    TelaMensagem telaMensagem;
+    ComandoConsultarUsuario cmdConsultar(usuario->getId());
+    
+    Usuario consulta;
+    try {
+        cmdConsultar.executar();
+    } catch (const EErroPersistencia &exp) {
+        return false;
+    }
+    
+    try {
+        consulta = cmdConsultar.getResultado();
+    } catch (const EErroPersistencia &exp) {
+        return false;
+    }
+    
+    *usuario = consulta;
+
+    return true;
+}
+
+bool CntrServicoUsuario::cadastrar(Usuario usuario) {
+    TelaMensagem telaMensagem;
+    ComandoCadastrarUsuario cmdCadastrar(usuario);
+    int consulta;
+
+    try {
+        cmdCadastrar.executar();
+    } catch (const EErroPersistencia &exp) {
+        return false;
+    }
+
+    try {
+        consulta = cmdCadastrar.getResultado();
+        return true;
+    } catch (const EErroPersistencia &exp) {
+        return false;
+    }
+}
+
+bool CntrServicoUsuario::descadastrar(int id, string cargo) {
+    TelaMensagem telaMensagem;
+    ComandoDescadastrarUsuario cmdDescadastrar(id, cargo);
+
+    try {
+        cmdDescadastrar.executar();
+        return true;
+    } catch (const EErroPersistencia &exp) {
+        return false;
     }
 }
 
@@ -223,6 +283,18 @@ void CntrApresentacaoUsuario::editar(Usuario* usuario) {
     catch (invalid_argument &e) {
         telaMensagem.apresentar("Dado em Formato Incorreto.");
 
+    }
+}
+
+bool CntrServicoUsuario::editar(Usuario usuario) {
+    TelaMensagem telaMensagem;
+    ComandoEditarUsuario cmdEditar(usuario);
+
+    try {
+        cmdEditar.executar();
+        return true;
+    } catch (const EErroPersistencia &exp) {
+        return false;
     }
 }
 
