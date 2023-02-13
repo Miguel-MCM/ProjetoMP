@@ -6,6 +6,8 @@
 
 #include <string>
 #include <vector>
+#include <list>
+
 #ifdef WIN32
     #include "curses.h"
 #else
@@ -68,13 +70,23 @@ public:
 
 class TelaConsultarTurmas {
  public:
-    void apresentar(map<Turma, string>);
+    string apresentar(list<Turma>);
 };
 
 
 class TelaBusca {
 public:
     void apresentar(string);
+};
+
+class TelaConsultaProva {
+public:
+    string apresentar(list<Prova>);
+};
+
+class TelaListarAlunos {
+public:
+    void apresentar(list<Alunos>);
 };
 
 /*
@@ -110,10 +122,7 @@ public:
 
 
 
-class TelaConsultaProva {
-public:
-    char apresentar(Prova*);
-};
+
 
 class TelaCadastroProva {
 public:

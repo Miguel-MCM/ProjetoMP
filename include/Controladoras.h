@@ -92,6 +92,7 @@ class CntrApresentacaoTurma:public IApresentacaoTurma {
     void executar(Usuario*);
     void cadastrar(Usuario*);
     void entrar(Usuario*);
+
     void setCntrServicoTurma(IServicoTurma*);
 
     ~CntrApresentacaoTurma() {}
