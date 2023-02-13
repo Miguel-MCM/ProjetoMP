@@ -9,30 +9,25 @@
 
 
 int main() {
-    Usuario usuario, outroUsuario;
-    usuario.setNome("Miguel");
-    usuario.setEmail("email@email.com");
-    usuario.setSenha("123456");
-    usuario.setCargo("aluno");
 
-    CadastrarUsuario cmdCadastrar;
-    ComandoConsultarUsuario cmdConsultar(1);
-    usuario.setNome("Novo Nome");
-    ComandoEditarUsuario cmdEditar(usuario);
-    ComandoDescadastrarUsuario cmdDescadastrar(6, "professor");
-
-    try {
-        // cmdCadastrar.executar(usuario);
-        cmdDescadastrar.executar();
-    }
-    catch(EErroPersistencia &e){
-        std::cout << e.what() << std::endl;
-    }
+    // Usuario usuario, consulta;
+    // usuario.setNome("nome");
+    // usuario.setEmail("email@email");
+    // usuario.setSenha("123456");
+    // usuario.setCargo("aluno");
 
     // ComandoCadastrarUsuario cmd(usuario);
     // cmd.executar();
     // cmd.getResultado();
 
+    // ComandoDescadastrarUsuario cmdDescadastrar(1);
+    // cmdDescadastrar.executar();
+
+    // ComandoConsultarUsuario cmdConsultar(usuario.getEmail());
+    // cmdConsultar.executar();
+    // consulta = cmdConsultar.getResultado();
+
+    // std::cout << consulta.getNome() << std::endl;
     /*
     // Instanciar Builder.
 

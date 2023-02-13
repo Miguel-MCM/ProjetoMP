@@ -102,6 +102,9 @@ class Turma:public Entidade {
     void setAberta(bool);
     int const getIdProf();
     void setIdProf(int);
+    Turma() {
+        aberta = true;
+    }
 };
 
 inline string const Turma::getDescricao() {return descricao;}

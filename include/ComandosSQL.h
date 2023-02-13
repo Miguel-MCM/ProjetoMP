@@ -1,10 +1,12 @@
 #ifndef INCLUDE_COMANDOSSQL_H_
+
 #define INCLUDE_COMANDOSSQL_H_
 
 #include <list>
 #include <string>
-#include "sqlite3.h"
 #include "Entidades.h"
+
+#include "sqlite3.h"
 
 using std::string;
 using std::list;
@@ -73,6 +75,7 @@ class ComandoCadastrarUsuario:public ComandoSQL {
 class ComandoConsultarUsuario:public ComandoSQL {
  public:
     ComandoConsultarUsuario(int);
+    ComandoConsultarUsuario(string);
     Usuario getResultado();
 };
 
@@ -109,9 +112,98 @@ class ComandoCountUsuarios:public ComandoSQL {
 
 class CadastrarUsuario {
  public:
-        void executar(Usuario);
+        int executar(Usuario);
 };
 
+class ComandoCadastrarTurma:public ComandoSQL {
+ public:
+        ComandoCadastrarTurma(Turma);
+        int getResultado();
+};
 
+class ComandoConsultarTurma:public ComandoSQL {
+ public:
+        ComandoConsultarTurma(int);
+        Turma getResultado();
+};
+
+class ComandoDescadastrarTurma:public ComandoSQL {
+ public:
+        ComandoDescadastrarTurma(int);
+};
+
+class ComandoEditarTurma:public ComandoSQL {
+ public:
+        ComandoEditarTurma(Turma);
+};
+
+class ComandoEntrarNaTurma:public ComandoSQL {
+ public:
+      ComandoEntrarNaTurma(int, int);  
+};
+
+class ComandoCadastrarQuestao:public ComandoSQL {
+ public:
+        ComandoCadastrarQuestao(Questao);
+        int getResultado();
+};
+
+class ComandoCadastrarAlternativa:public ComandoSQL {
+ public:
+        ComandoCadastrarAlternativa(int, string);
+};
+
+class CadastrarQuestao {
+ public:
+        int cadastrar(Questao);
+};
+
+class ComandoDescadastrarQuestao:public ComandoSQL {
+ public:
+        ComandoDescadastrarQuestao(int);
+};
+
+class ComandoEditarQuestao:public ComandoSQL {
+ public:
+        ComandoEditarQuestao(Questao);
+};
+
+class ComandoConsultarQuestao:public ComandoSQL {
+ public:
+        ComandoConsultarQuestao(int);
+        Questao getResultado();
+};
+
+class ComandoCadastrarProva:public ComandoSQL {
+ public:
+        ComandoCadastrarProva(Prova);
+        int getResultado();
+};
+
+class ComandoAssociarQuestaoProva:public ComandoSQL {
+ public:
+        ComandoAssociarQuestaoProva(int, int);
+};
+
+class CadastrarProva {
+ public:
+        int cadastrar(Prova);
+};
+
+class ComandoDescadastrarProva:public ComandoSQL {
+ public:
+        ComandoDescadastrarProva(int);
+};
+
+class ComandoEditarProva:public ComandoSQL {
+ public:
+        ComandoEditarProva(Prova);
+};
+
+class ComandoConsultarProva:public ComandoSQL {
+ public:
+        ComandoConsultarProva(int);
+        Prova getResultado();
+};
 
 #endif  //  INCLUDE_COMANDOSSQL_H_
