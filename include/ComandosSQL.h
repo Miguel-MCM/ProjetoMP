@@ -142,4 +142,36 @@ class ComandoEntrarNaTurma:public ComandoSQL {
       ComandoEntrarNaTurma(int, int);  
 };
 
+class ComandoCadastrarQuestao:public ComandoSQL {
+ public:
+        ComandoCadastrarQuestao(Questao);
+        int getResultado();
+};
+
+class ComandoCadastrarAlternativa:public ComandoSQL {
+ public:
+        ComandoCadastrarAlternativa(int, string);
+};
+
+class CadastrarQuestao {
+ public:
+        int cadastrar(Questao);
+};
+
+class ComandoDescadastrarQuestao:public ComandoSQL {
+ public:
+        ComandoDescadastrarQuestao(int);
+};
+
+class ComandoEditarQuestao:public ComandoSQL {
+ public:
+        ComandoEditarQuestao(Questao);
+};
+
+class ComandoConsultarQuestao:public ComandoSQL {
+ public:
+        ComandoConsultarQuestao(int);
+        Questao getResultado();
+};
+
 #endif  //  INCLUDE_COMANDOSSQL_H_
