@@ -201,7 +201,7 @@ bool TelaConfirmacao::apresentar() {
     return confirmou;
 }
 
-string TelaConsultarProvas::apresentar(list<Provas> provas) {
+string TelaConsultarProvas::apresentar(list<Prova> provas) {
     const string TITULO = "Provas";
     vector<string> DADOS;
 
@@ -292,15 +292,15 @@ void TelaListarAlunos(list<Alunos> alunos) {
 }
 
 
-void TelaBusca::apresentar(string id) {
-    char campo1[]= id + ": ";
+string TelaBusca::apresentar(string id) {
+    string pergunta = id + ": ";
     char dado1[80];
     int linha,coluna;
 
     initscr();
     getmaxyx(stdscr,linha,coluna);
 
-    mvprintw(linha/2,(coluna-strlen(campo1))/2,"%s",campo1);
+    mvprintw(linha/2,(coluna-pergunta.length())/2,"%s",pergunta);
     getstr(dado1);
 
     clear();

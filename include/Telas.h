@@ -76,10 +76,10 @@ class TelaConsultarTurmas {
 
 class TelaBusca {
 public:
-    void apresentar(string);
+    string apresentar(string);
 };
 
-class TelaConsultaProva {
+class TelaConsultarProvas {
 public:
     string apresentar(list<Prova>);
 };
