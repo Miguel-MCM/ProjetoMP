@@ -68,6 +68,11 @@ ComandoConsultarUsuario::ComandoConsultarUsuario(int id) {
     comandoSQL += to_string(id);
 }
 
+ComandoConsultarUsuario::ComandoConsultarUsuario(string email) {
+        comandoSQL = "SELECT * FROM Usuario WHERE Email = '";
+        comandoSQL += email + "'";
+}
+
 Usuario ComandoConsultarUsuario::getResultado() {
         ElementoResultado resultado;
         Usuario usuario;
@@ -98,12 +103,14 @@ Usuario ComandoConsultarUsuario::getResultado() {
 }
 
 ComandoDescadastrarUsuario::ComandoDescadastrarUsuario(int id, string cargo) {
+        comandoSQL = "DELETE FROM UsuarioTurma WHERE Usuario_idUsuario = ";
+        comandoSQL += to_string(id) + ";";
         if (cargo == "aluno") {
-                comandoSQL = "DELETE FROM Aluno WHERE Usuario_idUsuario = ";
+                comandoSQL += "DELETE FROM Aluno WHERE Usuario_idUsuario = ";
         } else if (cargo == "professor") {
-                comandoSQL = "DELETE FROM Professor WHERE Usuario_idUsuario = ";
+                comandoSQL += "DELETE FROM Professor WHERE Usuario_idUsuario = ";
         } else if (cargo == "admin") {
-                comandoSQL = "DELETE FROM Admin WHERE Usuario_idUsuario = ";
+                comandoSQL += "DELETE FROM Admin WHERE Usuario_idUsuario = ";
         }
         comandoSQL += to_string(id) + ";";
         comandoSQL += "DELETE FROM Usuario WHERE idUsuario = ";
@@ -136,7 +143,7 @@ ComandoCadastrarAdmin::ComandoCadastrarAdmin(int id) {
     comandoSQL += to_string(id) + ");";
 }
 
-void CadastrarUsuario::executar(Usuario usuario) {
+int CadastrarUsuario::executar(Usuario usuario) {
     ComandoCadastrarUsuario comandoCadastrar(usuario);
     comandoCadastrar.executar();
     
@@ -152,6 +159,8 @@ void CadastrarUsuario::executar(Usuario usuario) {
         ComandoCadastrarAdmin cmdCadastrarAdmin(usuario.getId());
         cmdCadastrarAdmin.executar();
     }
+
+    return usuario.getId();
 }
 
 ComandoCountUsuarios::ComandoCountUsuarios() {
@@ -159,5 +168,81 @@ ComandoCountUsuarios::ComandoCountUsuarios() {
 }
 
 int ComandoCountUsuarios::getResultado() {
-        return stoi(listaResultado.back().getValorColuna());
+        int id = stoi(listaResultado.back().getValorColuna());
+        listaResultado.pop_back();
+        return id;
+}
+
+ComandoCadastrarTurma::ComandoCadastrarTurma(Turma turma) {
+    comandoSQL = "BEGIN; INSERT INTO Turma (nome, descricaoTurma, turmaAberta, Professor_idProfessor, Professor_Usuario_idUsuario) VALUES(";
+    comandoSQL += "'" + turma.getNome() + "', ";
+    comandoSQL += "'" + turma.getDescricao() + "', ";
+    comandoSQL += to_string(turma.taAberta()) + ", ";
+    comandoSQL += to_string(turma.getIdProf()) + ", ";
+    comandoSQL += to_string(turma.getIdProf()) + "); SELECT last_insert_rowid(); COMMIT";
+}
+
+int ComandoCadastrarTurma::getResultado() {
+        int id = stoi(listaResultado.back().getValorColuna());
+        listaResultado.pop_back();
+        return id;
+}
+
+ComandoConsultarTurma::ComandoConsultarTurma(int id) {
+        comandoSQL = "SELECT * FROM Turma WHERE idTurma = ";
+        comandoSQL += to_string(id);
+}
+
+Turma ComandoConsultarTurma::getResultado() {
+        ElementoResultado resultado;
+        Turma turma;
+
+        if(listaResultado.size() < 6)
+                throw EErroPersistencia("Lista de resultados vazia.");
+
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+        turma.setId(stoi(resultado.getValorColuna()));
+
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+        turma.setNome(resultado.getValorColuna());
+
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+        turma.setDescricao(resultado.getValorColuna());
+
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+        if(turma.taAberta() != stoi(resultado.getValorColuna()))
+                turma.switchAberta();
+        
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+        turma.setIdProf(stoi(resultado.getValorColuna()));
+
+        listaResultado.pop_back();
+
+        return turma;
+}
+
+ComandoDescadastrarTurma::ComandoDescadastrarTurma(int id) {
+        comandoSQL = "DELETE FROM UsuarioTurma WHERE Turma_idTurma = ";
+        comandoSQL += to_string(id) + ";";
+        comandoSQL += "DELETE FROM Turma WHERE idTurma = ";
+        comandoSQL += to_string(id) + ";";
+}
+
+ComandoEditarTurma::ComandoEditarTurma(Turma turma) {
+        comandoSQL = "UPDATE Turma ";
+        comandoSQL += "SET nome = '" + turma.getNome();
+        comandoSQL += "', descricaoTurma = '" + turma.getDescricao();
+        comandoSQL += "', turmaAberta = '" + to_string(turma.taAberta());
+        comandoSQL += "' WHERE idTurma = " + to_string(turma.getId());
+}
+
+ComandoEntrarNaTurma::ComandoEntrarNaTurma(int idUsuario, int idTurma) {
+    comandoSQL = "INSERT INTO UsuarioTurma (Usuario_idUsuario, Turma_idTurma) VALUES(";
+    comandoSQL += to_string(idUsuario) + ", ";
+    comandoSQL += to_string(idTurma) + ")";
 }

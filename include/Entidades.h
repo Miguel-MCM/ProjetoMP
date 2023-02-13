@@ -99,6 +99,9 @@ class Turma:public Entidade {
     void switchAberta();
     int const getIdProf();
     void setIdProf(int);
+    Turma() {
+        aberta = true;
+    }
 };
 
 inline string const Turma::getDescricao() {return descricao;}

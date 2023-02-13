@@ -1,10 +1,12 @@
 #ifndef INCLUDE_COMANDOSSQL_H_
+
 #define INCLUDE_COMANDOSSQL_H_
 
 #include <list>
 #include <string>
-#include "sqlite3.h"
 #include "Entidades.h"
+
+#include "sqlite3.h"
 
 using std::string;
 using std::list;
@@ -73,6 +75,7 @@ class ComandoCadastrarUsuario:public ComandoSQL {
 class ComandoConsultarUsuario:public ComandoSQL {
  public:
     ComandoConsultarUsuario(int);
+    ComandoConsultarUsuario(string);
     Usuario getResultado();
 };
 
@@ -109,9 +112,34 @@ class ComandoCountUsuarios:public ComandoSQL {
 
 class CadastrarUsuario {
  public:
-        void executar(Usuario);
+        int executar(Usuario);
 };
 
+class ComandoCadastrarTurma:public ComandoSQL {
+ public:
+        ComandoCadastrarTurma(Turma);
+        int getResultado();
+};
 
+class ComandoConsultarTurma:public ComandoSQL {
+ public:
+        ComandoConsultarTurma(int);
+        Turma getResultado();
+};
+
+class ComandoDescadastrarTurma:public ComandoSQL {
+ public:
+        ComandoDescadastrarTurma(int);
+};
+
+class ComandoEditarTurma:public ComandoSQL {
+ public:
+        ComandoEditarTurma(Turma);
+};
+
+class ComandoEntrarNaTurma:public ComandoSQL {
+ public:
+      ComandoEntrarNaTurma(int, int);  
+};
 
 #endif  //  INCLUDE_COMANDOSSQL_H_
