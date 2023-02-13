@@ -136,19 +136,12 @@ char TelaConsultaUsuario::apresentar(Usuario* usuario) {
         "Email: " + usuario->getEmail(),
         "Cargo: " + usuario->getCargo()
     });
-    string OPCAO_CARGO;
-    
-    if (usuario->getCargo() == "aluno")
-        OPCAO_CARGO = "Entrar turma";
-    else 
-        OPCAO_CARGO = "Criar turma";
 
     const vector<string> OPCOES({
         "1 - Editar",
         "2 - Descadastrar",
         "3 - Minhas turmas",
-        "4 - " + OPCAO_CARGO,
-        "5 - Voltar",
+        "4 - Voltar",
         "Selecione uma opcao: "
     });
 
@@ -254,7 +247,7 @@ string TelaConsultarTurmas::apresentar(list<Turma> turmas) {
         DADOS.insert(DADOS.end(), "ID: " + id);
     }
 
-    DADOS.insert(DADOS.end(), "Selecione uma opcao (para voltar digite 0): ");
+    DADOS.insert(DADOS.end(), "Selecione uma opcao ou digite 0 para voltar: ");
         
     int linha,coluna;
 

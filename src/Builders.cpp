@@ -30,6 +30,7 @@ CntrApresentacaoControle* BuilderSistema::construir(){
     cntrApresentacaoAdmin->setCntrApresentacaoUsuario(cntrApresentacaoUsuario);
     cntrApresentacaoAdmin->setCntrApresentacaoProva(cntrApresentacaoProva);
     cntrApresentacaoAdmin->setCntrApresentacaoTurma(cntrApresentacaoTurma);
+    cntrApresentacaoAdmin->setCntrServicoAdmin(cntrServicoAdmin);
 
     cntrApresentacaoUsuario->setCntrApresentacaoTurma(cntrApresentacaoTurma);
     cntrApresentacaoUsuario->setCntrServicoUsuario(cntrServicoUsuario);
@@ -37,9 +38,10 @@ CntrApresentacaoControle* BuilderSistema::construir(){
 
     cntrApresentacaoAutenticacao->setCntrServicoAutenticacao(cntrServicoAutenticacao);
     cntrApresentacaoProva->setCntrServicoProva(cntrServicoProva);
-    cntrApresentacaoAdmin->setCntrServicoAdmin(cntrServicoAdmin);
+
     cntrApresentacaoTurma->setCntrServicoTurma(cntrServicoTurma);
     cntrApresentacaoTurma->setCntrServicoUsuario(cntrServicoUsuario);
+    cntrApresentacaoTurma->setCntrApresentacaoProva(cntrApresentacaoProva);
 
     // Retornar refer�ncia para inst�ncia de CntrApresentacaoControle.
 

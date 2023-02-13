@@ -6,13 +6,13 @@
 #include <list>
 #include "Interfaces.h"
 #include "./curses.h"
-#include <string>
 
 using std::string;
 using std::list;
 
 class CntrApresentacaoUsuario:public IApresentacaoUsuario {
  private:
+    bool status;
     IServicoUsuario * cntrServicoUsuario;
     IServicoAdmin* cntrServicoAdmin;
     IApresentacaoTurma * cntrApresentacaoTurma;
@@ -42,6 +42,9 @@ inline void CntrApresentacaoUsuario::setCntrApresentacaoTurma(IApresentacaoTurma
     cntrApresentacaoTurma = cntr;
 }
 
+inline void CntrApresentacaoUsuario::setStatusCadastro(bool status) {
+    this->status = status;
+}
 class CntrApresentacaoControle{
  private:
         Usuario usuario;
@@ -95,13 +98,14 @@ class CntrApresentacaoTurma:public IApresentacaoTurma {
  private:
     IServicoTurma* cntrServicoTurma;
     IServicoUsuario* cntrServicoUsuario;
+    IApresentacaoProva* cntrApresentacaoProva;
+
  public:
     void executar(Usuario*);
-    void cadastrar(Usuario*);
-    void entrar(Usuario*);
 
     void setCntrServicoUsuario(IServicoUsuario*);
     void setCntrServicoTurma(IServicoTurma*);
+    void setCntrApresentacaoProva(IApresentacaoProva*);
     
 };
 
@@ -111,6 +115,10 @@ inline void CntrApresentacaoTurma::setCntrServicoTurma(IServicoTurma* cntr) {
 
 inline void CntrApresentacaoTurma::setCntrServicoUsuario(IServicoUsuario* cntr) {
     cntrServicoUsuario = cntr;
+}
+
+inline void CntrApresentacaoTurma::setCntrApresentacaoProva(IApresentacaoProva* cntr) {
+    cntrApresentacaoProva = cntr;
 }
 
 class CntrApresentacaoProva:public IApresentacaoProva {

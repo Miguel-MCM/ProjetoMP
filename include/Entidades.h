@@ -99,6 +99,7 @@ class Turma:public Entidade {
     void setDescricao(string);
     bool const taAberta();
     void switchAberta();
+    void setAberta(bool);
     int const getIdProf();
     void setIdProf(int);
 };
@@ -111,6 +112,8 @@ inline void Turma::setDescricao(string descricao) {
     }
     this->descricao = descricao;
 }
+
+inline void Turma::setAberta(bool aberta) {this->aberta = aberta;}
 
 inline bool const Turma::taAberta() {return aberta;}
 

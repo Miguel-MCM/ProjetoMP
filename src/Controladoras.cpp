@@ -151,10 +151,12 @@ void CntrApresentacaoUsuario::executar(Usuario* usuario) {
             if(usuario->getCargo() != "admin") {
                 TelaConfirmacao telaConfirmacao;
                 if(telaConfirmacao.apresentar()) {
-                    if(cntrServicoUsuario->descadastrar(usuario->getId()))
+                    if(cntrServicoUsuario->descadastrar(usuario->getId())) {
+                        setStatusCadastro(false);
                         finalizou = true;
-                    else
+                    } else {
                         telaMensagem.apresentar("Erro no Processo.");
+                    }
                 }
             } else {
                 telaMensagem.apresentar("O administrador nao pode se descadastrar.");
@@ -164,14 +166,6 @@ void CntrApresentacaoUsuario::executar(Usuario* usuario) {
             cntrApresentacaoTurma->executar(usuario);
             break;
         case '4':
-            if (usuario->getCargo() == "professor")
-                cntrApresentacaoTurma->cadastrar(usuario);
-            else if (usuario->getCargo() == "aluno")
-                cntrApresentacaoTurma->entrar(usuario);
-            else
-                telaMensagem.apresentar("Somente os professores podem criar turma");
-            break;
-        case '5':
             finalizou = true;
             break;
         default:
@@ -297,13 +291,20 @@ void CntrApresentacaoTurma::executar(Usuario* usuario) {
     vector<string> campos({
         "1 -  Minhas Turmas", 
         opcao, 
-        "3 - Todas as Turmas", 
+        "3 - Todas as Turmas",
+        "4 - Voltar" 
     });
+  
+
     TelaMenu telaMenu;
-    TelaConsultarTurmas telaMinhasTurmas;
+    TelaConsultarTurmas telaTurmas;
+    TelaFormulario telaFormulario;
     TelaMensagem telaMensagem;
+    TelaBusca telaBusca;
+    TelaMensagens telaMensagens;
 
     string opcaoMenu;
+    string opcaoMenu2;
 
     bool finalizou = false;
     while(!finalizou) {
@@ -311,12 +312,85 @@ void CntrApresentacaoTurma::executar(Usuario* usuario) {
         if (opcaoMenu == "1") {
             list<Turma> *turmas;
             if (cntrServicoUsuario->listarTurmas(usuario->getId(), turmas)) {
-                string escolhido = telaMinhasTurmas.apresentar(*turmas);
-            } else {
-                telaMensagem.apresentar("Nenhuma turma foi encontrada");
-            }
-        }
+                string turmaEscolhida = telaTurmas.apresentar(*turmas);
+                Turma* turma = new Turma();
+                turma->setId(stoi(turmaEscolhida));
+                cntrServicoTurma->consultar(turma);
+                Usuario* professor = new Usuario();
+                professor->setId(turma->getIdProf());
+                cntrServicoUsuario->consultar(professor);
 
+                string status;
+                if (turma->taAberta())
+                    status = "Aberta";
+                else
+                    status = "Fechada";
+
+                vector<string> dados({
+                    "Nome: " + turma->getNome(),
+                    "Professor: " + professor->getNome(),
+                    "Descricao: " + turma->getDescricao(),
+                    "Status: " + status,
+                    "",
+                    "1 - Consultar Provas",
+                    "2 - Voltar"
+                });
+                opcaoMenu2 = telaMenu.apresentar("Turma: " + to_string(turma->getId()), dados);
+                if (opcaoMenu2 == "1"){
+                    cntrApresentacaoProva->executar(turma);
+                } else if (opcaoMenu2 == "2"){
+                } else {
+                    telaMensagem.apresentar("Opcao invalida.");
+                }
+            } else {
+                telaMensagem.apresentar("Voce nao possui turmas.");
+            }
+        } else if (opcaoMenu == "2") {
+            if (cargo == "professor") {
+                vector<string> CAMPOS({
+                    "Nome: ",
+                    "Descricao: ",
+                    "Aberta (s ou n): "
+                });
+                string * entradas;
+                telaFormulario.apresentar("Cadastro de turma", CAMPOS, entradas);
+                Turma turma;
+                turma.setIdProf(usuario->getId());
+                turma.setNome(entradas[0]);
+                turma.setDescricao(entradas[1]);
+                if ("s" == entradas[2]) 
+                    turma.setAberta(true);
+                else
+                    turma.setAberta(false);
+                if (cntrServicoTurma->cadastrar(turma))
+                    telaMensagem.apresentar("Cadastro realizado com sucesso!");
+                else
+                    telaMensagem.apresentar("Nao foi possivel realizar o cadastro.");
+            } else if (cargo == "aluno") {
+                string id = telaBusca.apresentar("Id da turma");
+                Turma turma;
+                turma.setId(stoi(id));
+                if (!cntrServicoTurma->entrar(turma)) {
+                    telaMensagem.apresentar("Falha ao entrar na turma.");
+                }
+            } else {
+                string id = telaBusca.apresentar("Id da turma");
+                if (!cntrServicoTurma->descadastrar(stoi(id))) {
+                    telaMensagem.apresentar("Falha ao descadastrar a turma.");
+                }
+            }
+        } else if (opcaoMenu == "3") {
+            list<Turma> * turmas;
+            if (!cntrServicoTurma->listarAbertas(turmas)) {
+                telaMensagem.apresentar("Nenhuma turma foi encontrada");
+            } else {
+                string _ = telaTurmas.apresentar(*turmas);
+            }
+        } else if (opcaoMenu == "4") {
+            finalizou = true;
+        } else {
+            telaMensagem.apresentar("Opcao invalida.");
+        }
     }
 }
 
