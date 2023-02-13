@@ -288,6 +288,7 @@ char TelaControle::apresentar() {
 
     return dado1[0];
 }
+*/
 
 char TelaMenuProva::apresentar() {
     char campo1[]="Gerenciamento de Prova";
@@ -325,6 +326,7 @@ char TelaMenuProva::apresentar() {
     return dado1[0];
 }
 
+/*
 char TelaMenu::apresentar(){
 
     char campo1[]="Tela inicial: ";
@@ -350,6 +352,7 @@ char TelaMenu::apresentar(){
     return dado1[0];
 }
 
+
 void TelaCodigo::apresentar(Codigo* codigo) {
     char campo1[]="Codigo: ";
     char dado1[15];
@@ -367,8 +370,41 @@ void TelaCodigo::apresentar(Codigo* codigo) {
     codigo->setValor(dado1);
 }
 
-char TelaConsultaProva::apresentar(Prova* prova) {
-    char campo1[]="Consulta de Prova";
+*/
+
+int TelaOpcoesProvas::apresentar(list<Prova> listaProvas) {
+    char campo1[] = "Prova: ";
+    char campo2[] = "ID: ";
+    char campo3[] = "Digite o ID da prova que deseja acessar";
+    char dado1[30];
+    int linha, coluna;
+
+    initscr();
+    getmaxyx(stdscr, linha, coluna);
+    
+    char *teste;
+    int contador = 3;
+    list<Prova>::iterator it;
+    for(it = listaProvas.begin(); it != listaProvas.end(); ++it) {
+        mvprintw(linha/contador, (coluna-strlen(campo1))/2, "%s", campo1);
+        mvprintw(linha/contador, (coluna-it->getNome().length())/1, "%s", it->getNome());
+        mvprintw(linha/contador + 2, (coluna-strlen(campo2))/2, "%s", campo2);
+        mvprintw(linha/contador + 2, (coluna-(std::to_string(it->getId()).length()))/1, "%s", (std::to_string(it->getId()).length()));             
+        contador += 3;
+    }
+    
+    mvprintw(linha/16,(coluna-strlen(campo3))/2,"%s",campo3);
+    getstr(dado1);
+     
+    clear();
+    endwin();
+
+    int id = std::stoi(dado1);
+    return id;    
+}
+
+char TelaConsultaProva::apresentar(Prova* prova, int qtdQuestoes) {
+    char campo1[]="Dados de Prova";
 
     char campo2[]="1 - Editar";
     char campo3[]="2 - Descadastrar";
@@ -382,9 +418,9 @@ char TelaConsultaProva::apresentar(Prova* prova) {
     getmaxyx(stdscr,linha,coluna);
 
     mvprintw(linha/2 - 10,(coluna-strlen(campo1))/2,"%s",campo1);
-    mvprintw(linha/2 - 6,coluna/5,"Nome: %s",prova->getNome().getValor().c_str());
-    mvprintw(linha/2 - 4,coluna/5,"Codigo: %s",prova->getCodigo().getValor().c_str());
-    mvprintw(linha/2 - 2,coluna/5,"Descricao: %s",prova->getDescricao().getValor().c_str());
+    mvprintw(linha/2 - 6,coluna/5,"Nome: %s",prova->getNome());
+    mvprintw(linha/2 - 4,coluna/5,"ID: %s",std::to_string(prova->getId()));
+    mvprintw(linha/2 - 2,coluna/5,"Numero de Questoes: %s",std::to_string(qtdQuestoes));
 
     mvprintw(linha/2 + 2,(coluna-strlen(campo2))/2,"%s",campo2);
     mvprintw(linha/2 + 4,(coluna-strlen(campo3))/2,"%s",campo3);
@@ -398,6 +434,7 @@ char TelaConsultaProva::apresentar(Prova* prova) {
     return dado1[0];
 }
 
+/*
 char TelaConsultarUsuario::apresentar(Usuario usuario) {
     char campo1[] = "Consultar usuario";
     char campo2[]="Matricula: ";

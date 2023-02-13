@@ -192,37 +192,37 @@ void CntrApresentacaoUsuario::cadastrar() {
     }
 }
 
-/*
 
-void CntrApresentacaoProva::executar(Matricula* matricula) {
-
+void CntrApresentacaoProva::executar(Turma* turma) {
     TelaMenuProva telaMenuProva;
+    TelaMensagem telaMensagem;
+    TelaOpcoesProvas telaOpcoesProvas;
     char opcao;
-    ComandoIAProva* comando;
+    list<Prova> *listaProvas = nullptr;
 
     while(true) {
         opcao = telaMenuProva.apresentar();
 
         switch(opcao) {
             case '1':
-                comando = new ComandoIAProvaConsultarProva();
-                comando->executar(cntrServicoProva, matricula);
-                delete comando;
+                cntrServicoTurma->listarProvas(turma->getId(), listaProvas);
+                try{ 
+                    int idProva = telaOpcoesProvas.apresentar(*listaProvas);
+                    Prova *prova = new Prova;
+                    prova->setId(idProva);
+                    gerenciar(prova);
+                }catch(invalid_argument &e){
+                    telaMensagem.apresentar("Formato de dado invalido.");
+                }
                 break;
             case '2':
-                comando = new ComandoIAProvaCadastrarProva();
-                comando->executar(cntrServicoProva, matricula);
-                delete comando;
+
                 break;
             case '3':
-                comando = new ComandoIAProvaConsultarQuestao();
-                comando->executar(cntrServicoProva, matricula);
-                delete comando;
+
                 break;
             case '4':
-                comando = new ComandoIAProvaCadastrarQuestao();
-                comando->executar(cntrServicoProva, matricula);
-                delete comando;
+
                 break;
             case '5':
                 return;
@@ -232,6 +232,29 @@ void CntrApresentacaoProva::executar(Matricula* matricula) {
         }
     }
 }
+
+void CntrApresentacaoProva::gerenciar(Prova* prova){
+    TelaConsultaProva telaConsultaProva;
+    
+    int *qtdQuestoes;
+    cntrServicoProva->getQtdQuestoes(*prova, qtdQuestoes);
+    char opcao;
+
+    while (true){
+        opcao = telaConsultaProva.apresentar(prova, *qtdQuestoes);
+        switch (opcao){
+        case "1":
+            break;
+        case "2":
+            break;
+        default:
+            break;
+        }
+    }
+    
+}
+
+/*
 
 bool CntrServicoAutenticacao::autenticar(Usuario usuario) {
     ContainerUsuario* container = ContainerUsuario::getInstancia();
@@ -313,3 +336,6 @@ bool CntrServicoProva::consultarQuestao(Questao* questao){
 
 */
 
+//bool CntrServicoProva::getQtdQuestoes(Prova prova, int *qtdQuestoes){
+//    return false;
+//}

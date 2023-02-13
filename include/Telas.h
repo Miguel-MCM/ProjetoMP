@@ -85,11 +85,18 @@ class TelaMenu {
 public:
     char apresentar();
 };
+*/
+
+class TelaOpcoesProvas{
+public:
+    int apresentar(list<Prova>);
+}
 
 class TelaMenuProva {
 public:
     char apresentar();
 };
+
 
 class TelaCodigo {
 public:
@@ -110,7 +117,7 @@ class TelaEdicaoProva {
 public:
     void apresentar(Prova*);
 };
-
+/*
 class TelaConsultarUsuario {
 public:
     char apresentar(Usuario);

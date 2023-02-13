@@ -73,9 +73,11 @@ void inline CntrApresentacaoAutenticacao::setCntrServicoAutenticacao(IServicoAut
 
 class CntrApresentacaoProva:public IApresentacaoProva {
  private:
+        IServicoTurma* cntrServicoTurma;
         IServicoProva* cntrServicoProva;
  public:
-        void executar(Usuario*);
+        void executar(Turma*);
+        void gerenciar(Prova*);
         void setCntrServicoProva(IServicoProva*);
 };
 
@@ -121,16 +123,19 @@ class CntrServicoUsuario:public IServicoUsuario {
         bool consultar(Usuario*);
 };
 
-// class CntrServicoProva:public IServicoProva{
-//  public:
-//         bool cadastrarProva(Prova);
-//         bool descadastrarProva(Codigo);
-//         bool editarProva(Prova);
-//         bool consultarProva(Prova*);
-//         bool cadastrarQuestao(Questao);
-//         bool descadastrarQuestao(Codigo);
-//         bool editarQuestao(Questao);
-//         bool consultarQuestao(Questao*);
-// };
+class CntrServicoProva:public IServicoProva{
+public:
+        bool cadastrarProva(Prova);
+         bool descadastrarProva(Codigo);
+        bool editarProva(Prova);
+        bool consultarProva(Prova*);
+        bool getQtdQuestoes(Prova, int*){return false} 
+        vector<string> getProvas();
+
+        bool cadastrarQuestao(Questao);
+        bool descadastrarQuestao(Codigo);
+        bool editarQuestao(Questao);
+        bool consultarQuestao(Questao*);
+};
 
 #endif   // INCLUDE_CONTROLADORAS_H_
