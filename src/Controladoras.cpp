@@ -91,6 +91,26 @@ bool CntrApresentacaoAutenticacao::autenticar(Usuario* usuario) {
     return resultado;
 }
 
+bool CntrServicoAutenticacao::autenticar(Usuario usuario) {
+    TelaMensagem telaMensagem;
+    ComandoConsultarUsuario cmdConsultar(usuario.getEmail());
+    cmdConsultar.executar();
+    Usuario consulta;
+
+    try {
+        consulta = cmdConsultar.getResultado();
+    } catch (const EErroPersistencia &exp) {
+        telaMensagem.apresentar("Lista de resultados vazia.");
+        return false;
+    }
+
+    if (consulta.getSenha() == usuario.getSenha()) {
+        return true;
+    } 
+
+    return false;
+}
+
 void CntrApresentacaoUsuario::cadastrar() {
     bool resultado;
     Usuario* usuario = new Usuario();
@@ -422,10 +442,6 @@ void CntrApresentacaoProva::gerenciar(Prova* prova) {
     }
     
 }
-
-// bool CntrServicoAutenticacao::autenticar(Usuario usuario) {
-//     ContainerUsuario* container = ContainerUsuario::getInstancia();
-// }
 
 
 /*

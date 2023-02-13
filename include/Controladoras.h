@@ -6,6 +6,7 @@
 #include <list>
 #include "Interfaces.h"
 #include "./curses.h"
+#include "ComandosSQL.h"
 
 using std::string;
 using std::list;
