@@ -116,7 +116,7 @@ public:
 
 class TelaEdicaoProva {
 public:
-    void apresentar(Prova*);
+    char apresentar(Prova*);
 };
 /*
 class TelaConsultarUsuario {
@@ -129,10 +129,19 @@ public:
     void apresentar(Usuario *);
 };
 
+*/
+class TelaDefinicaoTipoQuestao {
+public:
+    char apresentar();
+};
+
 class TelaCadastroQuestao {
 public:
-    void apresentar(Questao*);
+    void apresentarCriarMultiplaEscolha(Questao*);
+    void apresentarCriarCertoErrado(Questao*);
+    void apresentarCriarNumerico(Questao*);
 };
+/*
 
 class TelaConsultaQuestao {
 public:
@@ -144,6 +153,11 @@ public:
     void apresentar(Questao *);
 };
 */
+
+class TelaOpcoesQuestoes {
+public:
+    int apresentar(list<Questao>);
+}
 
 
 #endif  // INCLUDE_TELAS_H_

@@ -2,6 +2,7 @@
 #include <string.h>
 #include <iostream>
 
+using std::list;
 using std::vector;
 using std::pair;
 
@@ -295,11 +296,11 @@ char TelaMenuProva::apresentar() {
     char campo2[]="1. Consultar";
     char campo3[]="2. Cadastrar";
 
-    char campo4[]="Gerenciamento de Questão";
-    char campo5[]="3. Consultar";
-    char campo6[]="4. Cadastrar";
+//    char campo4[]="Gerenciamento de Questão";
+//    char campo5[]="3. Consultar";
+//    char campo6[]="4. Cadastrar";
 
-    char campo7[]="5. Voltar";
+    char campo7[]="3. Voltar";
 
     char campo8[]="Selecione uma opcao: ";
     char dado1[1];
@@ -312,11 +313,11 @@ char TelaMenuProva::apresentar() {
     mvprintw(linha/4 + 2,(coluna-strlen(campo2))/4,"%s",campo2);
     mvprintw(linha/4 + 4,(coluna-strlen(campo3))/4,"%s",campo3);
 
-    mvprintw(linha/4,3*(coluna-strlen(campo4))/4,"%s",campo4);
-    mvprintw(linha/4 + 2,3*(coluna-strlen(campo5))/4,"%s",campo5);
-    mvprintw(linha/4 + 4,3*(coluna-strlen(campo6))/4,"%s",campo6);
+//    mvprintw(linha/4,3*(coluna-strlen(campo4))/4,"%s",campo4);
+//    mvprintw(linha/4 + 2,3*(coluna-strlen(campo5))/4,"%s",campo5);
+//    mvprintw(linha/4 + 4,3*(coluna-strlen(campo6))/4,"%s",campo6);
 
-    mvprintw(linha/4 + 10,(coluna-strlen(campo7))/2,"%s",campo7);
+    mvprintw(linha/4 + 6,(coluna-strlen(campo7))/2,"%s",campo7);
     mvprintw(linha/4 + 12,(coluna-strlen(campo8))/2,"%s",campo8);
 
     getstr(dado1);
@@ -406,11 +407,12 @@ int TelaOpcoesProvas::apresentar(list<Prova> listaProvas) {
 char TelaConsultaProva::apresentar(Prova* prova, int qtdQuestoes) {
     char campo1[]="Dados de Prova";
 
-    char campo2[]="1 - Editar";
-    char campo3[]="2 - Descadastrar";
-    char campo4[]="3 - Voltar";
+    char campo2[]="1 - Editar.";
+    char campo3[]="2 - Descadastrar.";
+    char campoT[]="3 - Acessar questoes.";
+    char campo4[]="4 - Voltar.";
     char campo5[]="Selecione uma opcao: ";
-    char dado1[10];
+    char dado1[1];
 
     int linha,coluna;
 
@@ -425,9 +427,10 @@ char TelaConsultaProva::apresentar(Prova* prova, int qtdQuestoes) {
     mvprintw(linha/2 + 2,(coluna-strlen(campo2))/2,"%s",campo2);
     mvprintw(linha/2 + 4,(coluna-strlen(campo3))/2,"%s",campo3);
     mvprintw(linha/2 + 6,(coluna-strlen(campo4))/2,"%s",campo4);
+    
     mvprintw(linha/2 + 8,(coluna-strlen(campo5))/2,"%s",campo5);
-
     getstr(dado1);
+
     clear();
     endwin();
 
@@ -475,10 +478,18 @@ void TelaCadastroProva::apresentar(Prova* prova, int idTurma) {
 }
 
 
-void TelaEdicaoProva::apresentar(Prova* prova) {
+char TelaEdicaoProva::apresentar(Prova* prova) {
     char campo1[]="Deixe o campo em branco para manter-lo igual.";
     char campo2[]="Digite novo titulo de prova : ";
+   
+    char campo3[]="1 - Adicionar questao a prova.";
+    char campo4[]="2 - Remover questao da prova.";
+    char campo5[]="3 - Retornar.";
+    
+    char campo6[]="Selecione uma opcao: ";
+
     char dado1[80];
+    char dado2[1];
     int linha,coluna;
 
     initscr();
@@ -487,13 +498,25 @@ void TelaEdicaoProva::apresentar(Prova* prova) {
     mvprintw(linha/3 - 2,(coluna-strlen(campo1))/2,"%s",campo1);
     mvprintw(linha/3,(coluna-strlen(campo2))/2,"%s",campo2);
     getstr(dado1);
+    
+    mvprintw(linha/3 + 4,(coluna-strlen(campo3))/2,"%s",campo3);
+    mvprintw(linha/3 + 6,(coluna-strlen(campo4))/2,"%s",campo4);
+    mvprintw(linha/3 + 8,(coluna-strlen(campo5))/2,"%s",campo5);
+
+    mvprintw(linha/4 + 12,(coluna-strlen(campo6))/2,"%s",campo6);
+    getstr(dado2);
+    
     clear();
     endwin();
 
     if (dado1[0] != '\0'){
         prova->setNome(dado1);
     }
+
+    return dado2[0];
 }
+
+
 
 /*
 void TelaEdicaoUsuario::apresentar(Usuario * usuario) {
@@ -524,19 +547,51 @@ void TelaEdicaoUsuario::apresentar(Usuario * usuario) {
     usuario->setSenha(senha);
 }
 
-void TelaCadastroQuestao::apresentar(Questao* questao) {
-    char campo1[]="Digite o codigo : ";
-    char campo2[]="Digite o nome : ";
-    char campo3[]="Digite o codigo do prova : ";
-    char campo4[]="Digite a data de inicio : ";
-    char campo5[]="Digite a data de termino : ";
-    char campo6[]="Digite a disciplina : ";
+*/
+char TelaDefinicaoTipoQuestao::apresentar() {
+    char campo1[]="Tipos de questao a ser criada : ";
+    char campo2[]="1 - Questao de multipla escolha";
+    char campo3[]="2 - Questao de certo ou errado";
+    char campo4[]="3 - Questao de resposta numerica";
+    char campo5[]="Selecine um tipo : ";
+
+    char dado1[1];
+    int linha,coluna;
+
+    initscr();
+    getmaxyx(stdscr,linha,coluna);
+
+    mvprintw(linha/3 - 2,(coluna-strlen(campo1))/2,"%s",campo1);
+    mvprintw(linha/3,(coluna-strlen(campo2))/2,"%s",campo2);
+    mvprintw(linha/3 + 2,(coluna-strlen(campo3))/2,"%s",campo3);
+    mvprintw(linha/3 + 4,(coluna-strlen(campo4))/2,"%s",campo4);
+
+    mvprintw(linha/4 + 12,(coluna-strlen(campo5))/2,"%s",campo5);
+    getstr(dado1);
+
+    clear();
+    endwin();
+
+    return dado1[0];
+}
+
+void TelaCadastroQuestao::apresentarCriarMultiplaEscolha(Questao* questao) {
+    char campo1[]="Digite o titulo da questao : ";
+    char campo2[]="Digite o texto da questao : ";
+    char campo3[]="Digite numero de alternativas (limite 5) : ";
+    char campo4[]="Digite numero de alternativa correta : ";
+
+    char campo5[]="Escreva as alternativas : ";
+
     char dado1[80];
     char dado2[80];
     char dado3[80];
     char dado4[80];
-    char dado5[80];
-    char dado6[80];
+    
+    list<string> alternativas;
+        
+    int contador = 6;
+    int numAlternativas;
     int linha,coluna;
 
     initscr();
@@ -548,40 +603,92 @@ void TelaCadastroQuestao::apresentar(Questao* questao) {
     getstr(dado2);
     mvprintw(linha/3 + 4,(coluna-strlen(campo3))/2,"%s",campo3);
     getstr(dado3);
+    numAlternativas = std::stoi(dado3);
+    
+    mvprintw(linha/3,(coluna-strlen(campo1))/2,"%s",campo5);
+    for(int i = 0; i < numAlternativas; i++) {
+        mvprintw(linha/3 + contador,(coluna - (std::to_string(i+1) + ": ").length())/2,"%s", std::to_string(i+1) + ": ");
+        getstr(dado3);
+        alternativas.push_back(dado3);
+
+        contador += 2;
+    }
+
     mvprintw(linha/3 + 6,(coluna-strlen(campo4))/2,"%s",campo4);
     getstr(dado4);
-    mvprintw(linha/3 + 8,(coluna-strlen(campo5))/2,"%s",campo5);
-    getstr(dado5);
-    mvprintw(linha/3 + 10,(coluna-strlen(campo6))/2,"%s",campo6);
-    getstr(dado6);
+    
     clear();
     endwin();
 
-    Codigo codigo;
-    codigo.setValor(dado1);
-    questao->setCodigo(codigo);
-
-    Texto nome;
-    nome.setValor(dado2);
-    questao->setNome(nome);
-
-    Codigo prova;
-    prova.setValor(dado3);
-    questao->setProva(prova);
-
-    Data inicio;
-    inicio.setValor(dado4);
-    questao->setInicio(inicio);
-
-    Data termino;
-    termino.setValor(dado5);
-    questao->setTermino(termino);
-
-    Disciplina disciplina;
-    disciplina.setValor(dado6);
-    questao->setDisciplina(disciplina);
+    questao->setNome(dado1);
+    questao->setTexto(dado2);
+    questao->setAlternativas(alternativas);    
+    questao->setRespostaCorreta(std::stoi(dado4));
 }
 
+void TelaCadastroQuestao::apresentarCriarCertoErrado(Questao* questao) {
+    char campo1[]="Digite o titulo da questao : ";
+    char campo2[]="Digite o texto da questao : ";
+    char campo3[]="Digite resposta da questão (0 para errado ou 1 para correto) : ";
+
+    char dado1[80];
+    char dado2[80];
+    char dado3[80];
+
+    int resposta;
+
+    list<string> alternativas ({"0", "1"});
+
+    int linha, coluna;
+    initscr();
+    getmaxyx(stdscr,linha,coluna);
+    
+    mvprintw(linha/3,(coluna-strlen(campo1))/2,"%s",campo1);
+    getstr(dado1);
+    mvprintw(linha/3 + 2,(coluna-strlen(campo2))/2,"%s",campo2);
+    getstr(dado2);
+    mvprintw(linha/3 + 4,(coluna-strlen(campo3))/2,"%s",campo3);
+    getstr(dado3);
+    resposta = std::stoi(dado3);
+
+    questao->setNome(dado1);
+    questao->setTexto(dado2);
+    questao->setAlternativas(alternativas);    
+    questao->setRespostaCorreta(resposta);
+}
+
+void TelaCadastroQuestao::apresentarCriarNumerico(Questao* questao) {
+    char campo1[]="Digite o titulo da questao : ";
+    char campo2[]="Digite o texto da questao : ";
+    char campo3[]="Digite resposta numerica da questão : ";
+
+    char dado1[80];
+    char dado2[80];
+    char dado3[80];
+
+    int resposta;
+
+    list<string> alternativas;
+
+    int linha, coluna;
+    initscr();
+    getmaxyx(stdscr,linha,coluna);
+    
+    mvprintw(linha/3,(coluna-strlen(campo1))/2,"%s",campo1);
+    getstr(dado1);
+    mvprintw(linha/3 + 2,(coluna-strlen(campo2))/2,"%s",campo2);
+    getstr(dado2);
+    mvprintw(linha/3 + 4,(coluna-strlen(campo3))/2,"%s",campo3);
+    getstr(dado3);
+    resposta = std::stoi(dado3);
+
+    questao->setNome(dado1);
+    questao->setTexto(dado2);
+    questao->setAlternativas(alternativas);    
+    questao->setRespostaCorreta(resposta);
+}
+
+/*
 char TelaConsultaQuestao::apresentar(Questao* questao) {
     char campo1[]="Consulta de Questao";
 

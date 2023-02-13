@@ -54,6 +54,8 @@ class IApresentacaoTurma {
 class IApresentacaoProva {
  public:
         virtual void executar(Usuario*) = 0;
+        virtual void gerenciar(Prova*) = 0;
+        virtual void interfaceEdicao(Prova*) = 0;
         virtual void setCntrServicoProva(IServicoProva*) = 0;
         virtual void setCntrServicoQuestao(IServicoQuestao*) = 0;
 
@@ -85,18 +87,24 @@ class IServicoProva {
         virtual bool consultarResposta(Resposta*) = 0;
         virtual bool cadastrarResposta(Resposta) = 0;
         virtual bool getQtdQuestoes(Prova, int*) = 0;
+
+        virtual bool cadastrarQuestao(Questao) = 0;
+        virtual bool descadastrarQuestao(int) = 0;
+        virtual bool editarQuestao(Questao) = 0;
+        virtual bool consultarQuestao(Questao*) = 0;
+        virtual bool getListaQuestoes(list<int>) = 0;
         virtual ~IServicoProva() {}
 };
 
-class IServicoQuestao {
- public:
-        virtual bool cadastrar(Questao) = 0;
-        virtual bool descadastrar(int) = 0;
-        virtual bool editar(Questao) = 0;
-        virtual bool consultar(Questao*) = 0;
-
-        ~IServicoQuestao() {}
-};
+//class IServicoQuestao {
+// public:
+//        virtual bool cadastrar(Questao) = 0;
+//        virtual bool descadastrar(int) = 0;
+//        virtual bool editar(Questao) = 0;
+//        virtual bool consultar(Questao*) = 0;
+//
+//        ~IServicoQuestao() {}
+//};
 
 class IServicoTurma {
  public:

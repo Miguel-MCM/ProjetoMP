@@ -80,6 +80,7 @@ class CntrApresentacaoProva:public IApresentacaoProva {
  public:
         void executar(Turma*);
         void gerenciar(Prova*);
+        void interfaceEdicao(Prova*);
         void setCntrServicoProva(IServicoProva*);
 };
 
@@ -135,9 +136,10 @@ public:
         vector<string> getProvas();
 
         bool cadastrarQuestao(Questao);
-        bool descadastrarQuestao(Codigo);
+        bool descadastrarQuestao(int);
         bool editarQuestao(Questao);
         bool consultarQuestao(Questao*);
+        bool getListaQuestoes(list<int>)
 };
 
 #endif   // INCLUDE_CONTROLADORAS_H_
