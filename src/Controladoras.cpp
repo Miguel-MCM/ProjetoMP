@@ -220,7 +220,7 @@ void CntrApresentacaoProva::executar(Turma* turma) {
                 Prova *prova = new Prova;
                 try{
                     telaCadastroProva.apresentar(prova , turma->getId());
-                    cntrServicoProva->cadastrarProva(prova);
+                    cntrServicoProva->cadastrarProva(*prova);
                 }catch(invalid_argument &e){
                     telaMensagem.apresentar("Formato de dado invalido.");
                 }

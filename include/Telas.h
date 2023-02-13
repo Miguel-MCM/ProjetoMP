@@ -91,7 +91,7 @@ public:
 class TelaOpcoesProvas{
 public:
     int apresentar(list<Prova>);
-}
+};
 
 class TelaMenuProva {
 public:
@@ -99,10 +99,10 @@ public:
 };
 
 
-class TelaCodigo {
-public:
-    void apresentar(Codigo*);
-};
+//class TelaCodigo {
+//public:
+//    void apresentar(Codigo*);
+//};
 
 class TelaConsultaProva {
 public:
@@ -111,7 +111,7 @@ public:
 
 class TelaCadastroProva {
 public:
-    void apresentar(Prova*);
+    void apresentar(Prova*, int);
 };
 
 class TelaEdicaoProva {

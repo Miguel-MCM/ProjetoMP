@@ -2,6 +2,8 @@
 #define INCLUDE_CONTROLADORAS_H_
 
 #include "Interfaces.h"
+#include <string>
+#include <vector>
 #include "./curses.h"
 
 class CntrApresentacaoUsuario:public IApresentacaoUsuario {
@@ -126,10 +128,10 @@ class CntrServicoUsuario:public IServicoUsuario {
 class CntrServicoProva:public IServicoProva{
 public:
         bool cadastrarProva(Prova);
-         bool descadastrarProva(Codigo);
+        bool descadastrarProva(int);
         bool editarProva(Prova);
         bool consultarProva(Prova*);
-        bool getQtdQuestoes(Prova, int*){return false} 
+        bool getQtdQuestoes(Prova, int*) {return false;} 
         vector<string> getProvas();
 
         bool cadastrarQuestao(Questao);
