@@ -67,6 +67,7 @@ public:
 class ComandoCadastrarUsuario:public ComandoSQL {
  public:
     ComandoCadastrarUsuario(Usuario);
+    int getResultado();
 };
 
 class ComandoConsultarUsuario:public ComandoSQL {
@@ -77,12 +78,40 @@ class ComandoConsultarUsuario:public ComandoSQL {
 
 class ComandoDescadastrarUsuario:public ComandoSQL {
  public:
-    ComandoDescadastrarUsuario(int);
+    ComandoDescadastrarUsuario(int, string);
 };
 
 class ComandoEditarUsuario:public ComandoSQL {
  public:
         ComandoEditarUsuario(Usuario);
 };
+
+class ComandoCadastrarAluno:public ComandoSQL {
+ public:
+        ComandoCadastrarAluno(int);
+};
+
+class ComandoCadastrarProfessor:public ComandoSQL {
+ public:
+        ComandoCadastrarProfessor(int);
+};
+
+class ComandoCadastrarAdmin:public ComandoSQL {
+ public:
+        ComandoCadastrarAdmin(int);
+};
+
+class ComandoCountUsuarios:public ComandoSQL {
+ public:
+        ComandoCountUsuarios();
+        int getResultado();
+};
+
+class CadastrarUsuario {
+ public:
+        void executar(Usuario);
+};
+
+
 
 #endif  //  INCLUDE_COMANDOSSQL_H_

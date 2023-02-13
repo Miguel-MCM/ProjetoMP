@@ -13,18 +13,25 @@ int main() {
     usuario.setNome("Miguel");
     usuario.setEmail("email@email.com");
     usuario.setSenha("123456");
+    usuario.setCargo("aluno");
 
-    ComandoCadastrarUsuario cmd(usuario);
+    CadastrarUsuario cmdCadastrar;
     ComandoConsultarUsuario cmdConsultar(1);
     usuario.setNome("Novo Nome");
     ComandoEditarUsuario cmdEditar(usuario);
-    ComandoDescadastrarUsuario cmdDescadastrar(14);
+    ComandoDescadastrarUsuario cmdDescadastrar(6, "professor");
 
     try {
+        // cmdCadastrar.executar(usuario);
+        cmdDescadastrar.executar();
     }
     catch(EErroPersistencia &e){
         std::cout << e.what() << std::endl;
     }
+
+    // ComandoCadastrarUsuario cmd(usuario);
+    // cmd.executar();
+    // cmd.getResultado();
 
     /*
     // Instanciar Builder.

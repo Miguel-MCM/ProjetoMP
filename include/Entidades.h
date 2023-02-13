@@ -7,6 +7,7 @@
 #include <list>
 #include <map>
 
+
 using std::string;
 using std::invalid_argument;
 using std::list;
@@ -38,7 +39,6 @@ inline void Entidade::setNome(string nome) {
 
 class Usuario:public Entidade {
  protected:
-    static int qtd_usuarios;
     string email;
     string senha;
     string cargo;
