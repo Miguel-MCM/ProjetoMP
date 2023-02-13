@@ -4,6 +4,7 @@
 using std::to_string;
 using std::stoi;
 using std::list;
+using std::map;
 
 list<ElementoResultado> ComandoSQL::listaResultado;
 
@@ -81,6 +82,12 @@ Usuario ComandoConsultarUsuario::getResultado() {
         if(listaResultado.size() < 5)
                 throw EErroPersistencia("Lista de resultados vazia.");
 
+		// while (!listaResultado.empty()) {
+		// 	        resultado = listaResultado.back();
+        // listaResultado.pop_back();
+		// std::cout << resultado.getNomeColuna() << "  " << resultado.getValorColuna() << "\n";
+		// }
+
         resultado = listaResultado.back();
         listaResultado.pop_back();
         usuario.setId(stoi(resultado.getValorColuna()));
@@ -100,6 +107,9 @@ Usuario ComandoConsultarUsuario::getResultado() {
         resultado = listaResultado.back();
         listaResultado.pop_back();
         usuario.setCargo(resultado.getValorColuna());
+
+		std::cout << usuario.getId() << "\n";
+
         return usuario;
 }
 
@@ -469,4 +479,85 @@ Prova ComandoConsultarProva::getResultado() {
         }
 		prova.setIdQuestoes(idQuestoes);
         return prova;
+}
+
+ComandoCadastrarResposta::ComandoCadastrarResposta(Resposta resposta) {
+    comandoSQL = "BEGIN; INSERT INTO Resposta_Prova (Prova_idProva, Aluno_idAluno) VALUES(";
+    comandoSQL += to_string(resposta.getIdProva()) + ", ";
+    comandoSQL += to_string(resposta.getIdEstudante()) + "); SELECT last_insert_rowid();";
+    comandoSQL += "COMMIT";
+}
+
+int ComandoCadastrarResposta::getResultado() {
+        int id = stoi(listaResultado.back().getValorColuna());
+        listaResultado.pop_back();
+        return id;
+}
+
+ComandoAssociarRespostaQuestaoRespostaProva::ComandoAssociarRespostaQuestaoRespostaProva(int idProva, int idQuestao, int numResposta) {
+        comandoSQL = "INSERT INTO Resposta_questao (idResposta_Prova, idQuestao, resposta) VALUES(";
+        comandoSQL += to_string(idProva) + ", ";
+        comandoSQL += to_string(idQuestao) + ", ";
+        comandoSQL += to_string(numResposta) + ");";
+}
+
+int CadastrarResposta::cadastrar(Resposta resposta) {
+	ComandoCadastrarResposta cmdCadastrar(resposta);
+	cmdCadastrar.executar();
+	int id = cmdCadastrar.getResultado();
+
+	map<int, int> respostasQuestoes = resposta.getResposta();
+	for (map<int,int>::iterator it = respostasQuestoes.begin(); it != respostasQuestoes.end() ; it++) {
+		ComandoAssociarRespostaQuestaoRespostaProva cmdAssociar(id, it->first, it->second);
+		cmdAssociar.executar();
+	}
+        return id;
+}
+
+ComandoConsultarResposta::ComandoConsultarResposta(int id){
+    comandoSQL = "SELECT * FROM Resposta_Prova WHERE idResposta_Prova = ";
+    comandoSQL += to_string(id) + ";";
+    comandoSQL += "SELECT * FROM Resposta_questao WHERE idResposta_Prova = ";
+    comandoSQL += to_string(id) + ";";
+}
+
+Resposta ComandoConsultarResposta::getResultado() {
+		ElementoResultado resultado;
+		Resposta resposta;
+
+        if(listaResultado.size() < 3)
+                throw EErroPersistencia("Lista de resultados vazia.");
+
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+		resposta.setId(stoi(resultado.getValorColuna()));
+
+		resultado = listaResultado.back();
+        listaResultado.pop_back();
+		resposta.setIdProva(stoi(resultado.getValorColuna()));
+
+	    resultado = listaResultado.back();
+        listaResultado.pop_back();
+		resposta.setIdEstudante(stoi(resultado.getValorColuna()));
+
+        map<int, int> respostaQuestoes;
+        while (!listaResultado.empty()) {
+                //id Resposta questao
+                listaResultado.pop_back();
+
+                resultado = listaResultado.back();
+                listaResultado.pop_back();
+				int numResposta = stoi(resultado.getValorColuna());
+
+				resultado = listaResultado.back();
+                listaResultado.pop_back();
+				int idQuestao = stoi(resultado.getValorColuna());
+
+				respostaQuestoes.insert(std::make_pair(idQuestao, numResposta));
+                
+				// id Resposta Prova
+				listaResultado.pop_back();
+        }
+		resposta.setResposta(respostaQuestoes);
+        return resposta;
 }

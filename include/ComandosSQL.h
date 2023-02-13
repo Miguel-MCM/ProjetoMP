@@ -206,4 +206,26 @@ class ComandoConsultarProva:public ComandoSQL {
         Prova getResultado();
 };
 
+class ComandoCadastrarResposta:public ComandoSQL {
+ public:
+        ComandoCadastrarResposta(Resposta);
+        int getResultado();
+};
+
+class ComandoAssociarRespostaQuestaoRespostaProva:public ComandoSQL {
+ public:
+        ComandoAssociarRespostaQuestaoRespostaProva(int, int, int);
+};
+
+class CadastrarResposta {
+ public:
+        int cadastrar(Resposta);
+};
+
+class ComandoConsultarResposta:public ComandoSQL {
+ public:
+        ComandoConsultarResposta(int);
+        Resposta getResultado();
+};
+
 #endif  //  INCLUDE_COMANDOSSQL_H_
