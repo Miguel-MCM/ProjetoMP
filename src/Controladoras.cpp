@@ -54,14 +54,14 @@ void CntrApresentacaoUsuario::executar(Usuario* usuario) {
 
 void CntrApresentacaoTurma::executar(Usuario* usuario) {
     string cargo = usuario->getCargo();
-    string opcao
+    string opcao;
 
     if (cargo == "professor") {
-        opcao = "2 - Cadastrar"
+        opcao = "2 - Cadastrar";
     } else if (cargo == "aluno") {
-        opcao = "2 - Entrar"
+        opcao = "2 - Entrar";
     } else {
-        opcao = "2 - Descadastrar"
+        opcao = "2 - Descadastrar";
     }
 
     string titulo = "Menu de Turmas!";
