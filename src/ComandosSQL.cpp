@@ -279,7 +279,6 @@ int CadastrarQuestao::cadastrar(Questao questao) {
         list<string> alternativas = questao.getAlternativas();
 
         for (list<string>::iterator it = alternativas.begin(); it != alternativas.end(); it++) {
-                std::cout << *it << "\n";
                 ComandoCadastrarAlternativa cmdCadastrarAlternativa(id, *it);
                 cmdCadastrarAlternativa.executar();
         }
@@ -287,7 +286,9 @@ int CadastrarQuestao::cadastrar(Questao questao) {
 }
 
 ComandoDescadastrarQuestao::ComandoDescadastrarQuestao(int id) {
-        comandoSQL = "DELETE FROM Alternativas WHERE Questao_idQuestao = ";
+        comandoSQL = "DELETE FROM Prova_has_Questao WHERE Questao_idQuestao = ";
+        comandoSQL += to_string(id) + ";";
+        comandoSQL += "DELETE FROM Alternativas WHERE Questao_idQuestao = ";
         comandoSQL += to_string(id) + ";";
         comandoSQL += "DELETE FROM Questao WHERE idQuestao = ";
         comandoSQL += to_string(id) + ";";
@@ -367,5 +368,105 @@ Questao ComandoConsultarQuestao::getResultado() {
                 listaResultado.pop_back();
         }
         questao.setAlternativas(alternativas);
-        return questao;       
+        return questao;
+}
+
+ComandoCadastrarProva::ComandoCadastrarProva(Prova prova) {
+    comandoSQL = "BEGIN; INSERT INTO Prova (nomeProva, numQuestoes, Turma_idTurma) VALUES(";
+    comandoSQL += "'" + prova.getNome() + "', ";
+    comandoSQL += to_string(prova.getIdQuestoes().size()) + ", ";
+    comandoSQL += to_string(prova.getIdTurma()) + "); SELECT last_insert_rowid();";
+    comandoSQL += "COMMIT";
+}
+
+int ComandoCadastrarProva::getResultado() {
+        int id = stoi(listaResultado.back().getValorColuna());
+        listaResultado.pop_back();
+        return id;
+}
+
+ComandoAssociarQuestaoProva::ComandoAssociarQuestaoProva(int idProva, int idQuestao) {
+        comandoSQL = "INSERT INTO Prova_has_Questao (Prova_idProva, Questao_idQuestao) VALUES(";
+        comandoSQL += to_string(idProva) + ", ";
+        comandoSQL += to_string(idQuestao) + ");";
+}
+
+int CadastrarProva::cadastrar(Prova prova) {
+        ComandoCadastrarProva cmdCadastrar(prova);
+        cmdCadastrar.executar();
+        int id = cmdCadastrar.getResultado();
+
+        list<int> idQuestoes = prova.getIdQuestoes();
+        for (list<int>::iterator it = idQuestoes.begin(); it != idQuestoes.end(); it++) {
+                ComandoAssociarQuestaoProva cmdAssociar(id, *it);
+                cmdAssociar.executar();
+        }
+        return id;
+}
+
+ComandoDescadastrarProva::ComandoDescadastrarProva(int id) {
+        comandoSQL = "DELETE FROM Prova_has_Questao WHERE Prova_idProva = ";
+        comandoSQL += to_string(id) + ";";
+        comandoSQL += "DELETE FROM Prova WHERE idProva = ";
+        comandoSQL += to_string(id) + ";";
+}
+
+ComandoEditarProva::ComandoEditarProva(Prova prova) {
+        comandoSQL = "BEGIN;UPDATE Prova ";
+        comandoSQL += "SET nomeProva = '" + prova.getNome();
+        comandoSQL += "', numQuestoes = " + to_string(prova.getIdQuestoes().size());
+        comandoSQL += " WHERE idProva = " + to_string(prova.getId()) + ";";
+
+        comandoSQL += "DELETE FROM Prova_has_Questao WHERE Prova_idProva = ";
+        comandoSQL += to_string(prova.getId()) + ";";
+
+        list<int> idQuestoes = prova.getIdQuestoes();
+        for (list<int>::iterator it = idQuestoes.begin(); it != idQuestoes.end(); it++) {
+            comandoSQL += "INSERT INTO Prova_has_Questao (Prova_idProva, Questao_idQuestao) VALUES(";
+			comandoSQL += to_string(prova.getId()) + ", ";
+			comandoSQL += to_string(*it) + ");";
+        }
+        comandoSQL += "COMMIT;";
+}
+
+ComandoConsultarProva::ComandoConsultarProva(int id) {
+    comandoSQL = "SELECT * FROM Prova WHERE idProva = ";
+    comandoSQL += to_string(id) + ";";
+    comandoSQL += "SELECT * FROM Prova_has_Questao WHERE Prova_idProva = ";
+    comandoSQL += to_string(id) + ";";
+}
+
+Prova ComandoConsultarProva::getResultado() {
+	    ElementoResultado resultado;
+        Prova prova;
+
+        if(listaResultado.size() < 4)
+                throw EErroPersistencia("Lista de resultados vazia.");
+
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+        prova.setId(stoi(resultado.getValorColuna()));
+
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+        prova.setNome(resultado.getValorColuna());
+
+        //num questoes
+        listaResultado.pop_back();
+
+        resultado = listaResultado.back();
+        listaResultado.pop_back();
+       	prova.setIdTurma(stoi(resultado.getValorColuna()));
+
+        list<int> idQuestoes;
+        while (!listaResultado.empty()) {
+                //id Prova
+                listaResultado.pop_back();
+
+                resultado = listaResultado.back();
+                listaResultado.pop_back();
+                idQuestoes.push_back(stoi(resultado.getValorColuna()));
+        }
+		prova.setIdQuestoes(idQuestoes);
+        return prova;
 }

@@ -174,4 +174,36 @@ class ComandoConsultarQuestao:public ComandoSQL {
         Questao getResultado();
 };
 
+class ComandoCadastrarProva:public ComandoSQL {
+ public:
+        ComandoCadastrarProva(Prova);
+        int getResultado();
+};
+
+class ComandoAssociarQuestaoProva:public ComandoSQL {
+ public:
+        ComandoAssociarQuestaoProva(int, int);
+};
+
+class CadastrarProva {
+ public:
+        int cadastrar(Prova);
+};
+
+class ComandoDescadastrarProva:public ComandoSQL {
+ public:
+        ComandoDescadastrarProva(int);
+};
+
+class ComandoEditarProva:public ComandoSQL {
+ public:
+        ComandoEditarProva(Prova);
+};
+
+class ComandoConsultarProva:public ComandoSQL {
+ public:
+        ComandoConsultarProva(int);
+        Prova getResultado();
+};
+
 #endif  //  INCLUDE_COMANDOSSQL_H_
