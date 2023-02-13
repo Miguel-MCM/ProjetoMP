@@ -201,8 +201,94 @@ bool TelaConfirmacao::apresentar() {
     return confirmou;
 }
 
-void TelaConsultarTurmas::apresentar(map<Turma, string> turmas) {
-    
+string TelaConsultarProvas::apresentar(list<Provas> provas) {
+    const string TITULO = "Provas";
+    vector<string> DADOS;
+
+    char dado1[10];
+
+    for (provas::iterator it = provas.begin(); it != provas.end();) {
+        DADOS.insert(DADOS.end(), "Nome: " + provas->getNome());
+        string id;
+        id = to_string(provas->getId());
+        
+        DADOS.insert(DADOS.end(), "ID: " + id);
+    }
+
+    DADOS.insert(DADOS.end(), "Selecione uma opcao (para voltar digite 0): ");
+        
+    int linha,coluna;
+
+    initscr();
+
+    getmaxyx(stdscr,linha,coluna);
+    mvprintw(linha/2 - 6,(coluna-TITULO.length())/2,"%s",TITULO.c_str());
+    mostrarLinhas(DADOS, linha, coluna);
+
+    getstr(dado1);
+
+    clear();
+    endwin();
+
+    return dado1;
+}
+
+string TelaConsultarTurmas::apresentar(list<Turma> turmas) {
+    const string TITULO = "Turma";
+    vector<string> DADOS;
+
+    char dado1[10];
+
+    for (turmas::iterator it = turmas.begin(); it != turmas.end();) {
+        DADOS.insert(DADOS.end(), "Nome: " + turmas->getNome());
+
+        if (turmas->taAberta()) {        
+            DADOS.insert(DADOS.end(), "Status: Aberta");
+        } else {
+            DADOS.insert(DADOS.end(), "Status: Fechada");
+        }
+
+        string id;
+        id = to_string(turmas->getId());
+
+        DADOS.insert(DADOS.end(), "ID: " + id);
+    }
+
+    DADOS.insert(DADOS.end(), "Selecione uma opcao (para voltar digite 0): ");
+        
+    int linha,coluna;
+
+    initscr();
+
+    getmaxyx(stdscr,linha,coluna);
+    mvprintw(linha/2 - 6,(coluna-TITULO.length())/2,"%s",TITULO.c_str());
+    mostrarLinhas(DADOS, linha, coluna);
+
+    getstr(dado1);
+
+    clear();
+    endwin();
+
+    return dado1;
+}
+
+void TelaListarAlunos(list<Alunos> alunos) {
+    const string TITULO = "Alunos";
+    vector<string> DADOS;
+
+    for (turmas::iterator it = turmas.begin(); it != turmas.end();) {
+        DADOS.insert(DADOS.end(), "Nome: " + turmas->getNome());
+    }
+    int linha,coluna;
+
+    initscr();
+
+    getmaxyx(stdscr,linha,coluna);
+    mvprintw(linha/2 - 6,(coluna-TITULO.length())/2,"%s",TITULO.c_str());
+    mostrarLinhas(DADOS, linha, coluna);
+
+    clear();
+    endwin();
 }
 
 void TelaBusca::apresentar(string id) {

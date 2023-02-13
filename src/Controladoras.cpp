@@ -51,7 +51,31 @@ void CntrApresentacaoUsuario::executar(Usuario* usuario) {
     }
 }
 
-void CntrApresentacaoTurma::executar(Usuario* usuario) {}  // fazer depois de apresentacao usuario
+
+void CntrApresentacaoTurma::executar(Usuario* usuario) {
+    string cargo = usuario->getCargo();
+    string opcao
+
+    if (cargo == "professor") {
+        opcao = "2 - Cadastrar"
+    } else if (cargo == "aluno") {
+        opcao = "2 - Entrar"
+    } else {
+        opcao = "2 - Descadastrar"
+    }
+
+    string titulo = "Menu de Turmas!";
+    vector<string> campos({
+        "1 - Turmas", 
+        opcao, 
+        "3 - Provas",
+        "4 - Editar",
+        "5 - Alunos",
+    });
+    TelaMenu telaMenu;
+    string opcaoMenu;
+
+}
 
 void CntrApresentacaoUsuario::editar(Usuario* usuario) {
     TelaMensagem telaMensagem;

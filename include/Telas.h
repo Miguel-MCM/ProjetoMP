@@ -69,7 +69,7 @@ public:
 
 class TelaConsultarTurmas {
  public:
-    void apresentar(map<Turma, string>);
+    string apresentar(list<Turma>);
 };
 
 class TelaOpcoesProvas{
@@ -103,6 +103,16 @@ public:
     void apresentar(string);
 };
 
+class TelaConsultaProva {
+public:
+    string apresentar(list<Prova>);
+};
+
+class TelaListarAlunos {
+public:
+    void apresentar(list<Alunos>);
+};
+
 /*
 class TelaMensagem:public TelaApresentacao<string> {
  public:
@@ -128,6 +138,7 @@ class TelaMenu {
 public:
     char apresentar();
 };
+
 
 class TelaCodigo {
 public:
