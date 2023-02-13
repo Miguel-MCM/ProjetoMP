@@ -32,22 +32,49 @@ add_executable(ProjetoMP
         src/Entidades.cpp
         src/Telas.cpp
         src/ComandosSQL.cpp
+        # tests/TestesComandoSQL.cpp
         )
 
 target_link_libraries(ProjetoMP ${CURSES_LIBRARIES} sqlite3)
 target_include_directories(ProjetoMP PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
-enable_testing()
+# enable_testing()
 
-add_executable(Testes
+# add_executable(Testes
+#   tests/TestesEntidades.cpp
+#   # tests/TestesComandoSQL.cpp
+# )
+# target_link_libraries(
+#   Testes
+#   GTest::gtest_main
+#   sqlite3
+# )
+
+# target_include_directories(Testes PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+
+# include(GoogleTest)
+# gtest_discover_tests(Testes)
+
+# enable_testing()
+
+add_executable(TestesSQL
   tests/TestesEntidades.cpp
+  tests/TestesComandoSQL.cpp
 )
 target_link_libraries(
-  Testes
+  TestesSQL
   GTest::gtest_main
+  sqlite3
 )
 
-target_include_directories(Testes PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+target_sources(TestesSQL
+    PUBLIC
+        src/ComandosSQL.cpp
+)
+
+target_include_directories(TestesSQL PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
+set_target_properties(TestesSQL PROPERTIES CXX_STANDARD 11)
 
 include(GoogleTest)
-gtest_discover_tests(Testes)
+gtest_discover_tests(TestesSQL)
+
