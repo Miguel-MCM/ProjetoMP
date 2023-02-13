@@ -9,7 +9,6 @@
 
 
 int main() {
-
     // Usuario usuario, consulta;
     // usuario.setNome("nome");
     // usuario.setEmail("email@email");
@@ -28,7 +27,7 @@ int main() {
     // consulta = cmdConsultar.getResultado();
 
     // std::cout << consulta.getNome() << std::endl;
-    /*
+
     // Instanciar Builder.
 
     BuilderSistema* builder;
@@ -46,7 +45,6 @@ int main() {
     // Destruir builder.
 
     delete builder;
-    */
 
     return 0;
 }

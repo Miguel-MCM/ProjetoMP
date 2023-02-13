@@ -214,16 +214,16 @@ class CntrServicoTurma:public IServicoTurma {
     ~CntrServicoTurma() {}
 };
 
-class CntrServicoAdmin:public IServicoAdmin {
- public:
-        bool numeroDeUsuarios(string*);
-        bool numeroDeQuestoes(string*);
-        bool numeroDeProvas(string*);
-        bool numeroDeRespostas(string*);
+// class CntrServicoAdmin:public IServicoAdmin {
+//  public:
+//         bool numeroDeUsuarios(string*);
+//         bool numeroDeQuestoes(string*);
+//         bool numeroDeProvas(string*);
+//         bool numeroDeRespostas(string*);
 
-        bool consultarUsuario(Usuario*);
-        bool consultarTurma(Turma*);
-};
+//         bool consultarUsuario(Usuario*);
+//         bool consultarTurma(Turma*);
+// };
 
 class CntrServicoProva:public IServicoProva{
  public:
