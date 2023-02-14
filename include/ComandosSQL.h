@@ -263,6 +263,7 @@ class ListarQuestoesProva {
         list<Questao> executar(int);
 };
 
+
 class ComandoCountProva:public ComandoSQL {
  public:
 	ComandoCountProva();
@@ -279,6 +280,23 @@ class ComandoCountResposta:public ComandoSQL {
  public:
 	ComandoCountResposta();
 	int getResultado();
+};
+
+class ComandoListarIdTurmaAluno:public ComandoSQL {
+ public:
+	ComandoListarIdTurmaAluno(int);
+	list<int> getResultado();
+};
+
+class ListarTurmasAluno {
+ public:
+	list<Turma> executar(int);
+};
+
+class ComandoListarIdTurmasProfessor:public ComandoSQL {
+ public:
+	ComandoListarIdTurmasProfessor(int);
+	list<Turma> getResultado();
 };
 
 #endif  //  INCLUDE_COMANDOSSQL_H_
