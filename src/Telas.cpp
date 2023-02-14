@@ -180,117 +180,6 @@ bool TelaConfirmacao::apresentar() {
     return confirmou;
 }
 
-/* teste as telas
-int main() {
-    
-    // teste do menu e apresentar tela
-    string titulo = "Menu de teste";
-    vector<string> campos({"Opcao 1", "Opcao 2", "Opcao 3"});
-    TelaMenu tela_menu;
-    string entrada;
-    entrada = tela_menu.apresentar(titulo, campos);
-    std::cout << entrada << std::endl;
-    
-
-    
-    // teste do formulario
-    string titulo = "Formulario de teste";
-    vector<string> perguntas({"Nome: ", "Email: ", "Senha: "});
-    string respostas[3];
-    TelaFormulario tela_formulario;
-    tela_formulario.apresentar(titulo, perguntas, respostas);
-    for (int i = 0; i < 3; i++) {
-        std::cout << *(respostas + i) << std::endl;
-    }
-    
-    return 0;
-}
-*/
-
-/*
-void TelaMensagem::apresentar(string mensagem) {
-
-    int linha,coluna;
-
-    initscr();                                                                      // Iniciar curses.
-    getmaxyx(stdscr,linha,coluna);                                                  // Armazenar quantidade de linhas e de colunas.
-    mvprintw(linha/2,(coluna-strlen(mensagem.c_str()))/2,"%s", mensagem.c_str());   // Imprimir dado.
-    noecho();                                                                       // Desabilitar eco.
-    getch();                                                                        // Ler caracter digitado.
-    echo();                                                                         // Habilitar eco.
-    clear();                                                                        // Limpar janela.
-    endwin();
-}
-
-char TelaMenuUsuario::apresentar() {
-
-    char campo1[]="Gerenciamento de Usuario";
-    char campo2[]="1 - Consultar";
-    char campo3[]="2 - Descadastrar";
-    char campo4[]="3 - Editar";
-    char campo5[]="4 - Retornar a Tela Inicial";
-    char campo6[]="Selecione uma opcao: ";
-    char dado1[10];
-    int linha,coluna;
-
-    initscr();
-    getmaxyx(stdscr,linha,coluna);
-
-    mvprintw(linha/2 - 4,(coluna-strlen(campo1))/2,"%s",campo1);
-    mvprintw(linha/2 - 2,(coluna-strlen(campo2))/2,"%s",campo2);
-    mvprintw(linha/2,(coluna-strlen(campo3))/2,"%s",campo3);
-    mvprintw(linha/2 + 2,(coluna-strlen(campo4))/2,"%s",campo4);
-    mvprintw(linha/2 + 4,(coluna-strlen(campo5))/2,"%s",campo5);
-    mvprintw(linha/2 + 6,(coluna-strlen(campo6))/2,"%s",campo6);
-    getstr(dado1);
-    clear();
-    endwin();
-
-    return dado1[0];
-}
-
-char TelaDescadastro::apresentar() {
-
-    char campo1[]="Deseja confimar o descadastramento? (S/N) ";
-    char dado1[80];
-    int linha,coluna;
-
-    initscr();
-    getmaxyx(stdscr,linha,coluna);
-    mvprintw(linha/2,(coluna-strlen(campo1))/2,"%s",campo1);
-    getstr(dado1);
-    clear();
-    endwin();
-
-    return dado1[0];
-}
-
-char TelaControle::apresentar() {
-
-    char campo1[]="Seja bem-vindo";
-    char campo2[]="1 - Acessar sistema.";
-    char campo3[]="2 - Cadastrar usuario.";
-    char campo4[]="3 - Encerrar execucao.";
-    char campo5[]="Selecione uma opcao: ";
-    char dado1[10];
-    int linha,coluna;
-
-    initscr();
-    getmaxyx(stdscr,linha,coluna);
-
-    mvprintw(linha/2 - 4,(coluna-strlen(campo1))/2,"%s",campo1);
-    mvprintw(linha/2 - 2,(coluna-strlen(campo2))/2,"%s",campo2);
-    mvprintw(linha/2,(coluna-strlen(campo3))/2,"%s",campo3);
-    mvprintw(linha/2 + 2,(coluna-strlen(campo4))/2,"%s",campo4);
-    mvprintw(linha/2 + 4,(coluna-strlen(campo5))/2,"%s",campo5);
-    getstr(dado1);
-    clear();
-    endwin();
-
-    return dado1[0];
-}
-*/
-
 char TelaMenuProva::apresentar() {
     char campo1[]="Gerenciamento de Prova";
     char campo2[]="1. Consultar";
@@ -327,70 +216,23 @@ char TelaMenuProva::apresentar() {
     return dado1[0];
 }
 
-/*
-char TelaMenu::apresentar(){
-
-    char campo1[]="Tela inicial: ";
-    char campo2[]="1 - Servicos de Usuario";
-    char campo3[]="2 - Servicos de Prova e Questão";
-    char campo4[]="3 - Sair da conta.";
-    char campo5[]="Selecione uma opcao: ";
-    char dado1[10];
-    int linha,coluna;
-
-    initscr();
-    getmaxyx(stdscr,linha,coluna);
-
-    mvprintw(linha/2 - 4,(coluna-strlen(campo1))/2,"%s",campo1);
-    mvprintw(linha/2 - 2,(coluna-strlen(campo2))/2,"%s",campo2);
-    mvprintw(linha/2,(coluna-strlen(campo3))/2,"%s",campo3);
-    mvprintw(linha/2 + 2,(coluna-strlen(campo4))/2,"%s",campo4);
-    mvprintw(linha/2 + 4,(coluna-strlen(campo5))/2,"%s",campo5);
-    getstr(dado1);
-    clear();
-    endwin();
-
-    return dado1[0];
-}
-
-
-void TelaCodigo::apresentar(Codigo* codigo) {
-    char campo1[]="Codigo: ";
-    char dado1[15];
-    int linha,coluna;
-
-    initscr();
-    getmaxyx(stdscr,linha,coluna);
-
-    mvprintw(linha/2,(coluna-strlen(campo1))/2,"%s",campo1);
-    getstr(dado1);
-
-    clear();
-    endwin();
-
-    codigo->setValor(dado1);
-}
-
-*/
-
 int TelaOpcoesProvas::apresentar(list<Prova> listaProvas) {
-    char campo1[] = "Prova: ";
-    char campo2[] = "ID: ";
-    char campo3[] = "Digite o ID da prova que deseja acessar";
+    string campo1 = "Prova: ";
+    string campo2 = "ID: ";
+    char campo3[] = "Digite o ID da prova que deseja acessar: ";
     char dado1[30];
     int linha, coluna;
 
     initscr();
     getmaxyx(stdscr, linha, coluna);
     
-    char *teste;
     int contador = 3;
     list<Prova>::iterator it;
     for(it = listaProvas.begin(); it != listaProvas.end(); ++it) {
-        mvprintw(linha/contador, (coluna-strlen(campo1))/2, "%s", campo1);
-        mvprintw(linha/contador, (coluna-it->getNome().length())/1, "%s", it->getNome());
-        mvprintw(linha/contador + 2, (coluna-strlen(campo2))/2, "%s", campo2);
-        mvprintw(linha/contador + 2, (coluna-(std::to_string(it->getId()).length()))/1, "%s", (std::to_string(it->getId()).length()));             
+        mvprintw(linha/contador, (coluna-(campo1 + it->getNome()).length())/2, "%s", (campo1 + it->getNome()).c_str());
+        //mvprintw(linha/contador, (coluna-it->getNome().length())/1, "%s", it->getNome());
+        mvprintw(linha/contador + 2, (coluna-(campo2 + std::to_string(it->getId())).length())/2, "%s", (campo2 + std::to_string(it->getId())).c_str());
+        //mvprintw(linha/contador + 2, (coluna-(std::to_string(it->getId()).length()))/1, "%s", (std::to_string(it->getId()).length()));             
         contador += 3;
     }
     
@@ -436,29 +278,6 @@ char TelaConsultaProva::apresentar(Prova* prova, int qtdQuestoes) {
 
     return dado1[0];
 }
-
-/*
-char TelaConsultarUsuario::apresentar(Usuario usuario) {
-    char campo1[] = "Consultar usuario";
-    char campo2[]="Matricula: ";
-    char campo3[]="Nome: ";
-    char campo4[]="Aperte qualquer tecla para retornar";
-    string matricula = usuario.getMatricula().getValor(), nome = usuario.getNome().getValor();
-
-    int linha,coluna;
-
-    initscr();
-    getmaxyx(stdscr,linha,coluna);
-
-    mvprintw(linha/2 - 4,(coluna-strlen(campo1))/2, campo1);
-    mvprintw(linha/2 - 2,(coluna-strlen(campo2)-matricula.length())/2, "Matricula: %s", matricula.c_str());
-    mvprintw(linha/2,(coluna-strlen(campo3)-nome.length())/2, "Nome: %s", nome.c_str());
-    mvprintw(linha/2 + 4,(coluna-strlen(campo4))/2, campo4);
-    getch();
-    clear();
-    endwin();
-}
-*/
 
 void TelaCadastroProva::apresentar(Prova* prova, int idTurma) {
     char campo1[]="Digite o titulo de prova : ";
@@ -517,37 +336,6 @@ char TelaEdicaoProva::apresentar(Prova* prova) {
 }
 
 
-
-/*
-void TelaEdicaoUsuario::apresentar(Usuario * usuario) {
-    char campo1[]="Edicao do usuario";
-    char campo2[]="Digite o nome: ";
-    char campo3[]="Digite a senha: ";
-    char dado1[80], dado2[80];
-    int linha,coluna;
-    Senha senha;
-    Nome nome;
-
-    initscr();
-    getmaxyx(stdscr,linha,coluna);
-
-    mvprintw(linha/2 - 4,(coluna-strlen(campo1))/2,"%s",campo1);
-    mvprintw(linha/2 - 2,(coluna-strlen(campo2))/2,"%s",campo2);
-    getstr(dado1);
-    nome.setValor(dado1);
-
-    mvprintw(linha/2,(coluna-strlen(campo3))/2,"%s",campo3);
-    getstr(dado2);
-    senha.setValor(dado2);
-
-    clear();
-    endwin();
-
-    usuario->setNome(nome);
-    usuario->setSenha(senha);
-}
-
-*/
 char TelaDefinicaoTipoQuestao::apresentar() {
     char campo1[]="Tipos de questao a ser criada : ";
     char campo2[]="1 - Questao de multipla escolha";
@@ -629,7 +417,7 @@ void TelaCadastroQuestao::apresentarCriarMultiplaEscolha(Questao* questao) {
 void TelaCadastroQuestao::apresentarCriarCertoErrado(Questao* questao) {
     char campo1[]="Digite o titulo da questao : ";
     char campo2[]="Digite o texto da questao : ";
-    char campo3[]="Digite resposta da questão (0 para errado ou 1 para correto) : ";
+    char campo3[]="Digite resposta da questão (0 para errado ou 1 para certo) : ";
 
     char dado1[80];
     char dado2[80];
@@ -637,7 +425,7 @@ void TelaCadastroQuestao::apresentarCriarCertoErrado(Questao* questao) {
 
     int resposta;
 
-    list<string> alternativas ({"0", "1"});
+    list<string> alternativas ({"0 - errado", "1 - certo"});
 
     int linha, coluna;
     initscr();
@@ -688,97 +476,114 @@ void TelaCadastroQuestao::apresentarCriarNumerico(Questao* questao) {
     questao->setRespostaCorreta(resposta);
 }
 
-/*
-char TelaConsultaQuestao::apresentar(Questao* questao) {
-    char campo1[]="Consulta de Questao";
+char TelaConsultaQuestao::apresentar(list<Questao> listaQuestao) {
+    string campo1 = "Resposta correta: ";
+ 
+    std::vector<Questao> vectorQuestoes(listaQuestao.begin(), listaQuestao.end());
 
-    char campo2[]="1 - Editar";
-    char campo3[]="2 - Descadastrar";
-    char campo4[]="3 - Voltar";
-    char campo5[]="Selecione uma opcao: ";
-    char dado1[10];
-
-    int linha,coluna;
+    int linha, coluna;
+    string campo;
 
     initscr();
-    getmaxyx(stdscr,linha,coluna);
+    getmaxyx(stdscr, linha, coluna);
 
-    mvprintw(linha/2 - 12,(coluna-strlen(campo1))/2,"%s",campo1);
-    mvprintw(linha/2 - 8,coluna/5,"Nome: %s",questao->getNome().getValor().c_str());
-    mvprintw(linha/2 - 6,coluna/5,"Codigo: %s",questao->getCodigo().getValor().c_str());
-    mvprintw(linha/2 - 4,coluna/5,"Codigo do Prova: %s",questao->getProva().getValor().c_str());
-    mvprintw(linha/2 - 2,coluna/5,"Inicio: %s",questao->getInicio().getValor().c_str());
-    mvprintw(linha/2,coluna/5,"Termino: %s",questao->getTermino().getValor().c_str());
-    mvprintw(linha/2 + 2,coluna/5,"Disciplina: %s",questao->getDisciplina().getValor().c_str());
+    for (int i = 0; i < vectorQuestoes.size(); i++) {
+        mvprintw(linha / 2 - 6, (coluna - vectorQuestoes[i].getTexto().length()) / 2, "%s", vectorQuestoes[i].getTexto().c_str());
+        if (vectorQuestoes[i].getAlternativas().size() != 0) {
+            campo = "Escolha um numero de alternativa: ";
+            for (pair<list<string>::iterator, int> it(vectorQuestoes[i].getAlternativas().begin(), 0); it.first != vectorQuestoes[i].getAlternativas().end(); ++it.first, it.second++) {
+                mvprintw(linha / 2 - 4 + (2 * it.second), (coluna - it.first->length()) / 2, "%s", it.first->c_str());
+            }
+            mvprintw(linha / 2 - 4 + 2 * (vectorQuestoes[i].getAlternativas().size() + 1), (coluna - campo.length()) / 2, "%s", campo.c_str());
+        } else {
+            campo = "Digite sua resposta (apenas aperte enter para ir a proxima): ";
+            mvprintw(linha / 2 - 4 + 2 * (vectorQuestoes[i].getAlternativas().size() + 1), (coluna - campo.length()) / 2, "%s", campo.c_str());        
+        }
 
+        mvprintw(linha - 3, (coluna - (campo1 + std::to_string(vectorQuestoes[i].getRespostaCorreta())).length()), (campo1 + std::to_string(vectorQuestoes[i].getRespostaCorreta())).c_str());
 
-    mvprintw(linha/2 + 4,(coluna-strlen(campo2))/2,"%s",campo2);
-    mvprintw(linha/2 + 6,(coluna-strlen(campo3))/2,"%s",campo3);
-    mvprintw(linha/2 + 8,(coluna-strlen(campo4))/2,"%s",campo4);
-    mvprintw(linha/2 + 10,(coluna-strlen(campo5))/2,"%s",campo5);
+        getch();
 
+        clear();
+    }
+    
+    endwin();   
+}
+
+int TelaOpcoesQuestoes::apresentar(list<Questao> listaQuestao) {
+    string campo1 = "Questao: ";
+    string campo2 = "ID: ";
+    char campo3[] = "Digite o ID da questao que deseja acessar: ";
+    char dado1[30];
+    int linha, coluna;
+
+    initscr();
+    getmaxyx(stdscr, linha, coluna);
+    
+    int contador = 3;
+    list<Questao>::iterator it;
+    for(it = listaQuestao.begin(); it != listaQuestao.end(); ++it) {
+        mvprintw(linha/contador, (coluna-((campo1 + it->getNome()).length()))/2, "%s", (campo1 + it->getNome()).c_str());
+        //mvprintw(linha/contador, (coluna-it->getNome().length())/1, "%s", it->getNome());
+        mvprintw(linha/contador + 2, (coluna-((campo2 + std::to_string(it->getId())).length()))/2, "%s", (campo2 + std::to_string(it->getId())).c_str());
+        //mvprintw(linha/contador + 2, (coluna-(std::to_string(it->getId()).length()))/1, "%s", (std::to_string(it->getId()).length()));             
+        contador += 3;
+    }
+    
+    mvprintw(linha/16,(coluna-strlen(campo3))/2,"%s",campo3);
     getstr(dado1);
+     
     clear();
     endwin();
 
-    return dado1[0];
+    int id = std::stoi(dado1);
+    return id;    
 }
 
-void TelaEdicaoQuestao::apresentar(Questao* questao) {
-    char campo1[]="Deixe o campo em branco para manter-lo igual.";
-    char campo2[]="Digite o nome : ";
-    char campo3[]="Digite a data de inicio : ";
-    char campo4[]="Digite a data de termino : ";
-    char campo5[]="Digite a disciplina : ";
 
-    char dado1[80];
-    char dado2[80];
-    char dado3[80];
-    char dado4[80];
+Resposta TelaRealizarProva::apresentar(list<Questao> listaQuestao) {
+    int linha, coluna;
+    Resposta resposta;
+    char * dado;
+    string campo;
+    map<int, int> respostas;
+    map<int, int>::iterator it2;
+    int id;
 
-    int linha,coluna;
+    std::vector<Questao> questoes(listaQuestao.begin(), listaQuestao.end());
 
     initscr();
-    getmaxyx(stdscr,linha,coluna);
+    getmaxyx(stdscr, linha, coluna);
 
-    mvprintw(linha/3 - 2,(coluna-strlen(campo1))/2,"%s",campo1);
-    mvprintw(linha/3,(coluna-strlen(campo2))/2,"%s",campo2);
-    getstr(dado1);
-    mvprintw(linha/3 + 2,(coluna-strlen(campo3))/2,"%s",campo3);
-    getstr(dado2);
-    mvprintw(linha/3 + 4,(coluna-strlen(campo4))/2,"%s",campo4);
-    getstr(dado3);
-    mvprintw(linha/3 + 6,(coluna-strlen(campo5))/2,"%s",campo5);
-    getstr(dado4);
-    clear();
+    for (int i = 0; i < questoes.size(); i++) {
+        mvprintw(linha / 2 - 6, (coluna - questoes[i].getTexto().length()) / 2, "%s", questoes[i].getTexto().c_str());
+        if (questoes[i].getAlternativas().size() != 0) {
+            campo = "Escolha um numero de alternativa: ";
+            for (pair<list<string>::iterator, int> it(questoes[i].getAlternativas().begin(), 0); it.first != questoes[i].getAlternativas().end(); ++it.first, it.second++) {
+                mvprintw(linha / 2 - 4 + (2 * it.second), (coluna - it.first->length()) / 2, "%s", it.first->c_str());
+            }
+            mvprintw(linha / 2 - 4 + 2 * (questoes[i].getAlternativas().size() + 1), (coluna - campo.length()) / 2, "%s", campo.c_str());
+        } else {
+            campo = "Digite sua resposta (apenas aperte enter para ir a proxima): ";
+            mvprintw(linha / 2 - 4 + 2 * (questoes[i].getAlternativas().size() + 1), (coluna - campo.length()) / 2, "%s", campo.c_str());        
+        }
+
+        getstr(dado);
+        // cppcheck-suppress literalWithCharPtrCompare
+        if (dado == "") {
+            respostas.insert(pair<int, int>(questoes[i].getId(), std::stoi(dado)));
+        } else {
+            respostas.insert(pair<int, int>(questoes[i].getId(), 0));
+        }
+
+        it2++;
+
+        clear();
+    }
+    
     endwin();
 
-    if (dado1[0] != '\0'){
-        Texto nome;
-        nome.setValor(dado1);
-        questao->setNome(nome);
-    }
+    resposta.setResposta(respostas);
 
-    if (dado2[0] != '\0'){
-        Data inicio;
-        inicio.setValor(dado2);
-        questao->setInicio(inicio);
-    }
-
-    if (dado3[0] != '\0'){
-        Data termino;
-        termino.setValor(dado3);
-        questao->setTermino(termino);
-    }
-
-    if (dado4[0] != '\0'){
-        Disciplina disciplina;
-        disciplina.setValor(dado4);
-        questao->setDisciplina(disciplina);
-    }
-
+    return resposta;
 }
-
-//TELA DE DADOS
-//TELA DE EDITAR NOME E SENHA
-*/

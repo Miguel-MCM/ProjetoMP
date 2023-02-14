@@ -55,7 +55,7 @@ class IApresentacaoProva {
  public:
         virtual void executar(Usuario*) = 0;
         virtual void gerenciar(Prova*) = 0;
-        virtual void interfaceEdicao(Prova*) = 0;
+        virtual void editar(Prova*) = 0;
         virtual void setCntrServicoProva(IServicoProva*) = 0;
         virtual void setCntrServicoQuestao(IServicoQuestao*) = 0;
 
@@ -92,7 +92,7 @@ class IServicoProva {
         virtual bool descadastrarQuestao(int) = 0;
         virtual bool editarQuestao(Questao) = 0;
         virtual bool consultarQuestao(Questao*) = 0;
-        virtual bool getListaQuestoes(list<int>) = 0;
+        virtual bool getListaQuestoes(list<int>, list<Questao>*) = 0;
         virtual ~IServicoProva() {}
 };
 

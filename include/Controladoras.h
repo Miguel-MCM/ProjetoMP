@@ -2,6 +2,7 @@
 #define INCLUDE_CONTROLADORAS_H_
 
 #include "Interfaces.h"
+#include <list>
 #include <string>
 #include <vector>
 #include "./curses.h"
@@ -80,7 +81,7 @@ class CntrApresentacaoProva:public IApresentacaoProva {
  public:
         void executar(Turma*);
         void gerenciar(Prova*);
-        void interfaceEdicao(Prova*);
+        void editar(Prova*);
         void setCntrServicoProva(IServicoProva*);
 };
 
@@ -139,7 +140,7 @@ public:
         bool descadastrarQuestao(int);
         bool editarQuestao(Questao);
         bool consultarQuestao(Questao*);
-        bool getListaQuestoes(list<int>)
+        bool getListaQuestoes(list<int>, list<Questao>*);
 };
 
 #endif   // INCLUDE_CONTROLADORAS_H_

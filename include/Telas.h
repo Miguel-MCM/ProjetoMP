@@ -141,23 +141,21 @@ public:
     void apresentarCriarCertoErrado(Questao*);
     void apresentarCriarNumerico(Questao*);
 };
-/*
 
 class TelaConsultaQuestao {
 public:
-    char apresentar(Questao*);
+    char apresentar(list<Questao>);
 };
-
-class TelaEdicaoQuestao {
-public:
-    void apresentar(Questao *);
-};
-*/
 
 class TelaOpcoesQuestoes {
 public:
     int apresentar(list<Questao>);
-}
+};
+
+class TelaRealizarProva: public Tela {
+ public:
+    Resposta apresentar(list<Questao>);
+};
 
 
 #endif  // INCLUDE_TELAS_H_

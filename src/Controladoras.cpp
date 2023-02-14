@@ -238,6 +238,8 @@ void CntrApresentacaoProva::executar(Turma* turma) {
 void CntrApresentacaoProva::gerenciar(Prova* prova){
     TelaConsultaProva telaConsultaProva;
     TelaMensagem telaMensagem;
+    TelaConsultaQuestao telaConsultaQuestao;
+    list<Questao> *listaQuestao;
     
     int *qtdQuestoes;
     cntrServicoProva->getQtdQuestoes(*prova, qtdQuestoes);
@@ -247,150 +249,78 @@ void CntrApresentacaoProva::gerenciar(Prova* prova){
         opcao = telaConsultaProva.apresentar(prova, *qtdQuestoes);
         switch (opcao){
         case '1':
-            interfaceEdicao(prova);                             
+            editar(prova);                             
             break;
         case '2':
             cntrServicoProva->descadastrarProva(prova->getId());   //não implementado
             telaMensagem.apresentar("Prova arquivada.");
             break;
         case '3':
-            //acesso as questoes nas prova
+            cntrServicoProva->getListaQuestoes(prova->getIdQuestoes(), listaQuestao);
+            telaConsultaQuestao.apresentar(*listaQuestao);        
             break;
         default:
-            break;
+            telaMensagem.apresentar("Dado Invalido");
         }
     }   
 }
 
-void CntrApresentacaoProva::interfaceEdicao(Prova* prova){
+void CntrApresentacaoProva::editar(Prova* prova){
     TelaEdicaoProva telaEdicaoProva;
     TelaMensagem telaMensagem;
     TelaDefinicaoTipoQuestao telaDefinicaoTipoQuestao;
     TelaCadastroQuestao telaCadastroQuestao;
-    list<Questao>;
+    TelaOpcoesQuestoes telaOpcoesQuestoes;
+    list<Questao> *listaQuestao;
+    bool finalizou = false;
 
     char opcao1, opcao2;
     try{
-        opcao1 = telaEdicaoProva.apresentar(prova);
-        cntrServicoProva->editarProva(*prova);
-        switch (opcao1){
-            case '1':
-                Questao *questao = new Questao;
-                questao->setIdProf(prova->getIdProf());
-                opcao2 = telaDefinicaoTipoQuestao.apresentar();
-                switch (opcao2){
-                    case '1':
-                        telaCadastroQuestao.apresentarCriarMultiplaEscolha(questao);
-                        cntrServicoProva->cadastrarQuestao(*questao);
-                        return;
-                    case '2':
-                        telaCadastroQuestao.apresentarCriarCertoErrado(questao);
-                        cntrServicoProva->cadastrarQuestao(*questao);
-                        return;
-                    case '3':
-                        telaCadastroQuestao.apresentarCriarNumerico(questao);
-                        cntrServicoProva->cadastrarQuestao(*questao);
-                        return;
-                }
-                return;
-            case '2':
-                //cntrServicoProva->getListaQuestoes(prova->getIdQuestoes());
-                //Metodos para mostrar e descadastrar questoes de prova
-
-                return;
-            case '3':
-                //retorna para pagina anterior
-                return;    
-            default:
-                break;
+        while(true){
+            opcao1 = telaEdicaoProva.apresentar(prova);
+            cntrServicoProva->editarProva(*prova);
+            switch (opcao1){
+                case '1':
+                    while(!finalizou){    
+                        Questao *questao = new Questao;
+                        questao->setIdProf(prova->getIdProf());
+                        opcao2 = telaDefinicaoTipoQuestao.apresentar();
+                        switch (opcao2){
+                            case '1':
+                                telaCadastroQuestao.apresentarCriarMultiplaEscolha(questao);
+                                cntrServicoProva->cadastrarQuestao(*questao);
+                                finalizou = true;
+                                break;
+                            case '2':
+                                telaCadastroQuestao.apresentarCriarCertoErrado(questao);
+                                cntrServicoProva->cadastrarQuestao(*questao);
+                                finalizou = true;
+                                break;
+                            case '3':
+                                telaCadastroQuestao.apresentarCriarNumerico(questao);
+                                cntrServicoProva->cadastrarQuestao(*questao);
+                                finalizou = true;
+                                break;
+                            default:
+                                telaMensagem.apresentar("Opcao Invalida.");
+                        }
+                    }
+                    break;
+                case '2':
+                    cntrServicoProva->getListaQuestoes(prova->getIdQuestoes(), listaQuestao);
+                    int idQuestao = telaOpcoesQuestoes.apresentar(*listaQuestao);
+                    cntrServicoProva->descadastrarQuestao(idQuestao);
+                    return;
+                case '3':
+                    return;    
+                default:
+                    telaMensagem.apresentar("Opcao Invalida.");
+            }
         }
-
     }catch(invalid_argument &e){
         telaMensagem.apresentar("Formato de dado invalido.");
     }
 }
-
-/*
-
-bool CntrServicoAutenticacao::autenticar(Usuario usuario) {
-    ContainerUsuario* container = ContainerUsuario::getInstancia();
-
-    return container->autenticar(usuario);
-}
-
-bool CntrServicoUsuario::cadastrar(Usuario usuario) {
-
-    ContainerUsuario* container;
-    container = ContainerUsuario::getInstancia();
-
-    return container->incluir(usuario);
-}
-
-bool CntrServicoUsuario::descadastrar(Matricula matricula) {
-
-    ContainerUsuario* container;
-    container = ContainerUsuario::getInstancia();
-
-    return container->remover(matricula);
-}
-
-bool CntrServicoUsuario::editar(Usuario usuario) {
-
-    ContainerUsuario* container;
-    container = ContainerUsuario::getInstancia();
-
-    return container->atualizar(usuario);
-}
-
-bool CntrServicoUsuario::consultar(Usuario* usuario) {
-
-    ContainerUsuario* container;
-    container = ContainerUsuario::getInstancia();
-
-    return container->pesquisar(usuario);
-}
-
-bool CntrServicoProva::consultarProva(Prova* prova) {
-    ComandoISProvaConsultarProva comando;
-    return comando.executar(prova);
-}
-
-bool CntrServicoProva::cadastrarProva(Prova prova){
-    ComandoISProvaCadastrarProva comando;
-    return comando.executar(prova);
-}
-
-bool CntrServicoProva::descadastrarProva(Codigo codigo){
-    ComandoISProvaDescadastrarProva comando;
-    return comando.executar(codigo);
-}
-
-bool CntrServicoProva::editarProva(Prova prova){
-    ComandoISProvaEditarProva comando;
-    return comando.executar(prova);
-}
-
-bool CntrServicoProva::cadastrarQuestao(Questao questao){
-    ComandoISProvaCadastrarQuestao comando;
-    return comando.executar(questao);
-}
-
-bool CntrServicoProva::descadastrarQuestao(Codigo codigo){
-    ComandoISProvaDescadastarQuestao comando;
-    return comando.executar(codigo);
-}
-
-bool CntrServicoProva::editarQuestao(Questao questao){
-    ComandoISProvaEditarQuestao comando;
-    return comando.executar(questao);
-}
-
-bool CntrServicoProva::consultarQuestao(Questao* questao){
-    ComandoISProvaConsultarQuestao comando;
-    return comando.executar(questao);
-}
-
-*/
 
 //bool CntrServicoProva::getQtdQuestoes(Prova prova, int *qtdQuestoes){
 //    return false;
@@ -399,3 +329,4 @@ bool CntrServicoProva::consultarQuestao(Questao* questao){
 //bool CntrServicoProva::getListaQuestoes(lista<int>, listaId){
 //
 //}
+
