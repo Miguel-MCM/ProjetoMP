@@ -214,7 +214,7 @@ class ComandoCadastrarResposta:public ComandoSQL {
 
 class ComandoAssociarRespostaQuestaoRespostaProva:public ComandoSQL {
  public:
-        ComandoAssociarRespostaQuestaoRespostaProva(int, int, int);
+        ComandoAssociarRespostaQuestaoRespostaProva(int, int, int);     
 };
 
 class CadastrarResposta {
@@ -228,4 +228,38 @@ class ComandoConsultarResposta:public ComandoSQL {
         Resposta getResultado();
 };
 
+
+class ComandoListarTurmas:public ComandoSQL {
+ public:
+        ComandoListarTurmas();
+        list<Turma> getResultado();
+};
+
+class ComandoListarProvas:public ComandoSQL {
+ public:
+        ComandoListarProvas(int);
+        list<Prova> getResultado();
+};
+
+class ComandoListarIDAlunosTurma:public ComandoSQL {
+ public:
+        ComandoListarIDAlunosTurma(int);
+        list<int> getResultado();
+};
+
+class ListarAlunosTurma {
+ public:
+        list<Usuario> executar(int);
+};
+
+class ComandoListarIDQuestoesProva:public ComandoSQL {
+ public:
+        ComandoListarIDQuestoesProva(int);
+        list<int> getResultado();
+};
+
+class ListarQuestoesProva {
+ public:
+        list<Questao> executar(int);
+};
 #endif  //  INCLUDE_COMANDOSSQL_H_

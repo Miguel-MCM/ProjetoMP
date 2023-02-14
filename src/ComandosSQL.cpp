@@ -522,8 +522,8 @@ ComandoConsultarResposta::ComandoConsultarResposta(int id){
 }
 
 Resposta ComandoConsultarResposta::getResultado() {
-		ElementoResultado resultado;
-		Resposta resposta;
+        ElementoResultado resultado;
+        Resposta resposta;
 
         if(listaResultado.size() < 3)
                 throw EErroPersistencia("Lista de resultados vazia.");
@@ -560,4 +560,196 @@ Resposta ComandoConsultarResposta::getResultado() {
         }
 		resposta.setResposta(respostaQuestoes);
         return resposta;
+}
+
+
+ComandoListarTurmas::ComandoListarTurmas(){
+        comandoSQL = "SELECT * FROM Turma";
+}
+
+list<Turma> ComandoListarTurmas::getResultado(){
+        ElementoResultado resultado;
+
+        if (listaResultado.empty()){
+                throw EErroPersistencia("Lista de resultados vazia.");
+        }
+
+        list<Turma> turmas;
+
+        while (!listaResultado.empty()){
+                Turma turma_atual;
+
+                resultado = listaResultado.back();
+                listaResultado.pop_back();
+		turma_atual.setId(stoi(resultado.getValorColuna()));
+
+                resultado = listaResultado.back();
+                listaResultado.pop_back();
+		turma_atual.setNome(resultado.getValorColuna());
+
+                resultado = listaResultado.back();
+                listaResultado.pop_back();
+		turma_atual.setDescricao(resultado.getValorColuna());
+
+                resultado = listaResultado.back();
+                listaResultado.pop_back();
+		if (resultado.getValorColuna() == "1"){
+                        turma_atual.switchAberta();
+                }
+                
+                // quantidade de alunos
+                resultado = listaResultado.back();
+                listaResultado.pop_back();
+
+                resultado = listaResultado.back();
+                listaResultado.pop_back();
+                turma_atual.setIdProf(stoi(resultado.getValorColuna()));
+                
+                // id do usuario novamente
+                resultado = listaResultado.back();
+                listaResultado.pop_back();
+
+                turmas.push_back(turma_atual);
+        }
+
+        return turmas;
+}
+
+ComandoListarProvas::ComandoListarProvas(int id){
+        comandoSQL = "SELECT * FROM Prova WHERE Turma_idTurma = ";
+        comandoSQL += to_string(id) + ";";
+}
+
+list<Prova> ComandoListarProvas::getResultado(){
+        ElementoResultado resultado;
+        if (listaResultado.empty()){
+                throw EErroPersistencia("Lista de resultados vazia.");
+        }
+
+        list<Prova> provas;
+        while (!listaResultado.empty()){
+                Prova prova_atual;
+
+                resultado = listaResultado.back();
+                listaResultado.pop_back();
+		int idProvaAtual = stoi(resultado.getValorColuna());
+
+                resultado = listaResultado.back();
+                listaResultado.pop_back();
+                
+                // numero de questoes
+                resultado = listaResultado.back();
+                listaResultado.pop_back();
+		
+                resultado = listaResultado.back();
+                listaResultado.pop_back();
+
+                ComandoConsultarProva cmdConsultar(idProvaAtual);
+                cmdConsultar.executar();
+                prova_atual = cmdConsultar.getResultado();
+
+                provas.push_back(prova_atual);
+        }
+
+        return provas;
+}
+
+ComandoListarIDAlunosTurma::ComandoListarIDAlunosTurma(int id){
+        comandoSQL = "SELECT * FROM Aluno WHERE Turma_idTurma = ";
+        comandoSQL += to_string(id) + ";";
+}
+
+list<int> ComandoListarIDAlunosTurma::getResultado(){
+        ElementoResultado resultado;
+        if (listaResultado.empty()){
+                throw EErroPersistencia("Lista de resultados vazia.");
+        }
+
+        list<int> id_Usuarios;
+        while (!listaResultado.empty()){
+                // idAluno
+                resultado = listaResultado.back();
+                listaResultado.pop_back();
+
+                // Turma_idTurma
+                resultado = listaResultado.back();
+                listaResultado.pop_back();
+
+                // Usuario_idUsuario
+                resultado = listaResultado.back();
+                listaResultado.pop_back();
+                id_Usuarios.push_back(stoi(resultado.getValorColuna()));
+        }
+
+        return id_Usuarios;
+}
+
+list<Usuario> ListarAlunosTurma::executar(int id){
+        ComandoListarIDAlunosTurma cmd_Listar(id);
+        cmd_Listar.executar();
+        list<int> id_Usuarios = cmd_Listar.getResultado();
+        list<Usuario> usuarios;
+
+        while (!id_Usuarios.empty()){
+                int id_atual;
+                Usuario usuario_atual;
+
+                id_atual = id_Usuarios.back();
+                id_Usuarios.pop_back();
+
+                ComandoConsultarUsuario cmd_Consultar(id_atual);
+                usuario_atual = cmd_Consultar.getResultado();
+
+                usuarios.push_back(usuario_atual);
+        }
+
+        return usuarios;
+}
+
+ComandoListarIDQuestoesProva::ComandoListarIDQuestoesProva(int id){
+        comandoSQL = "SELECT * FROM Prova_has_Questao WHERE Prova_idProva ";
+        comandoSQL += to_string(id) + ";";
+}
+
+list<int> ComandoListarIDQuestoesProva::getResultado(){
+        ElementoResultado resultado;
+        if (listaResultado.empty()){
+                throw EErroPersistencia("Lista de resultados vazia.");
+        }
+
+        list<int> id_Questoes;
+        while (!listaResultado.empty()){
+                // Prova_idProva
+                resultado = listaResultado.back();
+                listaResultado.pop_back();
+
+                // Questao_idQuestao
+                resultado = listaResultado.back();
+                listaResultado.pop_back();
+                id_Questoes.push_back(stoi(resultado.getValorColuna()));
+        }
+
+        return id_Questoes;
+}
+
+list<Questao> ListarQuestoesProva::executar(int id){
+        ComandoListarIDQuestoesProva cmd_Listar(id);
+        cmd_Listar.executar();
+        list<int> id_Questoes = cmd_Listar.getResultado();
+        list<Questao> questoes;
+
+        while (!id_Questoes.empty()){
+                int id_atual;
+                Questao questao_atual;
+
+                id_atual = id_Questoes.back();
+                id_Questoes.pop_back();
+
+                ComandoConsultarQuestao cmd_Consultar(id_atual);
+                questao_atual = cmd_Consultar.getResultado();
+
+                questoes.push_back(questao_atual);
+        }
+
+        return questoes;
 }
