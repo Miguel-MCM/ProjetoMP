@@ -1,0 +1,1 @@
+/usr/bin/c++  -g -O0 -coverage -fprofile-arcs -ftest-coverage  -coverage -lgcov CMakeFiles/ProjetoMP.dir/main.cpp.o CMakeFiles/ProjetoMP.dir/src/Controladoras.cpp.o CMakeFiles/ProjetoMP.dir/src/Entidades.cpp.o CMakeFiles/ProjetoMP.dir/src/Telas.cpp.o CMakeFiles/ProjetoMP.dir/src/ComandosSQL.cpp.o -o ProjetoMP  -lcurses /usr/lib/x86_64-linux-gnu/libform.so -lsqlite3 

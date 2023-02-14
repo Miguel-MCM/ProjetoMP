@@ -5,6 +5,9 @@
 #include <string>
 #include <list>
 #include "Interfaces.h"
+#include <list>
+#include <string>
+#include <vector>
 #include "./curses.h"
 #include "ComandosSQL.h"
 
@@ -129,6 +132,7 @@ class CntrApresentacaoProva:public IApresentacaoProva {
  public:
         void executar(Turma*);
         void gerenciar(Prova*);
+        void editar(Prova*);
         void setCntrServicoProva(IServicoProva*);
 };
 
@@ -228,16 +232,17 @@ class CntrServicoTurma:public IServicoTurma {
 class CntrServicoProva:public IServicoProva{
  public:
         bool cadastrarProva(Prova);
-        bool descadastrarProva(Prova);
+        bool descadastrarProva(int);
         bool editarProva(Prova);
         bool consultarProva(Prova*);
-        bool getQtdQuestoes(Prova, int*){return false;}
+        bool getQtdQuestoes(Prova, int*) {return false;} 
         vector<string> getProvas();
 
         bool cadastrarQuestao(Questao);
-        bool descadastrarQuestao(Questao);
+        bool descadastrarQuestao(int);
         bool editarQuestao(Questao);
         bool consultarQuestao(Questao*);
+        bool getListaQuestoes(list<int>, list<Questao>*);
 };
 
 #endif   // INCLUDE_CONTROLADORAS_H_
