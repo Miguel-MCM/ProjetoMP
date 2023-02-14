@@ -40,6 +40,22 @@ const char CARGO_USUARIO[] = "aluno";
 const char NOME_TURMA[] = "Nome da Turma";
 const char DESCRICAO_TURMA[] = "Descricao da Turma";
 
+const int ID_PROVA = 1;
+
+const int ID_QUESTAO_1 = 1;
+const char NOME_QUESTAO_1[] = "Questao 1";
+const char TEXTO_QUESTAO_1[] = "Quanto e 1 + 1 ?";
+const int NUM_ALTERNATIVAS_QUESTAO_1 = 3;
+const int ALTERNATIVA_CORRETA_QUESTAO_1 = 2;
+
+
+
+const int ID_QUESTAO_2 = 2;
+const char NOME_QUESTAO_2[] = "Questao 2";
+const char TEXTO_QUESTAO_2[] = "Alguma duvida?";
+const int NUM_ALTERNATIVAS_QUESTAO_2 = 3;
+const int ALTERNATIVA_CORRETA_QUESTAO_2 = 3;
+
 TEST(testComandoSQL, consultarUsuarioPeloId) {
     int id = ID_ALUNO_TESTE;
     ComandoConsultarUsuario cmdConsultar(id);
@@ -131,7 +147,6 @@ TEST(testComandoSQL, cadastrarDescadastrarUsuario) {
     EXPECT_STREQ(consulta.getEmail().c_str(), usuario.getEmail().c_str());
     EXPECT_STREQ(consulta.getCargo().c_str(), usuario.getCargo().c_str());
 
-    
     ComandoDescadastrarUsuario cmdDescadastrar(id, CARGO_USUARIO);
     cmdDescadastrar.executar();
     cmdConsultar.executar();
@@ -173,3 +188,40 @@ TEST(testComandoSQL, editarUsuario) {
     cmdReeditar.executar();
 }
 
+TEST(testComandosSQLListar, listarProva) {
+    int id = ID_PROVA;
+    ListarQuestoesProva listarQuestoesProva;
+    list<Questao> questoes;
+    try {
+        questoes = listarQuestoesProva.executar(id);
+    }
+    catch (EErroPersistencia &e) {
+        FAIL() << e.what();
+    }
+    catch (invalid_argument &e) {
+        FAIL() << e.what();
+    }
+
+    for(list<Questao>::iterator it = questoes.begin(); it != questoes.end() ; it++) {
+        int idQuestao = it->getId();
+        switch (idQuestao) {
+        case ID_QUESTAO_1:
+            EXPECT_EQ(it->getIdProf(), ID_PROFESSOR_TESTE);
+            EXPECT_STREQ(it->getNome().c_str(), NOME_QUESTAO_1);
+            EXPECT_STREQ(it->getTexto().c_str(), TEXTO_QUESTAO_1);
+            EXPECT_EQ(it->getRespostaCorreta(), ALTERNATIVA_CORRETA_QUESTAO_1);
+            EXPECT_EQ(it->getAlternativas().size(), NUM_ALTERNATIVAS_QUESTAO_1);
+            break;
+        case ID_QUESTAO_2:
+            EXPECT_EQ(it->getIdProf(), ID_PROFESSOR_TESTE);
+            EXPECT_STREQ(it->getNome().c_str(), NOME_QUESTAO_2);
+            EXPECT_STREQ(it->getTexto().c_str(), TEXTO_QUESTAO_2);
+            EXPECT_EQ(it->getRespostaCorreta(), ALTERNATIVA_CORRETA_QUESTAO_2);
+            EXPECT_EQ(it->getAlternativas().size(), NUM_ALTERNATIVAS_QUESTAO_2);
+            break;
+        default:
+            FAIL() << "Questao com id errado: " << idQuestao;
+            break;
+        }
+    }
+}
