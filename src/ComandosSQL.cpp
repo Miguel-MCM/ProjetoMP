@@ -62,7 +62,9 @@ ComandoCadastrarUsuario::ComandoCadastrarUsuario(Usuario usuario) {
 }
 
 int ComandoCadastrarUsuario::getResultado() {
-        return stoi(listaResultado.back().getValorColuna());
+        int id = stoi(listaResultado.back().getValorColuna());
+        listaResultado.pop_back();
+        return id;
 }
 
 ComandoConsultarUsuario::ComandoConsultarUsuario(int id) {
@@ -107,8 +109,6 @@ Usuario ComandoConsultarUsuario::getResultado() {
         resultado = listaResultado.back();
         listaResultado.pop_back();
         usuario.setCargo(resultado.getValorColuna());
-
-		std::cout << usuario.getId() << "\n";
 
         return usuario;
 }
