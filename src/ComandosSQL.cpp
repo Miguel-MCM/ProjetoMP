@@ -755,3 +755,33 @@ list<Questao> ListarQuestoesProva::executar(int id){
 
         return questoes;
 }
+
+ComandoCountProva::ComandoCountProva() {
+        comandoSQL = "SELECT COUNT(*) FROM Prova";
+}
+
+int ComandoCountProva::getResultado() {
+        int numeroDeProvas = stoi(listaResultado.back().getValorColuna());
+        listaResultado.pop_back();
+        return numeroDeProvas;
+}
+
+ComandoCountQuestao::ComandoCountQuestao() {
+        comandoSQL = "SELECT COUNT(*) FROM Questao";
+}
+
+int ComandoCountQuestao::getResultado() {
+        int numeroDeQuestoes = stoi(listaResultado.back().getValorColuna());
+        listaResultado.pop_back();
+        return numeroDeQuestoes;
+}
+
+ComandoCountResposta::ComandoCountResposta() {
+        comandoSQL = "SELECT COUNT(*) FROM Resposta_Prova";
+}
+
+int ComandoCountResposta::getResultado() {
+        int numeroDeRespostas = stoi(listaResultado.back().getValorColuna());
+        listaResultado.pop_back();
+        return numeroDeRespostas;
+}

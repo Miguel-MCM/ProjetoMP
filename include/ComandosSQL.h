@@ -262,4 +262,23 @@ class ListarQuestoesProva {
  public:
         list<Questao> executar(int);
 };
+
+class ComandoCountProva:public ComandoSQL {
+ public:
+	ComandoCountProva();
+	int getResultado();
+};
+
+class ComandoCountQuestao:public ComandoSQL {
+ public:
+	ComandoCountQuestao();
+	int getResultado();
+};
+
+class ComandoCountResposta:public ComandoSQL {
+ public:
+	ComandoCountResposta();
+	int getResultado();
+};
+
 #endif  //  INCLUDE_COMANDOSSQL_H_
