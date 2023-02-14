@@ -133,10 +133,15 @@ class CntrApresentacaoProva:public IApresentacaoProva {
         void gerenciar(Prova*);
         void editar(Prova*);
         void setCntrServicoProva(IServicoProva*);
+        void setCntrServicoTurma(IServicoTurma*);
 };
 
 void inline CntrApresentacaoProva::setCntrServicoProva(IServicoProva* cntrServicoProva) {
     this->cntrServicoProva = cntrServicoProva;
+}
+
+inline void CntrApresentacaoProva::setCntrServicoTurma(IServicoTurma* cntrServicoTurma) {
+    this->cntrServicoTurma = cntrServicoTurma;
 }
 
 class CntrApresentacaoAdmin:public IApresentacaoAdmin {
@@ -214,8 +219,8 @@ class CntrServicoTurma:public IServicoTurma {
 
     bool entrar(int, int);
     bool listarTurmas(list<Turma>*);
-    bool listarProvas(int, list<Prova>*) {return false;}
-    bool listarAlunos(int, list<Usuario>*) {return false;}
+    bool listarProvas(int, list<Prova>*);
+    bool listarAlunos(int, list<Usuario>*);
 
     ~CntrServicoTurma() {}
 };

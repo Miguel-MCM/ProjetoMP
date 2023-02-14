@@ -442,13 +442,14 @@ void TelaCadastroQuestao::apresentarCriarNumerico(Questao* questao) {
     questao->setRespostaCorreta(resposta);
 }
 
-char TelaConsultaQuestao::apresentar(list<Questao> listaQuestao) {
+void TelaConsultaQuestao::apresentar(list<Questao> listaQuestao) {
     string campo1 = "Resposta correta: ";
  
     std::vector<Questao> vectorQuestoes(listaQuestao.begin(), listaQuestao.end());
 
     int linha, coluna;
     string campo;
+    char dado;
 
     initscr();
     getmaxyx(stdscr, linha, coluna);

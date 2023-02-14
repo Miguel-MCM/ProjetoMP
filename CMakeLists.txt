@@ -28,8 +28,8 @@ add_executable(ProjetoMP
         src/Builders.cpp
         src/Controladoras.cpp
         src/Entidades.cpp
-        src/Telas.cpp
         src/ComandosSQL.cpp
+        src/Telas.cpp
         )
 
 target_link_libraries(ProjetoMP ${CURSES_LIBRARIES} sqlite3)

@@ -15,7 +15,7 @@ CntrApresentacaoControle* BuilderSistema::construir(){
 
     cntrServicoUsuario = new CntrServicoUsuario();
     cntrServicoAutenticacao = new CntrServicoAutenticacao();
-    cntrServicoProva = new CntrServicoProva();
+    // cntrServicoProva = new CntrServicoProva();
     cntrServicoAdmin = new CntrServicoAdmin();
     cntrServicoTurma = new CntrServicoTurma(); 
 

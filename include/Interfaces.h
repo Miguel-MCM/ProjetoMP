@@ -16,6 +16,7 @@ class IApresentacaoUsuario;
 class IApresentacaoAdmin;
 class IApresentacaoTurma;
 class IApresentacaoProva;
+
 class IServicoAutenticacao;
 class IServicoUsuario;
 class IServicoAdmin;
@@ -35,9 +36,8 @@ class IApresentacaoUsuario {
         virtual void executar(Usuario*) = 0;
         virtual void cadastrar() = 0;
         virtual void setCntrServicoUsuario(IServicoUsuario*) = 0;
-        virtual void setCntrApresentacaoTurma(IApresentacaoTurma*);
+        virtual void setCntrApresentacaoTurma(IApresentacaoTurma*) = 0;
         
-
         virtual bool getStatusCadastro() = 0;
         virtual void setStatusCadastro(bool) = 0;
 
@@ -75,7 +75,6 @@ class IApresentacaoProva {
         virtual void gerenciar(Prova*) = 0;
         virtual void editar(Prova*) = 0;
         virtual void setCntrServicoProva(IServicoProva*) = 0;
-        virtual void setCntrServicoQuestao(IServicoQuestao*) = 0;
 
         virtual ~IApresentacaoProva() {}
 };

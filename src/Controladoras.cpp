@@ -894,35 +894,6 @@ void CntrApresentacaoProva::editar(Prova* prova){
     }
 }
 
-void CntrApresentacaoProva::gerenciar(Prova* prova) {
-    TelaConsultaProva telaConsultaProva;
-    TelaMensagem telaMensagem;
-    
-    int *qtdQuestoes;
-    cntrServicoProva->getQtdQuestoes(*prova, qtdQuestoes);
-    char opcao;
-
-    while (true){
-        opcao = telaConsultaProva.apresentar(prova, *qtdQuestoes);
-        switch (opcao){
-        case '1':
-            try{
-                cntrServicoProva->editarProva(*prova);
-            }catch(invalid_argument &e){
-                telaMensagem.apresentar("Formato de dado invalido.");
-            }
-            break;
-        case '2':
-            cntrServicoProva->descadastrarProva(prova->getId());
-            telaMensagem.apresentar("Prova arquivada.");
-            break;
-        default:
-            break;
-        }
-    }
-}
-
-
 
 /*
 

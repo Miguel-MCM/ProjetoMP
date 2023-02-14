@@ -122,7 +122,7 @@ public:
 
 class TelaConsultaQuestao: public Tela  {
 public:
-    char apresentar(list<Questao>);
+    void apresentar(list<Questao>);
 };
 
 class TelaOpcoesQuestoes: public Tela  {
