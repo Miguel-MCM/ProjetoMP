@@ -200,7 +200,8 @@ class CntrServicoUsuario:public IServicoUsuario {
         bool descadastrar(int, string); // id e cargo
         bool editar(Usuario);
         bool consultar(Usuario*);
-        bool listarTurmas(int, list<Turma>*){return false;}
+        bool listarTurmasAluno(int, list<Turma>*); // id aluno
+        bool listarTurmasProfessor(int, list<Turma>*);
         ~CntrServicoUsuario() {}
 };
 

@@ -217,21 +217,17 @@ void CntrApresentacaoUsuario::editar(Usuario* usuario) {
 
     telaFormulario.apresentar(TITULO, DADOS, novosDados);
     
-    try {
-        if(novosDados[0] != "")
-            usuario->setNome(novosDados[0]);
+    if(novosDados[0] != "")
+        usuario->setNome(novosDados[0]);
 
-        if(novosDados[1] != "")
-            usuario->setEmail(novosDados[1]);
+    if(novosDados[1] != "")
+        usuario->setEmail(novosDados[1]);
 
-        if(novosDados[2] != "")
-            usuario->setSenha(novosDados[2]);
+    if(novosDados[2] != "")
+        usuario->setSenha(novosDados[2]);
 
-        cntrServicoUsuario->editar(*usuario);
-    }
-    catch (invalid_argument &e) {
+    if (cntrServicoUsuario->editar(*usuario)) {
         telaMensagem.apresentar("Dado em Formato Incorreto.");
-
     }
 }
 
@@ -297,20 +293,37 @@ bool CntrServicoUsuario::editar(Usuario usuario) {
     return true;
 }
 
-bool CntrServicoUsuario::listarTurmas(int idAluno, list<Turma> *turmas) {
+bool CntrServicoUsuario::listarTurmasAluno(int idAluno, list<Turma> *turmas) {
     TelaMensagem telaMensagem;
-    ComandoListarTurmas cmdListarTurmas;
+    ListarTurmasAluno cmdListarTurmas;
 
     list<Turma> consulta;
 
     try {
-        cmdListarTurmas.executar();
+        consulta = cmdListarTurmas.executar(idAluno);
+    } catch (const EErroPersistencia &exp) {
+        return false;
+    }
+
+    *turmas = consulta;
+
+    return true;
+}
+
+bool CntrServicoUsuario::listarTurmasProfessor(int idProfessor, list<Turma> *turmas) {
+    TelaMensagem telaMensagem;
+    ComandoListarIdTurmasProfessor cmdListarProfessor(idProfessor);
+
+    list<Turma> consulta;
+
+    try {
+        cmdListarProfessor.executar();
     } catch (const EErroPersistencia &exp) {
         return false;
     }
 
     try {
-        consulta = cmdListarTurmas.getResultado();
+        consulta = cmdListarProfessor.getResultado();
     } catch (const EErroPersistencia &exp) {
         return false;
     }
@@ -357,57 +370,67 @@ void CntrApresentacaoTurma::executar(Usuario* usuario) {
         if (opcaoMenu == "1") {
             while (true) {
                 list<Turma> *turmas;
-                if (cntrServicoUsuario->listarTurmas(usuario->getId(), turmas)) {
-                    string turmaEscolhida = telaTurmas.apresentar(*turmas);
-                    Turma* turma = new Turma();
-                    turma->setId(stoi(turmaEscolhida));
-                    cntrServicoTurma->consultar(turma);
-                    Usuario* professor = new Usuario();
-                    professor->setId(turma->getIdProf());
-                    cntrServicoUsuario->consultar(professor);
-
-                    string status;
-                    if (turma->taAberta())
-                        status = "Aberta";
-                    else
-                        status = "Fechada";
-
-                    vector<string> dados;
-
-                    if (cargo == "aluno") {
-                        dados = {
-                            "Nome: " + turma->getNome(),
-                            "Professor: " + professor->getNome(),
-                            "Descricao: " + turma->getDescricao(),
-                            "Status: " + status,
-                            "",
-                            "1 - Consultar Provas",
-                            "2 - Voltar"
-                        };
-                    } else {
-                        dados = {
-                            "Nome: " + turma->getNome(),
-                            "Professor: " + professor->getNome(),
-                            "Descricao: " + turma->getDescricao(),
-                            "Status: " + status,
-                            "",
-                            "1 - Consultar Provas",
-                            "2 - Editar Turma",
-                            "3 - Voltar"
-                        };
+                if (cargo == "aluno") {
+                    if (!cntrServicoUsuario->listarTurmasAluno(usuario->getId(), turmas)) {
+                        telaMensagem.apresentar("Nao foi possivel listar suas turmas");
                     }
-                    opcaoMenu2 = telaMenu.apresentar("Turma: " + to_string(turma->getId()), dados);
-                    if (opcaoMenu2 == "1"){
-                        cntrApresentacaoProva->executar(turma);
-                    } else if (opcaoMenu2 == "2" && cargo != "aluno") {
-                        editar(turma);
-                    } else if ((opcaoMenu2 == "2" && cargo == "aluno") || (opcaoMenu2 == "3")) {
-                        break;
-                    } else {
-                        telaMensagem.apresentar("Opcao invalida.");
+                } else if (cargo == "professor") {
+                    if (!cntrServicoUsuario->listarTurmasProfessor(usuario->getId(), turmas)) {
+                        telaMensagem.apresentar("Nao foi possivel listar suas turmas");
                     }
                 } else {
-                    telaMensagem.apresentar("Voce nao possui turmas.");
+                    telaMensagem.apresentar("Voce nao possui turmas");
+                }
+                string turmaEscolhida = telaTurmas.apresentar(*turmas);
+                Turma* turma = new Turma();
+                turma->setId(stoi(turmaEscolhida));
+                if (!cntrServicoTurma->consultar(turma)) {
+                    telaMensagem.apresentar("Turma nao encontrada");
+                }
+                Usuario* professor = new Usuario();
+                professor->setId(turma->getIdProf());
+                if (!cntrServicoUsuario->consultar(professor)) {
+                    telaMensagem.apresentar("Profssor nao encontrado");
+                }
+                string status;
+                if (turma->taAberta())
+                    status = "Aberta";
+                else
+                    status = "Fechada";
+
+                vector<string> dados;
+
+                if (cargo == "aluno") {
+                    dados = {
+                        "Nome: " + turma->getNome(),
+                        "Professor: " + professor->getNome(),
+                        "Descricao: " + turma->getDescricao(),
+                        "Status: " + status,
+                        "",
+                        "1 - Consultar Provas",
+                        "2 - Voltar"
+                    };
+                } else {
+                    dados = {
+                        "Nome: " + turma->getNome(),
+                        "Professor: " + professor->getNome(),
+                        "Descricao: " + turma->getDescricao(),
+                        "Status: " + status,
+                        "",
+                        "1 - Consultar Provas",
+                        "2 - Editar Turma",
+                        "3 - Voltar"
+                    };
+                }
+                opcaoMenu2 = telaMenu.apresentar("Turma: " + to_string(turma->getId()), dados);
+                if (opcaoMenu2 == "1"){
+                    cntrApresentacaoProva->executar(turma);
+                } else if (opcaoMenu2 == "2" && cargo != "aluno") {
+                    editar(turma);
+                } else if ((opcaoMenu2 == "2" && cargo == "aluno") || (opcaoMenu2 == "3")) {
+                    break;
+                } else {
+                    telaMensagem.apresentar("Opcao invalida.");
                 }
             }
         } else if (opcaoMenu == "2") {
@@ -470,19 +493,16 @@ void CntrApresentacaoTurma::editar(Turma *turma) {
 
     telaFormulario.apresentar(TITULO, DADOS, novosDados);
     
-    try {
-        if(novosDados[0] != "")
-            turma->setNome(novosDados[0]);
+    if(novosDados[0] != "")
+        turma->setNome(novosDados[0]);
 
-        if(novosDados[1] != "")
-            turma->setDescricao(novosDados[1]);
+    if(novosDados[1] != "")
+        turma->setDescricao(novosDados[1]);
 
-        if(novosDados[2] != "" && (novosDados[2] == "s" || novosDados[2] == "n"))
-            turma->setAberta(novosDados[2] == "s");
+    if(novosDados[2] != "" && (novosDados[2] == "s" || novosDados[2] == "n"))
+        turma->setAberta(novosDados[2] == "s");
 
-        cntrServicoTurma->editar(turma);
-    }
-    catch (invalid_argument &e) {
+    if (!cntrServicoTurma->editar(turma)) {
         telaMensagem.apresentar("Dado em Formato Incorreto.");
     }
 }

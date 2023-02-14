@@ -92,7 +92,8 @@ class IServicoUsuario {
         virtual bool descadastrar(int, string) = 0;
         virtual bool editar(Usuario) = 0;
         virtual bool consultar(Usuario*) = 0;
-        virtual bool listarTurmas(int, list<Turma>*) = 0;
+        virtual bool listarTurmasAluno(int, list<Turma>*) = 0; // id aluno
+        virtual bool listarTurmasProfessor(int, list<Turma>*) = 0; // id professor
         virtual ~IServicoUsuario() {}
 };
 
