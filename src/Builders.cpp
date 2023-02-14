@@ -2,48 +2,48 @@
 
 CntrApresentacaoControle* BuilderSistema::construir(){
 
-    // Instanciar controladoras da camada de apresenta��o.
+    // Instanciar controladoras da camada de apresentasao.
 
     cntrApresentacaoControle = new CntrApresentacaoControle();
     cntrApresentacaoAutenticacao = new CntrApresentacaoAutenticacao();
     cntrApresentacaoUsuario = new CntrApresentacaoUsuario();
-    // cntrApresentacaoProva = new CntrApresentacaoProva();
+    cntrApresentacaoProva = new CntrApresentacaoProva();
     cntrApresentacaoAdmin = new CntrApresentacaoAdmin();
     cntrApresentacaoTurma = new CntrApresentacaoTurma();
 
-    // Instanciar controladoras da camada de servi�o.
+    // Instanciar controladoras da camada de servico.
 
     cntrServicoUsuario = new CntrServicoUsuario();
     cntrServicoAutenticacao = new CntrServicoAutenticacao();
-    // cntrServicoProva = new CntrServicoProva();
-    // cntrServicoAdmin = new CntrServicoAdmin();
+    cntrServicoProva = new CntrServicoProva();
+    cntrServicoAdmin = new CntrServicoAdmin();
     cntrServicoTurma = new CntrServicoTurma(); 
 
     // Interligar as controladoras.
 
     cntrApresentacaoControle->setCntrApresentacaoAutenticacao(cntrApresentacaoAutenticacao);
     cntrApresentacaoControle->setCntrApresentacaoUsuario(cntrApresentacaoUsuario);
-    // cntrApresentacaoControle->setCntrApresentacaoProva(cntrApresentacaoProva);
+    cntrApresentacaoControle->setCntrApresentacaoProva(cntrApresentacaoProva);
     cntrApresentacaoControle->setCntrApresentacaoAdmin(cntrApresentacaoAdmin);
     cntrApresentacaoControle->setCntrApresentacaoTurma(cntrApresentacaoTurma);
 
     cntrApresentacaoAdmin->setCntrApresentacaoUsuario(cntrApresentacaoUsuario);
-    // cntrApresentacaoAdmin->setCntrApresentacaoProva(cntrApresentacaoProva);
+    cntrApresentacaoAdmin->setCntrApresentacaoProva(cntrApresentacaoProva);
     cntrApresentacaoAdmin->setCntrApresentacaoTurma(cntrApresentacaoTurma);
     cntrApresentacaoAdmin->setCntrServicoAdmin(cntrServicoAdmin);
 
-    // cntrApresentacaoUsuario->setCntrApresentacaoTurma(cntrApresentacaoTurma);
+    cntrApresentacaoUsuario->setCntrApresentacaoTurma(cntrApresentacaoTurma);
     cntrApresentacaoUsuario->setCntrServicoUsuario(cntrServicoUsuario);
-    // cntrApresentacaoUsuario->setCntrServicoAdmin(cntrServicoAdmin);
+    cntrApresentacaoUsuario->setCntrServicoAdmin(cntrServicoAdmin);
 
     cntrApresentacaoAutenticacao->setCntrServicoAutenticacao(cntrServicoAutenticacao);
-    // cntrApresentacaoProva->setCntrServicoProva(cntrServicoProva);
+    cntrApresentacaoProva->setCntrServicoProva(cntrServicoProva);
 
     cntrApresentacaoTurma->setCntrServicoTurma(cntrServicoTurma);
     cntrApresentacaoTurma->setCntrServicoUsuario(cntrServicoUsuario);
-    // cntrApresentacaoTurma->setCntrApresentacaoProva(cntrApresentacaoProva);
+    cntrApresentacaoTurma->setCntrApresentacaoProva(cntrApresentacaoProva);
 
-    // Retornar refer�ncia para inst�ncia de CntrApresentacaoControle.
+    // Retornar referencia para instancia de CntrApresentacaoControle.
 
     return cntrApresentacaoControle;
 }

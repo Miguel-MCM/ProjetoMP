@@ -113,16 +113,6 @@ class IServicoProva {
         virtual ~IServicoProva() {}
 };
 
-//class IServicoQuestao {
-// public:
-//        virtual bool cadastrar(Questao) = 0;
-//        virtual bool descadastrar(int) = 0;
-//        virtual bool editar(Questao) = 0;
-//        virtual bool consultar(Questao*) = 0;
-//
-//        ~IServicoQuestao() {}
-//};
-
 class IServicoTurma {
  public:
         virtual bool cadastrar(Turma) = 0;

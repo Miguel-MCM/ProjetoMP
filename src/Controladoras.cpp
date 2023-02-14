@@ -469,7 +469,7 @@ void CntrApresentacaoTurma::executar(Usuario* usuario) {
                 });
                 opcaoMenu2 = telaMenu.apresentar("Turma: " + to_string(turma->getId()), dados);
                 if (opcaoMenu2 == "1"){
-                    // cntrApresentacaoProva->executar(turma);
+                    cntrApresentacaoProva->executar(turma);
                 } else if (opcaoMenu2 == "2"){
                 } else {
                     telaMensagem.apresentar("Opcao invalida.");
@@ -502,9 +502,9 @@ void CntrApresentacaoTurma::executar(Usuario* usuario) {
                 string id = telaBusca.apresentar("Id da turma");
                 Turma turma;
                 turma.setId(stoi(id));
-                // if (!cntrServicoTurma->entrar(turma)) {
-                //     telaMensagem.apresentar("Falha ao entrar na turma.");
-                // }
+                if (!cntrServicoTurma->entrar(turma)) {
+                    telaMensagem.apresentar("Falha ao entrar na turma.");
+                }
             } else {
                 string id = telaBusca.apresentar("Id da turma");
                 if (!cntrServicoTurma->descadastrar(stoi(id))) {
@@ -685,34 +685,33 @@ bool CntrServicoTurma::editar(Turma turma) {
     }
 }
 
-// void CntrApresentacaoProva::gerenciar(Prova* prova) {
-//     TelaConsultaProva telaConsultaProva;
-//     TelaMensagem telaMensagem;
+void CntrApresentacaoProva::gerenciar(Prova* prova) {
+    TelaConsultaProva telaConsultaProva;
+    TelaMensagem telaMensagem;
     
-//     int *qtdQuestoes;
-//     cntrServicoProva->getQtdQuestoes(*prova, qtdQuestoes);
-//     char opcao;
+    int *qtdQuestoes;
+    cntrServicoProva->getQtdQuestoes(*prova, qtdQuestoes);
+    char opcao;
 
-//     while (true){
-//         opcao = telaConsultaProva.apresentar(prova, *qtdQuestoes);
-//         switch (opcao){
-//         case '1':
-//             try{
-//                 cntrServicoProva->editarProva(*prova);
-//             }catch(invalid_argument &e){
-//                 telaMensagem.apresentar("Formato de dado invalido.");
-//             }
-//             break;
-//         case '2':
-//             cntrServicoProva->descadastrarProva(prova->getId());
-//             telaMensagem.apresentar("Prova arquivada.");
-//             break;
-//         default:
-//             break;
-//         }
-//     }
-    
-// }
+    while (true){
+        opcao = telaConsultaProva.apresentar(prova, *qtdQuestoes);
+        switch (opcao){
+        case '1':
+            try{
+                cntrServicoProva->editarProva(*prova);
+            }catch(invalid_argument &e){
+                telaMensagem.apresentar("Formato de dado invalido.");
+            }
+            break;
+        case '2':
+            cntrServicoProva->descadastrarProva(prova->getId());
+            telaMensagem.apresentar("Prova arquivada.");
+            break;
+        default:
+            break;
+        }
+    }
+}
 
 
 /*
