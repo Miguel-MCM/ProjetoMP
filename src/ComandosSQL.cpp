@@ -775,3 +775,104 @@ int ComandoCountResposta::getResultado() {
         listaResultado.pop_back();
         return numeroDeRespostas;
 }
+
+ComandoListarIdTurmaAluno::ComandoListarIdTurmaAluno(int id){
+        comandoSQL = "SELECT * FROM UsuarioTurma WHERE Usuario_idUsuario = ";
+        comandoSQL += to_string(id) + ";";
+}
+
+list<int> ComandoListarIdTurmaAluno::getResultado() {
+        ElementoResultado resultado;
+        if (listaResultado.empty()){
+                throw EErroPersistencia("Lista de resultados vazia.");
+        }
+
+        list<int> idTurmas;
+        while (!listaResultado.empty()){
+                // Usuario_idUsuario
+                resultado = listaResultado.back();
+                listaResultado.pop_back();
+
+                // Turma_idTurma
+                resultado = listaResultado.back();
+                listaResultado.pop_back();
+                idTurmas.push_back(stoi(resultado.getValorColuna()));
+        }
+
+        return idTurmas;
+}
+
+list<Turma> ListarTurmasAluno::executar(int id) {
+        ComandoListarIdTurmaAluno cmdListar(id);
+        cmdListar.executar();
+        list<int> idTurmas = cmdListar.getResultado();
+        list<Turma> turmas;
+
+        while (!idTurmas.empty()) {
+                int idAtual;
+                Turma turmaAtual;
+
+                idAtual = idTurmas.back();
+                idTurmas.pop_back();
+
+                ComandoConsultarTurma cmdConsultar(idAtual);
+                cmdConsultar.executar();
+                turmaAtual = cmdConsultar.getResultado();
+
+                turmas.push_back(turmaAtual);
+        }
+        return turmas;
+}
+
+ComandoListarIdTurmasProfessor::ComandoListarIdTurmasProfessor(int id) {
+        comandoSQL = "SELECT * FROM Turma WHERE Professor_Usuario_idUsuario = ";
+        comandoSQL += to_string(id) + ";";
+}
+
+list<Turma> ComandoListarIdTurmasProfessor::getResultado() {
+       ElementoResultado resultado;
+
+        if (listaResultado.empty()){
+                throw EErroPersistencia("Lista de resultados vazia.");
+        }
+
+        list<Turma> turmas;
+
+        while (!listaResultado.empty()){
+                Turma turma_atual;
+
+                resultado = listaResultado.back();
+                listaResultado.pop_back();
+		turma_atual.setId(stoi(resultado.getValorColuna()));
+
+                resultado = listaResultado.back();
+                listaResultado.pop_back();
+		turma_atual.setNome(resultado.getValorColuna());
+
+                resultado = listaResultado.back();
+                listaResultado.pop_back();
+		turma_atual.setDescricao(resultado.getValorColuna());
+
+                resultado = listaResultado.back();
+                listaResultado.pop_back();
+		if (resultado.getValorColuna() == "1"){
+                        turma_atual.switchAberta();
+                }
+                
+                // quantidade de alunos
+                resultado = listaResultado.back();
+                listaResultado.pop_back();
+
+                resultado = listaResultado.back();
+                listaResultado.pop_back();
+                turma_atual.setIdProf(stoi(resultado.getValorColuna()));
+                
+                // id do usuario novamente
+                resultado = listaResultado.back();
+                listaResultado.pop_back();
+
+                turmas.push_back(turma_atual);
+        }
+
+        return turmas;
+}
