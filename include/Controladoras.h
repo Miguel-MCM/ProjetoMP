@@ -104,6 +104,7 @@ class CntrApresentacaoTurma:public IApresentacaoTurma {
 
  public:
     void executar(Usuario*);
+    void editar(Turma*);
 
     void setCntrServicoUsuario(IServicoUsuario*);
     void setCntrServicoTurma(IServicoTurma*);
@@ -208,7 +209,9 @@ class CntrServicoTurma:public IServicoTurma {
     bool cadastrar(Turma);
     bool consultar(Turma*);
     bool descadastrar(int);
-    bool editar(Turma);
+    bool editar(Turma*);
+
+    bool entrar(int, int);
     bool listarAbertas(list<Turma>*) {return false;}
     bool listarProvas(int, list<Prova>*) {return false;}
     bool listarAlunos(int, list<Usuario>*) {return false;}

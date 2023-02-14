@@ -61,6 +61,7 @@ class IApresentacaoAdmin {
 class IApresentacaoTurma {
  public:
         virtual void executar(Usuario*) = 0;
+        virtual void editar(Turma*) = 0;
         virtual void setCntrServicoTurma(IServicoTurma*) = 0;
         virtual void setCntrServicoUsuario(IServicoUsuario*) = 0;
         virtual void setCntrApresentacaoProva(IApresentacaoProva*) = 0;
@@ -116,11 +117,11 @@ class IServicoProva {
 class IServicoTurma {
  public:
         virtual bool cadastrar(Turma) = 0;
-        // virtual bool entrar(Turma) = 0;
+        virtual bool entrar(int, int) = 0; // id do usuario, id da turma
         virtual bool descadastrar(int) = 0;
 
         virtual bool consultar(Turma*) = 0;
-        // virtual bool editar(Turma*) = 0;
+        virtual bool editar(Turma*) = 0;
 
         virtual bool listarAbertas(list<Turma>*) = 0;
         virtual bool listarProvas(int, list<Prova>*) = 0; // id da turma, lista de provas
