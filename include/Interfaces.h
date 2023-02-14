@@ -35,7 +35,8 @@ class IApresentacaoUsuario {
         virtual void executar(Usuario*) = 0;
         virtual void cadastrar() = 0;
         virtual void setCntrServicoUsuario(IServicoUsuario*) = 0;
-
+        virtual void setCntrApresentacaoTurma(IApresentacaoTurma*);
+        
 
         virtual bool getStatusCadastro() = 0;
         virtual void setStatusCadastro(bool) = 0;
@@ -132,13 +133,7 @@ class IServicoTurma {
 
 class IServicoAdmin {
  public:
-    virtual bool numeroDeUsuarios(string*) = 0;
-    virtual bool numeroDeQuestoes(string*) = 0;
-    virtual bool numeroDeProvas(string*) = 0;
-    virtual bool numeroDeRespostas(string*) = 0;
-
-    virtual bool consultarUsuario(Usuario*) = 0;
-    virtual bool consultarTurma(Turma*) = 0;
+    virtual bool estatisticas(vector<string>*) = 0;
 
     virtual ~IServicoAdmin() {}
 };
