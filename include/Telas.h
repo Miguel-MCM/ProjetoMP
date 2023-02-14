@@ -93,12 +93,6 @@ public:
     void apresentar(Prova*,int);
 };
 
-class TelaEdicaoProva: public Tela {
-public:
-    void apresentar(Prova*);
-};
-
-
 class TelaBusca: public Tela {
 public:
     string apresentar(string);
@@ -112,6 +106,38 @@ public:
 class TelaListarAlunos: public Tela {
 public:
     void apresentar(list<Usuario>);
+};
+
+class TelaDefinicaoTipoQuestao: public Tela  {
+public:
+    char apresentar();
+};
+
+class TelaCadastroQuestao: public Tela  {
+public:
+    void apresentarCriarMultiplaEscolha(Questao*);
+    void apresentarCriarCertoErrado(Questao*);
+    void apresentarCriarNumerico(Questao*);
+};
+
+class TelaConsultaQuestao: public Tela  {
+public:
+    char apresentar(list<Questao>);
+};
+
+class TelaOpcoesQuestoes: public Tela  {
+public:
+    int apresentar(list<Questao>);
+};
+
+class TelaRealizarProva: public Tela {
+ public:
+    Resposta apresentar(list<Questao>);
+};
+
+class TelaEdicaoProva: public Tela  {
+public:
+    char apresentar(Prova*);
 };
 
 /*
@@ -141,36 +167,18 @@ public:
 };
 
 
-class TelaCodigo {
-public:
-    void apresentar(Codigo*);
-};
+//class TelaCodigo {
+//public:
+//    void apresentar(Codigo*);
+//};
 
 class TelaConsultarUsuario {
-public:
-    char apresentar(Usuario);
-};
-
-class TelaEdicaoUsuario {
 public:
     void apresentar(Usuario *);
 };
 
-class TelaCadastroQuestao {
-public:
-    void apresentar(Questao*);
-};
-
-class TelaConsultaQuestao {
-public:
-    char apresentar(Questao*);
-};
-
-class TelaEdicaoQuestao {
-public:
-    void apresentar(Questao *);
-};
 */
+
 
 
 #endif  // INCLUDE_TELAS_H_

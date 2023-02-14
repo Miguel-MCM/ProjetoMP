@@ -168,11 +168,14 @@ class Prova:public Entidade {
  private:
     list<int> id_questoes;
     int id_turma;
+    int id_prof;
  public:
     list<int> getIdQuestoes() const;
     void setIdQuestoes(list<int>);
     int getIdTurma() const;
     void setIdTurma(int);
+    int getIdProf() const;
+    void setIdProf(int);
 };
 
 inline list<int> Prova::getIdQuestoes() const {return id_questoes;}
@@ -184,6 +187,10 @@ inline void Prova::setIdQuestoes(list<int> id_questoes) {
 inline int Prova::getIdTurma() const {return id_turma;}
 
 inline void Prova::setIdTurma(int id_turma) {this->id_turma = id_turma;}
+
+inline int Prova::getIdProf() const {return id_prof;}
+
+inline void Prova::setIdProf(int id_prof) {this->id_prof = id_prof;}
 
 class Resposta:public Entidade {
  private:
