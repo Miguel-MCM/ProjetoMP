@@ -83,17 +83,18 @@ bool CntrApresentacaoAutenticacao::autenticar(Usuario* usuario) {
         catch (const invalid_argument &exp) {
             TelaMensagem telaMensagem;
             telaMensagem.apresentar("Dado em formato incorreto.");
+            return false;
         }
     }
 
-    resultado = cntrServicoAutenticacao->autenticar(*usuario);
+    resultado = cntrServicoAutenticacao->autenticar(usuario);
 
     return resultado;
 }
 
-bool CntrServicoAutenticacao::autenticar(Usuario usuario) {
+bool CntrServicoAutenticacao::autenticar(Usuario *usuario) {
     TelaMensagem telaMensagem;
-    ComandoConsultarUsuario cmdConsultar(usuario.getEmail());
+    ComandoConsultarUsuario cmdConsultar(usuario->getEmail());
     
     Usuario consulta;
     try {
@@ -108,7 +109,8 @@ bool CntrServicoAutenticacao::autenticar(Usuario usuario) {
         return false;
     }
 
-    if (consulta.getSenha() == usuario.getSenha()) {
+    if (consulta.getSenha() == usuario->getSenha()) {
+        *usuario = consulta;
         return true;
     } 
 

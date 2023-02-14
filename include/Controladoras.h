@@ -28,7 +28,7 @@ class CntrApresentacaoUsuario:public IApresentacaoUsuario {
     void setCntrServicoAdmin(IServicoAdmin*);
     void setCntrApresentacaoTurma(IApresentacaoTurma*);
 
-    bool getStatusCadastro() {return false;}
+    bool getStatusCadastro();
     void setStatusCadastro(bool);
 };
 
@@ -46,6 +46,10 @@ inline void CntrApresentacaoUsuario::setCntrApresentacaoTurma(IApresentacaoTurma
 
 inline void CntrApresentacaoUsuario::setStatusCadastro(bool status) {
     this->status = status;
+}
+
+inline bool CntrApresentacaoUsuario::getStatusCadastro() {
+    return this->status;
 }
 class CntrApresentacaoControle{
  private:
@@ -196,7 +200,7 @@ inline void CntrApresentacaoAdmin::setCntrApresentacaoTurma(IApresentacaoTurma* 
 
 class CntrServicoAutenticacao:public IServicoAutenticacao{
  public:
-        bool autenticar(Usuario);
+        bool autenticar(Usuario*);
 };
 
 class CntrServicoUsuario:public IServicoUsuario {

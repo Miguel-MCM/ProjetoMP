@@ -81,7 +81,7 @@ class IApresentacaoProva {
 
 class IServicoAutenticacao {
  public:
-        virtual bool autenticar(Usuario) = 0;
+        virtual bool autenticar(Usuario*) = 0;
         virtual ~IServicoAutenticacao() {}
 };
 
