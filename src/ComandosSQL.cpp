@@ -698,6 +698,7 @@ list<Usuario> ListarAlunosTurma::executar(int id){
                 id_Usuarios.pop_back();
 
                 ComandoConsultarUsuario cmd_Consultar(id_atual);
+                cmd_Consultar.executar();
                 usuario_atual = cmd_Consultar.getResultado();
 
                 usuarios.push_back(usuario_atual);
@@ -707,7 +708,7 @@ list<Usuario> ListarAlunosTurma::executar(int id){
 }
 
 ComandoListarIDQuestoesProva::ComandoListarIDQuestoesProva(int id){
-        comandoSQL = "SELECT * FROM Prova_has_Questao WHERE Prova_idProva ";
+        comandoSQL = "SELECT * FROM Prova_has_Questao WHERE Prova_idProva = ";
         comandoSQL += to_string(id) + ";";
 }
 
@@ -746,6 +747,7 @@ list<Questao> ListarQuestoesProva::executar(int id){
                 id_Questoes.pop_back();
 
                 ComandoConsultarQuestao cmd_Consultar(id_atual);
+                cmd_Consultar.executar();
                 questao_atual = cmd_Consultar.getResultado();
 
                 questoes.push_back(questao_atual);
