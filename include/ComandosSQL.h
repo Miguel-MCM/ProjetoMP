@@ -206,4 +206,79 @@ class ComandoConsultarProva:public ComandoSQL {
         Prova getResultado();
 };
 
+class ComandoCadastrarResposta:public ComandoSQL {
+ public:
+        ComandoCadastrarResposta(Resposta);
+        int getResultado();
+};
+
+class ComandoAssociarRespostaQuestaoRespostaProva:public ComandoSQL {
+ public:
+        ComandoAssociarRespostaQuestaoRespostaProva(int, int, int);     
+};
+
+class CadastrarResposta {
+ public:
+        int cadastrar(Resposta);
+};
+
+class ComandoConsultarResposta:public ComandoSQL {
+ public:
+        ComandoConsultarResposta(int);
+        Resposta getResultado();
+};
+
+
+class ComandoListarTurmas:public ComandoSQL {
+ public:
+        ComandoListarTurmas();
+        list<Turma> getResultado();
+};
+
+class ComandoListarProvas:public ComandoSQL {
+ public:
+        ComandoListarProvas(int);
+        list<Prova> getResultado();
+};
+
+class ComandoListarIDAlunosTurma:public ComandoSQL {
+ public:
+        ComandoListarIDAlunosTurma(int);
+        list<int> getResultado();
+};
+
+class ListarAlunosTurma {
+ public:
+        list<Usuario> executar(int);
+};
+
+class ComandoListarIDQuestoesProva:public ComandoSQL {
+ public:
+        ComandoListarIDQuestoesProva(int);
+        list<int> getResultado();
+};
+
+class ListarQuestoesProva {
+ public:
+        list<Questao> executar(int);
+};
+
+class ComandoCountProva:public ComandoSQL {
+ public:
+	ComandoCountProva();
+	int getResultado();
+};
+
+class ComandoCountQuestao:public ComandoSQL {
+ public:
+	ComandoCountQuestao();
+	int getResultado();
+};
+
+class ComandoCountResposta:public ComandoSQL {
+ public:
+	ComandoCountResposta();
+	int getResultado();
+};
+
 #endif  //  INCLUDE_COMANDOSSQL_H_
