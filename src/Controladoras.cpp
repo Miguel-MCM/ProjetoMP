@@ -204,53 +204,6 @@ void CntrApresentacaoUsuario::executar(Usuario* usuario) {
     }
 }
 
-bool CntrServicoUsuario::consultar(Usuario *usuario) {
-    TelaMensagem telaMensagem;
-    ComandoConsultarUsuario cmdConsultar(usuario->getId());
-    
-    Usuario consulta;
-    try {
-        cmdConsultar.executar();
-    } catch (const EErroPersistencia &exp) {
-        return false;
-    }
-    
-    try {
-        consulta = cmdConsultar.getResultado();
-    } catch (const EErroPersistencia &exp) {
-        return false;
-    }
-    
-    *usuario = consulta;
-
-    return true;
-}
-
-bool CntrServicoUsuario::cadastrar(Usuario usuario) {
-    TelaMensagem telaMensagem;
-    CadastrarUsuario cmdCadastrar;
-    int consulta;
-
-    try {
-        consulta = cmdCadastrar.executar(usuario);
-        return true;
-    } catch (const EErroPersistencia &exp) {
-        return false;
-    }
-}
-
-bool CntrServicoUsuario::descadastrar(int id, string cargo) {
-    TelaMensagem telaMensagem;
-    ComandoDescadastrarUsuario cmdDescadastrar(id, cargo);
-
-    try {
-        cmdDescadastrar.executar();
-        return true;
-    } catch (const EErroPersistencia &exp) {
-        return false;
-    }
-}
-
 void CntrApresentacaoUsuario::editar(Usuario* usuario) {
     TelaMensagem telaMensagem;
     TelaFormulario telaFormulario;
@@ -282,17 +235,91 @@ void CntrApresentacaoUsuario::editar(Usuario* usuario) {
     }
 }
 
+bool CntrServicoUsuario::consultar(Usuario *usuario) {
+    TelaMensagem telaMensagem;
+    ComandoConsultarUsuario cmdConsultar(usuario->getId());
+    
+    Usuario consulta;
+    try {
+        cmdConsultar.executar();
+    } catch (const EErroPersistencia &exp) {
+        return false;
+    }
+    
+    try {
+        consulta = cmdConsultar.getResultado();
+    } catch (const EErroPersistencia &exp) {
+        return false;
+    }
+    
+    *usuario = consulta;
+
+    return true;
+}
+
+bool CntrServicoUsuario::cadastrar(Usuario usuario) {
+    TelaMensagem telaMensagem;
+    CadastrarUsuario cmdCadastrar;
+    int consulta;
+
+    try {
+        consulta = cmdCadastrar.executar(usuario);
+    } catch (const EErroPersistencia &exp) {
+        return false;
+    }
+
+    return true;
+}
+
+bool CntrServicoUsuario::descadastrar(int id, string cargo) {
+    TelaMensagem telaMensagem;
+    ComandoDescadastrarUsuario cmdDescadastrar(id, cargo);
+
+    try {
+        cmdDescadastrar.executar();
+    } catch (const EErroPersistencia &exp) {
+        return false;
+    }
+
+    return true;
+}
+
 bool CntrServicoUsuario::editar(Usuario usuario) {
     TelaMensagem telaMensagem;
     ComandoEditarUsuario cmdEditar(usuario);
 
     try {
         cmdEditar.executar();
-        return true;
     } catch (const EErroPersistencia &exp) {
         return false;
     }
+
+    return true;
 }
+
+bool CntrServicoUsuario::listarTurmas(int idAluno, list<Turma> *turmas) {
+    TelaMensagem telaMensagem;
+    ComandoListarTurmas cmdListarTurmas;
+
+    list<Turma> consulta;
+
+    try {
+        cmdListarTurmas.executar();
+    } catch (const EErroPersistencia &exp) {
+        return false;
+    }
+
+    try {
+        consulta = cmdListarTurmas.getResultado();
+    } catch (const EErroPersistencia &exp) {
+        return false;
+    }
+
+    *turmas = consulta;
+
+    return true;
+}
+
 
 void CntrApresentacaoTurma::executar(Usuario* usuario) {
     string cargo = usuario->getCargo();
@@ -417,7 +444,7 @@ void CntrApresentacaoTurma::executar(Usuario* usuario) {
             }
         } else if (opcaoMenu == "3") {
             list<Turma> * turmas;
-            if (!cntrServicoTurma->listarAbertas(turmas)) {
+            if (!cntrServicoTurma->listarTurmas(turmas)) {
                 telaMensagem.apresentar("Nenhuma turma foi encontrada");
             } else {
                 string _ = telaTurmas.apresentar(*turmas);
@@ -473,10 +500,11 @@ bool CntrServicoTurma::cadastrar(Turma turma) {
 
     try {
         consulta = cmdCadastrar.getResultado();
-        return true;
     } catch (const EErroPersistencia &exp) {
         return false;
     }
+
+    return true;
 }
 
 bool CntrServicoTurma::consultar(Turma *turma) {
@@ -507,10 +535,11 @@ bool CntrServicoTurma::descadastrar(int id) {
 
     try {
         cmdDescadastrar.executar();
-        return true;
     } catch (const EErroPersistencia &exp) {
         return false;
     }
+
+    return true;
 }
 
 bool CntrServicoTurma::editar(Turma *turma) {
@@ -519,10 +548,11 @@ bool CntrServicoTurma::editar(Turma *turma) {
 
     try {
         cmdEditar.executar();
-        return true;
     } catch (const EErroPersistencia &exp) {
         return false;
     }
+
+    return true;
 }
 
 bool CntrServicoTurma::entrar(int idUsuario, int idTurma) {
@@ -531,10 +561,74 @@ bool CntrServicoTurma::entrar(int idUsuario, int idTurma) {
 
     try {
         cmdEntrar.executar();
-        return true;
     } catch (const EErroPersistencia &exp) {
         return false;
     }
+
+    return true;
+}
+
+bool CntrServicoTurma::listarTurmas(list<Turma> *turmas) {
+    TelaMensagem telaMensagem;
+    ComandoListarTurmas cmdListarTurmas;
+
+    list<Turma> consulta;
+
+    try {
+        cmdListarTurmas.executar();
+    } catch (const EErroPersistencia &exp) {
+        return false;
+    }
+
+    try {
+        consulta = cmdListarTurmas.getResultado();
+    } catch (const EErroPersistencia &exp) {
+        return false;
+    }
+
+    *turmas = consulta;
+
+    return true;
+}
+
+bool CntrServicoTurma::listarProvas(int idTurma, list<Prova> *provas) {
+    TelaMensagem telaMensagem;
+    ComandoListarProvas cmdListarProvas(idTurma);
+
+    list<Prova> consulta;
+
+    try {
+        cmdListarProvas.executar();
+    } catch (const EErroPersistencia &exp) {
+        return false;
+    }
+
+    try {
+        consulta = cmdListarProvas.getResultado();
+    } catch (const EErroPersistencia &exp) {
+        return false;
+    }
+
+    *provas = consulta;
+
+    return true;
+}
+
+bool CntrServicoTurma::listarAlunos(int idTurma, list<Usuario> *alunos) {
+    TelaMensagem telaMensagem;
+    ListarAlunosTurma cmdListarAlunos;
+
+    list<Usuario> consulta;
+
+    try {
+        consulta = cmdListarAlunos.executar(idTurma);
+    } catch (const EErroPersistencia &exp) {
+        return false;
+    }
+
+    *alunos = consulta;
+
+    return true;
 }
 
 void CntrApresentacaoAdmin::executar(Usuario* usuario) {
@@ -597,9 +691,9 @@ void CntrApresentacaoAdmin::executar(Usuario* usuario) {
 bool CntrServicoAdmin::estatisticas(vector<string> *vetor) {
     TelaMensagem telaMensagem;
     ComandoCountUsuarios cmdCountUsuario;
-    ComandoCountProvas cmdCountProvas;
-    ComandoCountQuestoes cmdCountQuestoes;
-    ComandoCountRespostas cmdCountRespostas;
+    ComandoCountProva cmdCountProvas;
+    ComandoCountQuestao cmdCountQuestoes;
+    ComandoCountResposta cmdCountRespostas;
     
     int nUsuarios;
     int nProvas;
@@ -655,16 +749,19 @@ void CntrApresentacaoProva::executar(Turma* turma) {
 
         switch(opcao) {
             case '1':                                                               //Consulta servico de provas
-                cntrServicoTurma->listarProvas(turma->getId(), listaProvas);            
-                try{ 
-                    idProva = telaOpcoesProvas.apresentar(*listaProvas);
-                    prova = new Prova;
-                    prova->setId(idProva);
-                    gerenciar(prova);
-                }catch(invalid_argument &e){
-                    telaMensagem.apresentar("Formato de dado invalido.");
+                if(cntrServicoTurma->listarProvas(turma->getId(), listaProvas)) {
+                    telaMensagem.apresentar("Nao foi possivel listar as provas.");
+                } else {            
+                    try{ 
+                        idProva = telaOpcoesProvas.apresentar(*listaProvas);
+                        prova = new Prova;
+                        prova->setId(idProva);
+                        gerenciar(prova);
+                    }catch(invalid_argument &e){
+                        telaMensagem.apresentar("Formato de dado invalido.");
+                    }
+                    break;
                 }
-                break;
             case '2':                                                                //Cadastrar provas
                 prova = new Prova;
                 try{

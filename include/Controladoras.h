@@ -212,7 +212,7 @@ class CntrServicoTurma:public IServicoTurma {
     bool editar(Turma*);
 
     bool entrar(int, int);
-    bool listarAbertas(list<Turma>*) {return false;}
+    bool listarTurmas(list<Turma>*);
     bool listarProvas(int, list<Prova>*) {return false;}
     bool listarAlunos(int, list<Usuario>*) {return false;}
 

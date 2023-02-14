@@ -605,7 +605,7 @@ list<Turma> ComandoListarTurmas::getResultado(){
         return turmas;
 }
 
-ComandoListarProvas::ComandoListarProvas(int id){
+ComandoListarProvas::ComandoListarProvas(int id) {
         comandoSQL = "SELECT * FROM Prova WHERE Turma_idTurma = ";
         comandoSQL += to_string(id) + ";";
 }
