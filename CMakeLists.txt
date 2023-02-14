@@ -26,8 +26,6 @@ enable_testing()
 add_executable(ProjetoMP
         main.cpp
         src/Builders.cpp
-        # src/Comandos.cpp
-        # src/Containers.cpp
         src/Controladoras.cpp
         src/Entidades.cpp
         src/Telas.cpp
