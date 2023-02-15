@@ -583,13 +583,13 @@ list<Turma> ComandoListarTurmas::getResultado(){
 
                 resultado = listaResultado.back();
                 listaResultado.pop_back();
-		if (resultado.getValorColuna() == "1"){
+		if (resultado.getValorColuna() == "0"){
                         turma_atual.switchAberta();
                 }
                 
                 // quantidade de alunos
-                resultado = listaResultado.back();
-                listaResultado.pop_back();
+                // resultado = listaResultado.back();
+                // listaResultado.pop_back();
 
                 resultado = listaResultado.back();
                 listaResultado.pop_back();
@@ -617,8 +617,9 @@ list<Prova> ComandoListarProvas::getResultado(){
         }
 
         list<Prova> provas;
+        list<ComandoConsultarProva> cmdsConsultarProva;
         while (!listaResultado.empty()){
-                Prova prova_atual;
+                // Prova prova_atual;
 
                 resultado = listaResultado.back();
                 listaResultado.pop_back();
@@ -635,10 +636,16 @@ list<Prova> ComandoListarProvas::getResultado(){
                 listaResultado.pop_back();
 
                 ComandoConsultarProva cmdConsultar(idProvaAtual);
-                cmdConsultar.executar();
-                prova_atual = cmdConsultar.getResultado();
+                cmdsConsultarProva.push_back(cmdConsultar);
+                // cmdConsultar.executar();
+                // prova_atual = cmdConsultar.getResultado();
 
-                provas.push_back(prova_atual);
+                // provas.push_back(prova_atual);
+        }
+        for (list<ComandoConsultarProva>::iterator it = cmdsConsultarProva.begin(); it != cmdsConsultarProva.end(); ++it) {
+                it->executar();
+                Prova provaAtual = it->getResultado();
+                provas.push_back(provaAtual);
         }
 
         return provas;
@@ -855,13 +862,13 @@ list<Turma> ComandoListarIdTurmasProfessor::getResultado() {
 
                 resultado = listaResultado.back();
                 listaResultado.pop_back();
-		if (resultado.getValorColuna() == "1"){
+		if (resultado.getValorColuna() == "0"){
                         turma_atual.switchAberta();
                 }
                 
-                // quantidade de alunos
-                resultado = listaResultado.back();
-                listaResultado.pop_back();
+                // // quantidade de alunos
+                // resultado = listaResultado.back();
+                // listaResultado.pop_back();
 
                 resultado = listaResultado.back();
                 listaResultado.pop_back();

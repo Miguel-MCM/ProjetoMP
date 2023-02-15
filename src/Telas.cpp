@@ -232,11 +232,13 @@ void TelaInfoProvas::apresentar(list<Prova> provas) {
     vector<string> DADOS;
 
     for (list<Prova>::iterator it = provas.begin(); it != provas.end();++it) {
-        DADOS.insert(DADOS.end(), "Nome: " + it->getNome());
+        DADOS.push_back("Nome: " + it->getNome());
+        // DADOS.insert(DADOS.end(), "Nome: " + it->getNome());
         string id;
         id = to_string(it->getId());
+        DADOS.push_back("ID: " + id);
         
-        DADOS.insert(DADOS.end(), "ID: " + id);
+        // DADOS.insert(DADOS.end(), "ID: " + id);
     }
         
     int linha,coluna;
@@ -317,7 +319,7 @@ string TelaBusca::apresentar(string id) {
     initscr();
     getmaxyx(stdscr,linha,coluna);
 
-    mvprintw(linha/2,(coluna-pergunta.length())/2,"%s",pergunta);
+    mvprintw(linha/2,(coluna-pergunta.length())/2,"%s",pergunta.c_str());
     getstr(dado1);
 
     clear();
