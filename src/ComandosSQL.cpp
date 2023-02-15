@@ -574,7 +574,7 @@ list<Turma> ComandoListarTurmas::getResultado(){
                 resultado = listaResultado.back();
                 listaResultado.pop_back();
 		turma_atual.setId(stoi(resultado.getValorColuna()));
-
+                
                 resultado = listaResultado.back();
                 listaResultado.pop_back();
 		turma_atual.setNome(resultado.getValorColuna());

@@ -335,12 +335,11 @@ bool CntrServicoUsuario::listarTurmasProfessor(int idProfessor, list<Turma> *tur
 
 
 void CntrApresentacaoTurma::executar(Usuario* usuario) {
-    string cargo = usuario->getCargo();
     string opcao;
 
-    if (cargo == "professor") {
+    if (usuario->getCargo() == "professor") {
         opcao = "2 - Cadastrar Turma";
-    } else if (cargo == "aluno") {
+    } else if (usuario->getCargo() == "aluno") {
         opcao = "2 - Entrar em Turma";
     } else {
         opcao = "2 - Descadastrar Turma";
@@ -371,19 +370,19 @@ void CntrApresentacaoTurma::executar(Usuario* usuario) {
 
     bool finalizou = false;
     while(!finalizou) {
-        if (cargo == "admin") {
+        if (usuario->getCargo() == "admin") {
             opcaoMenu = telaMenu.apresentar(titulo, campos2);
         } else {
             opcaoMenu = telaMenu.apresentar(titulo, campos);
         }
-        if (opcaoMenu == "1" && cargo != "admin") {
+        if (opcaoMenu == "1" && usuario->getCargo() != "admin") {
             while (true) {
                 list<Turma> turmas;
-                if (cargo == "aluno") {
+                if (usuario->getCargo() == "aluno") {
                     if (!cntrServicoUsuario->listarTurmasAluno(usuario->getId(), &turmas)) {
                         telaMensagem.apresentar("Nao foi possivel listar suas turmas");
                     }
-                } else if (cargo == "professor") {
+                } else if (usuario->getCargo() == "professor") {
                     if (!cntrServicoUsuario->listarTurmasProfessor(usuario->getId(), &turmas)) {
                         telaMensagem.apresentar("Nao foi possivel listar suas turmas");
                     }
@@ -392,8 +391,13 @@ void CntrApresentacaoTurma::executar(Usuario* usuario) {
                 }
                 string turmaEscolhida = telaTurmas.apresentar(turmas);
                 Turma* turma = new Turma();
-                if (stoi(turmaEscolhida) == 0)
+                try {
+                    if (stoi(turmaEscolhida) == 0)
+                        break;
+                } catch (invalid_argument &e) {
+                    telaMensagem.apresentar("Digite um numero.");
                     break;
+                }
                 turma->setId(stoi(turmaEscolhida));
                 if (!cntrServicoTurma->consultar(turma)) {
                     telaMensagem.apresentar("Turma nao encontrada");
@@ -412,7 +416,7 @@ void CntrApresentacaoTurma::executar(Usuario* usuario) {
 
                 vector<string> dados;
 
-                if (cargo == "aluno") {
+                if (usuario->getCargo() == "aluno") {
                     dados = {
                         "Nome: " + turma->getNome(),
                         "Professor: " + professor->getNome(),
@@ -437,9 +441,9 @@ void CntrApresentacaoTurma::executar(Usuario* usuario) {
                 opcaoMenu2 = telaMenu.apresentar("Turma: " + to_string(turma->getId()), dados);
                 if (opcaoMenu2 == "1"){
                     cntrApresentacaoProva->executar(turma, *usuario);
-                } else if (opcaoMenu2 == "2" && cargo != "aluno") {
+                } else if (opcaoMenu2 == "2" && usuario->getCargo() != "aluno") {
                     editar(turma);
-                } else if ((opcaoMenu2 == "2" && cargo == "aluno") || (opcaoMenu2 == "3")) {
+                } else if ((opcaoMenu2 == "2" && usuario->getCargo() == "aluno") || (opcaoMenu2 == "3")) {
                     break;
                 } else {
                     telaMensagem.apresentar("Opcao invalida.");
@@ -448,7 +452,7 @@ void CntrApresentacaoTurma::executar(Usuario* usuario) {
                 delete professor;
             }
         } else if (opcaoMenu == "2") {
-            if (cargo == "professor") {
+            if (usuario->getCargo() == "professor") {
                 vector<string> CAMPOS({
                     "Nome: ",
                     "Descricao: ",
@@ -457,9 +461,14 @@ void CntrApresentacaoTurma::executar(Usuario* usuario) {
                 string entradas[3];
                 telaFormulario.apresentar("Cadastro de turma", CAMPOS, entradas);
                 Turma turma;
-                turma.setIdProf(usuario->getId());
-                turma.setNome(entradas[0]);
-                turma.setDescricao(entradas[1]);
+                try {
+                    turma.setIdProf(usuario->getId());
+                    turma.setNome(entradas[0]);
+                    turma.setDescricao(entradas[1]);
+                } catch (invalid_argument &e) {
+                    telaMensagem.apresentar("Dado em formato invalido");
+                    continue;
+                }
                 if ("s" == entradas[2]) 
                     turma.setAberta(true);
                 else
@@ -468,7 +477,7 @@ void CntrApresentacaoTurma::executar(Usuario* usuario) {
                     telaMensagem.apresentar("Cadastro realizado com sucesso!");
                 else
                     telaMensagem.apresentar("Nao foi possivel realizar o cadastro.");
-            } else if (cargo == "aluno") {
+            } else if (usuario->getCargo() == "aluno") {
                 string id = telaBusca.apresentar("Id da turma");
                 if (!cntrServicoTurma->entrar(stoi(id), usuario->getId())) {
                     telaMensagem.apresentar("Falha ao entrar na turma.");
@@ -480,18 +489,18 @@ void CntrApresentacaoTurma::executar(Usuario* usuario) {
                 }
             }
         } else if (
-                (opcaoMenu == "3" && cargo != "admin") 
-                || (opcaoMenu == "1" && cargo == "admin")
+                (opcaoMenu == "3" && usuario->getCargo() != "admin") 
+                || (opcaoMenu == "1" && usuario->getCargo() == "admin")
             ) {
             list<Turma> * turmas;
             if (!cntrServicoTurma->listarTurmas(turmas)) {
                 telaMensagem.apresentar("Nenhuma turma foi encontrada");
             } else {
-                string _ = telaTurmas.apresentar(turmas);
+                string _ = telaTurmas.apresentar(*turmas);
             }
         } else if (
-            (opcaoMenu == "4" && cargo != "admin")
-            || (opcaoMenu == "3" && cargo == "admin")
+            (opcaoMenu == "4" && usuario->getCargo() != "admin")
+            || (opcaoMenu == "3" && usuario->getCargo() == "admin")
             ) {
             finalizou = true;
         } else {
@@ -503,7 +512,7 @@ void CntrApresentacaoTurma::executar(Usuario* usuario) {
 void CntrApresentacaoTurma::editar(Turma *turma) {
     TelaMensagem telaMensagem;
     TelaFormulario telaFormulario;
-    const string TITULO = "Edicao de Usuario";
+    const string TITULO = "Edicao de Turma";
     const vector<string> DADOS({
         "Nome: ",
         "Descricao: ",
