@@ -4,6 +4,7 @@
 #include "Interfaces.h"
 #include "Controladoras.h"
 #include "Builders.h"
+#include "Telas.h"
 
 #include "ComandosSQL.h"
 

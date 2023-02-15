@@ -132,8 +132,10 @@ class CntrApresentacaoProva:public IApresentacaoProva {
  private:
         IServicoTurma* cntrServicoTurma;
         IServicoProva* cntrServicoProva;
+
+        void consultar(Prova*, Turma*, Usuario);
  public:
-        void executar(Turma*);
+        void executar(Turma*, Usuario);
         void gerenciar(Prova*);
         void editar(Prova*);
         void setCntrServicoProva(IServicoProva*);
@@ -240,7 +242,7 @@ class CntrServicoProva:public IServicoProva{
         bool descadastrarProva(int);
         bool editarProva(Prova);
         bool consultarProva(Prova*);
-        bool getQtdQuestoes(Prova, int*) {return false;} 
+        bool getQtdQuestoes(Prova, int*) {return false;}
         vector<string> getProvas();
 
         bool cadastrarQuestao(Questao);
@@ -248,6 +250,8 @@ class CntrServicoProva:public IServicoProva{
         bool editarQuestao(Questao);
         bool consultarQuestao(Questao*);
         bool getListaQuestoes(list<int>, list<Questao>*);
+        bool calcularResultado(Resposta, list<int> *);
+        bool getListaRespostaAlunos(Prova, list<Usuario>*, list<int>*);
 };
 
 #endif   // INCLUDE_CONTROLADORAS_H_
