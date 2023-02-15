@@ -31,6 +31,8 @@ CntrApresentacaoControle* BuilderSistema::construir(){
     cntrApresentacaoAdmin->setCntrApresentacaoProva(cntrApresentacaoProva);
     cntrApresentacaoAdmin->setCntrApresentacaoTurma(cntrApresentacaoTurma);
     cntrApresentacaoAdmin->setCntrServicoAdmin(cntrServicoAdmin);
+    cntrApresentacaoAdmin->setCntrServicoUsuario(cntrServicoUsuario);
+    cntrApresentacaoAdmin->setCntrServicoTurma(cntrServicoTurma);
 
     cntrApresentacaoUsuario->setCntrApresentacaoTurma(cntrApresentacaoTurma);
     cntrApresentacaoUsuario->setCntrServicoUsuario(cntrServicoUsuario);

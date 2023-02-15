@@ -17,6 +17,8 @@ using std::vector;
 using std::to_string;
 
 class Tela {
+ public:
+    const int LIMITE_CHAR = 40;
  protected:
     void mostrarLinhas(vector<string>, int, int, int);
     void mostrarLinhas(vector<string>, int, int);
@@ -70,7 +72,7 @@ public:
 
 class TelaConsultarTurmas: public Tela {
  public:
-    string apresentar(list<Turma>);
+    string apresentar(list<Turma>, bool);
 };
 
 class TelaOpcoesProvas: public Tela {

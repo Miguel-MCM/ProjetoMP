@@ -213,6 +213,7 @@ class CntrServicoUsuario:public IServicoUsuario {
         bool consultar(Usuario*);
         bool listarTurmasAluno(int, list<Turma>*); // id aluno
         bool listarTurmasProfessor(int, list<Turma>*);
+        bool consultarEmail(Usuario *usuario);
         ~CntrServicoUsuario() {}
 };
 

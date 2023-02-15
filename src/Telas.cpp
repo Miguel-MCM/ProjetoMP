@@ -18,7 +18,7 @@ void Tela::mostrarLinhas(vector<string> linhas, int linha, int coluna) {
 
 string TelaMenu::apresentar(string titulo, vector<string> opcoes) {
     int linha, coluna;
-    char dado[20];
+    char dado[LIMITE_CHAR];
     string campo = "Selecione uma opcao: ";
 
     initscr();
@@ -35,7 +35,7 @@ string TelaMenu::apresentar(string titulo, vector<string> opcoes) {
 
 void TelaFormulario::apresentar(string titulo, vector<string> campos, string * entradas) {
     int linha, coluna;
-    char dado[20];
+    char dado[LIMITE_CHAR];
     initscr();
     getmaxyx(stdscr, linha, coluna);
     mvprintw(linha / 2 - 6, (coluna - titulo.length()) / 2, "%s", titulo.c_str());
@@ -79,8 +79,8 @@ void TelaAutenticacao::apresentar(Usuario* usuario) {
 
     char campo1[]="Digite o email : ";
     char campo2[]="Digite a senha     : ";
-    char dado1[80];
-    char dado2[80];
+    char dado1[LIMITE_CHAR];
+    char dado2[LIMITE_CHAR];
     int linha, coluna;
     string senha;
     string email;
@@ -105,9 +105,9 @@ void TelaCadastro::apresentar(Usuario *usuario) {
     char campo1[]="Digite o email : ";
     char campo2[]="Digite a senha     : ";
     char campo3[]="Digite o nome     : ";
-    char dado1[80];
-    char dado2[80];
-    char dado3[80];
+    char dado1[LIMITE_CHAR];
+    char dado2[LIMITE_CHAR];
+    char dado3[LIMITE_CHAR];
     int linha, coluna;
 
     initscr();
@@ -145,7 +145,7 @@ char TelaConsultaUsuario::apresentar(Usuario* usuario) {
         "Selecione uma opcao: "
     });
 
-    char dado1[10];
+    char dado1[LIMITE_CHAR];
 
     int linha,coluna;
 
@@ -168,7 +168,7 @@ char TelaConsultaUsuario::apresentar(Usuario* usuario) {
 bool TelaConfirmacao::apresentar() {
 
     string campo1 = "Deseja confimar o descadastramento? (S/N) ";
-    char dado1[80];
+    char dado1[LIMITE_CHAR];
     bool confirmou;
     int linha,coluna;
 
@@ -198,7 +198,7 @@ string TelaConsultarProvas::apresentar(list<Prova> provas) {
     const string TITULO = "Provas";
     vector<string> DADOS;
 
-    char dado1[10];
+    char dado1[LIMITE_CHAR];
 
     for (list<Prova>::iterator it = provas.begin(); it != provas.end();++it) {
         DADOS.insert(DADOS.end(), "Nome: " + it->getNome());
@@ -252,11 +252,11 @@ void TelaInfoProvas::apresentar(list<Prova> provas) {
     endwin();
 }
 
-string TelaConsultarTurmas::apresentar(list<Turma> turmas) {
+string TelaConsultarTurmas::apresentar(list<Turma> turmas, bool input) {
     const string TITULO = "Turma";
     vector<string> DADOS;
 
-    char dado1[10];
+    char dado1[LIMITE_CHAR];
 
     for (list<Turma>::iterator it = turmas.begin(); it != turmas.end(); ++it) {
         DADOS.insert(DADOS.end(), "Nome: " + it->getNome());
@@ -272,8 +272,10 @@ string TelaConsultarTurmas::apresentar(list<Turma> turmas) {
 
         DADOS.insert(DADOS.end(), "ID: " + id);
     }
-
-    DADOS.insert(DADOS.end(), "Selecione uma opcao ou digite 0 para voltar: ");
+    if (input)
+        DADOS.insert(DADOS.end(), "Selecione uma opcao ou digite 0 para voltar: ");
+    else
+        DADOS.insert(DADOS.end(), "Digite 0 para voltar: ");
         
     int linha,coluna;
 
@@ -312,7 +314,7 @@ void TelaListarAlunos::apresentar(list<Usuario> alunos) {
 
 string TelaBusca::apresentar(string id) {
     string pergunta = id + ": ";
-    char dado1[80];
+    char dado1[LIMITE_CHAR];
     int linha,coluna;
 
     initscr();
@@ -324,7 +326,9 @@ string TelaBusca::apresentar(string id) {
     clear();
     endwin();
 
-    return dado1;
+    string dado = dado1;
+
+    return dado;
 }
 
 char TelaDefinicaoTipoQuestao::apresentar() {
@@ -362,10 +366,10 @@ void TelaCadastroQuestao::apresentarCriarMultiplaEscolha(Questao* questao) {
 
     char campo5[]="Escreva as alternativas : ";
 
-    char dado1[80];
-    char dado2[80];
-    char dado3[80];
-    char dado4[80];
+    char dado1[LIMITE_CHAR];
+    char dado2[LIMITE_CHAR];
+    char dado3[LIMITE_CHAR];
+    char dado4[LIMITE_CHAR];
     
     list<string> alternativas;
         
@@ -410,9 +414,9 @@ void TelaCadastroQuestao::apresentarCriarCertoErrado(Questao* questao) {
     char campo2[]="Digite o texto da questao : ";
     char campo3[]="Digite resposta da questão (0 para errado ou 1 para certo) : ";
 
-    char dado1[80];
-    char dado2[80];
-    char dado3[80];
+    char dado1[LIMITE_CHAR];
+    char dado2[LIMITE_CHAR];
+    char dado3[LIMITE_CHAR];
 
     int resposta;
 
@@ -441,9 +445,9 @@ void TelaCadastroQuestao::apresentarCriarNumerico(Questao* questao) {
     char campo2[]="Digite o texto da questao : ";
     char campo3[]="Digite resposta numerica da questão : ";
 
-    char dado1[80];
-    char dado2[80];
-    char dado3[80];
+    char dado1[LIMITE_CHAR];
+    char dado2[LIMITE_CHAR];
+    char dado3[LIMITE_CHAR];
 
     int resposta;
 
@@ -506,7 +510,7 @@ int TelaOpcoesQuestoes::apresentar(list<Questao> listaQuestao) {
     string campo1 = "Questao: ";
     string campo2 = "ID: ";
     char campo3[] = "Digite o ID da questao que deseja acessar: ";
-    char dado1[30];
+    char dado1[LIMITE_CHAR];
     int linha, coluna;
 
     initscr();
@@ -602,9 +606,9 @@ char TelaMenuProva::apresentar(string cargo) {
     initscr();
     getmaxyx(stdscr,linha,coluna);
 
-    mvprintw(linha/4,(coluna-strlen(campo1))/4,"%s",campo1);
-    mvprintw(linha/4 + 2,(coluna-strlen(campo2))/4,"%s",campo2);
-    mvprintw(linha/4 + 4,(coluna - (campo3.length()))/4,"%s",campo3.c_str());
+    mvprintw(linha/4,(coluna-strlen(campo1))/2,"%s",campo1);
+    mvprintw(linha/4 + 2,(coluna-strlen(campo2))/2,"%s",campo2);
+    mvprintw(linha/4 + 4,(coluna - (campo3.length()))/2,"%s",campo3.c_str());
 
 //    mvprintw(linha/4,3*(coluna-strlen(campo4))/4,"%s",campo4);
 //    mvprintw(linha/4 + 2,3*(coluna-strlen(campo5))/4,"%s",campo5);
@@ -624,7 +628,7 @@ int TelaOpcoesProvas::apresentar(list<Prova> listaProvas) {
     string campo1 = "Prova: ";
     string campo2 = "ID: ";
     char campo3[] = "Digite o ID da prova que deseja acessar: ";
-    char dado1[30];
+    char dado1[LIMITE_CHAR];
     int linha, coluna;
 
     initscr();
@@ -687,7 +691,7 @@ char TelaConsultaProva::apresentar(Prova* prova) {
 
 void TelaCadastroProva::apresentar(Prova* prova, int idTurma) {
     char campo1[]="Digite o titulo de prova : ";
-    char dado1[80];
+    char dado1[LIMITE_CHAR];
     int linha,coluna;
 
     initscr();
@@ -713,7 +717,7 @@ char TelaEdicaoProva::apresentar(Prova* prova) {
     
     char campo6[]="Selecione uma opcao: ";
 
-    char dado1[80];
+    char dado1[LIMITE_CHAR];
     char dado2[1];
     int linha,coluna;
 

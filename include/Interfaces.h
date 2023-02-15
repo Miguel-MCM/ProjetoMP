@@ -94,6 +94,7 @@ class IServicoUsuario {
         virtual bool consultar(Usuario*) = 0;
         virtual bool listarTurmasAluno(int, list<Turma>*) = 0; // id aluno
         virtual bool listarTurmasProfessor(int, list<Turma>*) = 0; // id professor
+        virtual bool consultarEmail(Usuario *usuario) = 0;
         virtual ~IServicoUsuario() {}
 };
 

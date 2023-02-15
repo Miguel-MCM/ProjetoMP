@@ -171,35 +171,36 @@ void CntrApresentacaoUsuario::executar(Usuario* usuario) {
             telaMensagem.apresentar("Houve um erro na consulta do usuario");
             break;
         }
+
         switch (telaConsultaUsuario.apresentar(usuario)) {
-        case '1':
-            try {
-                editar(usuario);
-            } catch (invalid_argument &e) {
-                telaMensagem.apresentar("Formato de dado invalido.");
-            }
-            break;
-        case '2':
-            if(usuario->getCargo() != "admin") {
-                TelaConfirmacao telaConfirmacao;
-                if(telaConfirmacao.apresentar()) {
-                    if(cntrServicoUsuario->descadastrar(usuario->getId(), usuario->getCargo())) {
-                        setStatusCadastro(false);
-                        finalizou = true;
-                    } else {
-                        telaMensagem.apresentar("Erro no Processo.");
-                    }
+            case '1':
+                try {
+                    editar(usuario);
+                } catch (invalid_argument &e) {
+                    telaMensagem.apresentar("Formato de dado invalido.");
                 }
-            } else {
-                telaMensagem.apresentar("O administrador nao pode se descadastrar.");
-            }
-            break;
-        case '3':
-            finalizou = true;
-            break;
-        default:
-            telaMensagem.apresentar("Opcao Invalida.");
-            break;
+                break;
+            case '2':
+                if(usuario->getCargo() != "admin") {
+                    TelaConfirmacao telaConfirmacao;
+                    if(telaConfirmacao.apresentar()) {
+                        if(cntrServicoUsuario->descadastrar(usuario->getId(), usuario->getCargo())) {
+                            setStatusCadastro(false);
+                            finalizou = true;
+                        } else {
+                            telaMensagem.apresentar("Erro no Processo.");
+                        }
+                    }
+                } else {
+                    telaMensagem.apresentar("O administrador nao pode se descadastrar.");
+                }
+                break;
+            case '3':
+                finalizou = true;
+                break;
+            default:
+                telaMensagem.apresentar("Opcao Invalida.");
+                break;
         }
     }
 }
@@ -231,10 +232,32 @@ void CntrApresentacaoUsuario::editar(Usuario* usuario) {
     }
 }
 
+bool CntrServicoUsuario::consultarEmail(Usuario *usuario) {
+    TelaMensagem telaMensagem;
+    ComandoConsultarUsuario cmdConsultar(usuario->getEmail());
+
+    Usuario consulta;
+    try {
+        cmdConsultar.executar();
+    } catch (const EErroPersistencia &exp) {
+        return false;
+    }
+    
+    try {
+        consulta = cmdConsultar.getResultado();
+    } catch (const EErroPersistencia &exp) {
+        return false;
+    }
+    
+    *usuario = consulta;
+
+    return true;
+}
+
 bool CntrServicoUsuario::consultar(Usuario *usuario) {
     TelaMensagem telaMensagem;
     ComandoConsultarUsuario cmdConsultar(usuario->getId());
-    
+
     Usuario consulta;
     try {
         cmdConsultar.executar();
@@ -349,11 +372,12 @@ void CntrApresentacaoTurma::executar(Usuario* usuario) {
     vector<string> campos({
         "1 -  Minhas Turmas", 
         opcao, 
-        "3 - Todas as Turmas",
+        "3 - Consultar Turmas",
         "4 - Voltar" 
     });
+    
     vector<string> campos2({
-        "1 -  Todas as Turmas", 
+        "1 -  Consultar Turmas", 
         opcao, 
         "3 - Voltar" 
     });
@@ -389,7 +413,7 @@ void CntrApresentacaoTurma::executar(Usuario* usuario) {
                 } else {
                     telaMensagem.apresentar("Voce nao possui turmas");
                 }
-                string turmaEscolhida = telaTurmas.apresentar(turmas);
+                string turmaEscolhida = telaTurmas.apresentar(turmas, true);
                 Turma* turma = new Turma();
                 try {
                     if (stoi(turmaEscolhida) == 0)
@@ -406,7 +430,7 @@ void CntrApresentacaoTurma::executar(Usuario* usuario) {
                 Usuario* professor = new Usuario();
                 professor->setId(turma->getIdProf());
                 if (!cntrServicoUsuario->consultar(professor)) {
-                    telaMensagem.apresentar("Profssor nao encontrado");
+                    telaMensagem.apresentar("Professor nao encontrado");
                 }
                 string status;
                 if (turma->taAberta())
@@ -492,11 +516,11 @@ void CntrApresentacaoTurma::executar(Usuario* usuario) {
                 (opcaoMenu == "3" && usuario->getCargo() != "admin") 
                 || (opcaoMenu == "1" && usuario->getCargo() == "admin")
             ) {
-            list<Turma> * turmas;
-            if (!cntrServicoTurma->listarTurmas(turmas)) {
+            list<Turma> turmas;
+            if (!cntrServicoTurma->listarTurmas(&turmas)) {
                 telaMensagem.apresentar("Nenhuma turma foi encontrada");
             } else {
-                string _ = telaTurmas.apresentar(*turmas);
+                string _ = telaTurmas.apresentar(turmas, false);
             }
         } else if (
             (opcaoMenu == "4" && usuario->getCargo() != "admin")
@@ -607,6 +631,41 @@ bool CntrServicoTurma::editar(Turma *turma) {
 bool CntrServicoTurma::entrar(int idUsuario, int idTurma) {
     TelaMensagem telaMensagem;
     ComandoEntrarNaTurma cmdEntrar(idTurma, idUsuario);
+    ComandoConsultarTurma cmdConsultarTurma(idTurma);
+    ComandoListarIdTurmaAluno cmdListarIdTurmaAluno(idUsuario);
+    list<int> listaIdTurma;
+    Turma turma;
+
+    try {
+        cmdConsultarTurma.executar();
+    } catch (const EErroPersistencia &exp) {
+        return false;
+    }
+
+    try {
+        turma = cmdConsultarTurma.getResultado();
+    } catch (const EErroPersistencia &exp) {
+        return false;
+    }
+
+    if (!turma.taAberta())
+        return false;
+    
+    try {
+        cmdListarIdTurmaAluno.executar();
+    } catch (const EErroPersistencia &exp) {
+        return false;
+    }
+
+    try {
+        listaIdTurma = cmdListarIdTurmaAluno.getResultado();
+    } catch (const EErroPersistencia &exp) {
+        return false;
+    }
+
+    if (std::find(listaIdTurma.begin(), listaIdTurma.end(), idTurma) != listaIdTurma.end()) {
+        return false;
+    }
 
     try {
         cmdEntrar.executar();
@@ -680,7 +739,7 @@ bool CntrServicoTurma::listarAlunos(int idTurma, list<Usuario> *alunos) {
     return true;
 }
 
-void CntrApresentacaoAdmin::executar(Usuario* usuario) {
+void CntrApresentacaoAdmin::executar(Usuario* admin) {
     string titulo = "Menu de administracao";
     vector<string> campos({
         "1 - Estatisticas ", 
@@ -690,9 +749,10 @@ void CntrApresentacaoAdmin::executar(Usuario* usuario) {
     });
     TelaMenu telaMenu;
     string opcaoMenu;
-
+    Usuario usuario_busca;
     TelaMensagem telaMensagem;
     TelaMensagens telaMensagens;
+    bool resultado;
 
     TelaBusca telaBusca;
 
@@ -707,14 +767,13 @@ void CntrApresentacaoAdmin::executar(Usuario* usuario) {
             }
         } else if (opcaoMenu == "2") {
             string email = telaBusca.apresentar("Email");
-            Usuario* usuario = new Usuario();
-            usuario->setEmail(email);
+            usuario_busca.setEmail(email);
 
-            bool resultado = cntrServicoUsuario->consultar(usuario);
+            resultado = cntrServicoUsuario->consultarEmail(&usuario_busca);
             if (!resultado) {
                 telaMensagem.apresentar("Usuario nao encontrado.");
             } else {    
-                cntrApresentacaoUsuario->executar(usuario);
+                cntrApresentacaoUsuario->executar(&usuario_busca);
             }
         } else if (opcaoMenu == "3") {
             string idTurma = telaBusca.apresentar("Id da Turma");
@@ -726,8 +785,8 @@ void CntrApresentacaoAdmin::executar(Usuario* usuario) {
                 telaMensagem.apresentar("Turma nao encontrada.");
             } else {   
                 list<int> intTurmaId({stoi(idTurma)});
-                usuario->setIdTurmas(intTurmaId);
-                cntrApresentacaoTurma->executar(usuario);
+                admin->setIdTurmas(intTurmaId);
+                cntrApresentacaoTurma->executar(admin);
             }
         } else if (opcaoMenu == "4") {
             return;
