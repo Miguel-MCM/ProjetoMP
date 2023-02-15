@@ -372,23 +372,26 @@ void CntrApresentacaoTurma::executar(Usuario* usuario) {
         opcaoMenu = telaMenu.apresentar(titulo, campos);
         if (opcaoMenu == "1") {
             while (true) {
-                list<Turma> *turmas;
+                list<Turma> turmas;
                 if (cargo == "aluno") {
-                    if (!cntrServicoUsuario->listarTurmasAluno(usuario->getId(), turmas)) {
+                    if (!cntrServicoUsuario->listarTurmasAluno(usuario->getId(), &turmas)) {
                         telaMensagem.apresentar("Nao foi possivel listar suas turmas");
                     }
                 } else if (cargo == "professor") {
-                    if (!cntrServicoUsuario->listarTurmasProfessor(usuario->getId(), turmas)) {
+                    if (!cntrServicoUsuario->listarTurmasProfessor(usuario->getId(), &turmas)) {
                         telaMensagem.apresentar("Nao foi possivel listar suas turmas");
                     }
                 } else {
                     telaMensagem.apresentar("Voce nao possui turmas");
                 }
-                string turmaEscolhida = telaTurmas.apresentar(*turmas);
+                string turmaEscolhida = telaTurmas.apresentar(turmas);
                 Turma* turma = new Turma();
+                if (stoi(turmaEscolhida) == 0)
+                    break;
                 turma->setId(stoi(turmaEscolhida));
                 if (!cntrServicoTurma->consultar(turma)) {
                     telaMensagem.apresentar("Turma nao encontrada");
+                    continue;
                 }
                 Usuario* professor = new Usuario();
                 professor->setId(turma->getIdProf());
@@ -435,6 +438,8 @@ void CntrApresentacaoTurma::executar(Usuario* usuario) {
                 } else {
                     telaMensagem.apresentar("Opcao invalida.");
                 }
+                delete turma;
+                delete professor;
             }
         } else if (opcaoMenu == "2") {
             if (cargo == "professor") {
@@ -443,7 +448,7 @@ void CntrApresentacaoTurma::executar(Usuario* usuario) {
                     "Descricao: ",
                     "Aberta (s ou n): "
                 });
-                string * entradas;
+                string entradas[3];
                 telaFormulario.apresentar("Cadastro de turma", CAMPOS, entradas);
                 Turma turma;
                 turma.setIdProf(usuario->getId());
@@ -469,11 +474,11 @@ void CntrApresentacaoTurma::executar(Usuario* usuario) {
                 }
             }
         } else if (opcaoMenu == "3") {
-            list<Turma> * turmas;
-            if (!cntrServicoTurma->listarTurmas(turmas)) {
+            list<Turma> turmas;
+            if (!cntrServicoTurma->listarTurmas(&turmas)) {
                 telaMensagem.apresentar("Nenhuma turma foi encontrada");
             } else {
-                string _ = telaTurmas.apresentar(*turmas);
+                string _ = telaTurmas.apresentar(turmas);
             }
         } else if (opcaoMenu == "4") {
             finalizou = true;
@@ -580,7 +585,7 @@ bool CntrServicoTurma::editar(Turma *turma) {
 
 bool CntrServicoTurma::entrar(int idUsuario, int idTurma) {
     TelaMensagem telaMensagem;
-    ComandoEntrarNaTurma cmdEntrar(idUsuario, idTurma);
+    ComandoEntrarNaTurma cmdEntrar(idTurma, idUsuario);
 
     try {
         cmdEntrar.executar();
@@ -766,9 +771,9 @@ void CntrApresentacaoProva::executar(Turma* turma, Usuario usuario) {
     vector<string> pedido({"Digite o id da prova: "});
     string * id;
     int idProva;
-    Prova * prova;
+    Prova prova;
     char opcao;
-    list<Prova> *listaProvas;
+    list<Prova> listaProvas;
 
     while(true) {
         opcao = telaMenuProva.apresentar(usuario.getCargo());
@@ -776,34 +781,33 @@ void CntrApresentacaoProva::executar(Turma* turma, Usuario usuario) {
         switch(opcao) {
             case '1': {                                                               //Consulta servico de provas
                 
-                if (!cntrServicoTurma->listarProvas(turma->getId(), listaProvas)) {
+                if (!cntrServicoTurma->listarProvas(turma->getId(), &listaProvas)) {
                     telaMensagem.apresentar("Houve um erro ao listar as provas da turma");
                     continue;
                 }
                 if (usuario.getCargo() == "professor") {
                     try { 
-                        idProva = telaOpcoesProvas.apresentar(*listaProvas);
+                        idProva = telaOpcoesProvas.apresentar(listaProvas);
                         } catch(invalid_argument &e){
                             telaMensagem.apresentar("Formato de dado invalido.");
                         }
-                        prova = new Prova;
-                        prova->setId(idProva);
+                        prova.setId(idProva);
 
-                        gerenciar(prova);
+                        gerenciar(&prova);
                 } else {
-                    telaInfoProva.apresentar(*listaProvas);
+                    telaInfoProva.apresentar(listaProvas);
                 }
                 break;
             }
             case '2': {                                                               //Cadastrar provas
                 if (usuario.getCargo() == "aluno") {
                     telaFormulario.apresentar("Selecionar prova", pedido, id);
-                    prova->setId(stoi(*id));
-                    if (!cntrServicoProva->consultarProva(prova)) {
+                    prova.setId(stoi(*id));
+                    if (!cntrServicoProva->consultarProva(&prova)) {
                         telaMensagem.apresentar("Prova nao encontrada.");
                         continue;
                     }
-                    consultar(prova, turma, usuario);
+                    consultar(&prova, turma, usuario);
                 }
                 break;
             }
