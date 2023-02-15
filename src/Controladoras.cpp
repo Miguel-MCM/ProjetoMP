@@ -195,9 +195,6 @@ void CntrApresentacaoUsuario::executar(Usuario* usuario) {
             }
             break;
         case '3':
-            cntrApresentacaoTurma->executar(usuario);
-            break;
-        case '4':
             finalizou = true;
             break;
         default:
@@ -356,6 +353,11 @@ void CntrApresentacaoTurma::executar(Usuario* usuario) {
         "3 - Todas as Turmas",
         "4 - Voltar" 
     });
+    vector<string> campos2({
+        "1 -  Todas as Turmas", 
+        opcao, 
+        "3 - Voltar" 
+    });
 
     TelaMenu telaMenu;
     TelaConsultarTurmas telaTurmas;
@@ -369,8 +371,12 @@ void CntrApresentacaoTurma::executar(Usuario* usuario) {
 
     bool finalizou = false;
     while(!finalizou) {
-        opcaoMenu = telaMenu.apresentar(titulo, campos);
-        if (opcaoMenu == "1") {
+        if (cargo == "admin") {
+            opcaoMenu = telaMenu.apresentar(titulo, campos2);
+        } else {
+            opcaoMenu = telaMenu.apresentar(titulo, campos);
+        }
+        if (opcaoMenu == "1" && cargo != "admin") {
             while (true) {
                 list<Turma> turmas;
                 if (cargo == "aluno") {
@@ -473,14 +479,20 @@ void CntrApresentacaoTurma::executar(Usuario* usuario) {
                     telaMensagem.apresentar("Falha ao descadastrar a turma.");
                 }
             }
-        } else if (opcaoMenu == "3") {
-            list<Turma> turmas;
-            if (!cntrServicoTurma->listarTurmas(&turmas)) {
+        } else if (
+                (opcaoMenu == "3" && cargo != "admin") 
+                || (opcaoMenu == "1" && cargo == "admin")
+            ) {
+            list<Turma> * turmas;
+            if (!cntrServicoTurma->listarTurmas(turmas)) {
                 telaMensagem.apresentar("Nenhuma turma foi encontrada");
             } else {
                 string _ = telaTurmas.apresentar(turmas);
             }
-        } else if (opcaoMenu == "4") {
+        } else if (
+            (opcaoMenu == "4" && cargo != "admin")
+            || (opcaoMenu == "3" && cargo == "admin")
+            ) {
             finalizou = true;
         } else {
             telaMensagem.apresentar("Opcao invalida.");

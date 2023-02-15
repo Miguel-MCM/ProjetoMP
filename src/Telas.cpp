@@ -141,8 +141,7 @@ char TelaConsultaUsuario::apresentar(Usuario* usuario) {
     const vector<string> OPCOES({
         "1 - Editar",
         "2 - Descadastrar",
-        "3 - Minhas turmas",
-        "4 - Voltar",
+        "3 - Voltar",
         "Selecione uma opcao: "
     });
 
