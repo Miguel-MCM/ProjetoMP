@@ -24,11 +24,11 @@ class IServicoTurma;
 class IServicoProva;
 class IServicoQuestao;
 
-/// @brief Interface para apresentação à usuário de telas relacionadas à serviço de autenticação de dados. 
+/// @brief Interface para apresentação ao usuário de telas relacionadas à serviço de autenticação de dados. 
 class IApresentacaoAutenticacao {
  public:
-        /// @brief Implementa interface para autenticação de dados usuário.
-        /// @param  parametro do tipo objeto Usuario: usuários quais dados se deseja autenticar.
+        /// @brief Implementa autenticação de dados usuário.
+        /// @param  parametro do tipo objeto Usuario: usuário a ser autenticado.
         /// @return bool indicando sucesso ou falha no processo.
         virtual bool autenticar(Usuario*) = 0;
         /// @brief Cria conexão entre a camada de apresentação de autenticação e a camada de serviço.
@@ -38,7 +38,7 @@ class IApresentacaoAutenticacao {
         virtual ~IApresentacaoAutenticacao(){}
 };
 
-/// @brief Interface para apresentação à usuário de telas relacionadas à servicos de usuário. 
+/// @brief Interface para apresentação ao usuário de telas relacionadas à servicos de usuário. 
 class IApresentacaoUsuario {
  public:
         /// @brief Implementa ambiente para acessar os serviços e telas de usuário.
@@ -66,7 +66,7 @@ class IApresentacaoUsuario {
         virtual ~IApresentacaoUsuario(){}
 };
 
-/// @brief Interface para apresentação à usuário de telas relacionadas à servicos de administrador.
+/// @brief Interface para apresentação ao usuário de telas relacionadas à servicos de administrador.
 class IApresentacaoAdmin {
  public:
         /// @brief Implementa ambiente para acessar os serviços e telas de admin
@@ -144,64 +144,165 @@ class IApresentacaoProva {
         virtual ~IApresentacaoProva() {}
 };
 
+/// @brief Interface para serviços de autenticação do usuário.
 class IServicoAutenticacao {
  public:
+        /// @brief Solicita serviço de autenticação ao banco de dados.
+        /// @param parametro ponteiro do tipo Usuario: usuário a ser autenticado.
+        /// @return bool indicando sucesso ou falha no processo.
         virtual bool autenticar(Usuario*) = 0;
+        /// @brief Método destrutor para a interface.
         virtual ~IServicoAutenticacao() {}
 };
 
+/// @brief Interface para serviços de usuário.
 class IServicoUsuario {
  public:
+        /// @brief Solicita serviço de cadastramento de usuário ao banco de dados.
+        /// @param parametro Usuario: usuário com os dados preenchidos a ser cadastrado.
+        /// @return bool indicando sucesso ou falha no processo.
         virtual bool cadastrar(Usuario) = 0;
+        /// @brief Solicita serviço de descadastramento de usuário ao banco de dados.
+        /// @param parametro int: id do usuário a ser descadastrado.
+        /// @param parametro string: cargo do usuário a ser descadastrado.
+        /// @return bool indicando sucesso ou falha no processo.
         virtual bool descadastrar(int, string) = 0;
+        /// @brief Solicita serviço de edição de usuário ao banco de dados.
+        /// @param parametro Usuario: usuário com os novos dados preenchidos a ser editado.
+        /// @return bool indicando sucesso ou falha no processo.
         virtual bool editar(Usuario) = 0;
+        /// @brief Solicita serviço de consulta de usuário ao banco de dados.
+        /// @param parametro ponteiro do tipo Usuario: usuário a ser preenchido com os dados do banco.
+        /// @return bool indicando sucesso ou falha no processo.
         virtual bool consultar(Usuario*) = 0;
-        virtual bool listarTurmasAluno(int, list<Turma>*) = 0; // id aluno
-        virtual bool listarTurmasProfessor(int, list<Turma>*) = 0; // id professor
+        /// @brief Solicita serviço de listagem de turmas às quais um aluno pertence ao banco de dados.
+        /// @param parametro int: id do aluno a ser consultado.
+        /// @param parametro ponteiro do tipo lista de turmas: lista a ser preenchida com os dados do banco.
+        /// @return bool indicando sucesso ou falha no processo.
+        virtual bool listarTurmasAluno(int, list<Turma>*) = 0;
+        /// @brief Solicita serviço de listagem de turmas de um professor ao banco de dados.
+        /// @param parametro int: id do professor a ser consultado.
+        /// @param parametro ponteiro do tipo lista de turmas: lista a ser preenchida com os dados do banco.
+        /// @return bool indicando sucesso ou falha no processo.
+        virtual bool listarTurmasProfessor(int, list<Turma>*) = 0;
+        /// @brief Solicita serviço de consulta de um usuário pelo email ao banco de dados.
+        /// @param parametro ponteiro do tipo Usuario: usuario a ser preenchido pelos dados do banco.
+        /// @return bool indicando sucesso ou falha no processo.
         virtual bool consultarEmail(Usuario *usuario) = 0;
+        /// @brief Método destrutor para a interface.
         virtual ~IServicoUsuario() {}
 };
 
+/// @brief Interface para serviços de prova.
 class IServicoProva {
  public:
+        /// @brief Solicita serviço de cadastramento de prova ao banco de dados.
+        /// @param parametro Prova: prova com os dados preenchidos a ser cadastrada.
+        /// @return bool indicando sucesso ou falha no processo.
         virtual bool cadastrarProva(Prova) = 0;
+        /// @brief Solicita serviço de descadastramento de prova ao banco de dados.
+        /// @param parametro int: id da prova a ser descadastrada.
+        /// @return bool indicando sucesso ou falha no processo.
         virtual bool descadastrarProva(int) = 0;
+        /// @brief Solicita serviço de edição de prova ao banco de dados.
+        /// @param parametro Prova: prova com os novos dados preenchidos a ser editada.
+        /// @return bool indicando sucesso ou falha no processo.
         virtual bool editarProva(Prova) = 0;
+        /// @brief Solicita serviço de consulta de prova ao banco de dados.
+        /// @param parametro ponteiro do tipo Prova: prova a ser preenchida com os dados do banco.
+        /// @return bool indicando sucesso ou falha no processo.
         virtual bool consultarProva(Prova*) = 0;
+        /// @brief Solicita serviço de consulta de resposta ao banco de dados.
+        /// @param parametro ponteiro do tipo Resposta: resposta a ser preenchida com os dados do banco.
+        /// @return bool indicando sucesso ou falha no processo.
         virtual bool consultarResposta(Resposta*) = 0;
+        /// @brief Solicita serviço de cadastramento de resposta ao banco de dados.
+        /// @param parametro Resposta: resposta com os dados preenchidos a ser cadastrada.
+        /// @return bool indicando sucesso ou falha no processo.
         virtual bool cadastrarResposta(Resposta) = 0;
+        /// @brief Solicita quantas questões estão cadastradas a uma prova no banco.
+        /// @param  parametro Prova: prova da qual se quer a quantidade de questões .
+        /// @param  parametro ponteiro do tipo inteiro: quantidade de questões a ser preenchida com os dados do banco.
+        /// @return bool indicando sucesso ou falha no processo.
         virtual bool getQtdQuestoes(Prova, int*) = 0;
-
+        /// @brief Solicita serviço de cadastramento de questão ao banco de dados.
+        /// @param parametro Questao: questão com os dados preenchidos a ser cadastrada.
+        /// @return bool indicando sucesso ou falha no processo.
         virtual bool cadastrarQuestao(Questao) = 0;
+        /// @brief Solicita serviço de descadastramento de questão ao banco de dados.
+        /// @param parametro int: id da questão a ser descadastrada.
+        /// @return bool indicando sucesso ou falha no processo.
         virtual bool descadastrarQuestao(int) = 0;
+        /// @brief Solicita serviço de listagem de questões de uma prova ao banco de dados.
+        /// @param parametro int: id da prova a ser consultada.
+        /// @param parametro ponteiro do tipo lista de Questões: lista a ser preenchida com os dados do banco.
+        /// @return bool indicando sucesso ou falha no processo.
         virtual bool getListaQuestoes(int, list<Questao>*) = 0;
+        /// @brief Solicita o resultado da prova respondida por um aluno.
+        /// @param parametro Resposta: objeto do tipo Resposta de um aluno.
+        /// @param parametro ponteiro do tipo lista de inteiros: lista a ser preenchida com os dados do banco.
+        /// @return bool indicando sucesso ou falha no processo.
         virtual bool calcularResultado(Resposta, list<int> *) = 0;
+        /// @brief Solicita serviço de listagem de respostas a uma prova ao banco de dados.
+        /// @param parametro Prova: objeto Prova a ser consultada.
+        /// @param parametro ponteiro do tipo lista de Usuarios: lista a ser preenchida com os dados do banco.
+        /// @param parametro ponteiro do tipo lista de inteiros: lista a ser preenchida com os dados do banco.
+        /// @return bool indicando sucesso ou falha no processo.
         virtual bool getListaRespostaAlunos(Prova, list<Usuario>*, list<int>*) = 0;
-
-
+        /// @brief Método destrutor para a interface.
         virtual ~IServicoProva() {}
 };
 
+/// @brief Interface para serviços de turma.
 class IServicoTurma {
  public:
+        /// @brief Solicita serviço de cadastramento de turma ao banco de dados.
+        /// @param parametro Turma: turma com os dados preenchidos a ser cadastrada.
+        /// @return bool indicando sucesso ou falha no processo.
         virtual bool cadastrar(Turma) = 0;
-        virtual bool entrar(int, int) = 0; // id do usuario, id da turma
+        /// @brief Solicita serviço para um aluno entrar em uma turma ao banco de dados.
+        /// @param parametro int: id do usuario.
+        /// @param parametro int: id da turma.
+        /// @return bool indicando sucesso ou falha no processo.
+        virtual bool entrar(int, int) = 0;
+        /// @brief Solicita serviço de descadastramento de turma ao banco de dados.
+        /// @param parametro int: id da turma a ser descadastrada.
+        /// @return bool indicando sucesso ou falha no processo.
         virtual bool descadastrar(int) = 0;
-
+        /// @brief Solicita serviço de consulta de turma ao banco de dados.
+        /// @param parametro ponteiro do tipo Turma: turma a ser preenchida com os dados do banco.
+        /// @return bool indicando sucesso ou falha no processo.
         virtual bool consultar(Turma*) = 0;
+        /// @brief Solicita serviço de edição de turma ao banco de dados.
+        /// @param parametro ponteiro do tipo Turma: turma a ser preenchida com os dados do banco.
+        /// @return bool indicando sucesso ou falha no processo.
         virtual bool editar(Turma*) = 0;
-
+        /// @brief Solicita serviço de listagem de turmas ao banco de dados.
+        /// @param parametro ponteiro do tipo lista de Turmas: lista a ser preenchida com os dados do banco.
+        /// @return bool indicando sucesso ou falha no processo.
         virtual bool listarTurmas(list<Turma>*) = 0;
-        virtual bool listarProvas(int, list<Prova>*) = 0; // id da turma, lista de provas
-        virtual bool listarAlunos(int, list<Usuario>*) = 0; // id da turma, lista de alunos
-
+        /// @brief Solicita serviço de listagem de provas de uma turma ao banco de dados.
+        /// @param parametro int: id da turma a ser consultada.
+        /// @param parametro ponteiro do tipo lista de Provas: lista a ser preenchida com os dados do banco.
+        /// @return bool indicando sucesso ou falha no processo.
+        virtual bool listarProvas(int, list<Prova>*) = 0;
+        /// @brief Solicita serviço de listagem de alunos de uma turma ao banco de dados.
+        /// @param parametro int: id da turma a ser consultada.
+        /// @param parametro ponteiro do tipo lista de Alunos: lista a ser preenchida com os dados do banco.
+        /// @return bool indicando sucesso ou falha no processo.
+        virtual bool listarAlunos(int, list<Usuario>*) = 0;
+        /// @brief Método destrutor para a interface.
         virtual ~IServicoTurma() {}
 };
 
+/// @brief Interface para serviços de administrador.
 class IServicoAdmin {
  public:
-    virtual bool estatisticas(vector<string>*) = 0;
-
-    virtual ~IServicoAdmin() {}
+       /// @brief Solicita estatísticas do sistema ao banco de dados.
+       /// @param parametro ponteiro do tipo vetor de strings: vetor a ser preenchido com os dados do banco.
+       /// @return bool indicando sucesso ou falha no processo.
+       virtual bool estatisticas(vector<string>*) = 0;
+       /// @brief Método destrutor para a interface.
+       virtual ~IServicoAdmin() {}
 };
 #endif  //  INCLUDE_INTERFACES_H_
