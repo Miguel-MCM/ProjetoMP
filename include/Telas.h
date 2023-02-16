@@ -1,17 +1,21 @@
 #ifndef INCLUDE_TELAS_H_
 #define INCLUDE_TELAS_H_
 
-#include "Entidades.h"
 #include <map>
-
+#include <iostream>
 #include <string>
 #include <vector>
 #include <list>
+
+#include "Entidades.h"
+
 #ifdef WIN32
     #include "curses.h"
 #else
     #include <ncurses.h>
 #endif  // WIN32
+
+#include <string.h>
 
 using std::vector;
 using std::to_string;

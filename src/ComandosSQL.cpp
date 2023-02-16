@@ -1,5 +1,4 @@
 #include "ComandosSQL.h"
-#include <iostream>
 
 using std::to_string;
 using std::stoi;
