@@ -39,12 +39,18 @@ enable_testing()
 
 add_executable(Testes
   tests/TestesEntidades.cpp
+  tests/TestesComandoSQL.cpp
 )
 target_link_libraries(
   Testes
   GTest::gtest_main
+  sqlite3
 )
 
+target_sources(Testes
+    PUBLIC
+        src/ComandosSQL.cpp
+)
 target_include_directories(Testes PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 
 include(GoogleTest)
