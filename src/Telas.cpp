@@ -474,8 +474,10 @@ void TelaCadastroQuestao::apresentarCriarNumerico(Questao* questao) {
 void TelaConsultaQuestao::apresentar(list<Questao> listaQuestao) {
     string campo1 = "Resposta correta: ";
 
-    std::vector<Questao> vectorQuestoes(listaQuestao.begin(), listaQuestao.end());
-
+    std::vector<Questao> vectorQuestoes;
+    for (list<Questao>::iterator it = listaQuestao.begin(); it != listaQuestao.end(); ++it) {
+        vectorQuestoes.push_back(*it);
+    }
     int linha, coluna;
     string campo;
     char dado;
@@ -540,23 +542,29 @@ int TelaOpcoesQuestoes::apresentar(list<Questao> listaQuestao) {
 Resposta TelaRealizarProva::apresentar(list<Questao> listaQuestao) {
     int linha, coluna;
     Resposta resposta;
-    char * dado;
+    char dado[LIMITE_CHAR];
     string campo;
     map<int, int> respostas;
     map<int, int>::iterator it2;
     int id;
 
-    std::vector<Questao> questoes(listaQuestao.begin(), listaQuestao.end());
+    std::vector<Questao> questoes;
+    for (list<Questao>::iterator it = listaQuestao.begin(); it != listaQuestao.end(); ++it) {
+        questoes.push_back(*it);
+    }
 
+    int j = 0;
     initscr();
     getmaxyx(stdscr, linha, coluna);
-
+    
     for (int i = 0; i < questoes.size(); i++) {
         mvprintw(linha / 2 - 6, (coluna - questoes[i].getTexto().length()) / 2, "%s", questoes[i].getTexto().c_str());
         if (questoes[i].getAlternativas().size() != 0) {
             campo = "Escolha um numero de alternativa: ";
-            for (pair<list<string>::iterator, int> it(questoes[i].getAlternativas().begin(), 0); it.first != questoes[i].getAlternativas().end(); ++it.first, it.second++) {
-                mvprintw(linha / 2 - 4 + (2 * it.second), (coluna - it.first->length()) / 2, "%s", it.first->c_str());
+            for (list<string>::iterator it = questoes[i].getAlternativas().begin(); it != questoes[i].getAlternativas().end(); ++it) {
+                std::cout << *it << std::endl;
+                mvprintw(linha / 2 - 4 + (2 * j), (coluna - it->length()) / 2, "%s", it->c_str());
+                j++;
             }
             mvprintw(linha / 2 - 4 + 2 * (questoes[i].getAlternativas().size() + 1), (coluna - campo.length()) / 2, "%s", campo.c_str());
         } else {
@@ -566,7 +574,7 @@ Resposta TelaRealizarProva::apresentar(list<Questao> listaQuestao) {
 
         getstr(dado);
         // cppcheck-suppress literalWithCharPtrCompare
-        if (dado == "") {
+        if (dado != "") {
             respostas.insert(pair<int, int>(questoes[i].getId(), std::stoi(dado)));
         } else {
             respostas.insert(pair<int, int>(questoes[i].getId(), 0));
@@ -657,11 +665,11 @@ int TelaOpcoesProvas::apresentar(list<Prova> listaProvas) {
 char TelaConsultaProva::apresentar(Prova* prova) {
     char campo1[]="Dados de Prova";
 
-    char campo2[]="1 - Editar.";
-    char campo3[]="2 - Descadastrar.";
-    char campo4[]="3 - Acessar questoes.";
-    char campo5[]="4 - Ver resultados.";
-    char campo6[]="5 - Voltar.";
+    char campo2[]="1 - Editar";
+    char campo3[]="2 - Descadastrar";
+    char campo4[]="3 - Acessar questoes";
+    char campo5[]="4 - Ver resultados";
+    char campo6[]="5 - Voltar";
     char campo7[]="Selecione uma opcao: ";
     char dado1[1];
 
@@ -679,9 +687,9 @@ char TelaConsultaProva::apresentar(Prova* prova) {
     mvprintw(linha/2 + 4,(coluna-strlen(campo3))/2,"%s",campo3);
     mvprintw(linha/2 + 6,(coluna-strlen(campo4))/2,"%s",campo4);
     mvprintw(linha/2 + 8,(coluna-strlen(campo5))/2,"%s",campo5);
-    mvprintw(linha/2 + 8,(coluna-strlen(campo6))/2,"%s",campo6);
+    mvprintw(linha/2 + 10,(coluna-strlen(campo6))/2,"%s",campo6);
     
-    mvprintw(linha/2 + 10,(coluna-strlen(campo7))/2,"%s",campo7);
+    mvprintw(linha/2 + 12,(coluna-strlen(campo7))/2,"%s",campo7);
     getstr(dado1);
     clear();
     endwin();

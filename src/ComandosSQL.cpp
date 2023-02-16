@@ -518,7 +518,7 @@ ComandoConsultarResposta::ComandoConsultarResposta(int idAluno, int idProva){
     comandoSQL += to_string(idProva) + " AND Aluno_idAluno = ";
     comandoSQL += to_string(idAluno) + ";";
     comandoSQL += "SELECT * FROM Resposta_questao WHERE idResposta_Prova = ";
-    comandoSQL += to_string(id) + ";";
+    comandoSQL += to_string(idProva) + ";";  // AKI
 }
 
 Resposta ComandoConsultarResposta::getResultado() {

@@ -36,7 +36,9 @@ class IApresentacaoUsuario {
         virtual void executar(Usuario*) = 0;
         virtual void cadastrar() = 0;
         virtual void setCntrServicoUsuario(IServicoUsuario*) = 0;
+        virtual void setCntrServicoTurma(IServicoTurma*) = 0;
         virtual void setCntrApresentacaoTurma(IApresentacaoTurma*) = 0;
+        virtual void setCntrServicoProva(IServicoProva*) = 0;
         
         virtual bool getStatusCadastro() = 0;
         virtual void setStatusCadastro(bool) = 0;
@@ -110,8 +112,6 @@ class IServicoProva {
 
         virtual bool cadastrarQuestao(Questao) = 0;
         virtual bool descadastrarQuestao(int) = 0;
-        virtual bool editarQuestao(Questao) = 0;
-        virtual bool consultarQuestao(Questao*) = 0;
         virtual bool getListaQuestoes(int, list<Questao>*) = 0;
         virtual bool calcularResultado(Resposta, list<int> *) = 0;
         virtual bool getListaRespostaAlunos(Prova, list<Usuario>*, list<int>*) = 0;

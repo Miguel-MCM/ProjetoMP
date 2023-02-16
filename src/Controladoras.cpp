@@ -2,6 +2,7 @@
 #include "ComandosSQL.h"
 #include "Telas.h"
 #include <string>
+#include <numeric>
 #include <iostream>
 
 using std::list;
@@ -190,7 +191,7 @@ void CntrApresentacaoUsuario::executar(Usuario* usuario) {
                             for (list<Turma>::iterator turma = turmas.begin(); turma != turmas.end(); ++turma) {
                                 if (cntrServicoTurma->listarProvas(turma->getId(), &provas)) {
                                     for (list<Prova>::iterator prova = provas.begin(); prova != provas.end(); ++prova) {
-                                        cntrServicoProva->descadastrar(prova->getId());
+                                        cntrServicoProva->descadastrarProva(prova->getId());
                                     }
                                 }
                                 cntrServicoTurma->descadastrar(turma->getId());
@@ -863,7 +864,7 @@ void CntrApresentacaoProva::executar(Turma* turma, Usuario usuario) {
     TelaInfoProvas telaInfoProva;
     TelaCadastroProva telaCadastroProva;
     vector<string> pedido({"Digite o id da prova: "});
-    string * id;
+    string id;
     int idProva;
     Prova prova;
     char opcao;
@@ -873,7 +874,7 @@ void CntrApresentacaoProva::executar(Turma* turma, Usuario usuario) {
         opcao = telaMenuProva.apresentar(usuario.getCargo());
 
         switch(opcao) {
-            case '1': {                                                               //Consulta servico de provas
+            case '1': {                                                             //Consulta servico de provas
                 if (!cntrServicoTurma->listarProvas(turma->getId(), &listaProvas)) {
                     telaMensagem.apresentar("Houve um erro ao listar as provas da turma");
                     continue;
@@ -881,12 +882,15 @@ void CntrApresentacaoProva::executar(Turma* turma, Usuario usuario) {
                 if (usuario.getCargo() == "professor") {
                     try { 
                         idProva = telaOpcoesProvas.apresentar(listaProvas);
-                        } catch(invalid_argument &e){
-                            telaMensagem.apresentar("Formato de dado invalido.");
-                        }
-                        prova.setId(idProva);
-
-                        gerenciar(&prova);
+                    } catch(invalid_argument &e){
+                        telaMensagem.apresentar("Formato de dado invalido.");
+                    }
+                    prova.setId(idProva);
+                    if (!cntrServicoProva->consultarProva(&prova)) {
+                        telaMensagem.apresentar("Prova nao encontrada.");
+                        continue;
+                    }
+                    gerenciar(&prova);
                 } else {
                     telaInfoProva.apresentar(listaProvas);
                 }
@@ -894,8 +898,8 @@ void CntrApresentacaoProva::executar(Turma* turma, Usuario usuario) {
             }
             case '2': {                                                             //Cadastrar provas
                 if (usuario.getCargo() == "aluno") {
-                    telaFormulario.apresentar("Selecionar prova", pedido, id);
-                    prova.setId(stoi(*id));
+                    telaFormulario.apresentar("Selecionar prova", pedido, &id);
+                    prova.setId(stoi(id));
                     if (!cntrServicoProva->consultarProva(&prova)) {
                         telaMensagem.apresentar("Prova nao encontrada.");
                         continue;
@@ -903,8 +907,8 @@ void CntrApresentacaoProva::executar(Turma* turma, Usuario usuario) {
                     consultar(&prova, turma, usuario);
                 }else if (usuario.getCargo() == "professor") {
                     try{
-                        telaCadastroProva.apresentar(prova, turma->getId());
-                    }catch((invalid_argument &e)){
+                        telaCadastroProva.apresentar(&prova, turma->getId());
+                    }catch(invalid_argument &e){
                         telaMensagem.apresentar("Formato de dado invalido.");
                     }
                     if (!cntrServicoProva->cadastrarProva(prova)){
@@ -936,24 +940,28 @@ void CntrApresentacaoProva::consultar(Prova* prova, Turma* turma, Usuario usuari
 
     while (true) {
         opcao = telaMenu.apresentar("Menu de consulta", opcoes);
-        list<Questao> * questoes;
+        list<Questao> * questoes = new list<Questao>;
 
         switch(opcao.c_str()[0]) {
             case '1': {
-                Resposta resposta;
-                resposta.setIdProva(prova->getId());
-                resposta.setIdEstudante(usuario.getId());
-                if (cntrServicoProva->consultarResposta(&resposta)) {               //retorna true se resposta ja existir, buscar no banco se ja existe resposta com mesmo id de prova e aluno
-                    telaMensagem.apresentar("Voce ja realizou essa prova.");
-                    continue;
-                }
-                if (!cntrServicoProva->getListaQuestoes(prova->getId(), questoes)) {  //retorna true se possivel assinar lista de questões à "questoes"
-                    telaMensagem.apresentar("A prova nao tem questoes.");
-                    continue;
-                }
-                resposta = telaRealizarProva.apresentar(*questoes);
-                if (!cntrServicoProva->cadastrarResposta(resposta)) { //Retorna true se a resposta for cadastrada
-                    telaMensagem.apresentar("Houve um erro ao cadastrar a resposta, tente novamente.");
+                if (usuario.getCargo() == "aluno") {
+                    Resposta resposta;
+                    resposta.setIdProva(prova->getId());
+                    resposta.setIdEstudante(usuario.getId());
+                    if (cntrServicoProva->consultarResposta(&resposta)) {               //retorna true se resposta ja existir, buscar no banco se ja existe resposta com mesmo id de prova e aluno
+                        telaMensagem.apresentar("Voce ja realizou essa prova.");
+                        continue;
+                    }
+                    if (!cntrServicoProva->getListaQuestoes(prova->getId(), questoes)) {  //retorna true se possivel assinar lista de questões à "questoes"
+                        telaMensagem.apresentar("A prova nao tem questoes.");
+                        continue;
+                    }
+                    resposta = telaRealizarProva.apresentar(*questoes);
+                    if (!cntrServicoProva->cadastrarResposta(resposta)) { //Retorna true se a resposta for cadastrada
+                        telaMensagem.apresentar("Houve um erro ao cadastrar a resposta, tente novamente.");
+                    }
+                } else {
+                    telaMensagem.apresentar("Professores nao podem realizar provas.");
                 }
                 break;
             }
@@ -982,6 +990,7 @@ void CntrApresentacaoProva::consultar(Prova* prova, Turma* turma, Usuario usuari
             default:
                 telaMensagem.apresentar("Opcao invalida.");
         }
+        delete questoes;
     }
 }
 
@@ -989,15 +998,14 @@ void CntrApresentacaoProva::gerenciar(Prova* prova){
     TelaConsultaProva telaConsultaProva;
     TelaMensagem telaMensagem;
     TelaConsultaQuestao telaConsultaQuestao;
-    list<Questao> *listaQuestao;
+    list<Questao> *listaQuestao = new list<Questao>;
     TelaMostrarResultadosProva telaMostrarResultadosProva;
 
-    int *qtdQuestoes;
+    int qtdQuestoes;
 
     char opcao;
-
     while (true){
-        if (!cntrServicoProva->getQtdQuestoes(*prova, qtdQuestoes)) {  //Pegar a quantidade de questoes
+        if (!cntrServicoProva->getQtdQuestoes(*prova, &qtdQuestoes)) {  //Pegar a quantidade de questoes
             telaMensagem.apresentar("Houve um erro ao consultar a turma");
             break;
         }
@@ -1036,6 +1044,7 @@ void CntrApresentacaoProva::gerenciar(Prova* prova){
                 telaMensagem.apresentar("Dado Invalido");
         }
     }
+    delete listaQuestao;
 }
 
 void CntrApresentacaoProva::editar(Prova* prova){
@@ -1160,8 +1169,10 @@ bool CntrServicoProva::consultarResposta(Resposta* resposta){
     TelaMensagem telaMensagem;
     ComandoBuscarRespostaAluno cmdBuscar(resposta->getIdProva(), resposta->getIdEstudante());
 
-    cmdBuscar.executar();
-    if(cmdBuscar.getResultado()){
+    try {
+        cmdBuscar.executar();
+        cmdBuscar.getResultado();
+    } catch (const EErroPersistencia &e){
         return false;
     }
     return true;
@@ -1169,11 +1180,10 @@ bool CntrServicoProva::consultarResposta(Resposta* resposta){
 
 //retorna true se possivel assinar lista de questões à "questoes"
 bool CntrServicoProva::getListaQuestoes(int idProva, list<Questao>* listaQuestoes){
-    TelaMensagem telaMensagem;
     ListarQuestoesProva listarQuestoes;
 
     try {
-        listaQuestoes = listarQuestoes.executar(idProva);
+        *listaQuestoes = listarQuestoes.executar(idProva);
     } catch (const EErroPersistencia &exp) {
         return false;
     }
@@ -1221,16 +1231,17 @@ bool CntrServicoProva::calcularResultado(Resposta resposta, list<int>* notas){  
 
 bool CntrServicoProva::getQtdQuestoes(Prova prova, int* qtdQuestoes){
     TelaMensagem telaMensagem;
-    list<Questao> *listaQuestoes;
+    list<Questao> *listaQuestoes = new list<Questao>;
     getListaQuestoes(prova.getId(), listaQuestoes);
 
-    qtdQuestoes = listaQuestoes->size();
+    *qtdQuestoes = listaQuestoes->size();
+    delete listaQuestoes;
     return true;
 }
 
 bool CntrServicoProva::descadastrarProva(int idProva){
     TelaMensagem telaMensagem;
-    ComandoDescadastrarProva cmdDescadastrar(id);
+    ComandoDescadastrarProva cmdDescadastrar(idProva);
 
     try {
         cmdDescadastrar.executar();
@@ -1243,35 +1254,37 @@ bool CntrServicoProva::descadastrarProva(int idProva){
 
 bool CntrServicoProva::getListaRespostaAlunos(Prova prova, list<Usuario>* listaAlunos, list<int>* notas){
     ListarAlunosTurma listarAlunosTurma;
+    ComandoConsultarResposta * comandoConsultarResposta;
     Resposta resposta;
 
     int somaNotas;
-    listaAlunos = listarAlunosTurma.executar(prova.getIdTurma());
+    *listaAlunos = listarAlunosTurma.executar(prova.getIdTurma());
 
-    for(list<Usuario>::iterator it=listaAlunos->begin(); it!=listaAlunos.end(); ++it){
+    for(list<Usuario>::iterator it=listaAlunos->begin(); it!=listaAlunos->end(); ++it){
         try{
-            ComandoConsultarResposta comandoConsultarResposta(it->getId(), prova.getId());
+            comandoConsultarResposta = new ComandoConsultarResposta(it->getId(), prova.getId());
         }catch(const EErroPersistencia &exp){
             return false;
         }
         list<int> *notaIndividual;
 
-        comandoConsultarResposta.executar();
+        comandoConsultarResposta->executar();
         try{
-            resposta = comandoConsultarResposta.getResultado();
-            calcularResultado(resultado, notaIndividual);
-            notas->push_back(std::accumulate(notaIndividual.begin(), notaIndividual.end(), 0));
+            resposta = comandoConsultarResposta->getResultado();
+            calcularResultado(resposta, notaIndividual);
+            notas->push_back(std::accumulate(notaIndividual->begin(), notaIndividual->end(), 0));
         }catch(const EErroPersistencia &exp){
             notas->push_back(0);
         }
         delete notaIndividual;
+        delete comandoConsultarResposta;
     }
     return true;
 }
 
 bool CntrServicoProva::editarProva(Prova prova){
     TelaMensagem telaMensagem;
-    ComandoEditarProva cmdEditar(*prova);
+    ComandoEditarProva cmdEditar(prova);
 
     try {
         cmdEditar.executar();

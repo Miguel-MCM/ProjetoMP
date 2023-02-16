@@ -17,6 +17,8 @@ class CntrApresentacaoUsuario:public IApresentacaoUsuario {
     bool status;
     IServicoUsuario * cntrServicoUsuario;
     IServicoAdmin* cntrServicoAdmin;
+    IServicoTurma* cntrServicoTurma;
+    IServicoProva* cntrServicoProva;
     IApresentacaoTurma * cntrApresentacaoTurma;
     void editar(Usuario*);
     void minhasTurmas(Usuario*);
@@ -26,6 +28,8 @@ class CntrApresentacaoUsuario:public IApresentacaoUsuario {
 
     void setCntrServicoUsuario(IServicoUsuario*);
     void setCntrServicoAdmin(IServicoAdmin*);
+    void setCntrServicoTurma(IServicoTurma*);
+    void setCntrServicoProva(IServicoProva*);
     void setCntrApresentacaoTurma(IApresentacaoTurma*);
 
     bool getStatusCadastro();
@@ -36,8 +40,16 @@ inline void CntrApresentacaoUsuario::setCntrServicoUsuario(IServicoUsuario * cnt
     cntrServicoUsuario = cntr;
 }
 
+inline void CntrApresentacaoUsuario::setCntrServicoProva(IServicoProva * cntr) {
+    cntrServicoProva = cntr;
+}
+
 inline void CntrApresentacaoUsuario::setCntrServicoAdmin(IServicoAdmin * cntr) {
     cntrServicoAdmin = cntr;
+}
+
+inline void CntrApresentacaoUsuario::setCntrServicoTurma(IServicoTurma * cntr) {
+    cntrServicoTurma = cntr;
 }
 
 inline void CntrApresentacaoUsuario::setCntrApresentacaoTurma(IApresentacaoTurma* cntr) {
@@ -243,13 +255,11 @@ class CntrServicoProva:public IServicoProva{
         bool descadastrarProva(int);
         bool editarProva(Prova);
         bool consultarProva(Prova*);
-        bool getQtdQuestoes(Prova, int*) {return false;}
+        bool getQtdQuestoes(Prova, int*);
         vector<string> getProvas();
 
         bool cadastrarQuestao(Questao);
         bool descadastrarQuestao(int);
-        bool editarQuestao(Questao);
-        bool consultarQuestao(Questao*);
         bool getListaQuestoes(int, list<Questao>*);
         bool calcularResultado(Resposta, list<int> *);
         bool getListaRespostaAlunos(Prova, list<Usuario>*, list<int>*);
