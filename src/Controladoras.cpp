@@ -184,6 +184,19 @@ void CntrApresentacaoUsuario::executar(Usuario* usuario) {
                 if(usuario->getCargo() != "admin") {
                     TelaConfirmacao telaConfirmacao;
                     if(telaConfirmacao.apresentar()) {
+                        list<Turma> turmas;
+                        if (cntrServicoUsuario->listarTurmasProfessor(usuario->getId(), &turmas)) {
+                            list<Prova> provas;
+                            for (list<Turma>::iterator turma = turmas.begin(); turma != turmas.end(); ++turma) {
+                                if (cntrServicoTurma->listarProvas(turma->getId(), &provas)) {
+                                    for (list<Prova>::iterator prova = provas.begin(); prova != provas.end(); ++prova) {
+                                        cntrServicoProva->descadastrar(prova->getId());
+                                    }
+                                }
+                                cntrServicoTurma->descadastrar(turma->getId());
+                            }
+                        }
+
                         if(cntrServicoUsuario->descadastrar(usuario->getId(), usuario->getCargo())) {
                             setStatusCadastro(false);
                             finalizou = true;
@@ -860,7 +873,6 @@ void CntrApresentacaoProva::executar(Turma* turma, Usuario usuario) {
 
         switch(opcao) {
             case '1': {                                                               //Consulta servico de provas
-                
                 if (!cntrServicoTurma->listarProvas(turma->getId(), &listaProvas)) {
                     telaMensagem.apresentar("Houve um erro ao listar as provas da turma");
                     continue;
@@ -879,7 +891,7 @@ void CntrApresentacaoProva::executar(Turma* turma, Usuario usuario) {
                 }
                 break;
             }
-            case '2': {                                                               //Cadastrar provas
+            case '2': {                                                             //Cadastrar provas
                 if (usuario.getCargo() == "aluno") {
                     telaFormulario.apresentar("Selecionar prova", pedido, id);
                     prova.setId(stoi(*id));
