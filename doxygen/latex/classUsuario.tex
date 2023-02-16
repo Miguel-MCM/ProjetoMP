@@ -1,0 +1,267 @@
+\hypertarget{classUsuario}{}\doxysection{Usuario Class Reference}
+\label{classUsuario}\index{Usuario@{Usuario}}
+
+
+Classe que representa um usuario do sistema.  
+
+
+
+
+{\ttfamily \#include $<$Entidades.\+h$>$}
+
+Inheritance diagram for Usuario\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classUsuario}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+string const \mbox{\hyperlink{classUsuario_a49bafda0190ebce0e4a04a5946eaf5ee}{get\+Email}} ()
+\begin{DoxyCompactList}\small\item\em Retorna uma string constante, com formatação válida, armazenada em nome. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classUsuario_aab72feb959e4cfe145afd5e610ce8605}{set\+Email}} (string)
+\begin{DoxyCompactList}\small\item\em Armazena o valor em email da string passada se ela seguir as regras de formatação. \end{DoxyCompactList}\item 
+string const \mbox{\hyperlink{classUsuario_a2319a40f4319afde62d4c87879a7d8cd}{get\+Senha}} ()
+\begin{DoxyCompactList}\small\item\em Retorna uma string constante, com formatação válida, armazenada em senha. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classUsuario_a428675e3b6d3743e05b1297cca1dee42}{set\+Senha}} (string)
+\begin{DoxyCompactList}\small\item\em Armazena o valor em senha da string passada se ela seguir as regras de formatação. \end{DoxyCompactList}\item 
+string const \mbox{\hyperlink{classUsuario_aeab3e35e33409eab34023815826b1497}{get\+Cargo}} ()
+\begin{DoxyCompactList}\small\item\em Retorna uma string constante, com formatação válida, armazenada em cargo. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classUsuario_aae56b4b762e5b9a7a4c8097a17b4b67d}{set\+Cargo}} (string)
+\begin{DoxyCompactList}\small\item\em Armazena o valor em cargo da string passada se ela seguir as regras de formatação. \end{DoxyCompactList}\item 
+list$<$ int $>$ const \mbox{\hyperlink{classUsuario_a9f5bfaf39c0a00c15b363484b76be2c7}{get\+Id\+Turmas}} ()
+\begin{DoxyCompactList}\small\item\em Retorna uma lista de inteiros constante, com formatação válida, armazenada em id\+\_\+turmas. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classUsuario_a1f8fa4730e0e2b90bbc2db15eb6f9521}{set\+Id\+Turmas}} (list$<$ int $>$)
+\begin{DoxyCompactList}\small\item\em Armazena o valor em id\+\_\+turmas da lista de inteiros passada. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classUsuario_a4bb88f88163049cafd25e0840cb7034b}\label{classUsuario_a4bb88f88163049cafd25e0840cb7034b}} 
+virtual {\bfseries $\sim$\+Usuario} ()
+\begin{DoxyCompactList}\small\item\em Método destrutor da classe \mbox{\hyperlink{classUsuario}{Usuario}}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classEntidade_a8a231f10238f1e699ec654e48dc85e75}{set\+Nome}} (string)
+\begin{DoxyCompactList}\small\item\em Armazena o valor em nome da string passada se ela seguir as regras de formatação. \end{DoxyCompactList}\item 
+string const \mbox{\hyperlink{classEntidade_ab19aea3979078b16d53525bddaa686c4}{get\+Nome}} ()
+\begin{DoxyCompactList}\small\item\em Retorna a string, com formatação válida, armazenada em nome. \end{DoxyCompactList}\item 
+int const \mbox{\hyperlink{classEntidade_a3a017e2fc13b67515f76ca087aaa087d}{get\+Id}} ()
+\begin{DoxyCompactList}\small\item\em Retorna um inteiro armazenado em id. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classEntidade_a8242dfd2c1ceb95364071b1bfbbaa750}{set\+Id}} (int)
+\begin{DoxyCompactList}\small\item\em Armazena o valor do inteiro passado. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classUsuario_a0eead9437af68caf9dcf6e3cca88a178}\label{classUsuario_a0eead9437af68caf9dcf6e3cca88a178}} 
+string {\bfseries email}
+\begin{DoxyCompactList}\small\item\em Atributo de classe do tipo string que representa o email do usuario. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classUsuario_a99d6b6876b9118121cb9171dde26cc44}\label{classUsuario_a99d6b6876b9118121cb9171dde26cc44}} 
+string {\bfseries senha}
+\begin{DoxyCompactList}\small\item\em Atributo de classe do tipo string que representa a senha do usuario. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classUsuario_a95a399bfdafa8148416a5b63e2b90fd3}\label{classUsuario_a95a399bfdafa8148416a5b63e2b90fd3}} 
+string {\bfseries cargo}
+\begin{DoxyCompactList}\small\item\em Atributo de classe do tipo string que representa o cargo do usuario, o qual vai definir suas operações no sistema. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classUsuario_aa6e8ab71498e4cb4820b54536e12174e}\label{classUsuario_aa6e8ab71498e4cb4820b54536e12174e}} 
+list$<$ int $>$ {\bfseries id\+\_\+turmas}
+\begin{DoxyCompactList}\small\item\em Atributo de classe do tipo lista de inteiros que representa as turmas às quais o usuário está associado. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classEntidade_a18349442410bbc7a5adf6c50596facee}\label{classEntidade_a18349442410bbc7a5adf6c50596facee}} 
+string {\bfseries nome}
+\begin{DoxyCompactList}\small\item\em Atributo da classe que representa o nome do objeto. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classEntidade_aad7f1a6708d3d9965316b073a9a03b2c}\label{classEntidade_aad7f1a6708d3d9965316b073a9a03b2c}} 
+int {\bfseries id}
+\begin{DoxyCompactList}\small\item\em Atributo da classe que representa o id do objeto, que será usado no banco de dados. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe que representa um usuario do sistema. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classUsuario_aeab3e35e33409eab34023815826b1497}\label{classUsuario_aeab3e35e33409eab34023815826b1497}} 
+\index{Usuario@{Usuario}!getCargo@{getCargo}}
+\index{getCargo@{getCargo}!Usuario@{Usuario}}
+\doxysubsubsection{\texorpdfstring{getCargo()}{getCargo()}}
+{\footnotesize\ttfamily string const Usuario\+::get\+Cargo (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retorna uma string constante, com formatação válida, armazenada em cargo. 
+
+\begin{DoxyReturn}{Returns}
+string cargo 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classUsuario_a49bafda0190ebce0e4a04a5946eaf5ee}\label{classUsuario_a49bafda0190ebce0e4a04a5946eaf5ee}} 
+\index{Usuario@{Usuario}!getEmail@{getEmail}}
+\index{getEmail@{getEmail}!Usuario@{Usuario}}
+\doxysubsubsection{\texorpdfstring{getEmail()}{getEmail()}}
+{\footnotesize\ttfamily string const Usuario\+::get\+Email (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retorna uma string constante, com formatação válida, armazenada em nome. 
+
+\begin{DoxyReturn}{Returns}
+string nome 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classEntidade_a3a017e2fc13b67515f76ca087aaa087d}\label{classEntidade_a3a017e2fc13b67515f76ca087aaa087d}} 
+\index{Usuario@{Usuario}!getId@{getId}}
+\index{getId@{getId}!Usuario@{Usuario}}
+\doxysubsubsection{\texorpdfstring{getId()}{getId()}}
+{\footnotesize\ttfamily int const Entidade\+::get\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [inherited]}}
+
+
+
+Retorna um inteiro armazenado em id. 
+
+\begin{DoxyReturn}{Returns}
+int const 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classUsuario_a9f5bfaf39c0a00c15b363484b76be2c7}\label{classUsuario_a9f5bfaf39c0a00c15b363484b76be2c7}} 
+\index{Usuario@{Usuario}!getIdTurmas@{getIdTurmas}}
+\index{getIdTurmas@{getIdTurmas}!Usuario@{Usuario}}
+\doxysubsubsection{\texorpdfstring{getIdTurmas()}{getIdTurmas()}}
+{\footnotesize\ttfamily list$<$ int $>$ const Usuario\+::get\+Id\+Turmas (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retorna uma lista de inteiros constante, com formatação válida, armazenada em id\+\_\+turmas. 
+
+\begin{DoxyReturn}{Returns}
+string nome 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classEntidade_ab19aea3979078b16d53525bddaa686c4}\label{classEntidade_ab19aea3979078b16d53525bddaa686c4}} 
+\index{Usuario@{Usuario}!getNome@{getNome}}
+\index{getNome@{getNome}!Usuario@{Usuario}}
+\doxysubsubsection{\texorpdfstring{getNome()}{getNome()}}
+{\footnotesize\ttfamily string const Entidade\+::get\+Nome (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [inherited]}}
+
+
+
+Retorna a string, com formatação válida, armazenada em nome. 
+
+\begin{DoxyReturn}{Returns}
+string nome 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classUsuario_a2319a40f4319afde62d4c87879a7d8cd}\label{classUsuario_a2319a40f4319afde62d4c87879a7d8cd}} 
+\index{Usuario@{Usuario}!getSenha@{getSenha}}
+\index{getSenha@{getSenha}!Usuario@{Usuario}}
+\doxysubsubsection{\texorpdfstring{getSenha()}{getSenha()}}
+{\footnotesize\ttfamily string const Usuario\+::get\+Senha (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retorna uma string constante, com formatação válida, armazenada em senha. 
+
+\begin{DoxyReturn}{Returns}
+string senha 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classUsuario_aae56b4b762e5b9a7a4c8097a17b4b67d}\label{classUsuario_aae56b4b762e5b9a7a4c8097a17b4b67d}} 
+\index{Usuario@{Usuario}!setCargo@{setCargo}}
+\index{setCargo@{setCargo}!Usuario@{Usuario}}
+\doxysubsubsection{\texorpdfstring{setCargo()}{setCargo()}}
+{\footnotesize\ttfamily void Usuario\+::set\+Cargo (\begin{DoxyParamCaption}\item[{string}]{cargo }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Armazena o valor em cargo da string passada se ela seguir as regras de formatação. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em -\/parametro} & do tipo string\+: string que se quer armazenar no atributo cargo. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em invalid\+\_\+argument} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classUsuario_aab72feb959e4cfe145afd5e610ce8605}\label{classUsuario_aab72feb959e4cfe145afd5e610ce8605}} 
+\index{Usuario@{Usuario}!setEmail@{setEmail}}
+\index{setEmail@{setEmail}!Usuario@{Usuario}}
+\doxysubsubsection{\texorpdfstring{setEmail()}{setEmail()}}
+{\footnotesize\ttfamily void Usuario\+::set\+Email (\begin{DoxyParamCaption}\item[{string}]{email }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Armazena o valor em email da string passada se ela seguir as regras de formatação. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em -\/parametro} & do tipo string\+: string que se quer armazenar no atributo email, esse valor deve seguir as regras de formatação da classe. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em invalid\+\_\+argument} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classEntidade_a8242dfd2c1ceb95364071b1bfbbaa750}\label{classEntidade_a8242dfd2c1ceb95364071b1bfbbaa750}} 
+\index{Usuario@{Usuario}!setId@{setId}}
+\index{setId@{setId}!Usuario@{Usuario}}
+\doxysubsubsection{\texorpdfstring{setId()}{setId()}}
+{\footnotesize\ttfamily void Entidade\+::set\+Id (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [inherited]}}
+
+
+
+Armazena o valor do inteiro passado. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em -\/parametro} & do tipo int\+: inteiro que se quer armazenar no atributo id. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classUsuario_a1f8fa4730e0e2b90bbc2db15eb6f9521}\label{classUsuario_a1f8fa4730e0e2b90bbc2db15eb6f9521}} 
+\index{Usuario@{Usuario}!setIdTurmas@{setIdTurmas}}
+\index{setIdTurmas@{setIdTurmas}!Usuario@{Usuario}}
+\doxysubsubsection{\texorpdfstring{setIdTurmas()}{setIdTurmas()}}
+{\footnotesize\ttfamily void Usuario\+::set\+Id\+Turmas (\begin{DoxyParamCaption}\item[{list$<$ int $>$}]{id\+\_\+turmas }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Armazena o valor em id\+\_\+turmas da lista de inteiros passada. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em -\/parametro} & do lista de inteiros\+: lista que se quer armazenar no atributo id\+\_\+turmas. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classEntidade_a8a231f10238f1e699ec654e48dc85e75}\label{classEntidade_a8a231f10238f1e699ec654e48dc85e75}} 
+\index{Usuario@{Usuario}!setNome@{setNome}}
+\index{setNome@{setNome}!Usuario@{Usuario}}
+\doxysubsubsection{\texorpdfstring{setNome()}{setNome()}}
+{\footnotesize\ttfamily void Entidade\+::set\+Nome (\begin{DoxyParamCaption}\item[{string}]{nome }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [inherited]}}
+
+
+
+Armazena o valor em nome da string passada se ela seguir as regras de formatação. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em -\/parametro} & do tipo string\+: string que se quer armazenar no atributo nome, esse valor deve seguir as regras de formatação da classe. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em invalid\+\_\+argument} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classUsuario_a428675e3b6d3743e05b1297cca1dee42}\label{classUsuario_a428675e3b6d3743e05b1297cca1dee42}} 
+\index{Usuario@{Usuario}!setSenha@{setSenha}}
+\index{setSenha@{setSenha}!Usuario@{Usuario}}
+\doxysubsubsection{\texorpdfstring{setSenha()}{setSenha()}}
+{\footnotesize\ttfamily void Usuario\+::set\+Senha (\begin{DoxyParamCaption}\item[{string}]{senha }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Armazena o valor em senha da string passada se ela seguir as regras de formatação. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em -\/parametro} & do tipo string\+: string que se quer armazenar no atributo senha, esse valor deve seguir as regras de formatação da classe. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em invalid\+\_\+argument} & \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/miguel/\+Documents/3\+Semestre/\+MP/\+Projeto\+De\+Disciplina/include/Entidades.\+h\end{DoxyCompactItemize}

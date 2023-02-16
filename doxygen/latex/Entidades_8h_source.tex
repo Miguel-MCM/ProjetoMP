@@ -1,0 +1,227 @@
+\hypertarget{Entidades_8h_source}{}\doxysection{Entidades.\+h}
+\label{Entidades_8h_source}\index{/home/miguel/Documents/3Semestre/MP/ProjetoDeDisciplina/include/Entidades.h@{/home/miguel/Documents/3Semestre/MP/ProjetoDeDisciplina/include/Entidades.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef INCLUDE\_ENTIDADES\_H\_}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#define INCLUDE\_ENTIDADES\_H\_}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <stdexcept>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <list>}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <map>}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{keyword}{using }std::string;}
+\DoxyCodeLine{12 \textcolor{keyword}{using }std::invalid\_argument;}
+\DoxyCodeLine{13 \textcolor{keyword}{using }std::list;}
+\DoxyCodeLine{14 \textcolor{keyword}{using }std::map;}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{17 \textcolor{keyword}{class }\mbox{\hyperlink{classEntidade}{Entidade}} \{}
+\DoxyCodeLine{18  \textcolor{keyword}{protected}:}
+\DoxyCodeLine{20     \textcolor{keywordtype}{string} \mbox{\hyperlink{classEntidade_a18349442410bbc7a5adf6c50596facee}{nome}};}
+\DoxyCodeLine{22     \textcolor{keywordtype}{int} \mbox{\hyperlink{classEntidade_aad7f1a6708d3d9965316b073a9a03b2c}{id}};}
+\DoxyCodeLine{23  \textcolor{keyword}{public}:}
+\DoxyCodeLine{27     \textcolor{keywordtype}{void} \mbox{\hyperlink{classEntidade_a8a231f10238f1e699ec654e48dc85e75}{setNome}}(\textcolor{keywordtype}{string});}
+\DoxyCodeLine{30     \textcolor{keywordtype}{string} \textcolor{keyword}{const} \mbox{\hyperlink{classEntidade_ab19aea3979078b16d53525bddaa686c4}{getNome}}();}
+\DoxyCodeLine{33     \textcolor{keywordtype}{int} \textcolor{keyword}{const} \mbox{\hyperlink{classEntidade_a3a017e2fc13b67515f76ca087aaa087d}{getId}}();}
+\DoxyCodeLine{36     \textcolor{keywordtype}{void} \mbox{\hyperlink{classEntidade_a8242dfd2c1ceb95364071b1bfbbaa750}{setId}}(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{37 \};}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39 \textcolor{keyword}{inline} \textcolor{keywordtype}{int} \textcolor{keyword}{const} \mbox{\hyperlink{classEntidade_a3a017e2fc13b67515f76ca087aaa087d}{Entidade::getId}}() \{\textcolor{keywordflow}{return} \mbox{\hyperlink{classEntidade_aad7f1a6708d3d9965316b073a9a03b2c}{id}};\}}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41 \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{classEntidade_a8242dfd2c1ceb95364071b1bfbbaa750}{Entidade::setId}}(\textcolor{keywordtype}{int} \textcolor{keywordtype}{id}) \{this-\/>\textcolor{keywordtype}{id} = \mbox{\hyperlink{classEntidade_aad7f1a6708d3d9965316b073a9a03b2c}{id}};\}}
+\DoxyCodeLine{42 }
+\DoxyCodeLine{43 \textcolor{keyword}{inline} \textcolor{keywordtype}{string} \textcolor{keyword}{const} \mbox{\hyperlink{classEntidade_ab19aea3979078b16d53525bddaa686c4}{Entidade::getNome}}() \{\textcolor{keywordflow}{return} \mbox{\hyperlink{classEntidade_a18349442410bbc7a5adf6c50596facee}{nome}};\}}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45 \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{classEntidade_a8a231f10238f1e699ec654e48dc85e75}{Entidade::setNome}}(\textcolor{keywordtype}{string} nome) \{}
+\DoxyCodeLine{46     \textcolor{keywordflow}{if} (\mbox{\hyperlink{classEntidade_a18349442410bbc7a5adf6c50596facee}{nome}}.length() == 0) \{}
+\DoxyCodeLine{47         \textcolor{keywordflow}{throw} invalid\_argument(\textcolor{stringliteral}{"{}Nome invalido"{}});}
+\DoxyCodeLine{48     \}}
+\DoxyCodeLine{49     this-\/>nome = \mbox{\hyperlink{classEntidade_a18349442410bbc7a5adf6c50596facee}{nome}};}
+\DoxyCodeLine{50 \}}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{53 \textcolor{keyword}{class }\mbox{\hyperlink{classUsuario}{Usuario}}:\textcolor{keyword}{public} \mbox{\hyperlink{classEntidade}{Entidade}} \{}
+\DoxyCodeLine{54  \textcolor{keyword}{protected}:}
+\DoxyCodeLine{56     \textcolor{keywordtype}{string} \mbox{\hyperlink{classUsuario_a0eead9437af68caf9dcf6e3cca88a178}{email}};}
+\DoxyCodeLine{58     \textcolor{keywordtype}{string} \mbox{\hyperlink{classUsuario_a99d6b6876b9118121cb9171dde26cc44}{senha}};}
+\DoxyCodeLine{60     \textcolor{keywordtype}{string} \mbox{\hyperlink{classUsuario_a95a399bfdafa8148416a5b63e2b90fd3}{cargo}};}
+\DoxyCodeLine{62     list<int> \mbox{\hyperlink{classUsuario_aa6e8ab71498e4cb4820b54536e12174e}{id\_turmas}};}
+\DoxyCodeLine{63  \textcolor{keyword}{public}:}
+\DoxyCodeLine{66     \textcolor{keywordtype}{string} \textcolor{keyword}{const} \mbox{\hyperlink{classUsuario_a49bafda0190ebce0e4a04a5946eaf5ee}{getEmail}}();}
+\DoxyCodeLine{70     \textcolor{keywordtype}{void} \mbox{\hyperlink{classUsuario_aab72feb959e4cfe145afd5e610ce8605}{setEmail}}(\textcolor{keywordtype}{string});}
+\DoxyCodeLine{73     \textcolor{keywordtype}{string} \textcolor{keyword}{const} \mbox{\hyperlink{classUsuario_a2319a40f4319afde62d4c87879a7d8cd}{getSenha}}();}
+\DoxyCodeLine{77     \textcolor{keywordtype}{void} \mbox{\hyperlink{classUsuario_a428675e3b6d3743e05b1297cca1dee42}{setSenha}}(\textcolor{keywordtype}{string});}
+\DoxyCodeLine{80     \textcolor{keywordtype}{string} \textcolor{keyword}{const} \mbox{\hyperlink{classUsuario_aeab3e35e33409eab34023815826b1497}{getCargo}}();}
+\DoxyCodeLine{84     \textcolor{keywordtype}{void} \mbox{\hyperlink{classUsuario_aae56b4b762e5b9a7a4c8097a17b4b67d}{setCargo}}(\textcolor{keywordtype}{string});}
+\DoxyCodeLine{87     list<int> \textcolor{keyword}{const} \mbox{\hyperlink{classUsuario_a9f5bfaf39c0a00c15b363484b76be2c7}{getIdTurmas}}();}
+\DoxyCodeLine{90     \textcolor{keywordtype}{void} \mbox{\hyperlink{classUsuario_a1f8fa4730e0e2b90bbc2db15eb6f9521}{setIdTurmas}}(list<int>);}
+\DoxyCodeLine{92     \textcolor{keyword}{virtual} \mbox{\hyperlink{classUsuario_a4bb88f88163049cafd25e0840cb7034b}{\string~Usuario}}() \{\}}
+\DoxyCodeLine{93 \};}
+\DoxyCodeLine{94 }
+\DoxyCodeLine{95 \textcolor{keyword}{inline} \textcolor{keywordtype}{string} \textcolor{keyword}{const} \mbox{\hyperlink{classUsuario_a49bafda0190ebce0e4a04a5946eaf5ee}{Usuario::getEmail}}() \{\textcolor{keywordflow}{return} \mbox{\hyperlink{classUsuario_a0eead9437af68caf9dcf6e3cca88a178}{email}};\}}
+\DoxyCodeLine{96 }
+\DoxyCodeLine{97 \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{classUsuario_aab72feb959e4cfe145afd5e610ce8605}{Usuario::setEmail}}(\textcolor{keywordtype}{string} email) \{}
+\DoxyCodeLine{98     \textcolor{keywordflow}{if} (\mbox{\hyperlink{classUsuario_a0eead9437af68caf9dcf6e3cca88a178}{email}}.length() == 0 || \mbox{\hyperlink{classUsuario_a0eead9437af68caf9dcf6e3cca88a178}{email}}.find(\textcolor{charliteral}{'@'}) == string::npos) \{}
+\DoxyCodeLine{99         \textcolor{keywordflow}{throw} invalid\_argument(\textcolor{stringliteral}{"{}Email invalido"{}});}
+\DoxyCodeLine{100     \}}
+\DoxyCodeLine{101     this-\/>email = \mbox{\hyperlink{classUsuario_a0eead9437af68caf9dcf6e3cca88a178}{email}};}
+\DoxyCodeLine{102 \}}
+\DoxyCodeLine{103 }
+\DoxyCodeLine{104 \textcolor{keyword}{inline} \textcolor{keywordtype}{string} \textcolor{keyword}{const} \mbox{\hyperlink{classUsuario_a2319a40f4319afde62d4c87879a7d8cd}{Usuario::getSenha}}() \{\textcolor{keywordflow}{return} \mbox{\hyperlink{classUsuario_a99d6b6876b9118121cb9171dde26cc44}{senha}};\}}
+\DoxyCodeLine{105 }
+\DoxyCodeLine{106 \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{classUsuario_a428675e3b6d3743e05b1297cca1dee42}{Usuario::setSenha}}(\textcolor{keywordtype}{string} senha) \{}
+\DoxyCodeLine{107     \textcolor{keywordflow}{if} (\mbox{\hyperlink{classUsuario_a99d6b6876b9118121cb9171dde26cc44}{senha}}.length() < 4) \{}
+\DoxyCodeLine{108         \textcolor{keywordflow}{throw} invalid\_argument(\textcolor{stringliteral}{"{}Senha invalido"{}});}
+\DoxyCodeLine{109     \}}
+\DoxyCodeLine{110     this-\/>senha = \mbox{\hyperlink{classUsuario_a99d6b6876b9118121cb9171dde26cc44}{senha}};}
+\DoxyCodeLine{111 \}}
+\DoxyCodeLine{112 }
+\DoxyCodeLine{113 \textcolor{keyword}{inline} \textcolor{keywordtype}{string} \textcolor{keyword}{const} \mbox{\hyperlink{classUsuario_aeab3e35e33409eab34023815826b1497}{Usuario::getCargo}}() \{\textcolor{keywordflow}{return} \mbox{\hyperlink{classUsuario_a95a399bfdafa8148416a5b63e2b90fd3}{cargo}};\}}
+\DoxyCodeLine{114 }
+\DoxyCodeLine{115 \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{classUsuario_aae56b4b762e5b9a7a4c8097a17b4b67d}{Usuario::setCargo}}(\textcolor{keywordtype}{string} cargo) \{}
+\DoxyCodeLine{116     \textcolor{keywordflow}{if} (\mbox{\hyperlink{classUsuario_a95a399bfdafa8148416a5b63e2b90fd3}{cargo}} != \textcolor{stringliteral}{"{}aluno"{}} \&\& \mbox{\hyperlink{classUsuario_a95a399bfdafa8148416a5b63e2b90fd3}{cargo}} != \textcolor{stringliteral}{"{}professor"{}} \&\& \mbox{\hyperlink{classUsuario_a95a399bfdafa8148416a5b63e2b90fd3}{cargo}} != \textcolor{stringliteral}{"{}admin"{}}) \{}
+\DoxyCodeLine{117         \textcolor{keywordflow}{throw} invalid\_argument(\textcolor{stringliteral}{"{}Cargo deve ser 'aluno' ou 'professor' ou 'admin'."{}});}
+\DoxyCodeLine{118     \}}
+\DoxyCodeLine{119     this-\/>cargo = \mbox{\hyperlink{classUsuario_a95a399bfdafa8148416a5b63e2b90fd3}{cargo}};}
+\DoxyCodeLine{120 \}}
+\DoxyCodeLine{121 }
+\DoxyCodeLine{122 \textcolor{keyword}{inline} list<int> \textcolor{keyword}{const} \mbox{\hyperlink{classUsuario_a9f5bfaf39c0a00c15b363484b76be2c7}{Usuario::getIdTurmas}}() \{\textcolor{keywordflow}{return} \mbox{\hyperlink{classUsuario_aa6e8ab71498e4cb4820b54536e12174e}{id\_turmas}};\}}
+\DoxyCodeLine{123 }
+\DoxyCodeLine{124 \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{classUsuario_a1f8fa4730e0e2b90bbc2db15eb6f9521}{Usuario::setIdTurmas}}(list<int> id\_turmas) \{}
+\DoxyCodeLine{125     this-\/>id\_turmas = \mbox{\hyperlink{classUsuario_aa6e8ab71498e4cb4820b54536e12174e}{id\_turmas}};}
+\DoxyCodeLine{126 \}}
+\DoxyCodeLine{128 \textcolor{keyword}{class }\mbox{\hyperlink{classTurma}{Turma}}:\textcolor{keyword}{public} \mbox{\hyperlink{classEntidade}{Entidade}} \{}
+\DoxyCodeLine{129  \textcolor{keyword}{private}:}
+\DoxyCodeLine{131     \textcolor{keyword}{static} \textcolor{keywordtype}{int} qtd\_alunos;}
+\DoxyCodeLine{133     \textcolor{keywordtype}{string} descricao;}
+\DoxyCodeLine{135     \textcolor{keywordtype}{bool} aberta;}
+\DoxyCodeLine{137     \textcolor{keywordtype}{int} id\_prof;}
+\DoxyCodeLine{138  \textcolor{keyword}{public}:}
+\DoxyCodeLine{141     \textcolor{keywordtype}{string} \textcolor{keyword}{const} \mbox{\hyperlink{classTurma_ab4b9c98ee9165d45c3ede26dd35a736d}{getDescricao}}();}
+\DoxyCodeLine{145     \textcolor{keywordtype}{void} \mbox{\hyperlink{classTurma_a91e86f430272d55bb3827aa9e9788eea}{setDescricao}}(\textcolor{keywordtype}{string});}
+\DoxyCodeLine{148     \textcolor{keywordtype}{bool} \textcolor{keyword}{const} \mbox{\hyperlink{classTurma_a79f08c024e7867828d76a96aef175f50}{taAberta}}();}
+\DoxyCodeLine{150     \textcolor{keywordtype}{void} \mbox{\hyperlink{classTurma_a7bbc0646c9b018784bb33f027555ba81}{switchAberta}}();}
+\DoxyCodeLine{153     \textcolor{keywordtype}{void} \mbox{\hyperlink{classTurma_a1923ee73e02780a70fbe1795eeab6d1e}{setAberta}}(\textcolor{keywordtype}{bool});}
+\DoxyCodeLine{156     \textcolor{keywordtype}{int} \textcolor{keyword}{const} \mbox{\hyperlink{classTurma_a95e6490a1c0950eb6f7c303dc07a66b0}{getIdProf}}();}
+\DoxyCodeLine{159     \textcolor{keywordtype}{void} \mbox{\hyperlink{classTurma_ab39263cb3bd8b7afc3ff28b9effa1fc9}{setIdProf}}(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{161     \mbox{\hyperlink{classTurma_a8ad1feec07b4c0ff5d4ec51c8b4a61fd}{Turma}}() \{}
+\DoxyCodeLine{162         aberta = \textcolor{keyword}{true};}
+\DoxyCodeLine{163     \}}
+\DoxyCodeLine{164 \};}
+\DoxyCodeLine{165 }
+\DoxyCodeLine{166 \textcolor{keyword}{inline} \textcolor{keywordtype}{string} \textcolor{keyword}{const} \mbox{\hyperlink{classTurma_ab4b9c98ee9165d45c3ede26dd35a736d}{Turma::getDescricao}}() \{\textcolor{keywordflow}{return} descricao;\}}
+\DoxyCodeLine{167 }
+\DoxyCodeLine{168 \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{classTurma_a91e86f430272d55bb3827aa9e9788eea}{Turma::setDescricao}}(\textcolor{keywordtype}{string} descricao) \{}
+\DoxyCodeLine{169     \textcolor{keywordflow}{if} (descricao.length() == 0) \{}
+\DoxyCodeLine{170         \textcolor{keywordflow}{throw} invalid\_argument(\textcolor{stringliteral}{"{}Descricao invalida"{}});}
+\DoxyCodeLine{171     \}}
+\DoxyCodeLine{172     this-\/>descricao = descricao;}
+\DoxyCodeLine{173 \}}
+\DoxyCodeLine{174 }
+\DoxyCodeLine{175 \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{classTurma_a1923ee73e02780a70fbe1795eeab6d1e}{Turma::setAberta}}(\textcolor{keywordtype}{bool} aberta) \{this-\/>aberta = aberta;\}}
+\DoxyCodeLine{176 }
+\DoxyCodeLine{177 \textcolor{keyword}{inline} \textcolor{keywordtype}{bool} \textcolor{keyword}{const} \mbox{\hyperlink{classTurma_a79f08c024e7867828d76a96aef175f50}{Turma::taAberta}}() \{\textcolor{keywordflow}{return} aberta;\}}
+\DoxyCodeLine{178 }
+\DoxyCodeLine{179 \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{classTurma_a7bbc0646c9b018784bb33f027555ba81}{Turma::switchAberta}}() \{aberta = !aberta;\}}
+\DoxyCodeLine{180 }
+\DoxyCodeLine{181 \textcolor{keyword}{inline} \textcolor{keywordtype}{int} \textcolor{keyword}{const} \mbox{\hyperlink{classTurma_a95e6490a1c0950eb6f7c303dc07a66b0}{Turma::getIdProf}}() \{\textcolor{keywordflow}{return} id\_prof;\}}
+\DoxyCodeLine{182 }
+\DoxyCodeLine{183 \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{classTurma_ab39263cb3bd8b7afc3ff28b9effa1fc9}{Turma::setIdProf}}(\textcolor{keywordtype}{int} id\_prof) \{this-\/>id\_prof = id\_prof;\}}
+\DoxyCodeLine{184 }
+\DoxyCodeLine{186 \textcolor{keyword}{class }\mbox{\hyperlink{classQuestao}{Questao}}:\textcolor{keyword}{public} \mbox{\hyperlink{classEntidade}{Entidade}} \{}
+\DoxyCodeLine{187  \textcolor{keyword}{private}:}
+\DoxyCodeLine{189     \textcolor{keywordtype}{string} texto;}
+\DoxyCodeLine{191     \textcolor{keywordtype}{int} id\_prof;}
+\DoxyCodeLine{193     \textcolor{keywordtype}{int} reposta\_correta;}
+\DoxyCodeLine{195     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{int} LIMITE\_ALTERNATIVAS = 5;}
+\DoxyCodeLine{197     list<string> alternativas;}
+\DoxyCodeLine{198  \textcolor{keyword}{public}:}
+\DoxyCodeLine{201     \textcolor{keywordtype}{string} \mbox{\hyperlink{classQuestao_ae250f707d2ece1fa2e2cd4645cdb496c}{getTexto}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{204     \textcolor{keywordtype}{void} \mbox{\hyperlink{classQuestao_a77f42e2af4e5bd594b1eb79556ec0df6}{setTexto}}(\textcolor{keywordtype}{string});}
+\DoxyCodeLine{207     \textcolor{keywordtype}{int} \mbox{\hyperlink{classQuestao_a84d77448fdfb5846c33283078cf3e763}{getIdProf}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{210     \textcolor{keywordtype}{void} \mbox{\hyperlink{classQuestao_a2374fa773269a64f3115db453e069863}{setIdProf}}(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{213     \textcolor{keywordtype}{int} \mbox{\hyperlink{classQuestao_ae79060e24d8bea6ca383be45b3015789}{getRespostaCorreta}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{216     \textcolor{keywordtype}{void} \mbox{\hyperlink{classQuestao_abcc65ac3fed8b5c42e28a7bc477f596f}{setRespostaCorreta}}(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{219     list<string> \mbox{\hyperlink{classQuestao_ab9d862bd59d2dad4b41d8071dc8ad193}{getAlternativas}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{222     \textcolor{keywordtype}{void} \mbox{\hyperlink{classQuestao_adf45722e735dafe02d5a05a68b35d32a}{setAlternativas}}(list<string>);}
+\DoxyCodeLine{223 \};}
+\DoxyCodeLine{224 }
+\DoxyCodeLine{225 \textcolor{keyword}{inline} \textcolor{keywordtype}{int} \mbox{\hyperlink{classQuestao_a84d77448fdfb5846c33283078cf3e763}{Questao::getIdProf}}()\textcolor{keyword}{ const }\{\textcolor{keywordflow}{return} id\_prof;\}}
+\DoxyCodeLine{226 }
+\DoxyCodeLine{227 \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{classQuestao_a2374fa773269a64f3115db453e069863}{Questao::setIdProf}}(\textcolor{keywordtype}{int} id\_prof) \{this-\/>id\_prof = id\_prof;\}}
+\DoxyCodeLine{228 }
+\DoxyCodeLine{229 \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{classQuestao_a77f42e2af4e5bd594b1eb79556ec0df6}{Questao::setTexto}}(\textcolor{keywordtype}{string} texto) \{this-\/>texto = texto;\}}
+\DoxyCodeLine{230 }
+\DoxyCodeLine{231 \textcolor{keyword}{inline} \textcolor{keywordtype}{string} \mbox{\hyperlink{classQuestao_ae250f707d2ece1fa2e2cd4645cdb496c}{Questao::getTexto}}()\textcolor{keyword}{ const  }\{\textcolor{keywordflow}{return} texto;\}}
+\DoxyCodeLine{232 }
+\DoxyCodeLine{233 \textcolor{keyword}{inline} \textcolor{keywordtype}{int} \mbox{\hyperlink{classQuestao_ae79060e24d8bea6ca383be45b3015789}{Questao::getRespostaCorreta}}()\textcolor{keyword}{ const }\{\textcolor{keywordflow}{return} reposta\_correta;\}}
+\DoxyCodeLine{234 }
+\DoxyCodeLine{235 \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{classQuestao_abcc65ac3fed8b5c42e28a7bc477f596f}{Questao::setRespostaCorreta}}(\textcolor{keywordtype}{int} resposta\_correta) \{}
+\DoxyCodeLine{236     this-\/>reposta\_correta = resposta\_correta;}
+\DoxyCodeLine{237 \}}
+\DoxyCodeLine{238 }
+\DoxyCodeLine{239 \textcolor{keyword}{inline} list<string> \mbox{\hyperlink{classQuestao_ab9d862bd59d2dad4b41d8071dc8ad193}{Questao::getAlternativas}}()\textcolor{keyword}{ const }\{\textcolor{keywordflow}{return} alternativas;\}}
+\DoxyCodeLine{240 }
+\DoxyCodeLine{241 \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{classQuestao_adf45722e735dafe02d5a05a68b35d32a}{Questao::setAlternativas}}(list<string> alternativas) \{}
+\DoxyCodeLine{242     this-\/>alternativas = alternativas;}
+\DoxyCodeLine{243 \}}
+\DoxyCodeLine{245 \textcolor{keyword}{class }\mbox{\hyperlink{classProva}{Prova}}:\textcolor{keyword}{public} \mbox{\hyperlink{classEntidade}{Entidade}} \{}
+\DoxyCodeLine{246  \textcolor{keyword}{private}:}
+\DoxyCodeLine{248     list<int> id\_questoes;}
+\DoxyCodeLine{250     \textcolor{keywordtype}{int} id\_turma;}
+\DoxyCodeLine{252     \textcolor{keywordtype}{int} id\_prof;}
+\DoxyCodeLine{253  \textcolor{keyword}{public}:}
+\DoxyCodeLine{256     list<int> \mbox{\hyperlink{classProva_a67eb0b422a1f3b7cd17f396d55735ece}{getIdQuestoes}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{259     \textcolor{keywordtype}{void} \mbox{\hyperlink{classProva_af636dcf506daae5fac0f16cda693c7a0}{setIdQuestoes}}(list<int>);}
+\DoxyCodeLine{262     \textcolor{keywordtype}{int} \mbox{\hyperlink{classProva_a5efd3bbab14bed085a1279edf71e4cee}{getIdTurma}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{265     \textcolor{keywordtype}{void} \mbox{\hyperlink{classProva_a7f7b8bec9eb60543e6485efa46dee68e}{setIdTurma}}(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{268     \textcolor{keywordtype}{int} \mbox{\hyperlink{classProva_aaaa963cd2d74b1a6304abdbb99c25a11}{getIdProf}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{271     \textcolor{keywordtype}{void} \mbox{\hyperlink{classProva_a3a8f0af2e57de0c602441fd455bc1b8f}{setIdProf}}(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{272 \};}
+\DoxyCodeLine{273 }
+\DoxyCodeLine{274 \textcolor{keyword}{inline} list<int> \mbox{\hyperlink{classProva_a67eb0b422a1f3b7cd17f396d55735ece}{Prova::getIdQuestoes}}()\textcolor{keyword}{ const }\{\textcolor{keywordflow}{return} id\_questoes;\}}
+\DoxyCodeLine{275 }
+\DoxyCodeLine{276 \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{classProva_af636dcf506daae5fac0f16cda693c7a0}{Prova::setIdQuestoes}}(list<int> id\_questoes) \{}
+\DoxyCodeLine{277     this-\/>id\_questoes = id\_questoes;}
+\DoxyCodeLine{278 \}}
+\DoxyCodeLine{279 }
+\DoxyCodeLine{280 \textcolor{keyword}{inline} \textcolor{keywordtype}{int} \mbox{\hyperlink{classProva_a5efd3bbab14bed085a1279edf71e4cee}{Prova::getIdTurma}}()\textcolor{keyword}{ const }\{\textcolor{keywordflow}{return} id\_turma;\}}
+\DoxyCodeLine{281 }
+\DoxyCodeLine{282 \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{classProva_a7f7b8bec9eb60543e6485efa46dee68e}{Prova::setIdTurma}}(\textcolor{keywordtype}{int} id\_turma) \{this-\/>id\_turma = id\_turma;\}}
+\DoxyCodeLine{283 }
+\DoxyCodeLine{284 \textcolor{keyword}{inline} \textcolor{keywordtype}{int} \mbox{\hyperlink{classProva_aaaa963cd2d74b1a6304abdbb99c25a11}{Prova::getIdProf}}()\textcolor{keyword}{ const }\{\textcolor{keywordflow}{return} id\_prof;\}}
+\DoxyCodeLine{285 }
+\DoxyCodeLine{286 \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{classProva_a3a8f0af2e57de0c602441fd455bc1b8f}{Prova::setIdProf}}(\textcolor{keywordtype}{int} id\_prof) \{this-\/>id\_prof = id\_prof;\}}
+\DoxyCodeLine{288 \textcolor{keyword}{class }\mbox{\hyperlink{classResposta}{Resposta}}:\textcolor{keyword}{public} \mbox{\hyperlink{classEntidade}{Entidade}} \{}
+\DoxyCodeLine{289  \textcolor{keyword}{private}:}
+\DoxyCodeLine{291     map<int, int> resposta;}
+\DoxyCodeLine{293     \textcolor{keywordtype}{int} id\_estudante;}
+\DoxyCodeLine{295     \textcolor{keywordtype}{int} id\_prova;}
+\DoxyCodeLine{297     \textcolor{keyword}{static} \textcolor{keyword}{const} \textcolor{keywordtype}{int} NULL\_RESPONSE = INT32\_MIN;}
+\DoxyCodeLine{298  \textcolor{keyword}{public}:}
+\DoxyCodeLine{301     \textcolor{keywordtype}{int} \mbox{\hyperlink{classResposta_ab104ce83a298a5586d9ada5d4b41bb01}{getIdEstudante}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{304     \textcolor{keywordtype}{void} \mbox{\hyperlink{classResposta_ae15ac7a8333aa228c9656f94b766896b}{setIdEstudante}}(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{307     \textcolor{keywordtype}{int} \mbox{\hyperlink{classResposta_a835e1f7a22b2dc8770b2f287cc81f304}{getIdProva}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{310     \textcolor{keywordtype}{void} \mbox{\hyperlink{classResposta_a64c98a75cb11b9e37039736689f4305e}{setIdProva}}(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{313     map<int, int> \mbox{\hyperlink{classResposta_a59d459283b459872f81a62d30edc0399}{getResposta}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{316     \textcolor{keywordtype}{void} \mbox{\hyperlink{classResposta_a7a506953633b9ff19384c400c0ed70a0}{setResposta}}(map<int, int>);}
+\DoxyCodeLine{317 \};}
+\DoxyCodeLine{318 }
+\DoxyCodeLine{319 \textcolor{keyword}{inline} \textcolor{keywordtype}{int} \mbox{\hyperlink{classResposta_ab104ce83a298a5586d9ada5d4b41bb01}{Resposta::getIdEstudante}}()\textcolor{keyword}{ const }\{\textcolor{keywordflow}{return} id\_estudante;\}}
+\DoxyCodeLine{320 }
+\DoxyCodeLine{321 \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{classResposta_ae15ac7a8333aa228c9656f94b766896b}{Resposta::setIdEstudante}}(\textcolor{keywordtype}{int} id\_estudante) \{}
+\DoxyCodeLine{322     this-\/>id\_estudante = id\_estudante;}
+\DoxyCodeLine{323 \}}
+\DoxyCodeLine{324 }
+\DoxyCodeLine{325 \textcolor{keyword}{inline} \textcolor{keywordtype}{int} \mbox{\hyperlink{classResposta_a835e1f7a22b2dc8770b2f287cc81f304}{Resposta::getIdProva}}()\textcolor{keyword}{ const }\{\textcolor{keywordflow}{return} id\_prova;\}}
+\DoxyCodeLine{326 }
+\DoxyCodeLine{327 \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{classResposta_a64c98a75cb11b9e37039736689f4305e}{Resposta::setIdProva}}(\textcolor{keywordtype}{int} id\_prova) \{this-\/>id\_prova = id\_prova;\}}
+\DoxyCodeLine{328 }
+\DoxyCodeLine{329 \textcolor{keyword}{inline} map<int, int> \mbox{\hyperlink{classResposta_a59d459283b459872f81a62d30edc0399}{Resposta::getResposta}}()\textcolor{keyword}{ const }\{\textcolor{keywordflow}{return} resposta;\}}
+\DoxyCodeLine{330 }
+\DoxyCodeLine{331 \textcolor{keyword}{inline} \textcolor{keywordtype}{void} \mbox{\hyperlink{classResposta_a7a506953633b9ff19384c400c0ed70a0}{Resposta::setResposta}}(map<int, int> resposta) \{this-\/>resposta = resposta;\}}
+\DoxyCodeLine{332 }
+\DoxyCodeLine{333 \textcolor{preprocessor}{\#endif  }\textcolor{comment}{// INCLUDE\_ENTIDADES\_H\_}}
+
+\end{DoxyCode}

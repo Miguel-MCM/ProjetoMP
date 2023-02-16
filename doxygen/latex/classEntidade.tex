@@ -1,0 +1,109 @@
+\hypertarget{classEntidade}{}\doxysection{Entidade Class Reference}
+\label{classEntidade}\index{Entidade@{Entidade}}
+
+
+Classe que serve como base para todas as entidades.  
+
+
+
+
+{\ttfamily \#include $<$Entidades.\+h$>$}
+
+Inheritance diagram for Entidade\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classEntidade}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classEntidade_a8a231f10238f1e699ec654e48dc85e75}{set\+Nome}} (string)
+\begin{DoxyCompactList}\small\item\em Armazena o valor em nome da string passada se ela seguir as regras de formatação. \end{DoxyCompactList}\item 
+string const \mbox{\hyperlink{classEntidade_ab19aea3979078b16d53525bddaa686c4}{get\+Nome}} ()
+\begin{DoxyCompactList}\small\item\em Retorna a string, com formatação válida, armazenada em nome. \end{DoxyCompactList}\item 
+int const \mbox{\hyperlink{classEntidade_a3a017e2fc13b67515f76ca087aaa087d}{get\+Id}} ()
+\begin{DoxyCompactList}\small\item\em Retorna um inteiro armazenado em id. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classEntidade_a8242dfd2c1ceb95364071b1bfbbaa750}{set\+Id}} (int)
+\begin{DoxyCompactList}\small\item\em Armazena o valor do inteiro passado. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classEntidade_a18349442410bbc7a5adf6c50596facee}\label{classEntidade_a18349442410bbc7a5adf6c50596facee}} 
+string {\bfseries nome}
+\begin{DoxyCompactList}\small\item\em Atributo da classe que representa o nome do objeto. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classEntidade_aad7f1a6708d3d9965316b073a9a03b2c}\label{classEntidade_aad7f1a6708d3d9965316b073a9a03b2c}} 
+int {\bfseries id}
+\begin{DoxyCompactList}\small\item\em Atributo da classe que representa o id do objeto, que será usado no banco de dados. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe que serve como base para todas as entidades. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classEntidade_a3a017e2fc13b67515f76ca087aaa087d}\label{classEntidade_a3a017e2fc13b67515f76ca087aaa087d}} 
+\index{Entidade@{Entidade}!getId@{getId}}
+\index{getId@{getId}!Entidade@{Entidade}}
+\doxysubsubsection{\texorpdfstring{getId()}{getId()}}
+{\footnotesize\ttfamily int const Entidade\+::get\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retorna um inteiro armazenado em id. 
+
+\begin{DoxyReturn}{Returns}
+int const 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classEntidade_ab19aea3979078b16d53525bddaa686c4}\label{classEntidade_ab19aea3979078b16d53525bddaa686c4}} 
+\index{Entidade@{Entidade}!getNome@{getNome}}
+\index{getNome@{getNome}!Entidade@{Entidade}}
+\doxysubsubsection{\texorpdfstring{getNome()}{getNome()}}
+{\footnotesize\ttfamily string const Entidade\+::get\+Nome (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retorna a string, com formatação válida, armazenada em nome. 
+
+\begin{DoxyReturn}{Returns}
+string nome 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classEntidade_a8242dfd2c1ceb95364071b1bfbbaa750}\label{classEntidade_a8242dfd2c1ceb95364071b1bfbbaa750}} 
+\index{Entidade@{Entidade}!setId@{setId}}
+\index{setId@{setId}!Entidade@{Entidade}}
+\doxysubsubsection{\texorpdfstring{setId()}{setId()}}
+{\footnotesize\ttfamily void Entidade\+::set\+Id (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Armazena o valor do inteiro passado. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em -\/parametro} & do tipo int\+: inteiro que se quer armazenar no atributo id. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classEntidade_a8a231f10238f1e699ec654e48dc85e75}\label{classEntidade_a8a231f10238f1e699ec654e48dc85e75}} 
+\index{Entidade@{Entidade}!setNome@{setNome}}
+\index{setNome@{setNome}!Entidade@{Entidade}}
+\doxysubsubsection{\texorpdfstring{setNome()}{setNome()}}
+{\footnotesize\ttfamily void Entidade\+::set\+Nome (\begin{DoxyParamCaption}\item[{string}]{nome }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Armazena o valor em nome da string passada se ela seguir as regras de formatação. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em -\/parametro} & do tipo string\+: string que se quer armazenar no atributo nome, esse valor deve seguir as regras de formatação da classe. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em invalid\+\_\+argument} & \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/miguel/\+Documents/3\+Semestre/\+MP/\+Projeto\+De\+Disciplina/include/Entidades.\+h\end{DoxyCompactItemize}

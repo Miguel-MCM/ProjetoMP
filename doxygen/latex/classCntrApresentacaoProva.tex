@@ -1,0 +1,127 @@
+\hypertarget{classCntrApresentacaoProva}{}\doxysection{Cntr\+Apresentacao\+Prova Class Reference}
+\label{classCntrApresentacaoProva}\index{CntrApresentacaoProva@{CntrApresentacaoProva}}
+Inheritance diagram for Cntr\+Apresentacao\+Prova\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classCntrApresentacaoProva}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{classCntrApresentacaoProva_a3ab47a7d132d09ae611be83c5a6bce90}{executar}} (\mbox{\hyperlink{classTurma}{Turma}} $\ast$, \mbox{\hyperlink{classUsuario}{Usuario}})
+\begin{DoxyCompactList}\small\item\em implementa ambiente para acessar os serviços e telas de prova. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCntrApresentacaoProva_a8f3b20b3b489f0de578983eb85704463}{gerenciar}} (\mbox{\hyperlink{classProva}{Prova}} $\ast$)
+\begin{DoxyCompactList}\small\item\em implementa ambiente para acessar os serviços e telas de gerenciamento de prova. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCntrApresentacaoProva_a795cc2737a95469453cde625fc859f06}{editar}} (\mbox{\hyperlink{classProva}{Prova}} $\ast$)
+\begin{DoxyCompactList}\small\item\em implementa ambiente para acessar os serviços e telas de edição de prova. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCntrApresentacaoProva_a48fd34069f2109a2661fb85509ca83e6}{set\+Cntr\+Servico\+Prova}} (\mbox{\hyperlink{classIServicoProva}{IServico\+Prova}} $\ast$)
+\begin{DoxyCompactList}\small\item\em Cria conexão entre a camada de apresenação de prova com a camada de servico de usuario. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classCntrApresentacaoProva_a66ded2d4e001cfab832c1d278a8427d5}{set\+Cntr\+Servico\+Turma}} (\mbox{\hyperlink{classIServicoTurma}{IServico\+Turma}} $\ast$)
+\begin{DoxyCompactList}\small\item\em Cria conexão entre a camada de apresenação de prova com a camada de servico de prova. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classCntrApresentacaoProva_a795cc2737a95469453cde625fc859f06}\label{classCntrApresentacaoProva_a795cc2737a95469453cde625fc859f06}} 
+\index{CntrApresentacaoProva@{CntrApresentacaoProva}!editar@{editar}}
+\index{editar@{editar}!CntrApresentacaoProva@{CntrApresentacaoProva}}
+\doxysubsubsection{\texorpdfstring{editar()}{editar()}}
+{\footnotesize\ttfamily void Cntr\+Apresentacao\+Prova\+::editar (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classProva}{Prova}} $\ast$}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+implementa ambiente para acessar os serviços e telas de edição de prova. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Parametro} & do tipo ponteiro à objeto \mbox{\hyperlink{classProva}{Prova}}\+: prova sob quais serviços e telas deseja acessar. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classIApresentacaoProva_a15a560f5199d0240a0d317aed39c98bd}{IApresentacao\+Prova}}.
+
+\mbox{\Hypertarget{classCntrApresentacaoProva_a3ab47a7d132d09ae611be83c5a6bce90}\label{classCntrApresentacaoProva_a3ab47a7d132d09ae611be83c5a6bce90}} 
+\index{CntrApresentacaoProva@{CntrApresentacaoProva}!executar@{executar}}
+\index{executar@{executar}!CntrApresentacaoProva@{CntrApresentacaoProva}}
+\doxysubsubsection{\texorpdfstring{executar()}{executar()}}
+{\footnotesize\ttfamily void Cntr\+Apresentacao\+Prova\+::executar (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTurma}{Turma}} $\ast$}]{,  }\item[{\mbox{\hyperlink{classUsuario}{Usuario}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+implementa ambiente para acessar os serviços e telas de prova. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Parametro} & do tipo objeto \mbox{\hyperlink{classUsuario}{Usuario}}\+: para auxiliar a implementação de serviços e telas. \\
+\hline
+{\em Parametro} & do tipo ponteiro à objeto \mbox{\hyperlink{classTurma}{Turma}}\+: turma sob quais serviços e telas deseja acessar. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classIApresentacaoProva_a07d7204ca7455878d8e1890113db92fd}{IApresentacao\+Prova}}.
+
+\mbox{\Hypertarget{classCntrApresentacaoProva_a8f3b20b3b489f0de578983eb85704463}\label{classCntrApresentacaoProva_a8f3b20b3b489f0de578983eb85704463}} 
+\index{CntrApresentacaoProva@{CntrApresentacaoProva}!gerenciar@{gerenciar}}
+\index{gerenciar@{gerenciar}!CntrApresentacaoProva@{CntrApresentacaoProva}}
+\doxysubsubsection{\texorpdfstring{gerenciar()}{gerenciar()}}
+{\footnotesize\ttfamily void Cntr\+Apresentacao\+Prova\+::gerenciar (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classProva}{Prova}} $\ast$}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+implementa ambiente para acessar os serviços e telas de gerenciamento de prova. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Parametro} & do tipo ponteiro à objeto \mbox{\hyperlink{classProva}{Prova}}\+: prova sob quais serviços e telas deseja acessar. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classIApresentacaoProva_aec8cd36992f5f7beb9c153beb36d416e}{IApresentacao\+Prova}}.
+
+\mbox{\Hypertarget{classCntrApresentacaoProva_a48fd34069f2109a2661fb85509ca83e6}\label{classCntrApresentacaoProva_a48fd34069f2109a2661fb85509ca83e6}} 
+\index{CntrApresentacaoProva@{CntrApresentacaoProva}!setCntrServicoProva@{setCntrServicoProva}}
+\index{setCntrServicoProva@{setCntrServicoProva}!CntrApresentacaoProva@{CntrApresentacaoProva}}
+\doxysubsubsection{\texorpdfstring{setCntrServicoProva()}{setCntrServicoProva()}}
+{\footnotesize\ttfamily void Cntr\+Apresentacao\+Prova\+::set\+Cntr\+Servico\+Prova (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classIServicoProva}{IServico\+Prova}} $\ast$}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Cria conexão entre a camada de apresenação de prova com a camada de servico de usuario. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Ponteiro} & \mbox{\hyperlink{classIServicoProva}{IServico\+Prova}}\+: ponteiro á interface de serviço de prova. ~\newline
+ \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classIApresentacaoProva_a7cb9d7fb91f4b9e03d5b2e3293aed656}{IApresentacao\+Prova}}.
+
+\mbox{\Hypertarget{classCntrApresentacaoProva_a66ded2d4e001cfab832c1d278a8427d5}\label{classCntrApresentacaoProva_a66ded2d4e001cfab832c1d278a8427d5}} 
+\index{CntrApresentacaoProva@{CntrApresentacaoProva}!setCntrServicoTurma@{setCntrServicoTurma}}
+\index{setCntrServicoTurma@{setCntrServicoTurma}!CntrApresentacaoProva@{CntrApresentacaoProva}}
+\doxysubsubsection{\texorpdfstring{setCntrServicoTurma()}{setCntrServicoTurma()}}
+{\footnotesize\ttfamily void Cntr\+Apresentacao\+Prova\+::set\+Cntr\+Servico\+Turma (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classIServicoTurma}{IServico\+Turma}} $\ast$}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}
+
+
+
+Cria conexão entre a camada de apresenação de prova com a camada de servico de prova. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Ponteiro} & \mbox{\hyperlink{classIServicoTurma}{IServico\+Turma}}\+: ponteiro á interface de serviço de turma. \\
+\hline
+\end{DoxyParams}
+
+
+Implements \mbox{\hyperlink{classIApresentacaoProva_ac2a94cb4fb3c7b69165370b48838f754}{IApresentacao\+Prova}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/miguel/\+Documents/3\+Semestre/\+MP/\+Projeto\+De\+Disciplina/include/Controladoras.\+h\end{DoxyCompactItemize}

@@ -1,0 +1,318 @@
+\hypertarget{ComandosSQL_8h_source}{}\doxysection{Comandos\+SQL.\+h}
+\label{ComandosSQL_8h_source}\index{/home/miguel/Documents/3Semestre/MP/ProjetoDeDisciplina/include/ComandosSQL.h@{/home/miguel/Documents/3Semestre/MP/ProjetoDeDisciplina/include/ComandosSQL.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef INCLUDE\_COMANDOSSQL\_H\_}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#define INCLUDE\_COMANDOSSQL\_H\_}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <list>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}Entidades.h"{}}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include "{}sqlite3.h"{}}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{keyword}{using }std::string;}
+\DoxyCodeLine{12 \textcolor{keyword}{using }std::list;}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{17 \textcolor{keyword}{class }\mbox{\hyperlink{classEErroPersistencia}{EErroPersistencia}} \{}
+\DoxyCodeLine{18 \textcolor{keyword}{private}:}
+\DoxyCodeLine{22         \textcolor{keywordtype}{string} mensagem;}
+\DoxyCodeLine{23 \textcolor{keyword}{public}:}
+\DoxyCodeLine{27         \mbox{\hyperlink{classEErroPersistencia}{EErroPersistencia}}(\textcolor{keywordtype}{string});}
+\DoxyCodeLine{33         \textcolor{keywordtype}{string} \mbox{\hyperlink{classEErroPersistencia_a3701f04bc5fe594f78955e9fa6a6501f}{what}}();}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35 \};}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37 \textcolor{keyword}{inline} \textcolor{keywordtype}{string} \mbox{\hyperlink{classEErroPersistencia_a3701f04bc5fe594f78955e9fa6a6501f}{EErroPersistencia::what}}() \{}
+\DoxyCodeLine{38         \textcolor{keywordflow}{return} mensagem;}
+\DoxyCodeLine{39 \}}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41 \textcolor{keyword}{inline} \mbox{\hyperlink{classEErroPersistencia_ad97950abf99eb7383b4c4d8d3f51d818}{EErroPersistencia::EErroPersistencia}}(\textcolor{keywordtype}{string} mensagem)\{}
+\DoxyCodeLine{42         this-\/>mensagem = mensagem;}
+\DoxyCodeLine{43 \}}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{48 \textcolor{keyword}{class }\mbox{\hyperlink{classElementoResultado}{ElementoResultado}} \{}
+\DoxyCodeLine{49 \textcolor{keyword}{private}:}
+\DoxyCodeLine{53         \textcolor{keywordtype}{string} nomeColuna;}
+\DoxyCodeLine{57         \textcolor{keywordtype}{string} valorColuna;}
+\DoxyCodeLine{58 \textcolor{keyword}{public}:}
+\DoxyCodeLine{62         \textcolor{keywordtype}{void} \mbox{\hyperlink{classElementoResultado_a56cad42cd197c5a9f513b4d4f451d384}{setNomeColuna}}(\textcolor{keyword}{const} \textcolor{keywordtype}{string}\&);}
+\DoxyCodeLine{68         \textcolor{keywordtype}{string} \mbox{\hyperlink{classElementoResultado_a231f449ae4b1b901ed0498431e61ab2c}{getNomeColuna}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{72         \textcolor{keywordtype}{void} \mbox{\hyperlink{classElementoResultado_ad5a4179804f62ddb3a17f0d551c83a80}{setValorColuna}}(\textcolor{keyword}{const} \textcolor{keywordtype}{string}\&);}
+\DoxyCodeLine{78         \textcolor{keywordtype}{string} \mbox{\hyperlink{classElementoResultado_abe0a2d8858a9e5cb0b3318dd282476cc}{getValorColuna}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{79 \};}
+\DoxyCodeLine{80 }
+\DoxyCodeLine{81 \textcolor{keyword}{inline} \textcolor{keywordtype}{string} \mbox{\hyperlink{classElementoResultado_a231f449ae4b1b901ed0498431e61ab2c}{ElementoResultado::getNomeColuna}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{82         \textcolor{keywordflow}{return} nomeColuna;}
+\DoxyCodeLine{83 \}}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85 \textcolor{keyword}{inline} \textcolor{keywordtype}{string} \mbox{\hyperlink{classElementoResultado_abe0a2d8858a9e5cb0b3318dd282476cc}{ElementoResultado::getValorColuna}}()\textcolor{keyword}{ const }\{}
+\DoxyCodeLine{86         \textcolor{keywordflow}{return} valorColuna;}
+\DoxyCodeLine{87 \}}
+\DoxyCodeLine{88 }
+\DoxyCodeLine{93 \textcolor{keyword}{class }\mbox{\hyperlink{classComandoSQL}{ComandoSQL}} \{}
+\DoxyCodeLine{94 \textcolor{keyword}{private}:}
+\DoxyCodeLine{98         \textcolor{keyword}{const} \textcolor{keywordtype}{char} *nomeBancoDados;}
+\DoxyCodeLine{102         sqlite3 *bd;}
+\DoxyCodeLine{106         \textcolor{keywordtype}{char} *mensagem;}
+\DoxyCodeLine{107         \textcolor{keywordtype}{int} rc;}
+\DoxyCodeLine{108         \textcolor{keywordtype}{void} conectar();}
+\DoxyCodeLine{109         \textcolor{keywordtype}{void} desconectar();}
+\DoxyCodeLine{110         \textcolor{keyword}{static} \textcolor{keywordtype}{int} callback(\textcolor{keywordtype}{void} *, \textcolor{keywordtype}{int}, \textcolor{keywordtype}{char} **, \textcolor{keywordtype}{char} **);}
+\DoxyCodeLine{111 }
+\DoxyCodeLine{112 \textcolor{keyword}{protected}:}
+\DoxyCodeLine{116         \textcolor{keyword}{static} list<ElementoResultado> \mbox{\hyperlink{classComandoSQL_ae861269153cbbf42011d6dbf6491dcd7}{listaResultado}};}
+\DoxyCodeLine{120         \textcolor{keywordtype}{string} \mbox{\hyperlink{classComandoSQL_a4c95d6908d9666771312f03befe08b77}{comandoSQL}};}
+\DoxyCodeLine{121 \textcolor{keyword}{public}:}
+\DoxyCodeLine{125         \mbox{\hyperlink{classComandoSQL_a777fd8d173efcae0bd881262799a5450}{ComandoSQL}}() \{}
+\DoxyCodeLine{126                 nomeBancoDados = \textcolor{stringliteral}{"{}Banco.db"{}};}
+\DoxyCodeLine{127         \}}
+\DoxyCodeLine{131         \textcolor{keywordtype}{void} \mbox{\hyperlink{classComandoSQL_a449f64885fdeb1d0b350b612bcb45e05}{executar}}();}
+\DoxyCodeLine{132 \};}
+\DoxyCodeLine{133 }
+\DoxyCodeLine{137 \textcolor{keyword}{class }\mbox{\hyperlink{classComandoCadastrarUsuario}{ComandoCadastrarUsuario}}:\textcolor{keyword}{public} \mbox{\hyperlink{classComandoSQL}{ComandoSQL}} \{}
+\DoxyCodeLine{138  \textcolor{keyword}{public}:}
+\DoxyCodeLine{143         \mbox{\hyperlink{classComandoCadastrarUsuario_a4ac2791a616c94a9f4a828b29de8a3f6}{ComandoCadastrarUsuario}}(\mbox{\hyperlink{classUsuario}{Usuario}});}
+\DoxyCodeLine{149         \textcolor{keywordtype}{int} \mbox{\hyperlink{classComandoCadastrarUsuario_a8bf1c8bf0f7b3ec7f2f62e0389042473}{getResultado}}();}
+\DoxyCodeLine{150 \};}
+\DoxyCodeLine{151 }
+\DoxyCodeLine{155 \textcolor{keyword}{class }\mbox{\hyperlink{classComandoConsultarUsuario}{ComandoConsultarUsuario}}:\textcolor{keyword}{public} \mbox{\hyperlink{classComandoSQL}{ComandoSQL}} \{}
+\DoxyCodeLine{156  \textcolor{keyword}{public}:}
+\DoxyCodeLine{160         \mbox{\hyperlink{classComandoConsultarUsuario_a589db0a177f397f34c0a8dabe54d44bd}{ComandoConsultarUsuario}}(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{164         \mbox{\hyperlink{classComandoConsultarUsuario_a9aeffa4c4998cd8461fd95939b2dde57}{ComandoConsultarUsuario}}(\textcolor{keywordtype}{string});}
+\DoxyCodeLine{170         \mbox{\hyperlink{classUsuario}{Usuario}} \mbox{\hyperlink{classComandoConsultarUsuario_a04b3fa670210862e2943bdfe3c0dd323}{getResultado}}();}
+\DoxyCodeLine{171 \};}
+\DoxyCodeLine{172 }
+\DoxyCodeLine{173 }
+\DoxyCodeLine{177 \textcolor{keyword}{class }\mbox{\hyperlink{classComandoDescadastrarUsuario}{ComandoDescadastrarUsuario}}:\textcolor{keyword}{public} \mbox{\hyperlink{classComandoSQL}{ComandoSQL}} \{}
+\DoxyCodeLine{178  \textcolor{keyword}{public}:}
+\DoxyCodeLine{183         \mbox{\hyperlink{classComandoDescadastrarUsuario_ad498d2fe938ede084210163f105f7479}{ComandoDescadastrarUsuario}}(\textcolor{keywordtype}{int}, \textcolor{keywordtype}{string});}
+\DoxyCodeLine{184 \};}
+\DoxyCodeLine{185 }
+\DoxyCodeLine{190 \textcolor{keyword}{class }\mbox{\hyperlink{classComandoEditarUsuario}{ComandoEditarUsuario}}:\textcolor{keyword}{public} \mbox{\hyperlink{classComandoSQL}{ComandoSQL}} \{}
+\DoxyCodeLine{191  \textcolor{keyword}{public}:}
+\DoxyCodeLine{196         \mbox{\hyperlink{classComandoEditarUsuario_a0189c506cb268e9d8d9dfc2789032335}{ComandoEditarUsuario}}(\mbox{\hyperlink{classUsuario}{Usuario}});}
+\DoxyCodeLine{197 \};}
+\DoxyCodeLine{198 }
+\DoxyCodeLine{202 \textcolor{keyword}{class }\mbox{\hyperlink{classComandoCadastrarAluno}{ComandoCadastrarAluno}}:\textcolor{keyword}{public} \mbox{\hyperlink{classComandoSQL}{ComandoSQL}} \{}
+\DoxyCodeLine{203  \textcolor{keyword}{public}:}
+\DoxyCodeLine{207         \mbox{\hyperlink{classComandoCadastrarAluno_a01612a8fbec223ab2d3d346ce252bb1d}{ComandoCadastrarAluno}}(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{208 \};}
+\DoxyCodeLine{209 }
+\DoxyCodeLine{213 \textcolor{keyword}{class }\mbox{\hyperlink{classComandoCadastrarProfessor}{ComandoCadastrarProfessor}}:\textcolor{keyword}{public} \mbox{\hyperlink{classComandoSQL}{ComandoSQL}} \{}
+\DoxyCodeLine{214  \textcolor{keyword}{public}:}
+\DoxyCodeLine{218         \mbox{\hyperlink{classComandoCadastrarProfessor_ad71800ec19b86029061a606b97b0fa41}{ComandoCadastrarProfessor}}(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{219 \};}
+\DoxyCodeLine{220 }
+\DoxyCodeLine{224 \textcolor{keyword}{class }\mbox{\hyperlink{classComandoCadastrarAdmin}{ComandoCadastrarAdmin}}:\textcolor{keyword}{public} \mbox{\hyperlink{classComandoSQL}{ComandoSQL}} \{}
+\DoxyCodeLine{225  \textcolor{keyword}{public}:}
+\DoxyCodeLine{229         \mbox{\hyperlink{classComandoCadastrarAdmin_a6f459e3a53597dc2942e227be58d958f}{ComandoCadastrarAdmin}}(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{230 \};}
+\DoxyCodeLine{231 }
+\DoxyCodeLine{235 \textcolor{keyword}{class }\mbox{\hyperlink{classComandoCountUsuarios}{ComandoCountUsuarios}}:\textcolor{keyword}{public} \mbox{\hyperlink{classComandoSQL}{ComandoSQL}} \{}
+\DoxyCodeLine{236  \textcolor{keyword}{public}:}
+\DoxyCodeLine{240         \mbox{\hyperlink{classComandoCountUsuarios_a44647ef1a69164420e160f7aa482026b}{ComandoCountUsuarios}}();}
+\DoxyCodeLine{246         \textcolor{keywordtype}{int} \mbox{\hyperlink{classComandoCountUsuarios_ab9a451df4a0aa9be4503c28418e7a96a}{getResultado}}();}
+\DoxyCodeLine{247 \};}
+\DoxyCodeLine{248 }
+\DoxyCodeLine{252 \textcolor{keyword}{class }\mbox{\hyperlink{classCadastrarUsuario}{CadastrarUsuario}} \{}
+\DoxyCodeLine{253  \textcolor{keyword}{public}:}
+\DoxyCodeLine{257         \textcolor{keywordtype}{int} \mbox{\hyperlink{classCadastrarUsuario_aca4af898f280a9ac4a9b361fcfd81686}{executar}}(\mbox{\hyperlink{classUsuario}{Usuario}});}
+\DoxyCodeLine{258 \};}
+\DoxyCodeLine{259 }
+\DoxyCodeLine{263 \textcolor{keyword}{class }\mbox{\hyperlink{classComandoCadastrarTurma}{ComandoCadastrarTurma}}:\textcolor{keyword}{public} \mbox{\hyperlink{classComandoSQL}{ComandoSQL}} \{}
+\DoxyCodeLine{264  \textcolor{keyword}{public}:}
+\DoxyCodeLine{269         \mbox{\hyperlink{classComandoCadastrarTurma_ab55b316b8b55326db2407067e8aa32d8}{ComandoCadastrarTurma}}(\mbox{\hyperlink{classTurma}{Turma}});}
+\DoxyCodeLine{275         \textcolor{keywordtype}{int} \mbox{\hyperlink{classComandoCadastrarTurma_a29074968cc5a42f4532f43a2f5089f62}{getResultado}}();}
+\DoxyCodeLine{276 \};}
+\DoxyCodeLine{277 }
+\DoxyCodeLine{281 \textcolor{keyword}{class }\mbox{\hyperlink{classComandoConsultarTurma}{ComandoConsultarTurma}}:\textcolor{keyword}{public} \mbox{\hyperlink{classComandoSQL}{ComandoSQL}} \{  \textcolor{comment}{//}}
+\DoxyCodeLine{282  \textcolor{keyword}{public}:}
+\DoxyCodeLine{287         \mbox{\hyperlink{classComandoConsultarTurma_a25350eed24c1ce2006be4d3d90739d6e}{ComandoConsultarTurma}}(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{288         \mbox{\hyperlink{classTurma}{Turma}} getResultado();}
+\DoxyCodeLine{289 \};}
+\DoxyCodeLine{290 }
+\DoxyCodeLine{294 \textcolor{keyword}{class }\mbox{\hyperlink{classComandoDescadastrarTurma}{ComandoDescadastrarTurma}}:\textcolor{keyword}{public} \mbox{\hyperlink{classComandoSQL}{ComandoSQL}} \{}
+\DoxyCodeLine{295  \textcolor{keyword}{public}:}
+\DoxyCodeLine{300         \mbox{\hyperlink{classComandoDescadastrarTurma_ae51d979a8197a36d900df1a9c97b0657}{ComandoDescadastrarTurma}}(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{301 \};}
+\DoxyCodeLine{302 }
+\DoxyCodeLine{306 \textcolor{keyword}{class }\mbox{\hyperlink{classComandoEditarTurma}{ComandoEditarTurma}}:\textcolor{keyword}{public} \mbox{\hyperlink{classComandoSQL}{ComandoSQL}} \{}
+\DoxyCodeLine{307  \textcolor{keyword}{public}:}
+\DoxyCodeLine{312         \mbox{\hyperlink{classComandoEditarTurma_a738814f1e2b65bc27c25152afe859c16}{ComandoEditarTurma}}(\mbox{\hyperlink{classTurma}{Turma}});}
+\DoxyCodeLine{313 \};}
+\DoxyCodeLine{314 }
+\DoxyCodeLine{318 \textcolor{keyword}{class }\mbox{\hyperlink{classComandoEntrarNaTurma}{ComandoEntrarNaTurma}}:\textcolor{keyword}{public} \mbox{\hyperlink{classComandoSQL}{ComandoSQL}} \{}
+\DoxyCodeLine{319  \textcolor{keyword}{public}:}
+\DoxyCodeLine{324         \mbox{\hyperlink{classComandoEntrarNaTurma_ad81e8d0a166dbb133e771d8c0be97688}{ComandoEntrarNaTurma}}(\textcolor{keywordtype}{int}, \textcolor{keywordtype}{int});  }
+\DoxyCodeLine{325 \};}
+\DoxyCodeLine{326 }
+\DoxyCodeLine{327 }
+\DoxyCodeLine{331 \textcolor{keyword}{class }\mbox{\hyperlink{classComandoCadastrarQuestao}{ComandoCadastrarQuestao}}:\textcolor{keyword}{public} \mbox{\hyperlink{classComandoSQL}{ComandoSQL}} \{}
+\DoxyCodeLine{332  \textcolor{keyword}{public}:}
+\DoxyCodeLine{337         \mbox{\hyperlink{classComandoCadastrarQuestao_a0e50638e496db43bb151270b49f3f00b}{ComandoCadastrarQuestao}}(\mbox{\hyperlink{classQuestao}{Questao}});}
+\DoxyCodeLine{343         \textcolor{keywordtype}{int} \mbox{\hyperlink{classComandoCadastrarQuestao_a15330d666c8dd8c91061927b4c64ca35}{getResultado}}();}
+\DoxyCodeLine{344 \};}
+\DoxyCodeLine{345 }
+\DoxyCodeLine{349 \textcolor{keyword}{class }\mbox{\hyperlink{classComandoCadastrarAlternativa}{ComandoCadastrarAlternativa}}:\textcolor{keyword}{public} \mbox{\hyperlink{classComandoSQL}{ComandoSQL}} \{  }
+\DoxyCodeLine{350  \textcolor{keyword}{public}:}
+\DoxyCodeLine{355         \mbox{\hyperlink{classComandoCadastrarAlternativa_a77179180e64ac12941fff64413f5a816}{ComandoCadastrarAlternativa}}(\textcolor{keywordtype}{int}, \textcolor{keywordtype}{string});}
+\DoxyCodeLine{356 \};}
+\DoxyCodeLine{357 }
+\DoxyCodeLine{361 \textcolor{keyword}{class }\mbox{\hyperlink{classCadastrarQuestao}{CadastrarQuestao}} \{  }
+\DoxyCodeLine{362  \textcolor{keyword}{public}:}
+\DoxyCodeLine{367         \textcolor{keywordtype}{int} \mbox{\hyperlink{classCadastrarQuestao_a0fcc9fee80d17a46d65b7cc845e04b23}{cadastrar}}(\mbox{\hyperlink{classQuestao}{Questao}});}
+\DoxyCodeLine{368 \};}
+\DoxyCodeLine{369 }
+\DoxyCodeLine{373 \textcolor{keyword}{class }\mbox{\hyperlink{classComandoDescadastrarQuestao}{ComandoDescadastrarQuestao}}:\textcolor{keyword}{public} \mbox{\hyperlink{classComandoSQL}{ComandoSQL}} \{    }
+\DoxyCodeLine{374  \textcolor{keyword}{public}:}
+\DoxyCodeLine{378         \mbox{\hyperlink{classComandoDescadastrarQuestao_aa5973e633b3e4c3cb68cde7c2ca56cea}{ComandoDescadastrarQuestao}}(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{379 \};}
+\DoxyCodeLine{380 }
+\DoxyCodeLine{381 \textcolor{keyword}{class }\mbox{\hyperlink{classComandoEditarQuestao}{ComandoEditarQuestao}}:\textcolor{keyword}{public} \mbox{\hyperlink{classComandoSQL}{ComandoSQL}} \{   }
+\DoxyCodeLine{382  \textcolor{keyword}{public}:}
+\DoxyCodeLine{383         \mbox{\hyperlink{classComandoEditarQuestao}{ComandoEditarQuestao}}(\mbox{\hyperlink{classQuestao}{Questao}});}
+\DoxyCodeLine{384 \};}
+\DoxyCodeLine{385 }
+\DoxyCodeLine{386 \textcolor{keyword}{class }\mbox{\hyperlink{classComandoConsultarQuestao}{ComandoConsultarQuestao}}:\textcolor{keyword}{public} \mbox{\hyperlink{classComandoSQL}{ComandoSQL}} \{   }
+\DoxyCodeLine{387  \textcolor{keyword}{public}:}
+\DoxyCodeLine{388         \mbox{\hyperlink{classComandoConsultarQuestao}{ComandoConsultarQuestao}}(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{389         \mbox{\hyperlink{classQuestao}{Questao}} getResultado();}
+\DoxyCodeLine{390 \};}
+\DoxyCodeLine{391 }
+\DoxyCodeLine{392 \textcolor{keyword}{class }\mbox{\hyperlink{classComandoCadastrarProva}{ComandoCadastrarProva}}:\textcolor{keyword}{public} \mbox{\hyperlink{classComandoSQL}{ComandoSQL}} \{}
+\DoxyCodeLine{393  \textcolor{keyword}{public}:}
+\DoxyCodeLine{394         \mbox{\hyperlink{classComandoCadastrarProva}{ComandoCadastrarProva}}(\mbox{\hyperlink{classProva}{Prova}});}
+\DoxyCodeLine{395         \textcolor{keywordtype}{int} getResultado();}
+\DoxyCodeLine{396 \};}
+\DoxyCodeLine{397 }
+\DoxyCodeLine{398 \textcolor{keyword}{class }\mbox{\hyperlink{classComandoAssociarQuestaoProva}{ComandoAssociarQuestaoProva}}:\textcolor{keyword}{public} \mbox{\hyperlink{classComandoSQL}{ComandoSQL}} \{ }
+\DoxyCodeLine{399  \textcolor{keyword}{public}:}
+\DoxyCodeLine{400         \mbox{\hyperlink{classComandoAssociarQuestaoProva}{ComandoAssociarQuestaoProva}}(\textcolor{keywordtype}{int}, \textcolor{keywordtype}{int});}
+\DoxyCodeLine{401 \};}
+\DoxyCodeLine{402 }
+\DoxyCodeLine{403 \textcolor{keyword}{class }\mbox{\hyperlink{classCadastrarProva}{CadastrarProva}} \{}
+\DoxyCodeLine{404  \textcolor{keyword}{public}:}
+\DoxyCodeLine{405         \textcolor{keywordtype}{int} cadastrar(\mbox{\hyperlink{classProva}{Prova}});}
+\DoxyCodeLine{406 \};}
+\DoxyCodeLine{407 }
+\DoxyCodeLine{408 \textcolor{keyword}{class }\mbox{\hyperlink{classComandoDescadastrarProva}{ComandoDescadastrarProva}}:\textcolor{keyword}{public} \mbox{\hyperlink{classComandoSQL}{ComandoSQL}} \{}
+\DoxyCodeLine{409  \textcolor{keyword}{public}:}
+\DoxyCodeLine{410         \mbox{\hyperlink{classComandoDescadastrarProva}{ComandoDescadastrarProva}}(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{411 \};}
+\DoxyCodeLine{412 }
+\DoxyCodeLine{413 \textcolor{keyword}{class }\mbox{\hyperlink{classComandoEditarProva}{ComandoEditarProva}}:\textcolor{keyword}{public} \mbox{\hyperlink{classComandoSQL}{ComandoSQL}} \{}
+\DoxyCodeLine{414  \textcolor{keyword}{public}:}
+\DoxyCodeLine{415         \mbox{\hyperlink{classComandoEditarProva}{ComandoEditarProva}}(\mbox{\hyperlink{classProva}{Prova}});}
+\DoxyCodeLine{416 \};}
+\DoxyCodeLine{417 }
+\DoxyCodeLine{418 \textcolor{keyword}{class }\mbox{\hyperlink{classComandoConsultarProva}{ComandoConsultarProva}}:\textcolor{keyword}{public} \mbox{\hyperlink{classComandoSQL}{ComandoSQL}} \{}
+\DoxyCodeLine{419  \textcolor{keyword}{public}:}
+\DoxyCodeLine{420         \mbox{\hyperlink{classComandoConsultarProva}{ComandoConsultarProva}}(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{421         \mbox{\hyperlink{classProva}{Prova}} getResultado();}
+\DoxyCodeLine{422 \};}
+\DoxyCodeLine{423 }
+\DoxyCodeLine{424 \textcolor{keyword}{class }\mbox{\hyperlink{classComandoCadastrarResposta}{ComandoCadastrarResposta}}:\textcolor{keyword}{public} \mbox{\hyperlink{classComandoSQL}{ComandoSQL}} \{}
+\DoxyCodeLine{425  \textcolor{keyword}{public}:}
+\DoxyCodeLine{426         \mbox{\hyperlink{classComandoCadastrarResposta}{ComandoCadastrarResposta}}(\mbox{\hyperlink{classResposta}{Resposta}});}
+\DoxyCodeLine{427         \textcolor{keywordtype}{int} getResultado();}
+\DoxyCodeLine{428 \};}
+\DoxyCodeLine{429 }
+\DoxyCodeLine{430 \textcolor{keyword}{class }\mbox{\hyperlink{classComandoAssociarRespostaQuestaoRespostaProva}{ComandoAssociarRespostaQuestaoRespostaProva}}:\textcolor{keyword}{public} \mbox{\hyperlink{classComandoSQL}{ComandoSQL}} \{ \textcolor{comment}{//}}
+\DoxyCodeLine{431  \textcolor{keyword}{public}:}
+\DoxyCodeLine{432         \mbox{\hyperlink{classComandoAssociarRespostaQuestaoRespostaProva}{ComandoAssociarRespostaQuestaoRespostaProva}}(\textcolor{keywordtype}{int}, \textcolor{keywordtype}{int}, \textcolor{keywordtype}{int});     }
+\DoxyCodeLine{433 \};}
+\DoxyCodeLine{434 }
+\DoxyCodeLine{435 \textcolor{keyword}{class }\mbox{\hyperlink{classCadastrarResposta}{CadastrarResposta}} \{}
+\DoxyCodeLine{436  \textcolor{keyword}{public}:}
+\DoxyCodeLine{437         \textcolor{keywordtype}{int} cadastrar(\mbox{\hyperlink{classResposta}{Resposta}});}
+\DoxyCodeLine{438 \};}
+\DoxyCodeLine{439 }
+\DoxyCodeLine{440 \textcolor{keyword}{class }\mbox{\hyperlink{classComandoConsultarResposta}{ComandoConsultarResposta}}:\textcolor{keyword}{public} \mbox{\hyperlink{classComandoSQL}{ComandoSQL}} \{}
+\DoxyCodeLine{441  \textcolor{keyword}{public}:}
+\DoxyCodeLine{442         \mbox{\hyperlink{classComandoConsultarResposta}{ComandoConsultarResposta}}(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{443         \mbox{\hyperlink{classComandoConsultarResposta}{ComandoConsultarResposta}}(\textcolor{keywordtype}{int}, \textcolor{keywordtype}{int});}
+\DoxyCodeLine{444         \mbox{\hyperlink{classResposta}{Resposta}} getResultado();}
+\DoxyCodeLine{445 \};}
+\DoxyCodeLine{446 }
+\DoxyCodeLine{447 }
+\DoxyCodeLine{448 \textcolor{keyword}{class }\mbox{\hyperlink{classComandoListarTurmas}{ComandoListarTurmas}}:\textcolor{keyword}{public} \mbox{\hyperlink{classComandoSQL}{ComandoSQL}} \{}
+\DoxyCodeLine{449  \textcolor{keyword}{public}:}
+\DoxyCodeLine{450         \mbox{\hyperlink{classComandoListarTurmas}{ComandoListarTurmas}}();}
+\DoxyCodeLine{451         list<Turma> getResultado();}
+\DoxyCodeLine{452 \};}
+\DoxyCodeLine{453 }
+\DoxyCodeLine{454 \textcolor{keyword}{class }\mbox{\hyperlink{classComandoListarProvas}{ComandoListarProvas}}:\textcolor{keyword}{public} \mbox{\hyperlink{classComandoSQL}{ComandoSQL}} \{}
+\DoxyCodeLine{455  \textcolor{keyword}{public}:}
+\DoxyCodeLine{456         \mbox{\hyperlink{classComandoListarProvas}{ComandoListarProvas}}(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{457         list<Prova> getResultado();}
+\DoxyCodeLine{458 \};}
+\DoxyCodeLine{459 }
+\DoxyCodeLine{460 \textcolor{keyword}{class }\mbox{\hyperlink{classComandoListarIDAlunosTurma}{ComandoListarIDAlunosTurma}}:\textcolor{keyword}{public} \mbox{\hyperlink{classComandoSQL}{ComandoSQL}} \{}
+\DoxyCodeLine{461  \textcolor{keyword}{public}:}
+\DoxyCodeLine{462         \mbox{\hyperlink{classComandoListarIDAlunosTurma}{ComandoListarIDAlunosTurma}}(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{463         list<int> getResultado();}
+\DoxyCodeLine{464 \};}
+\DoxyCodeLine{465 }
+\DoxyCodeLine{466 \textcolor{keyword}{class }\mbox{\hyperlink{classListarAlunosTurma}{ListarAlunosTurma}} \{   \textcolor{comment}{//}}
+\DoxyCodeLine{467  \textcolor{keyword}{public}:}
+\DoxyCodeLine{468         list<Usuario> executar(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{469 \};}
+\DoxyCodeLine{470 }
+\DoxyCodeLine{471 \textcolor{keyword}{class }\mbox{\hyperlink{classComandoListarIDQuestoesProva}{ComandoListarIDQuestoesProva}}:\textcolor{keyword}{public} \mbox{\hyperlink{classComandoSQL}{ComandoSQL}} \{}
+\DoxyCodeLine{472  \textcolor{keyword}{public}:}
+\DoxyCodeLine{473         \mbox{\hyperlink{classComandoListarIDQuestoesProva}{ComandoListarIDQuestoesProva}}(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{474         list<int> getResultado();}
+\DoxyCodeLine{475 \};}
+\DoxyCodeLine{476 }
+\DoxyCodeLine{477 \textcolor{keyword}{class }\mbox{\hyperlink{classListarQuestoesProva}{ListarQuestoesProva}} \{  \textcolor{comment}{//}}
+\DoxyCodeLine{478  \textcolor{keyword}{public}:}
+\DoxyCodeLine{479         list<Questao> executar(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{480 \};}
+\DoxyCodeLine{481 }
+\DoxyCodeLine{482 }
+\DoxyCodeLine{483 \textcolor{keyword}{class }\mbox{\hyperlink{classComandoCountProva}{ComandoCountProva}}:\textcolor{keyword}{public} \mbox{\hyperlink{classComandoSQL}{ComandoSQL}} \{}
+\DoxyCodeLine{484  \textcolor{keyword}{public}:}
+\DoxyCodeLine{485     \mbox{\hyperlink{classComandoCountProva}{ComandoCountProva}}();}
+\DoxyCodeLine{486     \textcolor{keywordtype}{int} getResultado();}
+\DoxyCodeLine{487 \};}
+\DoxyCodeLine{488 }
+\DoxyCodeLine{489 \textcolor{keyword}{class }\mbox{\hyperlink{classComandoCountQuestao}{ComandoCountQuestao}}:\textcolor{keyword}{public} \mbox{\hyperlink{classComandoSQL}{ComandoSQL}} \{}
+\DoxyCodeLine{490  \textcolor{keyword}{public}:}
+\DoxyCodeLine{491     \mbox{\hyperlink{classComandoCountQuestao}{ComandoCountQuestao}}();}
+\DoxyCodeLine{492     \textcolor{keywordtype}{int} getResultado();}
+\DoxyCodeLine{493 \};}
+\DoxyCodeLine{494 }
+\DoxyCodeLine{495 \textcolor{keyword}{class }\mbox{\hyperlink{classComandoCountResposta}{ComandoCountResposta}}:\textcolor{keyword}{public} \mbox{\hyperlink{classComandoSQL}{ComandoSQL}} \{}
+\DoxyCodeLine{496  \textcolor{keyword}{public}:}
+\DoxyCodeLine{497     \mbox{\hyperlink{classComandoCountResposta}{ComandoCountResposta}}();}
+\DoxyCodeLine{498     \textcolor{keywordtype}{int} getResultado();}
+\DoxyCodeLine{499 \};}
+\DoxyCodeLine{500 }
+\DoxyCodeLine{501 \textcolor{keyword}{class }\mbox{\hyperlink{classComandoListarIdTurmaAluno}{ComandoListarIdTurmaAluno}}:\textcolor{keyword}{public} \mbox{\hyperlink{classComandoSQL}{ComandoSQL}} \{}
+\DoxyCodeLine{502  \textcolor{keyword}{public}:}
+\DoxyCodeLine{503     \mbox{\hyperlink{classComandoListarIdTurmaAluno}{ComandoListarIdTurmaAluno}}(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{504     list<int> getResultado();}
+\DoxyCodeLine{505 \};}
+\DoxyCodeLine{506 }
+\DoxyCodeLine{507 \textcolor{keyword}{class }\mbox{\hyperlink{classListarTurmasAluno}{ListarTurmasAluno}} \{}
+\DoxyCodeLine{508  \textcolor{keyword}{public}:}
+\DoxyCodeLine{509     list<Turma> executar(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{510 \};}
+\DoxyCodeLine{511 }
+\DoxyCodeLine{512 \textcolor{keyword}{class }\mbox{\hyperlink{classComandoListarIdTurmasProfessor}{ComandoListarIdTurmasProfessor}}:\textcolor{keyword}{public} \mbox{\hyperlink{classComandoSQL}{ComandoSQL}} \{}
+\DoxyCodeLine{513  \textcolor{keyword}{public}:}
+\DoxyCodeLine{514     \mbox{\hyperlink{classComandoListarIdTurmasProfessor}{ComandoListarIdTurmasProfessor}}(\textcolor{keywordtype}{int});}
+\DoxyCodeLine{515     list<Turma> getResultado();}
+\DoxyCodeLine{516 \};}
+\DoxyCodeLine{517 }
+\DoxyCodeLine{518 \textcolor{keyword}{class }\mbox{\hyperlink{classComandoBuscarRespostaAluno}{ComandoBuscarRespostaAluno}}:\textcolor{keyword}{public} \mbox{\hyperlink{classComandoSQL}{ComandoSQL}} \{}
+\DoxyCodeLine{519  \textcolor{keyword}{public}:}
+\DoxyCodeLine{520     \mbox{\hyperlink{classComandoBuscarRespostaAluno}{ComandoBuscarRespostaAluno}}(\textcolor{keywordtype}{int}, \textcolor{keywordtype}{int}); \textcolor{comment}{// Id Prova, Id Aluno;}}
+\DoxyCodeLine{521     \textcolor{keywordtype}{bool} getResultado();}
+\DoxyCodeLine{522 \};}
+\DoxyCodeLine{523 }
+\DoxyCodeLine{524 \textcolor{preprocessor}{\#endif  }\textcolor{comment}{//  INCLUDE\_COMANDOSSQL\_H\_}}
+
+\end{DoxyCode}

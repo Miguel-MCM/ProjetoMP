@@ -1,0 +1,166 @@
+\hypertarget{classCntrServicoProva}{}\doxysection{Cntr\+Servico\+Prova Class Reference}
+\label{classCntrServicoProva}\index{CntrServicoProva@{CntrServicoProva}}
+Inheritance diagram for Cntr\+Servico\+Prova\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classCntrServicoProva}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classCntrServicoProva_a77eeb44645e33c4a725afb5e71ba94fd}{cadastrar\+Prova}} (\mbox{\hyperlink{classProva}{Prova}})
+\item 
+bool \mbox{\hyperlink{classCntrServicoProva_a23edce01b02d1e19f02d571714ea2aeb}{descadastrar\+Prova}} (int)
+\item 
+bool \mbox{\hyperlink{classCntrServicoProva_aa709ea642d0a5546db4a7feaf03c3766}{editar\+Prova}} (\mbox{\hyperlink{classProva}{Prova}})
+\item 
+bool \mbox{\hyperlink{classCntrServicoProva_a3524f50011f8f464a0c6d8adc92de3b4}{consultar\+Prova}} (\mbox{\hyperlink{classProva}{Prova}} $\ast$)
+\item 
+bool \mbox{\hyperlink{classCntrServicoProva_a2cc3a9a7c42e408ab697c86ac52a899d}{get\+Qtd\+Questoes}} (\mbox{\hyperlink{classProva}{Prova}}, int $\ast$)
+\item 
+\mbox{\Hypertarget{classCntrServicoProva_a7969699ae6537ba69d04d4e3142672bc}\label{classCntrServicoProva_a7969699ae6537ba69d04d4e3142672bc}} 
+vector$<$ string $>$ {\bfseries get\+Provas} ()
+\item 
+bool \mbox{\hyperlink{classCntrServicoProva_a98039daeb136e49696d471fdc890e8e1}{cadastrar\+Questao}} (\mbox{\hyperlink{classQuestao}{Questao}})
+\item 
+bool \mbox{\hyperlink{classCntrServicoProva_a9b074369f4109e5c7aae256e35e98f73}{descadastrar\+Questao}} (int)
+\item 
+bool \mbox{\hyperlink{classCntrServicoProva_ac805b0daea0cad2cb0a3acca1084df2c}{get\+Lista\+Questoes}} (int, list$<$ \mbox{\hyperlink{classQuestao}{Questao}} $>$ $\ast$)
+\item 
+bool \mbox{\hyperlink{classCntrServicoProva_a7ba1223ccd41335960b720dcf537c1c0}{calcular\+Resultado}} (\mbox{\hyperlink{classResposta}{Resposta}}, list$<$ int $>$ $\ast$)
+\item 
+bool \mbox{\hyperlink{classCntrServicoProva_ae28d7e187a112e3c19a0a90758028e79}{get\+Lista\+Resposta\+Alunos}} (\mbox{\hyperlink{classProva}{Prova}}, list$<$ \mbox{\hyperlink{classUsuario}{Usuario}} $>$ $\ast$, list$<$ int $>$ $\ast$)
+\item 
+bool \mbox{\hyperlink{classCntrServicoProva_a133737a686375af3de474c69e832ff7b}{consultar\+Resposta}} (\mbox{\hyperlink{classResposta}{Resposta}} $\ast$)
+\item 
+bool \mbox{\hyperlink{classCntrServicoProva_a432bbb793db82f6e7a74dc1a29ad9dbc}{cadastrar\+Resposta}} (\mbox{\hyperlink{classResposta}{Resposta}})
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classCntrServicoProva_a77eeb44645e33c4a725afb5e71ba94fd}\label{classCntrServicoProva_a77eeb44645e33c4a725afb5e71ba94fd}} 
+\index{CntrServicoProva@{CntrServicoProva}!cadastrarProva@{cadastrarProva}}
+\index{cadastrarProva@{cadastrarProva}!CntrServicoProva@{CntrServicoProva}}
+\doxysubsubsection{\texorpdfstring{cadastrarProva()}{cadastrarProva()}}
+{\footnotesize\ttfamily bool Cntr\+Servico\+Prova\+::cadastrar\+Prova (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classProva}{Prova}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classIServicoProva}{IServico\+Prova}}.
+
+\mbox{\Hypertarget{classCntrServicoProva_a98039daeb136e49696d471fdc890e8e1}\label{classCntrServicoProva_a98039daeb136e49696d471fdc890e8e1}} 
+\index{CntrServicoProva@{CntrServicoProva}!cadastrarQuestao@{cadastrarQuestao}}
+\index{cadastrarQuestao@{cadastrarQuestao}!CntrServicoProva@{CntrServicoProva}}
+\doxysubsubsection{\texorpdfstring{cadastrarQuestao()}{cadastrarQuestao()}}
+{\footnotesize\ttfamily bool Cntr\+Servico\+Prova\+::cadastrar\+Questao (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classQuestao}{Questao}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classIServicoProva}{IServico\+Prova}}.
+
+\mbox{\Hypertarget{classCntrServicoProva_a432bbb793db82f6e7a74dc1a29ad9dbc}\label{classCntrServicoProva_a432bbb793db82f6e7a74dc1a29ad9dbc}} 
+\index{CntrServicoProva@{CntrServicoProva}!cadastrarResposta@{cadastrarResposta}}
+\index{cadastrarResposta@{cadastrarResposta}!CntrServicoProva@{CntrServicoProva}}
+\doxysubsubsection{\texorpdfstring{cadastrarResposta()}{cadastrarResposta()}}
+{\footnotesize\ttfamily bool Cntr\+Servico\+Prova\+::cadastrar\+Resposta (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classResposta}{Resposta}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classIServicoProva}{IServico\+Prova}}.
+
+\mbox{\Hypertarget{classCntrServicoProva_a7ba1223ccd41335960b720dcf537c1c0}\label{classCntrServicoProva_a7ba1223ccd41335960b720dcf537c1c0}} 
+\index{CntrServicoProva@{CntrServicoProva}!calcularResultado@{calcularResultado}}
+\index{calcularResultado@{calcularResultado}!CntrServicoProva@{CntrServicoProva}}
+\doxysubsubsection{\texorpdfstring{calcularResultado()}{calcularResultado()}}
+{\footnotesize\ttfamily bool Cntr\+Servico\+Prova\+::calcular\+Resultado (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classResposta}{Resposta}}}]{,  }\item[{list$<$ int $>$ $\ast$}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classIServicoProva}{IServico\+Prova}}.
+
+\mbox{\Hypertarget{classCntrServicoProva_a3524f50011f8f464a0c6d8adc92de3b4}\label{classCntrServicoProva_a3524f50011f8f464a0c6d8adc92de3b4}} 
+\index{CntrServicoProva@{CntrServicoProva}!consultarProva@{consultarProva}}
+\index{consultarProva@{consultarProva}!CntrServicoProva@{CntrServicoProva}}
+\doxysubsubsection{\texorpdfstring{consultarProva()}{consultarProva()}}
+{\footnotesize\ttfamily bool Cntr\+Servico\+Prova\+::consultar\+Prova (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classProva}{Prova}} $\ast$}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classIServicoProva}{IServico\+Prova}}.
+
+\mbox{\Hypertarget{classCntrServicoProva_a133737a686375af3de474c69e832ff7b}\label{classCntrServicoProva_a133737a686375af3de474c69e832ff7b}} 
+\index{CntrServicoProva@{CntrServicoProva}!consultarResposta@{consultarResposta}}
+\index{consultarResposta@{consultarResposta}!CntrServicoProva@{CntrServicoProva}}
+\doxysubsubsection{\texorpdfstring{consultarResposta()}{consultarResposta()}}
+{\footnotesize\ttfamily bool Cntr\+Servico\+Prova\+::consultar\+Resposta (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classResposta}{Resposta}} $\ast$}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classIServicoProva}{IServico\+Prova}}.
+
+\mbox{\Hypertarget{classCntrServicoProva_a23edce01b02d1e19f02d571714ea2aeb}\label{classCntrServicoProva_a23edce01b02d1e19f02d571714ea2aeb}} 
+\index{CntrServicoProva@{CntrServicoProva}!descadastrarProva@{descadastrarProva}}
+\index{descadastrarProva@{descadastrarProva}!CntrServicoProva@{CntrServicoProva}}
+\doxysubsubsection{\texorpdfstring{descadastrarProva()}{descadastrarProva()}}
+{\footnotesize\ttfamily bool Cntr\+Servico\+Prova\+::descadastrar\+Prova (\begin{DoxyParamCaption}\item[{int}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classIServicoProva}{IServico\+Prova}}.
+
+\mbox{\Hypertarget{classCntrServicoProva_a9b074369f4109e5c7aae256e35e98f73}\label{classCntrServicoProva_a9b074369f4109e5c7aae256e35e98f73}} 
+\index{CntrServicoProva@{CntrServicoProva}!descadastrarQuestao@{descadastrarQuestao}}
+\index{descadastrarQuestao@{descadastrarQuestao}!CntrServicoProva@{CntrServicoProva}}
+\doxysubsubsection{\texorpdfstring{descadastrarQuestao()}{descadastrarQuestao()}}
+{\footnotesize\ttfamily bool Cntr\+Servico\+Prova\+::descadastrar\+Questao (\begin{DoxyParamCaption}\item[{int}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classIServicoProva}{IServico\+Prova}}.
+
+\mbox{\Hypertarget{classCntrServicoProva_aa709ea642d0a5546db4a7feaf03c3766}\label{classCntrServicoProva_aa709ea642d0a5546db4a7feaf03c3766}} 
+\index{CntrServicoProva@{CntrServicoProva}!editarProva@{editarProva}}
+\index{editarProva@{editarProva}!CntrServicoProva@{CntrServicoProva}}
+\doxysubsubsection{\texorpdfstring{editarProva()}{editarProva()}}
+{\footnotesize\ttfamily bool Cntr\+Servico\+Prova\+::editar\+Prova (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classProva}{Prova}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classIServicoProva}{IServico\+Prova}}.
+
+\mbox{\Hypertarget{classCntrServicoProva_ac805b0daea0cad2cb0a3acca1084df2c}\label{classCntrServicoProva_ac805b0daea0cad2cb0a3acca1084df2c}} 
+\index{CntrServicoProva@{CntrServicoProva}!getListaQuestoes@{getListaQuestoes}}
+\index{getListaQuestoes@{getListaQuestoes}!CntrServicoProva@{CntrServicoProva}}
+\doxysubsubsection{\texorpdfstring{getListaQuestoes()}{getListaQuestoes()}}
+{\footnotesize\ttfamily bool Cntr\+Servico\+Prova\+::get\+Lista\+Questoes (\begin{DoxyParamCaption}\item[{int}]{,  }\item[{list$<$ \mbox{\hyperlink{classQuestao}{Questao}} $>$ $\ast$}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classIServicoProva}{IServico\+Prova}}.
+
+\mbox{\Hypertarget{classCntrServicoProva_ae28d7e187a112e3c19a0a90758028e79}\label{classCntrServicoProva_ae28d7e187a112e3c19a0a90758028e79}} 
+\index{CntrServicoProva@{CntrServicoProva}!getListaRespostaAlunos@{getListaRespostaAlunos}}
+\index{getListaRespostaAlunos@{getListaRespostaAlunos}!CntrServicoProva@{CntrServicoProva}}
+\doxysubsubsection{\texorpdfstring{getListaRespostaAlunos()}{getListaRespostaAlunos()}}
+{\footnotesize\ttfamily bool Cntr\+Servico\+Prova\+::get\+Lista\+Resposta\+Alunos (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classProva}{Prova}}}]{,  }\item[{list$<$ \mbox{\hyperlink{classUsuario}{Usuario}} $>$ $\ast$}]{,  }\item[{list$<$ int $>$ $\ast$}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classIServicoProva}{IServico\+Prova}}.
+
+\mbox{\Hypertarget{classCntrServicoProva_a2cc3a9a7c42e408ab697c86ac52a899d}\label{classCntrServicoProva_a2cc3a9a7c42e408ab697c86ac52a899d}} 
+\index{CntrServicoProva@{CntrServicoProva}!getQtdQuestoes@{getQtdQuestoes}}
+\index{getQtdQuestoes@{getQtdQuestoes}!CntrServicoProva@{CntrServicoProva}}
+\doxysubsubsection{\texorpdfstring{getQtdQuestoes()}{getQtdQuestoes()}}
+{\footnotesize\ttfamily bool Cntr\+Servico\+Prova\+::get\+Qtd\+Questoes (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classProva}{Prova}}}]{,  }\item[{int $\ast$}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [virtual]}}
+
+
+
+Implements \mbox{\hyperlink{classIServicoProva}{IServico\+Prova}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/miguel/\+Documents/3\+Semestre/\+MP/\+Projeto\+De\+Disciplina/include/Controladoras.\+h\end{DoxyCompactItemize}

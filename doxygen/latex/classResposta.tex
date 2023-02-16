@@ -1,0 +1,205 @@
+\hypertarget{classResposta}{}\doxysection{Resposta Class Reference}
+\label{classResposta}\index{Resposta@{Resposta}}
+
+
+Classe que representa uma resposta a uma prova de um aluno.  
+
+
+
+
+{\ttfamily \#include $<$Entidades.\+h$>$}
+
+Inheritance diagram for Resposta\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classResposta}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classResposta_ab104ce83a298a5586d9ada5d4b41bb01}{get\+Id\+Estudante}} () const
+\begin{DoxyCompactList}\small\item\em Retorna um inteiro que representa o id do estudante ao qual a resposta está associada. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classResposta_ae15ac7a8333aa228c9656f94b766896b}{set\+Id\+Estudante}} (int)
+\begin{DoxyCompactList}\small\item\em Armazena o valor id\+\_\+estudante do inteiro passado. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classResposta_a835e1f7a22b2dc8770b2f287cc81f304}{get\+Id\+Prova}} () const
+\begin{DoxyCompactList}\small\item\em Retorna um inteiro que representa o id da prova à qual a resposta está associada. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classResposta_a64c98a75cb11b9e37039736689f4305e}{set\+Id\+Prova}} (int)
+\begin{DoxyCompactList}\small\item\em Armazena o valor id\+\_\+prova do inteiro passado. \end{DoxyCompactList}\item 
+map$<$ int, int $>$ \mbox{\hyperlink{classResposta_a59d459283b459872f81a62d30edc0399}{get\+Resposta}} () const
+\begin{DoxyCompactList}\small\item\em Retorna um map com chave e valor de tipo inteiro que representa a resposta. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classResposta_a7a506953633b9ff19384c400c0ed70a0}{set\+Resposta}} (map$<$ int, int $>$)
+\begin{DoxyCompactList}\small\item\em Armazena o valor resposta do map com chave e valor de tipo inteiro passado. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classEntidade_a8a231f10238f1e699ec654e48dc85e75}{set\+Nome}} (string)
+\begin{DoxyCompactList}\small\item\em Armazena o valor em nome da string passada se ela seguir as regras de formatação. \end{DoxyCompactList}\item 
+string const \mbox{\hyperlink{classEntidade_ab19aea3979078b16d53525bddaa686c4}{get\+Nome}} ()
+\begin{DoxyCompactList}\small\item\em Retorna a string, com formatação válida, armazenada em nome. \end{DoxyCompactList}\item 
+int const \mbox{\hyperlink{classEntidade_a3a017e2fc13b67515f76ca087aaa087d}{get\+Id}} ()
+\begin{DoxyCompactList}\small\item\em Retorna um inteiro armazenado em id. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classEntidade_a8242dfd2c1ceb95364071b1bfbbaa750}{set\+Id}} (int)
+\begin{DoxyCompactList}\small\item\em Armazena o valor do inteiro passado. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classEntidade_a18349442410bbc7a5adf6c50596facee}\label{classEntidade_a18349442410bbc7a5adf6c50596facee}} 
+string {\bfseries nome}
+\begin{DoxyCompactList}\small\item\em Atributo da classe que representa o nome do objeto. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classEntidade_aad7f1a6708d3d9965316b073a9a03b2c}\label{classEntidade_aad7f1a6708d3d9965316b073a9a03b2c}} 
+int {\bfseries id}
+\begin{DoxyCompactList}\small\item\em Atributo da classe que representa o id do objeto, que será usado no banco de dados. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe que representa uma resposta a uma prova de um aluno. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classEntidade_a3a017e2fc13b67515f76ca087aaa087d}\label{classEntidade_a3a017e2fc13b67515f76ca087aaa087d}} 
+\index{Resposta@{Resposta}!getId@{getId}}
+\index{getId@{getId}!Resposta@{Resposta}}
+\doxysubsubsection{\texorpdfstring{getId()}{getId()}}
+{\footnotesize\ttfamily int const Entidade\+::get\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [inherited]}}
+
+
+
+Retorna um inteiro armazenado em id. 
+
+\begin{DoxyReturn}{Returns}
+int const 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classResposta_ab104ce83a298a5586d9ada5d4b41bb01}\label{classResposta_ab104ce83a298a5586d9ada5d4b41bb01}} 
+\index{Resposta@{Resposta}!getIdEstudante@{getIdEstudante}}
+\index{getIdEstudante@{getIdEstudante}!Resposta@{Resposta}}
+\doxysubsubsection{\texorpdfstring{getIdEstudante()}{getIdEstudante()}}
+{\footnotesize\ttfamily int Resposta\+::get\+Id\+Estudante (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retorna um inteiro que representa o id do estudante ao qual a resposta está associada. 
+
+\begin{DoxyReturn}{Returns}
+inteiro id\+\_\+estudante. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classResposta_a835e1f7a22b2dc8770b2f287cc81f304}\label{classResposta_a835e1f7a22b2dc8770b2f287cc81f304}} 
+\index{Resposta@{Resposta}!getIdProva@{getIdProva}}
+\index{getIdProva@{getIdProva}!Resposta@{Resposta}}
+\doxysubsubsection{\texorpdfstring{getIdProva()}{getIdProva()}}
+{\footnotesize\ttfamily int Resposta\+::get\+Id\+Prova (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retorna um inteiro que representa o id da prova à qual a resposta está associada. 
+
+\begin{DoxyReturn}{Returns}
+inteiro id\+\_\+prova. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classEntidade_ab19aea3979078b16d53525bddaa686c4}\label{classEntidade_ab19aea3979078b16d53525bddaa686c4}} 
+\index{Resposta@{Resposta}!getNome@{getNome}}
+\index{getNome@{getNome}!Resposta@{Resposta}}
+\doxysubsubsection{\texorpdfstring{getNome()}{getNome()}}
+{\footnotesize\ttfamily string const Entidade\+::get\+Nome (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [inherited]}}
+
+
+
+Retorna a string, com formatação válida, armazenada em nome. 
+
+\begin{DoxyReturn}{Returns}
+string nome 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classResposta_a59d459283b459872f81a62d30edc0399}\label{classResposta_a59d459283b459872f81a62d30edc0399}} 
+\index{Resposta@{Resposta}!getResposta@{getResposta}}
+\index{getResposta@{getResposta}!Resposta@{Resposta}}
+\doxysubsubsection{\texorpdfstring{getResposta()}{getResposta()}}
+{\footnotesize\ttfamily map$<$ int, int $>$ Resposta\+::get\+Resposta (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retorna um map com chave e valor de tipo inteiro que representa a resposta. 
+
+\begin{DoxyReturn}{Returns}
+map com chave e valor de tipo inteiro resposta. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classEntidade_a8242dfd2c1ceb95364071b1bfbbaa750}\label{classEntidade_a8242dfd2c1ceb95364071b1bfbbaa750}} 
+\index{Resposta@{Resposta}!setId@{setId}}
+\index{setId@{setId}!Resposta@{Resposta}}
+\doxysubsubsection{\texorpdfstring{setId()}{setId()}}
+{\footnotesize\ttfamily void Entidade\+::set\+Id (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [inherited]}}
+
+
+
+Armazena o valor do inteiro passado. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em -\/parametro} & do tipo int\+: inteiro que se quer armazenar no atributo id. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classResposta_ae15ac7a8333aa228c9656f94b766896b}\label{classResposta_ae15ac7a8333aa228c9656f94b766896b}} 
+\index{Resposta@{Resposta}!setIdEstudante@{setIdEstudante}}
+\index{setIdEstudante@{setIdEstudante}!Resposta@{Resposta}}
+\doxysubsubsection{\texorpdfstring{setIdEstudante()}{setIdEstudante()}}
+{\footnotesize\ttfamily void Resposta\+::set\+Id\+Estudante (\begin{DoxyParamCaption}\item[{int}]{id\+\_\+estudante }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Armazena o valor id\+\_\+estudante do inteiro passado. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em -\/parametro} & do tipo inteiro\+: inteiro que se quer armazenar no atributo id\+\_\+estudante. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classResposta_a64c98a75cb11b9e37039736689f4305e}\label{classResposta_a64c98a75cb11b9e37039736689f4305e}} 
+\index{Resposta@{Resposta}!setIdProva@{setIdProva}}
+\index{setIdProva@{setIdProva}!Resposta@{Resposta}}
+\doxysubsubsection{\texorpdfstring{setIdProva()}{setIdProva()}}
+{\footnotesize\ttfamily void Resposta\+::set\+Id\+Prova (\begin{DoxyParamCaption}\item[{int}]{id\+\_\+prova }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Armazena o valor id\+\_\+prova do inteiro passado. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em -\/parametro} & do tipo inteiro\+: inteiro que se quer armazenar no atributo id\+\_\+prova. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classEntidade_a8a231f10238f1e699ec654e48dc85e75}\label{classEntidade_a8a231f10238f1e699ec654e48dc85e75}} 
+\index{Resposta@{Resposta}!setNome@{setNome}}
+\index{setNome@{setNome}!Resposta@{Resposta}}
+\doxysubsubsection{\texorpdfstring{setNome()}{setNome()}}
+{\footnotesize\ttfamily void Entidade\+::set\+Nome (\begin{DoxyParamCaption}\item[{string}]{nome }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [inherited]}}
+
+
+
+Armazena o valor em nome da string passada se ela seguir as regras de formatação. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em -\/parametro} & do tipo string\+: string que se quer armazenar no atributo nome, esse valor deve seguir as regras de formatação da classe. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em invalid\+\_\+argument} & \\
+\hline
+\end{DoxyExceptions}
+\mbox{\Hypertarget{classResposta_a7a506953633b9ff19384c400c0ed70a0}\label{classResposta_a7a506953633b9ff19384c400c0ed70a0}} 
+\index{Resposta@{Resposta}!setResposta@{setResposta}}
+\index{setResposta@{setResposta}!Resposta@{Resposta}}
+\doxysubsubsection{\texorpdfstring{setResposta()}{setResposta()}}
+{\footnotesize\ttfamily void Resposta\+::set\+Resposta (\begin{DoxyParamCaption}\item[{map$<$ int, int $>$}]{resposta }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Armazena o valor resposta do map com chave e valor de tipo inteiro passado. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em -\/parametro} & do tipo map com chave e valor de tipo inteiro\+: armazená-\/lo no atributo resposta. \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/miguel/\+Documents/3\+Semestre/\+MP/\+Projeto\+De\+Disciplina/include/Entidades.\+h\end{DoxyCompactItemize}

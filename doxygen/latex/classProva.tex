@@ -1,0 +1,206 @@
+\hypertarget{classProva}{}\doxysection{Prova Class Reference}
+\label{classProva}\index{Prova@{Prova}}
+
+
+Classe que representa uma classe no sistema.  
+
+
+
+
+{\ttfamily \#include $<$Entidades.\+h$>$}
+
+Inheritance diagram for Prova\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classProva}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+list$<$ int $>$ \mbox{\hyperlink{classProva_a67eb0b422a1f3b7cd17f396d55735ece}{get\+Id\+Questoes}} () const
+\begin{DoxyCompactList}\small\item\em Retorna uma lista de inteiros que representam os ids das questão da prova. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classProva_af636dcf506daae5fac0f16cda693c7a0}{set\+Id\+Questoes}} (list$<$ int $>$)
+\begin{DoxyCompactList}\small\item\em Armazena o valor em id\+\_\+questoes da lista de inteiros passada. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classProva_a5efd3bbab14bed085a1279edf71e4cee}{get\+Id\+Turma}} () const
+\begin{DoxyCompactList}\small\item\em Retorna um inteiro que representa o id da turma à qual a prova está associada. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classProva_a7f7b8bec9eb60543e6485efa46dee68e}{set\+Id\+Turma}} (int)
+\begin{DoxyCompactList}\small\item\em Armazena o valor id\+\_\+turma do inteiro passado. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classProva_aaaa963cd2d74b1a6304abdbb99c25a11}{get\+Id\+Prof}} () const
+\begin{DoxyCompactList}\small\item\em Retorna um inteiro constante que representa o id do professor ao qual a prova está associada. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classProva_a3a8f0af2e57de0c602441fd455bc1b8f}{set\+Id\+Prof}} (int)
+\begin{DoxyCompactList}\small\item\em Armazena o valor id\+\_\+prof do inteiro passado. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classEntidade_a8a231f10238f1e699ec654e48dc85e75}{set\+Nome}} (string)
+\begin{DoxyCompactList}\small\item\em Armazena o valor em nome da string passada se ela seguir as regras de formatação. \end{DoxyCompactList}\item 
+string const \mbox{\hyperlink{classEntidade_ab19aea3979078b16d53525bddaa686c4}{get\+Nome}} ()
+\begin{DoxyCompactList}\small\item\em Retorna a string, com formatação válida, armazenada em nome. \end{DoxyCompactList}\item 
+int const \mbox{\hyperlink{classEntidade_a3a017e2fc13b67515f76ca087aaa087d}{get\+Id}} ()
+\begin{DoxyCompactList}\small\item\em Retorna um inteiro armazenado em id. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classEntidade_a8242dfd2c1ceb95364071b1bfbbaa750}{set\+Id}} (int)
+\begin{DoxyCompactList}\small\item\em Armazena o valor do inteiro passado. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classEntidade_a18349442410bbc7a5adf6c50596facee}\label{classEntidade_a18349442410bbc7a5adf6c50596facee}} 
+string {\bfseries nome}
+\begin{DoxyCompactList}\small\item\em Atributo da classe que representa o nome do objeto. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classEntidade_aad7f1a6708d3d9965316b073a9a03b2c}\label{classEntidade_aad7f1a6708d3d9965316b073a9a03b2c}} 
+int {\bfseries id}
+\begin{DoxyCompactList}\small\item\em Atributo da classe que representa o id do objeto, que será usado no banco de dados. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Classe que representa uma classe no sistema. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classEntidade_a3a017e2fc13b67515f76ca087aaa087d}\label{classEntidade_a3a017e2fc13b67515f76ca087aaa087d}} 
+\index{Prova@{Prova}!getId@{getId}}
+\index{getId@{getId}!Prova@{Prova}}
+\doxysubsubsection{\texorpdfstring{getId()}{getId()}}
+{\footnotesize\ttfamily int const Entidade\+::get\+Id (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [inherited]}}
+
+
+
+Retorna um inteiro armazenado em id. 
+
+\begin{DoxyReturn}{Returns}
+int const 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classProva_aaaa963cd2d74b1a6304abdbb99c25a11}\label{classProva_aaaa963cd2d74b1a6304abdbb99c25a11}} 
+\index{Prova@{Prova}!getIdProf@{getIdProf}}
+\index{getIdProf@{getIdProf}!Prova@{Prova}}
+\doxysubsubsection{\texorpdfstring{getIdProf()}{getIdProf()}}
+{\footnotesize\ttfamily int Prova\+::get\+Id\+Prof (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retorna um inteiro constante que representa o id do professor ao qual a prova está associada. 
+
+\begin{DoxyReturn}{Returns}
+inteiro id\+\_\+prof. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classProva_a67eb0b422a1f3b7cd17f396d55735ece}\label{classProva_a67eb0b422a1f3b7cd17f396d55735ece}} 
+\index{Prova@{Prova}!getIdQuestoes@{getIdQuestoes}}
+\index{getIdQuestoes@{getIdQuestoes}!Prova@{Prova}}
+\doxysubsubsection{\texorpdfstring{getIdQuestoes()}{getIdQuestoes()}}
+{\footnotesize\ttfamily list$<$ int $>$ Prova\+::get\+Id\+Questoes (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retorna uma lista de inteiros que representam os ids das questão da prova. 
+
+\begin{DoxyReturn}{Returns}
+lista de inteiros id\+\_\+questoes. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classProva_a5efd3bbab14bed085a1279edf71e4cee}\label{classProva_a5efd3bbab14bed085a1279edf71e4cee}} 
+\index{Prova@{Prova}!getIdTurma@{getIdTurma}}
+\index{getIdTurma@{getIdTurma}!Prova@{Prova}}
+\doxysubsubsection{\texorpdfstring{getIdTurma()}{getIdTurma()}}
+{\footnotesize\ttfamily int Prova\+::get\+Id\+Turma (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Retorna um inteiro que representa o id da turma à qual a prova está associada. 
+
+\begin{DoxyReturn}{Returns}
+inteiro id\+\_\+turma. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classEntidade_ab19aea3979078b16d53525bddaa686c4}\label{classEntidade_ab19aea3979078b16d53525bddaa686c4}} 
+\index{Prova@{Prova}!getNome@{getNome}}
+\index{getNome@{getNome}!Prova@{Prova}}
+\doxysubsubsection{\texorpdfstring{getNome()}{getNome()}}
+{\footnotesize\ttfamily string const Entidade\+::get\+Nome (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [inherited]}}
+
+
+
+Retorna a string, com formatação válida, armazenada em nome. 
+
+\begin{DoxyReturn}{Returns}
+string nome 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classEntidade_a8242dfd2c1ceb95364071b1bfbbaa750}\label{classEntidade_a8242dfd2c1ceb95364071b1bfbbaa750}} 
+\index{Prova@{Prova}!setId@{setId}}
+\index{setId@{setId}!Prova@{Prova}}
+\doxysubsubsection{\texorpdfstring{setId()}{setId()}}
+{\footnotesize\ttfamily void Entidade\+::set\+Id (\begin{DoxyParamCaption}\item[{int}]{id }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [inherited]}}
+
+
+
+Armazena o valor do inteiro passado. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em -\/parametro} & do tipo int\+: inteiro que se quer armazenar no atributo id. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classProva_a3a8f0af2e57de0c602441fd455bc1b8f}\label{classProva_a3a8f0af2e57de0c602441fd455bc1b8f}} 
+\index{Prova@{Prova}!setIdProf@{setIdProf}}
+\index{setIdProf@{setIdProf}!Prova@{Prova}}
+\doxysubsubsection{\texorpdfstring{setIdProf()}{setIdProf()}}
+{\footnotesize\ttfamily void Prova\+::set\+Id\+Prof (\begin{DoxyParamCaption}\item[{int}]{id\+\_\+prof }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Armazena o valor id\+\_\+prof do inteiro passado. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em -\/parametro} & do tipo inteiro\+: inteiro que se quer armazenar no atributo id\+\_\+prof. ~\newline
+ \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classProva_af636dcf506daae5fac0f16cda693c7a0}\label{classProva_af636dcf506daae5fac0f16cda693c7a0}} 
+\index{Prova@{Prova}!setIdQuestoes@{setIdQuestoes}}
+\index{setIdQuestoes@{setIdQuestoes}!Prova@{Prova}}
+\doxysubsubsection{\texorpdfstring{setIdQuestoes()}{setIdQuestoes()}}
+{\footnotesize\ttfamily void Prova\+::set\+Id\+Questoes (\begin{DoxyParamCaption}\item[{list$<$ int $>$}]{id\+\_\+questoes }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Armazena o valor em id\+\_\+questoes da lista de inteiros passada. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em -\/parametro} & do tipo lista de inteiros\+: lista de inteiros que se quer armazenar no atributo id\+\_\+questoes. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classProva_a7f7b8bec9eb60543e6485efa46dee68e}\label{classProva_a7f7b8bec9eb60543e6485efa46dee68e}} 
+\index{Prova@{Prova}!setIdTurma@{setIdTurma}}
+\index{setIdTurma@{setIdTurma}!Prova@{Prova}}
+\doxysubsubsection{\texorpdfstring{setIdTurma()}{setIdTurma()}}
+{\footnotesize\ttfamily void Prova\+::set\+Id\+Turma (\begin{DoxyParamCaption}\item[{int}]{id\+\_\+turma }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Armazena o valor id\+\_\+turma do inteiro passado. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em -\/parametro} & do tipo inteiro\+: inteiro que se quer armazenar no atributo id\+\_\+turma. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classEntidade_a8a231f10238f1e699ec654e48dc85e75}\label{classEntidade_a8a231f10238f1e699ec654e48dc85e75}} 
+\index{Prova@{Prova}!setNome@{setNome}}
+\index{setNome@{setNome}!Prova@{Prova}}
+\doxysubsubsection{\texorpdfstring{setNome()}{setNome()}}
+{\footnotesize\ttfamily void Entidade\+::set\+Nome (\begin{DoxyParamCaption}\item[{string}]{nome }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [inherited]}}
+
+
+
+Armazena o valor em nome da string passada se ela seguir as regras de formatação. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em -\/parametro} & do tipo string\+: string que se quer armazenar no atributo nome, esse valor deve seguir as regras de formatação da classe. \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyExceptions}{Exceptions}
+{\em invalid\+\_\+argument} & \\
+\hline
+\end{DoxyExceptions}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/miguel/\+Documents/3\+Semestre/\+MP/\+Projeto\+De\+Disciplina/include/Entidades.\+h\end{DoxyCompactItemize}

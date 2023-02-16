@@ -1,0 +1,24 @@
+var searchData=
+[
+  ['gerenciar_0',['gerenciar',['../classIApresentacaoProva.html#aec8cd36992f5f7beb9c153beb36d416e',1,'IApresentacaoProva::gerenciar()'],['../classCntrApresentacaoProva.html#a8f3b20b3b489f0de578983eb85704463',1,'CntrApresentacaoProva::gerenciar()']]],
+  ['getalternativas_1',['getAlternativas',['../classQuestao.html#ab9d862bd59d2dad4b41d8071dc8ad193',1,'Questao']]],
+  ['getcargo_2',['getCargo',['../classUsuario.html#aeab3e35e33409eab34023815826b1497',1,'Usuario']]],
+  ['getdescricao_3',['getDescricao',['../classTurma.html#ab4b9c98ee9165d45c3ede26dd35a736d',1,'Turma']]],
+  ['getemail_4',['getEmail',['../classUsuario.html#a49bafda0190ebce0e4a04a5946eaf5ee',1,'Usuario']]],
+  ['getid_5',['getId',['../classEntidade.html#a3a017e2fc13b67515f76ca087aaa087d',1,'Entidade']]],
+  ['getidestudante_6',['getIdEstudante',['../classResposta.html#ab104ce83a298a5586d9ada5d4b41bb01',1,'Resposta']]],
+  ['getidprof_7',['getIdProf',['../classTurma.html#a95e6490a1c0950eb6f7c303dc07a66b0',1,'Turma::getIdProf()'],['../classQuestao.html#a84d77448fdfb5846c33283078cf3e763',1,'Questao::getIdProf()'],['../classProva.html#aaaa963cd2d74b1a6304abdbb99c25a11',1,'Prova::getIdProf()']]],
+  ['getidprova_8',['getIdProva',['../classResposta.html#a835e1f7a22b2dc8770b2f287cc81f304',1,'Resposta']]],
+  ['getidquestoes_9',['getIdQuestoes',['../classProva.html#a67eb0b422a1f3b7cd17f396d55735ece',1,'Prova']]],
+  ['getidturma_10',['getIdTurma',['../classProva.html#a5efd3bbab14bed085a1279edf71e4cee',1,'Prova']]],
+  ['getidturmas_11',['getIdTurmas',['../classUsuario.html#a9f5bfaf39c0a00c15b363484b76be2c7',1,'Usuario']]],
+  ['getnome_12',['getNome',['../classEntidade.html#ab19aea3979078b16d53525bddaa686c4',1,'Entidade']]],
+  ['getnomecoluna_13',['getNomeColuna',['../classElementoResultado.html#a231f449ae4b1b901ed0498431e61ab2c',1,'ElementoResultado']]],
+  ['getresposta_14',['getResposta',['../classResposta.html#a59d459283b459872f81a62d30edc0399',1,'Resposta']]],
+  ['getrespostacorreta_15',['getRespostaCorreta',['../classQuestao.html#ae79060e24d8bea6ca383be45b3015789',1,'Questao']]],
+  ['getresultado_16',['getResultado',['../classComandoCadastrarUsuario.html#a8bf1c8bf0f7b3ec7f2f62e0389042473',1,'ComandoCadastrarUsuario::getResultado()'],['../classComandoConsultarUsuario.html#a04b3fa670210862e2943bdfe3c0dd323',1,'ComandoConsultarUsuario::getResultado()'],['../classComandoCountUsuarios.html#ab9a451df4a0aa9be4503c28418e7a96a',1,'ComandoCountUsuarios::getResultado()'],['../classComandoCadastrarTurma.html#a29074968cc5a42f4532f43a2f5089f62',1,'ComandoCadastrarTurma::getResultado()'],['../classComandoCadastrarQuestao.html#a15330d666c8dd8c91061927b4c64ca35',1,'ComandoCadastrarQuestao::getResultado()']]],
+  ['getsenha_17',['getSenha',['../classUsuario.html#a2319a40f4319afde62d4c87879a7d8cd',1,'Usuario']]],
+  ['getstatuscadastro_18',['getStatusCadastro',['../classCntrApresentacaoUsuario.html#ac7aa1dfcea5677cbb675a4388eab0e59',1,'CntrApresentacaoUsuario::getStatusCadastro()'],['../classIApresentacaoUsuario.html#a257da9889854847f2f8e43f8f79c7db4',1,'IApresentacaoUsuario::getStatusCadastro()']]],
+  ['gettexto_19',['getTexto',['../classQuestao.html#ae250f707d2ece1fa2e2cd4645cdb496c',1,'Questao']]],
+  ['getvalorcoluna_20',['getValorColuna',['../classElementoResultado.html#abe0a2d8858a9e5cb0b3318dd282476cc',1,'ElementoResultado']]]
+];

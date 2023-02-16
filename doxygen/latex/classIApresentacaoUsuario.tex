@@ -1,0 +1,159 @@
+\hypertarget{classIApresentacaoUsuario}{}\doxysection{IApresentacao\+Usuario Class Reference}
+\label{classIApresentacaoUsuario}\index{IApresentacaoUsuario@{IApresentacaoUsuario}}
+
+
+Interface para apresentação à usuário de telas relacionadas à servicos de usuário.  
+
+
+
+
+{\ttfamily \#include $<$Interfaces.\+h$>$}
+
+Inheritance diagram for IApresentacao\+Usuario\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classIApresentacaoUsuario}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classIApresentacaoUsuario_a2779e6f6a16b13c4fc449cb3116c501f}{executar}} (\mbox{\hyperlink{classUsuario}{Usuario}} $\ast$)=0
+\begin{DoxyCompactList}\small\item\em Implementa ambiente para acessar os serviços e telas de usuário. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classIApresentacaoUsuario_afa952785f0a9e44b1b5cd925df4791d9}{cadastrar}} ()=0
+\begin{DoxyCompactList}\small\item\em Implementa ambiente para acessar os serviços e telas remententes ao cadastro de usuário. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classIApresentacaoUsuario_a3e290b1bd61cf4f5e79ab4849b46ca75}{set\+Cntr\+Servico\+Usuario}} (\mbox{\hyperlink{classIServicoUsuario}{IServico\+Usuario}} $\ast$)=0
+\begin{DoxyCompactList}\small\item\em Cria conexão entre a camada de apresenação de usuário com a camada de serviço de usuário. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classIApresentacaoUsuario_a9bbe4e7a9583ffdd1ed8c523e7115546}{set\+Cntr\+Servico\+Turma}} (\mbox{\hyperlink{classIServicoTurma}{IServico\+Turma}} $\ast$)=0
+\begin{DoxyCompactList}\small\item\em Cria conexão entre a camada de apresentação de usuário com a camada de apresenação de turma. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classIApresentacaoUsuario_a4c2c9e4bc7a002c2f1627ce0d096d497}\label{classIApresentacaoUsuario_a4c2c9e4bc7a002c2f1627ce0d096d497}} 
+virtual void {\bfseries set\+Cntr\+Apresentacao\+Turma} (\mbox{\hyperlink{classIApresentacaoTurma}{IApresentacao\+Turma}} $\ast$)=0
+\item 
+\mbox{\Hypertarget{classIApresentacaoUsuario_ad883df69ac4f2cef2efa556338190a76}\label{classIApresentacaoUsuario_ad883df69ac4f2cef2efa556338190a76}} 
+virtual void {\bfseries set\+Cntr\+Servico\+Prova} (\mbox{\hyperlink{classIServicoProva}{IServico\+Prova}} $\ast$)=0
+\item 
+virtual bool \mbox{\hyperlink{classIApresentacaoUsuario_a257da9889854847f2f8e43f8f79c7db4}{get\+Status\+Cadastro}} ()=0
+\begin{DoxyCompactList}\small\item\em Método para verificar se usuário está cadastrado. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classIApresentacaoUsuario_a04abd44db1f80ab1f9f6d71bd8b4e9dc}{set\+Status\+Cadastro}} (bool)=0
+\begin{DoxyCompactList}\small\item\em Método para definir se usuário está cadastrado. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classIApresentacaoUsuario_aa224b8ee9930600a828f3c0feb673c1f}\label{classIApresentacaoUsuario_aa224b8ee9930600a828f3c0feb673c1f}} 
+virtual {\bfseries $\sim$\+IApresentacao\+Usuario} ()
+\begin{DoxyCompactList}\small\item\em Método destrutor para a interface. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface para apresentação à usuário de telas relacionadas à servicos de usuário. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classIApresentacaoUsuario_afa952785f0a9e44b1b5cd925df4791d9}\label{classIApresentacaoUsuario_afa952785f0a9e44b1b5cd925df4791d9}} 
+\index{IApresentacaoUsuario@{IApresentacaoUsuario}!cadastrar@{cadastrar}}
+\index{cadastrar@{cadastrar}!IApresentacaoUsuario@{IApresentacaoUsuario}}
+\doxysubsubsection{\texorpdfstring{cadastrar()}{cadastrar()}}
+{\footnotesize\ttfamily virtual void IApresentacao\+Usuario\+::cadastrar (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implementa ambiente para acessar os serviços e telas remententes ao cadastro de usuário. 
+
+
+
+Implemented in \mbox{\hyperlink{classCntrApresentacaoUsuario_a408a10c98b4af8b8f7161fec9dd7d6f3}{Cntr\+Apresentacao\+Usuario}}.
+
+\mbox{\Hypertarget{classIApresentacaoUsuario_a2779e6f6a16b13c4fc449cb3116c501f}\label{classIApresentacaoUsuario_a2779e6f6a16b13c4fc449cb3116c501f}} 
+\index{IApresentacaoUsuario@{IApresentacaoUsuario}!executar@{executar}}
+\index{executar@{executar}!IApresentacaoUsuario@{IApresentacaoUsuario}}
+\doxysubsubsection{\texorpdfstring{executar()}{executar()}}
+{\footnotesize\ttfamily virtual void IApresentacao\+Usuario\+::executar (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classUsuario}{Usuario}} $\ast$}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implementa ambiente para acessar os serviços e telas de usuário. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Parametro} & do tipo ponteiro à objeto \mbox{\hyperlink{classUsuario}{Usuario}}\+: usuário sob quais serviços e telas deseja acessar. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classCntrApresentacaoUsuario_a166bb30dc9326c9355ec2ecd1bb3ad1f}{Cntr\+Apresentacao\+Usuario}}.
+
+\mbox{\Hypertarget{classIApresentacaoUsuario_a257da9889854847f2f8e43f8f79c7db4}\label{classIApresentacaoUsuario_a257da9889854847f2f8e43f8f79c7db4}} 
+\index{IApresentacaoUsuario@{IApresentacaoUsuario}!getStatusCadastro@{getStatusCadastro}}
+\index{getStatusCadastro@{getStatusCadastro}!IApresentacaoUsuario@{IApresentacaoUsuario}}
+\doxysubsubsection{\texorpdfstring{getStatusCadastro()}{getStatusCadastro()}}
+{\footnotesize\ttfamily virtual bool IApresentacao\+Usuario\+::get\+Status\+Cadastro (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Método para verificar se usuário está cadastrado. 
+
+\begin{DoxyReturn}{Returns}
+bool\+: retorna true para usuário já cadastrado 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classCntrApresentacaoUsuario_ac7aa1dfcea5677cbb675a4388eab0e59}{Cntr\+Apresentacao\+Usuario}}.
+
+\mbox{\Hypertarget{classIApresentacaoUsuario_a9bbe4e7a9583ffdd1ed8c523e7115546}\label{classIApresentacaoUsuario_a9bbe4e7a9583ffdd1ed8c523e7115546}} 
+\index{IApresentacaoUsuario@{IApresentacaoUsuario}!setCntrServicoTurma@{setCntrServicoTurma}}
+\index{setCntrServicoTurma@{setCntrServicoTurma}!IApresentacaoUsuario@{IApresentacaoUsuario}}
+\doxysubsubsection{\texorpdfstring{setCntrServicoTurma()}{setCntrServicoTurma()}}
+{\footnotesize\ttfamily virtual void IApresentacao\+Usuario\+::set\+Cntr\+Servico\+Turma (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classIServicoTurma}{IServico\+Turma}} $\ast$}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Cria conexão entre a camada de apresentação de usuário com a camada de apresenação de turma. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Ponteiro} & \mbox{\hyperlink{classIApresentacaoTurma}{IApresentacao\+Turma}}\+: ponteiro á interface de apresentação de turma. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classCntrApresentacaoUsuario_a815717336dab36d205537c38ee15b256}{Cntr\+Apresentacao\+Usuario}}.
+
+\mbox{\Hypertarget{classIApresentacaoUsuario_a3e290b1bd61cf4f5e79ab4849b46ca75}\label{classIApresentacaoUsuario_a3e290b1bd61cf4f5e79ab4849b46ca75}} 
+\index{IApresentacaoUsuario@{IApresentacaoUsuario}!setCntrServicoUsuario@{setCntrServicoUsuario}}
+\index{setCntrServicoUsuario@{setCntrServicoUsuario}!IApresentacaoUsuario@{IApresentacaoUsuario}}
+\doxysubsubsection{\texorpdfstring{setCntrServicoUsuario()}{setCntrServicoUsuario()}}
+{\footnotesize\ttfamily virtual void IApresentacao\+Usuario\+::set\+Cntr\+Servico\+Usuario (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classIServicoUsuario}{IServico\+Usuario}} $\ast$}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Cria conexão entre a camada de apresenação de usuário com a camada de serviço de usuário. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Ponteiro} & \mbox{\hyperlink{classIServicoUsuario}{IServico\+Usuario}}\+: ponteiro á interface de servico. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classCntrApresentacaoUsuario_a85b5bc3e69ad3a926061cfe3582f155d}{Cntr\+Apresentacao\+Usuario}}.
+
+\mbox{\Hypertarget{classIApresentacaoUsuario_a04abd44db1f80ab1f9f6d71bd8b4e9dc}\label{classIApresentacaoUsuario_a04abd44db1f80ab1f9f6d71bd8b4e9dc}} 
+\index{IApresentacaoUsuario@{IApresentacaoUsuario}!setStatusCadastro@{setStatusCadastro}}
+\index{setStatusCadastro@{setStatusCadastro}!IApresentacaoUsuario@{IApresentacaoUsuario}}
+\doxysubsubsection{\texorpdfstring{setStatusCadastro()}{setStatusCadastro()}}
+{\footnotesize\ttfamily virtual void IApresentacao\+Usuario\+::set\+Status\+Cadastro (\begin{DoxyParamCaption}\item[{bool}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Método para definir se usuário está cadastrado. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bool} & setado true se usuário está cadastrado \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classCntrApresentacaoUsuario_a00ad7d356fd0ff42a4f9bc0ec73dd280}{Cntr\+Apresentacao\+Usuario}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/miguel/\+Documents/3\+Semestre/\+MP/\+Projeto\+De\+Disciplina/include/Interfaces.\+h\end{DoxyCompactItemize}

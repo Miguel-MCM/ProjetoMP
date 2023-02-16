@@ -1,0 +1,203 @@
+\hypertarget{classIApresentacaoAdmin}{}\doxysection{IApresentacao\+Admin Class Reference}
+\label{classIApresentacaoAdmin}\index{IApresentacaoAdmin@{IApresentacaoAdmin}}
+
+
+Interface para apresentação à usuário de telas relacionadas à servicos de administrador.  
+
+
+
+
+{\ttfamily \#include $<$Interfaces.\+h$>$}
+
+Inheritance diagram for IApresentacao\+Admin\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classIApresentacaoAdmin}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classIApresentacaoAdmin_a1abe24923822cb1b48fd37c81ef647b3}{executar}} (\mbox{\hyperlink{classUsuario}{Usuario}} $\ast$)=0
+\begin{DoxyCompactList}\small\item\em Implementa ambiente para acessar os serviços e telas de admin. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classIApresentacaoAdmin_a8e0e348ffa79f3ce04f1487e493c95b1}{set\+Cntr\+Servico\+Admin}} (\mbox{\hyperlink{classIServicoAdmin}{IServico\+Admin}} $\ast$)=0
+\begin{DoxyCompactList}\small\item\em Cria conexão entre a camada de apresenação de administrador com a camada de serviço de admin. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classIApresentacaoAdmin_a460f82d5760129bf317cda0b4963df1a}{set\+Cntr\+Servico\+Usuario}} (\mbox{\hyperlink{classIServicoUsuario}{IServico\+Usuario}} $\ast$)=0
+\begin{DoxyCompactList}\small\item\em Cria conexão entre a camada de apresenação de administrador com a camada de serviço de usuário. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classIApresentacaoAdmin_ad37481f3e1b19f1d892474f66e38a98d}{set\+Cntr\+Servico\+Turma}} (\mbox{\hyperlink{classIServicoTurma}{IServico\+Turma}} $\ast$)=0
+\begin{DoxyCompactList}\small\item\em Cria conexão entre a camada de apresenação de administrador com a camada de serviço de turma. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classIApresentacaoAdmin_ae27a5e7ce825d7c2405352b65e68db45}{set\+Cntr\+Servico\+Prova}} (\mbox{\hyperlink{classIServicoProva}{IServico\+Prova}} $\ast$)=0
+\begin{DoxyCompactList}\small\item\em Cria conexão entre a camada de apresenação de administrador com a camada de serviço de prova. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classIApresentacaoAdmin_acc99c42dfc27e368c41335f9b68a419b}{set\+Cntr\+Apresentacao\+Usuario}} (\mbox{\hyperlink{classIApresentacaoUsuario}{IApresentacao\+Usuario}} $\ast$)=0
+\begin{DoxyCompactList}\small\item\em Cria conexão entre a camada de apresenação de administrador com a camada de apresentacao de usuario. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classIApresentacaoAdmin_a2f07afb334d81f4a475bed8d241498fd}{set\+Cntr\+Apresentacao\+Prova}} (\mbox{\hyperlink{classIApresentacaoProva}{IApresentacao\+Prova}} $\ast$)=0
+\begin{DoxyCompactList}\small\item\em Cria conexão entre a camada de apresenação de administrador com a camada de apresentacao de prova. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classIApresentacaoAdmin_a0590cbbcef97cebcde34346c0cfc7ffb}{set\+Cntr\+Apresentacao\+Turma}} (\mbox{\hyperlink{classIApresentacaoTurma}{IApresentacao\+Turma}} $\ast$)=0
+\begin{DoxyCompactList}\small\item\em Cria conexão entre a camada de apresenação de administrador com a camada de apresentacao de turma. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classIApresentacaoAdmin_a4a7e96678708ee7e0347a42aa0edef89}\label{classIApresentacaoAdmin_a4a7e96678708ee7e0347a42aa0edef89}} 
+virtual {\bfseries $\sim$\+IApresentacao\+Admin} ()
+\begin{DoxyCompactList}\small\item\em Método destrutor para a interface. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface para apresentação à usuário de telas relacionadas à servicos de administrador. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classIApresentacaoAdmin_a1abe24923822cb1b48fd37c81ef647b3}\label{classIApresentacaoAdmin_a1abe24923822cb1b48fd37c81ef647b3}} 
+\index{IApresentacaoAdmin@{IApresentacaoAdmin}!executar@{executar}}
+\index{executar@{executar}!IApresentacaoAdmin@{IApresentacaoAdmin}}
+\doxysubsubsection{\texorpdfstring{executar()}{executar()}}
+{\footnotesize\ttfamily virtual void IApresentacao\+Admin\+::executar (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classUsuario}{Usuario}} $\ast$}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implementa ambiente para acessar os serviços e telas de admin. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Parametro} & do tipo ponteiro à objeto \mbox{\hyperlink{classUsuario}{Usuario}}\+: usuário sob quais serviços e telas deseja acessar. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classCntrApresentacaoAdmin_ad8f2d7c647cd5daca478daf1608a0bb6}{Cntr\+Apresentacao\+Admin}}.
+
+\mbox{\Hypertarget{classIApresentacaoAdmin_a2f07afb334d81f4a475bed8d241498fd}\label{classIApresentacaoAdmin_a2f07afb334d81f4a475bed8d241498fd}} 
+\index{IApresentacaoAdmin@{IApresentacaoAdmin}!setCntrApresentacaoProva@{setCntrApresentacaoProva}}
+\index{setCntrApresentacaoProva@{setCntrApresentacaoProva}!IApresentacaoAdmin@{IApresentacaoAdmin}}
+\doxysubsubsection{\texorpdfstring{setCntrApresentacaoProva()}{setCntrApresentacaoProva()}}
+{\footnotesize\ttfamily virtual void IApresentacao\+Admin\+::set\+Cntr\+Apresentacao\+Prova (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classIApresentacaoProva}{IApresentacao\+Prova}} $\ast$}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Cria conexão entre a camada de apresenação de administrador com a camada de apresentacao de prova. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Ponteiro} & \mbox{\hyperlink{classIApresentacaoProva}{IApresentacao\+Prova}}\+: ponteiro á interface de apresentacao de prova. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classCntrApresentacaoAdmin_a4442f5e7405392779c3fafb020748f81}{Cntr\+Apresentacao\+Admin}}.
+
+\mbox{\Hypertarget{classIApresentacaoAdmin_a0590cbbcef97cebcde34346c0cfc7ffb}\label{classIApresentacaoAdmin_a0590cbbcef97cebcde34346c0cfc7ffb}} 
+\index{IApresentacaoAdmin@{IApresentacaoAdmin}!setCntrApresentacaoTurma@{setCntrApresentacaoTurma}}
+\index{setCntrApresentacaoTurma@{setCntrApresentacaoTurma}!IApresentacaoAdmin@{IApresentacaoAdmin}}
+\doxysubsubsection{\texorpdfstring{setCntrApresentacaoTurma()}{setCntrApresentacaoTurma()}}
+{\footnotesize\ttfamily virtual void IApresentacao\+Admin\+::set\+Cntr\+Apresentacao\+Turma (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classIApresentacaoTurma}{IApresentacao\+Turma}} $\ast$}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Cria conexão entre a camada de apresenação de administrador com a camada de apresentacao de turma. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Ponteiro} & \mbox{\hyperlink{classIApresentacaoTurma}{IApresentacao\+Turma}}\+: ponteiro á interface de apresentacao de turma. ~\newline
+ \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classCntrApresentacaoAdmin_a5939867eac9dc1df954c75e3a4caacc0}{Cntr\+Apresentacao\+Admin}}.
+
+\mbox{\Hypertarget{classIApresentacaoAdmin_acc99c42dfc27e368c41335f9b68a419b}\label{classIApresentacaoAdmin_acc99c42dfc27e368c41335f9b68a419b}} 
+\index{IApresentacaoAdmin@{IApresentacaoAdmin}!setCntrApresentacaoUsuario@{setCntrApresentacaoUsuario}}
+\index{setCntrApresentacaoUsuario@{setCntrApresentacaoUsuario}!IApresentacaoAdmin@{IApresentacaoAdmin}}
+\doxysubsubsection{\texorpdfstring{setCntrApresentacaoUsuario()}{setCntrApresentacaoUsuario()}}
+{\footnotesize\ttfamily virtual void IApresentacao\+Admin\+::set\+Cntr\+Apresentacao\+Usuario (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classIApresentacaoUsuario}{IApresentacao\+Usuario}} $\ast$}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Cria conexão entre a camada de apresenação de administrador com a camada de apresentacao de usuario. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Ponteiro} & \mbox{\hyperlink{classIApresentacaoUsuario}{IApresentacao\+Usuario}}\+: ponteiro á interface de apresentacao de usuario. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classCntrApresentacaoAdmin_a6e7bddca5b316087b77b63504cc51002}{Cntr\+Apresentacao\+Admin}}.
+
+\mbox{\Hypertarget{classIApresentacaoAdmin_a8e0e348ffa79f3ce04f1487e493c95b1}\label{classIApresentacaoAdmin_a8e0e348ffa79f3ce04f1487e493c95b1}} 
+\index{IApresentacaoAdmin@{IApresentacaoAdmin}!setCntrServicoAdmin@{setCntrServicoAdmin}}
+\index{setCntrServicoAdmin@{setCntrServicoAdmin}!IApresentacaoAdmin@{IApresentacaoAdmin}}
+\doxysubsubsection{\texorpdfstring{setCntrServicoAdmin()}{setCntrServicoAdmin()}}
+{\footnotesize\ttfamily virtual void IApresentacao\+Admin\+::set\+Cntr\+Servico\+Admin (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classIServicoAdmin}{IServico\+Admin}} $\ast$}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Cria conexão entre a camada de apresenação de administrador com a camada de serviço de admin. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Ponteiro} & \mbox{\hyperlink{classIServicoAdmin}{IServico\+Admin}}\+: ponteiro á interface de serviço de admin. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classCntrApresentacaoAdmin_a591402efc8b20e72c325ac9cb3724a31}{Cntr\+Apresentacao\+Admin}}.
+
+\mbox{\Hypertarget{classIApresentacaoAdmin_ae27a5e7ce825d7c2405352b65e68db45}\label{classIApresentacaoAdmin_ae27a5e7ce825d7c2405352b65e68db45}} 
+\index{IApresentacaoAdmin@{IApresentacaoAdmin}!setCntrServicoProva@{setCntrServicoProva}}
+\index{setCntrServicoProva@{setCntrServicoProva}!IApresentacaoAdmin@{IApresentacaoAdmin}}
+\doxysubsubsection{\texorpdfstring{setCntrServicoProva()}{setCntrServicoProva()}}
+{\footnotesize\ttfamily virtual void IApresentacao\+Admin\+::set\+Cntr\+Servico\+Prova (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classIServicoProva}{IServico\+Prova}} $\ast$}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Cria conexão entre a camada de apresenação de administrador com a camada de serviço de prova. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Ponteiro} & \mbox{\hyperlink{classIServicoProva}{IServico\+Prova}}\+: ponteiro á interface de serviço de prova. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classCntrApresentacaoAdmin_a0e85050a92e960ccf85429e044881768}{Cntr\+Apresentacao\+Admin}}.
+
+\mbox{\Hypertarget{classIApresentacaoAdmin_ad37481f3e1b19f1d892474f66e38a98d}\label{classIApresentacaoAdmin_ad37481f3e1b19f1d892474f66e38a98d}} 
+\index{IApresentacaoAdmin@{IApresentacaoAdmin}!setCntrServicoTurma@{setCntrServicoTurma}}
+\index{setCntrServicoTurma@{setCntrServicoTurma}!IApresentacaoAdmin@{IApresentacaoAdmin}}
+\doxysubsubsection{\texorpdfstring{setCntrServicoTurma()}{setCntrServicoTurma()}}
+{\footnotesize\ttfamily virtual void IApresentacao\+Admin\+::set\+Cntr\+Servico\+Turma (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classIServicoTurma}{IServico\+Turma}} $\ast$}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Cria conexão entre a camada de apresenação de administrador com a camada de serviço de turma. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Ponteiro} & \mbox{\hyperlink{classIServicoTurma}{IServico\+Turma}}\+: ponteiro á interface de serviço de turma. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classCntrApresentacaoAdmin_a8be8e7fb7b11223aabb7147ec58a42d3}{Cntr\+Apresentacao\+Admin}}.
+
+\mbox{\Hypertarget{classIApresentacaoAdmin_a460f82d5760129bf317cda0b4963df1a}\label{classIApresentacaoAdmin_a460f82d5760129bf317cda0b4963df1a}} 
+\index{IApresentacaoAdmin@{IApresentacaoAdmin}!setCntrServicoUsuario@{setCntrServicoUsuario}}
+\index{setCntrServicoUsuario@{setCntrServicoUsuario}!IApresentacaoAdmin@{IApresentacaoAdmin}}
+\doxysubsubsection{\texorpdfstring{setCntrServicoUsuario()}{setCntrServicoUsuario()}}
+{\footnotesize\ttfamily virtual void IApresentacao\+Admin\+::set\+Cntr\+Servico\+Usuario (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classIServicoUsuario}{IServico\+Usuario}} $\ast$}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Cria conexão entre a camada de apresenação de administrador com a camada de serviço de usuário. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Ponteiro} & \mbox{\hyperlink{classIServicoUsuario}{IServico\+Usuario}}\+: ponteiro á interface de serviço de usuário. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classCntrApresentacaoAdmin_a62751346d50ca64452aa0a8ccb11b0dc}{Cntr\+Apresentacao\+Admin}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/miguel/\+Documents/3\+Semestre/\+MP/\+Projeto\+De\+Disciplina/include/Interfaces.\+h\end{DoxyCompactItemize}

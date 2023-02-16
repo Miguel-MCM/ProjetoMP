@@ -1,0 +1,140 @@
+\hypertarget{classIApresentacaoTurma}{}\doxysection{IApresentacao\+Turma Class Reference}
+\label{classIApresentacaoTurma}\index{IApresentacaoTurma@{IApresentacaoTurma}}
+
+
+Interface para apresentação ao usuário de telas relacionadas à servicos de turma.  
+
+
+
+
+{\ttfamily \#include $<$Interfaces.\+h$>$}
+
+Inheritance diagram for IApresentacao\+Turma\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classIApresentacaoTurma}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+virtual void \mbox{\hyperlink{classIApresentacaoTurma_a87eb418cdbe556245b25237729037e42}{executar}} (\mbox{\hyperlink{classUsuario}{Usuario}} $\ast$)=0
+\begin{DoxyCompactList}\small\item\em Implementa ambiente para acessar os serviços e telas de turma. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classIApresentacaoTurma_aa33f45d912ff95681111b04220238405}{editar}} (\mbox{\hyperlink{classTurma}{Turma}} $\ast$)=0
+\begin{DoxyCompactList}\small\item\em Implementa ambiente para acessar os serviços e telas de edição turma. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classIApresentacaoTurma_aad156c42f8405311310e461d691ba4ca}{set\+Cntr\+Servico\+Turma}} (\mbox{\hyperlink{classIServicoTurma}{IServico\+Turma}} $\ast$)=0
+\begin{DoxyCompactList}\small\item\em Cria conexão entre a camada de apresenação de turma com a camada de servico de turma. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classIApresentacaoTurma_a8a7f3e2f64787c4481a5901c8637b120}{set\+Cntr\+Servico\+Usuario}} (\mbox{\hyperlink{classIServicoUsuario}{IServico\+Usuario}} $\ast$)=0
+\begin{DoxyCompactList}\small\item\em Cria conexão entre a camada de apresenação de turma com a camada de servico de usuario. \end{DoxyCompactList}\item 
+virtual void \mbox{\hyperlink{classIApresentacaoTurma_a9c9ab67e0ca5bd459f7c60643d009a21}{set\+Cntr\+Apresentacao\+Prova}} (\mbox{\hyperlink{classIApresentacaoProva}{IApresentacao\+Prova}} $\ast$)=0
+\begin{DoxyCompactList}\small\item\em Cria conexão entre a camada de apresenação de turma com a camada de servico de turma. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classIApresentacaoTurma_aac00d9af2025dffc9440f49a4b872135}\label{classIApresentacaoTurma_aac00d9af2025dffc9440f49a4b872135}} 
+virtual {\bfseries $\sim$\+IApresentacao\+Turma} ()
+\begin{DoxyCompactList}\small\item\em Método destrutor para a interface. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface para apresentação ao usuário de telas relacionadas à servicos de turma. 
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classIApresentacaoTurma_aa33f45d912ff95681111b04220238405}\label{classIApresentacaoTurma_aa33f45d912ff95681111b04220238405}} 
+\index{IApresentacaoTurma@{IApresentacaoTurma}!editar@{editar}}
+\index{editar@{editar}!IApresentacaoTurma@{IApresentacaoTurma}}
+\doxysubsubsection{\texorpdfstring{editar()}{editar()}}
+{\footnotesize\ttfamily virtual void IApresentacao\+Turma\+::editar (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classTurma}{Turma}} $\ast$}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implementa ambiente para acessar os serviços e telas de edição turma. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Parametro} & do tipo ponteiro à objeto \mbox{\hyperlink{classTurma}{Turma}}\+: turma sob quais serviços e telas deseja acessar. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classCntrApresentacaoTurma_a93e4a36760b76e5e6143dd7a57504c6e}{Cntr\+Apresentacao\+Turma}}.
+
+\mbox{\Hypertarget{classIApresentacaoTurma_a87eb418cdbe556245b25237729037e42}\label{classIApresentacaoTurma_a87eb418cdbe556245b25237729037e42}} 
+\index{IApresentacaoTurma@{IApresentacaoTurma}!executar@{executar}}
+\index{executar@{executar}!IApresentacaoTurma@{IApresentacaoTurma}}
+\doxysubsubsection{\texorpdfstring{executar()}{executar()}}
+{\footnotesize\ttfamily virtual void IApresentacao\+Turma\+::executar (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classUsuario}{Usuario}} $\ast$}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Implementa ambiente para acessar os serviços e telas de turma. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Parametro} & do tipo ponteiro à objeto \mbox{\hyperlink{classUsuario}{Usuario}}\+: usuário sob quais serviços e telas deseja acessar. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classCntrApresentacaoTurma_a3cc9d48d7bea4281da5e08e4cd34bc44}{Cntr\+Apresentacao\+Turma}}.
+
+\mbox{\Hypertarget{classIApresentacaoTurma_a9c9ab67e0ca5bd459f7c60643d009a21}\label{classIApresentacaoTurma_a9c9ab67e0ca5bd459f7c60643d009a21}} 
+\index{IApresentacaoTurma@{IApresentacaoTurma}!setCntrApresentacaoProva@{setCntrApresentacaoProva}}
+\index{setCntrApresentacaoProva@{setCntrApresentacaoProva}!IApresentacaoTurma@{IApresentacaoTurma}}
+\doxysubsubsection{\texorpdfstring{setCntrApresentacaoProva()}{setCntrApresentacaoProva()}}
+{\footnotesize\ttfamily virtual void IApresentacao\+Turma\+::set\+Cntr\+Apresentacao\+Prova (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classIApresentacaoProva}{IApresentacao\+Prova}} $\ast$}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Cria conexão entre a camada de apresenação de turma com a camada de servico de turma. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Ponteiro} & \mbox{\hyperlink{classIApresentacaoTurma}{IApresentacao\+Turma}}\+: ponteiro á interface de apresentacao de turma. ~\newline
+ \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classCntrApresentacaoTurma_ab077ddbd1e1a2e57e2891bd8920b2b2f}{Cntr\+Apresentacao\+Turma}}.
+
+\mbox{\Hypertarget{classIApresentacaoTurma_aad156c42f8405311310e461d691ba4ca}\label{classIApresentacaoTurma_aad156c42f8405311310e461d691ba4ca}} 
+\index{IApresentacaoTurma@{IApresentacaoTurma}!setCntrServicoTurma@{setCntrServicoTurma}}
+\index{setCntrServicoTurma@{setCntrServicoTurma}!IApresentacaoTurma@{IApresentacaoTurma}}
+\doxysubsubsection{\texorpdfstring{setCntrServicoTurma()}{setCntrServicoTurma()}}
+{\footnotesize\ttfamily virtual void IApresentacao\+Turma\+::set\+Cntr\+Servico\+Turma (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classIServicoTurma}{IServico\+Turma}} $\ast$}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Cria conexão entre a camada de apresenação de turma com a camada de servico de turma. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Ponteiro} & \mbox{\hyperlink{classIServicoUsuario}{IServico\+Usuario}}\+: ponteiro á interface de servico de turma. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classCntrApresentacaoTurma_a9c18591a01ef26c01bc7443cc294f0ac}{Cntr\+Apresentacao\+Turma}}.
+
+\mbox{\Hypertarget{classIApresentacaoTurma_a8a7f3e2f64787c4481a5901c8637b120}\label{classIApresentacaoTurma_a8a7f3e2f64787c4481a5901c8637b120}} 
+\index{IApresentacaoTurma@{IApresentacaoTurma}!setCntrServicoUsuario@{setCntrServicoUsuario}}
+\index{setCntrServicoUsuario@{setCntrServicoUsuario}!IApresentacaoTurma@{IApresentacaoTurma}}
+\doxysubsubsection{\texorpdfstring{setCntrServicoUsuario()}{setCntrServicoUsuario()}}
+{\footnotesize\ttfamily virtual void IApresentacao\+Turma\+::set\+Cntr\+Servico\+Usuario (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classIServicoUsuario}{IServico\+Usuario}} $\ast$}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Cria conexão entre a camada de apresenação de turma com a camada de servico de usuario. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em Ponteiro} & \mbox{\hyperlink{classIServicoUsuario}{IServico\+Usuario}}\+: ponteiro á interface de serviço de usuário. \\
+\hline
+\end{DoxyParams}
+
+
+Implemented in \mbox{\hyperlink{classCntrApresentacaoTurma_a078fdbd8ca034377ec64ea214727a21b}{Cntr\+Apresentacao\+Turma}}.
+
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+/home/miguel/\+Documents/3\+Semestre/\+MP/\+Projeto\+De\+Disciplina/include/Interfaces.\+h\end{DoxyCompactItemize}
