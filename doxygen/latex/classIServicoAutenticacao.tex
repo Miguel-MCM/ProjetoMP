@@ -1,5 +1,14 @@
 \hypertarget{classIServicoAutenticacao}{}\doxysection{IServico\+Autenticacao Class Reference}
 \label{classIServicoAutenticacao}\index{IServicoAutenticacao@{IServicoAutenticacao}}
+
+
+Interface para serviços de autenticação do usuário.  
+
+
+
+
+{\ttfamily \#include $<$Interfaces.\+h$>$}
+
 Inheritance diagram for IServico\+Autenticacao\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -9,11 +18,41 @@ Inheritance diagram for IServico\+Autenticacao\+:\begin{figure}[H]
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+virtual bool \mbox{\hyperlink{classIServicoAutenticacao_a6e7f168745d25b2de8c5c05e99d91afd}{autenticar}} (\mbox{\hyperlink{classUsuario}{Usuario}} $\ast$)=0
+\begin{DoxyCompactList}\small\item\em Solicita serviço de autenticação ao banco de dados. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classIServicoAutenticacao_aa2f9ad33148b3b12a205e992079e4368}\label{classIServicoAutenticacao_aa2f9ad33148b3b12a205e992079e4368}} 
+virtual {\bfseries $\sim$\+IServico\+Autenticacao} ()
+\begin{DoxyCompactList}\small\item\em Método destrutor para a interface. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface para serviços de autenticação do usuário. 
+
+\doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classIServicoAutenticacao_a6e7f168745d25b2de8c5c05e99d91afd}\label{classIServicoAutenticacao_a6e7f168745d25b2de8c5c05e99d91afd}} 
-virtual bool {\bfseries autenticar} (\mbox{\hyperlink{classUsuario}{Usuario}} $\ast$)=0
-\end{DoxyCompactItemize}
+\index{IServicoAutenticacao@{IServicoAutenticacao}!autenticar@{autenticar}}
+\index{autenticar@{autenticar}!IServicoAutenticacao@{IServicoAutenticacao}}
+\doxysubsubsection{\texorpdfstring{autenticar()}{autenticar()}}
+{\footnotesize\ttfamily virtual bool IServico\+Autenticacao\+::autenticar (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classUsuario}{Usuario}} $\ast$}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Solicita serviço de autenticação ao banco de dados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parametro} & ponteiro do tipo \doxylink{classUsuario}{Usuario}\+: usuário a ser autenticado. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool indicando sucesso ou falha no processo. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classCntrServicoAutenticacao_a096194bbc008140aadc6914660a1be62}{Cntr\+Servico\+Autenticacao}}.
+
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-/home/miguel/\+Documents/3\+Semestre/\+MP/\+Projeto\+De\+Disciplina/include/Interfaces.\+h\end{DoxyCompactItemize}
+/home/victor\+\_\+andre/\+Documentos/\+Unb/\+MP/\+Projeto\+MP/include/Interfaces.\+h\end{DoxyCompactItemize}

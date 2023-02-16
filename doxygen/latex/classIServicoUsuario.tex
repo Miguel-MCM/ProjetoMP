@@ -1,5 +1,14 @@
 \hypertarget{classIServicoUsuario}{}\doxysection{IServico\+Usuario Class Reference}
 \label{classIServicoUsuario}\index{IServicoUsuario@{IServicoUsuario}}
+
+
+Interface para serviços de usuário.  
+
+
+
+
+{\ttfamily \#include $<$Interfaces.\+h$>$}
+
 Inheritance diagram for IServico\+Usuario\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -9,29 +18,191 @@ Inheritance diagram for IServico\+Usuario\+:\begin{figure}[H]
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+virtual bool \mbox{\hyperlink{classIServicoUsuario_a1c53249d6be797cf8a20aca26736e96f}{cadastrar}} (\mbox{\hyperlink{classUsuario}{Usuario}})=0
+\begin{DoxyCompactList}\small\item\em Solicita serviço de cadastramento de usuário ao banco de dados. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classIServicoUsuario_a0f6db987373ff5f74424b61f22ea422c}{descadastrar}} (int, string)=0
+\begin{DoxyCompactList}\small\item\em Solicita serviço de descadastramento de usuário ao banco de dados. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classIServicoUsuario_a5c29a3cc8bdc2dbfd00f22ef0e146e62}{editar}} (\mbox{\hyperlink{classUsuario}{Usuario}})=0
+\begin{DoxyCompactList}\small\item\em Solicita serviço de edição de usuário ao banco de dados. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classIServicoUsuario_ac0a1cbab52d5479be53db27c1f732b70}{consultar}} (\mbox{\hyperlink{classUsuario}{Usuario}} $\ast$)=0
+\begin{DoxyCompactList}\small\item\em Solicita serviço de consulta de usuário ao banco de dados. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classIServicoUsuario_a7a14bbed0440a8c595f95ee2ca3c7ed3}{listar\+Turmas\+Aluno}} (int, list$<$ \mbox{\hyperlink{classTurma}{Turma}} $>$ $\ast$)=0
+\begin{DoxyCompactList}\small\item\em Solicita serviço de listagem de turmas às quais um aluno pertence ao banco de dados. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classIServicoUsuario_aa476a88085fc58a15bb34669f080b0b8}{listar\+Turmas\+Professor}} (int, list$<$ \mbox{\hyperlink{classTurma}{Turma}} $>$ $\ast$)=0
+\begin{DoxyCompactList}\small\item\em Solicita serviço de listagem de turmas de um professor ao banco de dados. \end{DoxyCompactList}\item 
+virtual bool \mbox{\hyperlink{classIServicoUsuario_a3e79d732081e304a241e688746ee856a}{consultar\+Email}} (\mbox{\hyperlink{classUsuario}{Usuario}} $\ast$usuario)=0
+\begin{DoxyCompactList}\small\item\em Solicita serviço de consulta de um usuário pelo email ao banco de dados. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classIServicoUsuario_a5dcc8309a3929de1166af43db7bba05d}\label{classIServicoUsuario_a5dcc8309a3929de1166af43db7bba05d}} 
+virtual {\bfseries $\sim$\+IServico\+Usuario} ()
+\begin{DoxyCompactList}\small\item\em Método destrutor para a interface. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface para serviços de usuário. 
+
+\doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classIServicoUsuario_a1c53249d6be797cf8a20aca26736e96f}\label{classIServicoUsuario_a1c53249d6be797cf8a20aca26736e96f}} 
-virtual bool {\bfseries cadastrar} (\mbox{\hyperlink{classUsuario}{Usuario}})=0
-\item 
-\mbox{\Hypertarget{classIServicoUsuario_a0f6db987373ff5f74424b61f22ea422c}\label{classIServicoUsuario_a0f6db987373ff5f74424b61f22ea422c}} 
-virtual bool {\bfseries descadastrar} (int, string)=0
-\item 
-\mbox{\Hypertarget{classIServicoUsuario_a5c29a3cc8bdc2dbfd00f22ef0e146e62}\label{classIServicoUsuario_a5c29a3cc8bdc2dbfd00f22ef0e146e62}} 
-virtual bool {\bfseries editar} (\mbox{\hyperlink{classUsuario}{Usuario}})=0
-\item 
+\index{IServicoUsuario@{IServicoUsuario}!cadastrar@{cadastrar}}
+\index{cadastrar@{cadastrar}!IServicoUsuario@{IServicoUsuario}}
+\doxysubsubsection{\texorpdfstring{cadastrar()}{cadastrar()}}
+{\footnotesize\ttfamily virtual bool IServico\+Usuario\+::cadastrar (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classUsuario}{Usuario}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Solicita serviço de cadastramento de usuário ao banco de dados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parametro} & \doxylink{classUsuario}{Usuario}\+: usuário com os dados preenchidos a ser cadastrado. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool indicando sucesso ou falha no processo. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classCntrServicoUsuario_a4eaf537d558d8d76c6c8b3754a121610}{Cntr\+Servico\+Usuario}}.
+
 \mbox{\Hypertarget{classIServicoUsuario_ac0a1cbab52d5479be53db27c1f732b70}\label{classIServicoUsuario_ac0a1cbab52d5479be53db27c1f732b70}} 
-virtual bool {\bfseries consultar} (\mbox{\hyperlink{classUsuario}{Usuario}} $\ast$)=0
-\item 
-\mbox{\Hypertarget{classIServicoUsuario_a7a14bbed0440a8c595f95ee2ca3c7ed3}\label{classIServicoUsuario_a7a14bbed0440a8c595f95ee2ca3c7ed3}} 
-virtual bool {\bfseries listar\+Turmas\+Aluno} (int, list$<$ \mbox{\hyperlink{classTurma}{Turma}} $>$ $\ast$)=0
-\item 
-\mbox{\Hypertarget{classIServicoUsuario_aa476a88085fc58a15bb34669f080b0b8}\label{classIServicoUsuario_aa476a88085fc58a15bb34669f080b0b8}} 
-virtual bool {\bfseries listar\+Turmas\+Professor} (int, list$<$ \mbox{\hyperlink{classTurma}{Turma}} $>$ $\ast$)=0
-\item 
+\index{IServicoUsuario@{IServicoUsuario}!consultar@{consultar}}
+\index{consultar@{consultar}!IServicoUsuario@{IServicoUsuario}}
+\doxysubsubsection{\texorpdfstring{consultar()}{consultar()}}
+{\footnotesize\ttfamily virtual bool IServico\+Usuario\+::consultar (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classUsuario}{Usuario}} $\ast$}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Solicita serviço de consulta de usuário ao banco de dados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parametro} & ponteiro do tipo \doxylink{classUsuario}{Usuario}\+: usuário a ser preenchido com os dados do banco. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool indicando sucesso ou falha no processo. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classCntrServicoUsuario_ab5182f6d9d695a11dec6abdf0cdf10f9}{Cntr\+Servico\+Usuario}}.
+
 \mbox{\Hypertarget{classIServicoUsuario_a3e79d732081e304a241e688746ee856a}\label{classIServicoUsuario_a3e79d732081e304a241e688746ee856a}} 
-virtual bool {\bfseries consultar\+Email} (\mbox{\hyperlink{classUsuario}{Usuario}} $\ast$usuario)=0
-\end{DoxyCompactItemize}
+\index{IServicoUsuario@{IServicoUsuario}!consultarEmail@{consultarEmail}}
+\index{consultarEmail@{consultarEmail}!IServicoUsuario@{IServicoUsuario}}
+\doxysubsubsection{\texorpdfstring{consultarEmail()}{consultarEmail()}}
+{\footnotesize\ttfamily virtual bool IServico\+Usuario\+::consultar\+Email (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classUsuario}{Usuario}} $\ast$}]{usuario }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Solicita serviço de consulta de um usuário pelo email ao banco de dados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parametro} & ponteiro do tipo \doxylink{classUsuario}{Usuario}\+: usuario a ser preenchido pelos dados do banco. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool indicando sucesso ou falha no processo. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classCntrServicoUsuario_a074e6c10893b02e0a0db1b2f5cbe210e}{Cntr\+Servico\+Usuario}}.
+
+\mbox{\Hypertarget{classIServicoUsuario_a0f6db987373ff5f74424b61f22ea422c}\label{classIServicoUsuario_a0f6db987373ff5f74424b61f22ea422c}} 
+\index{IServicoUsuario@{IServicoUsuario}!descadastrar@{descadastrar}}
+\index{descadastrar@{descadastrar}!IServicoUsuario@{IServicoUsuario}}
+\doxysubsubsection{\texorpdfstring{descadastrar()}{descadastrar()}}
+{\footnotesize\ttfamily virtual bool IServico\+Usuario\+::descadastrar (\begin{DoxyParamCaption}\item[{int}]{,  }\item[{string}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Solicita serviço de descadastramento de usuário ao banco de dados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parametro} & int\+: id do usuário a ser descadastrado. \\
+\hline
+{\em parametro} & string\+: cargo do usuário a ser descadastrado. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool indicando sucesso ou falha no processo. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classCntrServicoUsuario_a3003bcb245950e78b257dd475d5a64e8}{Cntr\+Servico\+Usuario}}.
+
+\mbox{\Hypertarget{classIServicoUsuario_a5c29a3cc8bdc2dbfd00f22ef0e146e62}\label{classIServicoUsuario_a5c29a3cc8bdc2dbfd00f22ef0e146e62}} 
+\index{IServicoUsuario@{IServicoUsuario}!editar@{editar}}
+\index{editar@{editar}!IServicoUsuario@{IServicoUsuario}}
+\doxysubsubsection{\texorpdfstring{editar()}{editar()}}
+{\footnotesize\ttfamily virtual bool IServico\+Usuario\+::editar (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classUsuario}{Usuario}}}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Solicita serviço de edição de usuário ao banco de dados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parametro} & \doxylink{classUsuario}{Usuario}\+: usuário com os novos dados preenchidos a ser editado. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool indicando sucesso ou falha no processo. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classCntrServicoUsuario_a96979593053e2a2a9c32a6a74cf5e77c}{Cntr\+Servico\+Usuario}}.
+
+\mbox{\Hypertarget{classIServicoUsuario_a7a14bbed0440a8c595f95ee2ca3c7ed3}\label{classIServicoUsuario_a7a14bbed0440a8c595f95ee2ca3c7ed3}} 
+\index{IServicoUsuario@{IServicoUsuario}!listarTurmasAluno@{listarTurmasAluno}}
+\index{listarTurmasAluno@{listarTurmasAluno}!IServicoUsuario@{IServicoUsuario}}
+\doxysubsubsection{\texorpdfstring{listarTurmasAluno()}{listarTurmasAluno()}}
+{\footnotesize\ttfamily virtual bool IServico\+Usuario\+::listar\+Turmas\+Aluno (\begin{DoxyParamCaption}\item[{int}]{,  }\item[{list$<$ \mbox{\hyperlink{classTurma}{Turma}} $>$ $\ast$}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Solicita serviço de listagem de turmas às quais um aluno pertence ao banco de dados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parametro} & int\+: id do aluno a ser consultado. \\
+\hline
+{\em parametro} & ponteiro do tipo lista de turmas\+: lista a ser preenchida com os dados do banco. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool indicando sucesso ou falha no processo. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classCntrServicoUsuario_af73fe3b721fff66e572c566be0dd61d3}{Cntr\+Servico\+Usuario}}.
+
+\mbox{\Hypertarget{classIServicoUsuario_aa476a88085fc58a15bb34669f080b0b8}\label{classIServicoUsuario_aa476a88085fc58a15bb34669f080b0b8}} 
+\index{IServicoUsuario@{IServicoUsuario}!listarTurmasProfessor@{listarTurmasProfessor}}
+\index{listarTurmasProfessor@{listarTurmasProfessor}!IServicoUsuario@{IServicoUsuario}}
+\doxysubsubsection{\texorpdfstring{listarTurmasProfessor()}{listarTurmasProfessor()}}
+{\footnotesize\ttfamily virtual bool IServico\+Usuario\+::listar\+Turmas\+Professor (\begin{DoxyParamCaption}\item[{int}]{,  }\item[{list$<$ \mbox{\hyperlink{classTurma}{Turma}} $>$ $\ast$}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Solicita serviço de listagem de turmas de um professor ao banco de dados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parametro} & int\+: id do professor a ser consultado. \\
+\hline
+{\em parametro} & ponteiro do tipo lista de turmas\+: lista a ser preenchida com os dados do banco. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool indicando sucesso ou falha no processo. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classCntrServicoUsuario_ac4eb343cef25d6840b5f6f2fe4cb4ff5}{Cntr\+Servico\+Usuario}}.
+
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-/home/miguel/\+Documents/3\+Semestre/\+MP/\+Projeto\+De\+Disciplina/include/Interfaces.\+h\end{DoxyCompactItemize}
+/home/victor\+\_\+andre/\+Documentos/\+Unb/\+MP/\+Projeto\+MP/include/Interfaces.\+h\end{DoxyCompactItemize}

@@ -1,5 +1,14 @@
 \hypertarget{classComandoListarIdTurmaAluno}{}\doxysection{Comando\+Listar\+Id\+Turma\+Aluno Class Reference}
 \label{classComandoListarIdTurmaAluno}\index{ComandoListarIdTurmaAluno@{ComandoListarIdTurmaAluno}}
+
+
+Comando SQL utilizado para executar a listagem de turmas que um determinado usuário faz parte.  
+
+
+
+
+{\ttfamily \#include $<$Comandos\+SQL.\+h$>$}
+
 Inheritance diagram for Comando\+Listar\+Id\+Turma\+Aluno\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -9,15 +18,13 @@ Inheritance diagram for Comando\+Listar\+Id\+Turma\+Aluno\+:\begin{figure}[H]
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classComandoListarIdTurmaAluno_a4a48c388132dbbc05cd9ff2178284aed}\label{classComandoListarIdTurmaAluno_a4a48c388132dbbc05cd9ff2178284aed}} 
-{\bfseries Comando\+Listar\+Id\+Turma\+Aluno} (int)
-\item 
-\mbox{\Hypertarget{classComandoListarIdTurmaAluno_a343af125e506c107189846fbd1e66d2e}\label{classComandoListarIdTurmaAluno_a343af125e506c107189846fbd1e66d2e}} 
-list$<$ int $>$ {\bfseries get\+Resultado} ()
-\item 
+\mbox{\hyperlink{classComandoListarIdTurmaAluno_a4a48c388132dbbc05cd9ff2178284aed}{Comando\+Listar\+Id\+Turma\+Aluno}} (int)
+\begin{DoxyCompactList}\small\item\em Construtor da classe para listar as turmas que um determinado usuário faz parte. \end{DoxyCompactList}\item 
+list$<$ int $>$ \mbox{\hyperlink{classComandoListarIdTurmaAluno_a343af125e506c107189846fbd1e66d2e}{get\+Resultado}} ()
+\begin{DoxyCompactList}\small\item\em Retorna um objeto lista de inteiros com os ids das turma. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classComandoSQL_a449f64885fdeb1d0b350b612bcb45e05}\label{classComandoSQL_a449f64885fdeb1d0b350b612bcb45e05}} 
 void {\bfseries executar} ()
-\begin{DoxyCompactList}\small\item\em Executa o comendo SQL. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Executa o comando SQL. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -32,6 +39,43 @@ static list$<$ \mbox{\hyperlink{classElementoResultado}{Elemento\+Resultado}} $>
 \begin{DoxyCompactList}\small\item\em Lista de Resultados da consulta. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
+\doxysubsection{Detailed Description}
+Comando SQL utilizado para executar a listagem de turmas que um determinado usuário faz parte. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classComandoListarIdTurmaAluno_a4a48c388132dbbc05cd9ff2178284aed}\label{classComandoListarIdTurmaAluno_a4a48c388132dbbc05cd9ff2178284aed}} 
+\index{ComandoListarIdTurmaAluno@{ComandoListarIdTurmaAluno}!ComandoListarIdTurmaAluno@{ComandoListarIdTurmaAluno}}
+\index{ComandoListarIdTurmaAluno@{ComandoListarIdTurmaAluno}!ComandoListarIdTurmaAluno@{ComandoListarIdTurmaAluno}}
+\doxysubsubsection{\texorpdfstring{ComandoListarIdTurmaAluno()}{ComandoListarIdTurmaAluno()}}
+{\footnotesize\ttfamily Comando\+Listar\+Id\+Turma\+Aluno\+::\+Comando\+Listar\+Id\+Turma\+Aluno (\begin{DoxyParamCaption}\item[{int}]{ }\end{DoxyParamCaption})}
+
+
+
+Construtor da classe para listar as turmas que um determinado usuário faz parte. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em -\/parâmetro} & int\+: inteiro que representa o id do aluno. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classComandoListarIdTurmaAluno_a343af125e506c107189846fbd1e66d2e}\label{classComandoListarIdTurmaAluno_a343af125e506c107189846fbd1e66d2e}} 
+\index{ComandoListarIdTurmaAluno@{ComandoListarIdTurmaAluno}!getResultado@{getResultado}}
+\index{getResultado@{getResultado}!ComandoListarIdTurmaAluno@{ComandoListarIdTurmaAluno}}
+\doxysubsubsection{\texorpdfstring{getResultado()}{getResultado()}}
+{\footnotesize\ttfamily list$<$ int $>$ Comando\+Listar\+Id\+Turma\+Aluno\+::get\+Resultado (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retorna um objeto lista de inteiros com os ids das turma. 
+
+\begin{DoxyReturn}{Returns}
+list$<$int$>$ 
+\end{DoxyReturn}
+
+
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-/home/miguel/\+Documents/3\+Semestre/\+MP/\+Projeto\+De\+Disciplina/include/Comandos\+SQL.\+h\end{DoxyCompactItemize}
+/home/victor\+\_\+andre/\+Documentos/\+Unb/\+MP/\+Projeto\+MP/include/Comandos\+SQL.\+h\end{DoxyCompactItemize}

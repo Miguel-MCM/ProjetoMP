@@ -10,32 +10,32 @@ Inheritance diagram for Cntr\+Servico\+Prova\+:\begin{figure}[H]
 \begin{DoxyCompactItemize}
 \item 
 bool \mbox{\hyperlink{classCntrServicoProva_a77eeb44645e33c4a725afb5e71ba94fd}{cadastrar\+Prova}} (\mbox{\hyperlink{classProva}{Prova}})
-\item 
+\begin{DoxyCompactList}\small\item\em Solicita serviço de cadastramento de prova ao banco de dados. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classCntrServicoProva_a23edce01b02d1e19f02d571714ea2aeb}{descadastrar\+Prova}} (int)
-\item 
+\begin{DoxyCompactList}\small\item\em Solicita serviço de descadastramento de prova ao banco de dados. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classCntrServicoProva_aa709ea642d0a5546db4a7feaf03c3766}{editar\+Prova}} (\mbox{\hyperlink{classProva}{Prova}})
-\item 
+\begin{DoxyCompactList}\small\item\em Solicita serviço de edição de prova ao banco de dados. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classCntrServicoProva_a3524f50011f8f464a0c6d8adc92de3b4}{consultar\+Prova}} (\mbox{\hyperlink{classProva}{Prova}} $\ast$)
-\item 
+\begin{DoxyCompactList}\small\item\em Solicita serviço de consulta de prova ao banco de dados. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classCntrServicoProva_a2cc3a9a7c42e408ab697c86ac52a899d}{get\+Qtd\+Questoes}} (\mbox{\hyperlink{classProva}{Prova}}, int $\ast$)
-\item 
+\begin{DoxyCompactList}\small\item\em Solicita quantas questões estão cadastradas a uma prova no banco. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classCntrServicoProva_a7969699ae6537ba69d04d4e3142672bc}\label{classCntrServicoProva_a7969699ae6537ba69d04d4e3142672bc}} 
 vector$<$ string $>$ {\bfseries get\+Provas} ()
 \item 
 bool \mbox{\hyperlink{classCntrServicoProva_a98039daeb136e49696d471fdc890e8e1}{cadastrar\+Questao}} (\mbox{\hyperlink{classQuestao}{Questao}})
-\item 
+\begin{DoxyCompactList}\small\item\em Solicita serviço de cadastramento de questão ao banco de dados. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classCntrServicoProva_a9b074369f4109e5c7aae256e35e98f73}{descadastrar\+Questao}} (int)
-\item 
+\begin{DoxyCompactList}\small\item\em Solicita serviço de descadastramento de questão ao banco de dados. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classCntrServicoProva_ac805b0daea0cad2cb0a3acca1084df2c}{get\+Lista\+Questoes}} (int, list$<$ \mbox{\hyperlink{classQuestao}{Questao}} $>$ $\ast$)
-\item 
+\begin{DoxyCompactList}\small\item\em Solicita serviço de listagem de questões de uma prova ao banco de dados. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classCntrServicoProva_a7ba1223ccd41335960b720dcf537c1c0}{calcular\+Resultado}} (\mbox{\hyperlink{classResposta}{Resposta}}, list$<$ int $>$ $\ast$)
-\item 
+\begin{DoxyCompactList}\small\item\em Solicita o resultado da prova respondida por um aluno. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classCntrServicoProva_ae28d7e187a112e3c19a0a90758028e79}{get\+Lista\+Resposta\+Alunos}} (\mbox{\hyperlink{classProva}{Prova}}, list$<$ \mbox{\hyperlink{classUsuario}{Usuario}} $>$ $\ast$, list$<$ int $>$ $\ast$)
-\item 
+\begin{DoxyCompactList}\small\item\em Solicita serviço de listagem de respostas a uma prova ao banco de dados. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classCntrServicoProva_a133737a686375af3de474c69e832ff7b}{consultar\+Resposta}} (\mbox{\hyperlink{classResposta}{Resposta}} $\ast$)
-\item 
+\begin{DoxyCompactList}\small\item\em Solicita serviço de consulta de resposta ao banco de dados. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classCntrServicoProva_a432bbb793db82f6e7a74dc1a29ad9dbc}{cadastrar\+Resposta}} (\mbox{\hyperlink{classResposta}{Resposta}})
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Solicita serviço de cadastramento de resposta ao banco de dados. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Member Function Documentation}
@@ -47,7 +47,19 @@ bool \mbox{\hyperlink{classCntrServicoProva_a432bbb793db82f6e7a74dc1a29ad9dbc}{c
 
 
 
-Implements \mbox{\hyperlink{classIServicoProva}{IServico\+Prova}}.
+Solicita serviço de cadastramento de prova ao banco de dados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parametro} & \doxylink{classProva}{Prova}\+: prova com os dados preenchidos a ser cadastrada. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool indicando sucesso ou falha no processo. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIServicoProva_abd30f393e5094e8af15bf7cf6ae204a2}{IServico\+Prova}}.
 
 \mbox{\Hypertarget{classCntrServicoProva_a98039daeb136e49696d471fdc890e8e1}\label{classCntrServicoProva_a98039daeb136e49696d471fdc890e8e1}} 
 \index{CntrServicoProva@{CntrServicoProva}!cadastrarQuestao@{cadastrarQuestao}}
@@ -57,7 +69,19 @@ Implements \mbox{\hyperlink{classIServicoProva}{IServico\+Prova}}.
 
 
 
-Implements \mbox{\hyperlink{classIServicoProva}{IServico\+Prova}}.
+Solicita serviço de cadastramento de questão ao banco de dados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parametro} & \doxylink{classQuestao}{Questao}\+: questão com os dados preenchidos a ser cadastrada. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool indicando sucesso ou falha no processo. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIServicoProva_a38473399f1ee1724297ee55a6bd0c378}{IServico\+Prova}}.
 
 \mbox{\Hypertarget{classCntrServicoProva_a432bbb793db82f6e7a74dc1a29ad9dbc}\label{classCntrServicoProva_a432bbb793db82f6e7a74dc1a29ad9dbc}} 
 \index{CntrServicoProva@{CntrServicoProva}!cadastrarResposta@{cadastrarResposta}}
@@ -67,7 +91,19 @@ Implements \mbox{\hyperlink{classIServicoProva}{IServico\+Prova}}.
 
 
 
-Implements \mbox{\hyperlink{classIServicoProva}{IServico\+Prova}}.
+Solicita serviço de cadastramento de resposta ao banco de dados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parametro} & \doxylink{classResposta}{Resposta}\+: resposta com os dados preenchidos a ser cadastrada. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool indicando sucesso ou falha no processo. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIServicoProva_aea1c6530c8649d67062e5dd8b8ca8099}{IServico\+Prova}}.
 
 \mbox{\Hypertarget{classCntrServicoProva_a7ba1223ccd41335960b720dcf537c1c0}\label{classCntrServicoProva_a7ba1223ccd41335960b720dcf537c1c0}} 
 \index{CntrServicoProva@{CntrServicoProva}!calcularResultado@{calcularResultado}}
@@ -77,7 +113,21 @@ Implements \mbox{\hyperlink{classIServicoProva}{IServico\+Prova}}.
 
 
 
-Implements \mbox{\hyperlink{classIServicoProva}{IServico\+Prova}}.
+Solicita o resultado da prova respondida por um aluno. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parametro} & \doxylink{classResposta}{Resposta}\+: objeto do tipo \doxylink{classResposta}{Resposta} de um aluno. \\
+\hline
+{\em parametro} & ponteiro do tipo lista de inteiros\+: lista a ser preenchida com os dados do banco. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool indicando sucesso ou falha no processo. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIServicoProva_a54694782ef4a9afbe93d01467b8ef1fc}{IServico\+Prova}}.
 
 \mbox{\Hypertarget{classCntrServicoProva_a3524f50011f8f464a0c6d8adc92de3b4}\label{classCntrServicoProva_a3524f50011f8f464a0c6d8adc92de3b4}} 
 \index{CntrServicoProva@{CntrServicoProva}!consultarProva@{consultarProva}}
@@ -87,7 +137,19 @@ Implements \mbox{\hyperlink{classIServicoProva}{IServico\+Prova}}.
 
 
 
-Implements \mbox{\hyperlink{classIServicoProva}{IServico\+Prova}}.
+Solicita serviço de consulta de prova ao banco de dados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parametro} & ponteiro do tipo \doxylink{classProva}{Prova}\+: prova a ser preenchida com os dados do banco. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool indicando sucesso ou falha no processo. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIServicoProva_a63626b6d8ee6dc3ae7a70c352255c92d}{IServico\+Prova}}.
 
 \mbox{\Hypertarget{classCntrServicoProva_a133737a686375af3de474c69e832ff7b}\label{classCntrServicoProva_a133737a686375af3de474c69e832ff7b}} 
 \index{CntrServicoProva@{CntrServicoProva}!consultarResposta@{consultarResposta}}
@@ -97,7 +159,19 @@ Implements \mbox{\hyperlink{classIServicoProva}{IServico\+Prova}}.
 
 
 
-Implements \mbox{\hyperlink{classIServicoProva}{IServico\+Prova}}.
+Solicita serviço de consulta de resposta ao banco de dados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parametro} & ponteiro do tipo \doxylink{classResposta}{Resposta}\+: resposta a ser preenchida com os dados do banco. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool indicando sucesso ou falha no processo. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIServicoProva_a9e4a253302790615f16a9c7cf43956c6}{IServico\+Prova}}.
 
 \mbox{\Hypertarget{classCntrServicoProva_a23edce01b02d1e19f02d571714ea2aeb}\label{classCntrServicoProva_a23edce01b02d1e19f02d571714ea2aeb}} 
 \index{CntrServicoProva@{CntrServicoProva}!descadastrarProva@{descadastrarProva}}
@@ -107,7 +181,19 @@ Implements \mbox{\hyperlink{classIServicoProva}{IServico\+Prova}}.
 
 
 
-Implements \mbox{\hyperlink{classIServicoProva}{IServico\+Prova}}.
+Solicita serviço de descadastramento de prova ao banco de dados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parametro} & int\+: id da prova a ser descadastrada. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool indicando sucesso ou falha no processo. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIServicoProva_a59383e7667877a9d737c6bb3953914da}{IServico\+Prova}}.
 
 \mbox{\Hypertarget{classCntrServicoProva_a9b074369f4109e5c7aae256e35e98f73}\label{classCntrServicoProva_a9b074369f4109e5c7aae256e35e98f73}} 
 \index{CntrServicoProva@{CntrServicoProva}!descadastrarQuestao@{descadastrarQuestao}}
@@ -117,7 +203,19 @@ Implements \mbox{\hyperlink{classIServicoProva}{IServico\+Prova}}.
 
 
 
-Implements \mbox{\hyperlink{classIServicoProva}{IServico\+Prova}}.
+Solicita serviço de descadastramento de questão ao banco de dados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parametro} & int\+: id da questão a ser descadastrada. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool indicando sucesso ou falha no processo. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIServicoProva_accc2cf827843eb8d563b22eb26e312ba}{IServico\+Prova}}.
 
 \mbox{\Hypertarget{classCntrServicoProva_aa709ea642d0a5546db4a7feaf03c3766}\label{classCntrServicoProva_aa709ea642d0a5546db4a7feaf03c3766}} 
 \index{CntrServicoProva@{CntrServicoProva}!editarProva@{editarProva}}
@@ -127,7 +225,19 @@ Implements \mbox{\hyperlink{classIServicoProva}{IServico\+Prova}}.
 
 
 
-Implements \mbox{\hyperlink{classIServicoProva}{IServico\+Prova}}.
+Solicita serviço de edição de prova ao banco de dados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parametro} & \doxylink{classProva}{Prova}\+: prova com os novos dados preenchidos a ser editada. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool indicando sucesso ou falha no processo. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIServicoProva_ab9c7ee7df71aaf1c55d265dcae8279e4}{IServico\+Prova}}.
 
 \mbox{\Hypertarget{classCntrServicoProva_ac805b0daea0cad2cb0a3acca1084df2c}\label{classCntrServicoProva_ac805b0daea0cad2cb0a3acca1084df2c}} 
 \index{CntrServicoProva@{CntrServicoProva}!getListaQuestoes@{getListaQuestoes}}
@@ -137,7 +247,21 @@ Implements \mbox{\hyperlink{classIServicoProva}{IServico\+Prova}}.
 
 
 
-Implements \mbox{\hyperlink{classIServicoProva}{IServico\+Prova}}.
+Solicita serviço de listagem de questões de uma prova ao banco de dados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parametro} & int\+: id da prova a ser consultada. \\
+\hline
+{\em parametro} & ponteiro do tipo lista de Questões\+: lista a ser preenchida com os dados do banco. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool indicando sucesso ou falha no processo. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIServicoProva_a1a54b82df5e7137d46e825579fe71cdd}{IServico\+Prova}}.
 
 \mbox{\Hypertarget{classCntrServicoProva_ae28d7e187a112e3c19a0a90758028e79}\label{classCntrServicoProva_ae28d7e187a112e3c19a0a90758028e79}} 
 \index{CntrServicoProva@{CntrServicoProva}!getListaRespostaAlunos@{getListaRespostaAlunos}}
@@ -147,7 +271,23 @@ Implements \mbox{\hyperlink{classIServicoProva}{IServico\+Prova}}.
 
 
 
-Implements \mbox{\hyperlink{classIServicoProva}{IServico\+Prova}}.
+Solicita serviço de listagem de respostas a uma prova ao banco de dados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parametro} & \doxylink{classProva}{Prova}\+: objeto \doxylink{classProva}{Prova} a ser consultada. \\
+\hline
+{\em parametro} & ponteiro do tipo lista de Usuarios\+: lista a ser preenchida com os dados do banco. \\
+\hline
+{\em parametro} & ponteiro do tipo lista de inteiros\+: lista a ser preenchida com os dados do banco. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool indicando sucesso ou falha no processo. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIServicoProva_a9eb8544b501414a439d3d96ca65a2950}{IServico\+Prova}}.
 
 \mbox{\Hypertarget{classCntrServicoProva_a2cc3a9a7c42e408ab697c86ac52a899d}\label{classCntrServicoProva_a2cc3a9a7c42e408ab697c86ac52a899d}} 
 \index{CntrServicoProva@{CntrServicoProva}!getQtdQuestoes@{getQtdQuestoes}}
@@ -157,10 +297,24 @@ Implements \mbox{\hyperlink{classIServicoProva}{IServico\+Prova}}.
 
 
 
-Implements \mbox{\hyperlink{classIServicoProva}{IServico\+Prova}}.
+Solicita quantas questões estão cadastradas a uma prova no banco. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parametro} & \doxylink{classProva}{Prova}\+: prova da qual se quer a quantidade de questões . \\
+\hline
+{\em parametro} & ponteiro do tipo inteiro\+: quantidade de questões a ser preenchida com os dados do banco. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool indicando sucesso ou falha no processo. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIServicoProva_aa84a4aaa40e6f18360370fe970d566af}{IServico\+Prova}}.
 
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-/home/miguel/\+Documents/3\+Semestre/\+MP/\+Projeto\+De\+Disciplina/include/Controladoras.\+h\end{DoxyCompactItemize}
+/home/victor\+\_\+andre/\+Documentos/\+Unb/\+MP/\+Projeto\+MP/include/Controladoras.\+h\end{DoxyCompactItemize}

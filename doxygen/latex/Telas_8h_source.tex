@@ -1,207 +1,211 @@
 \hypertarget{Telas_8h_source}{}\doxysection{Telas.\+h}
-\label{Telas_8h_source}\index{/home/miguel/Documents/3Semestre/MP/ProjetoDeDisciplina/include/Telas.h@{/home/miguel/Documents/3Semestre/MP/ProjetoDeDisciplina/include/Telas.h}}
+\label{Telas_8h_source}\index{/home/victor\_andre/Documentos/Unb/MP/ProjetoMP/include/Telas.h@{/home/victor\_andre/Documentos/Unb/MP/ProjetoMP/include/Telas.h}}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef INCLUDE\_TELAS\_H\_}}
-\DoxyCodeLine{2 \textcolor{preprocessor}{\#define INCLUDE\_TELAS\_H\_}}
-\DoxyCodeLine{3 }
-\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}Entidades.h"{}}}
-\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <map>}}
-\DoxyCodeLine{6 }
-\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <string>}}
-\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <vector>}}
-\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <list>}}
-\DoxyCodeLine{10 \textcolor{preprocessor}{\#ifdef WIN32}}
-\DoxyCodeLine{11 \textcolor{preprocessor}{    \#include "{}curses.h"{}}}
-\DoxyCodeLine{12 \textcolor{preprocessor}{\#else}}
-\DoxyCodeLine{13 \textcolor{preprocessor}{    \#include <ncurses.h>}}
-\DoxyCodeLine{14 \textcolor{preprocessor}{\#endif  }\textcolor{comment}{// WIN32}}
-\DoxyCodeLine{15 }
-\DoxyCodeLine{16 \textcolor{keyword}{using }std::vector;}
-\DoxyCodeLine{17 \textcolor{keyword}{using }std::to\_string;}
-\DoxyCodeLine{18 }
-\DoxyCodeLine{19 \textcolor{keyword}{class }\mbox{\hyperlink{classTela}{Tela}} \{}
-\DoxyCodeLine{20  \textcolor{keyword}{public}:}
-\DoxyCodeLine{21     \textcolor{keyword}{const} \textcolor{keywordtype}{int} LIMITE\_CHAR = 40;}
-\DoxyCodeLine{22  \textcolor{keyword}{protected}:}
-\DoxyCodeLine{23     \textcolor{keywordtype}{void} mostrarLinhas(vector<string>, \textcolor{keywordtype}{int}, \textcolor{keywordtype}{int}, \textcolor{keywordtype}{int});}
-\DoxyCodeLine{24     \textcolor{keywordtype}{void} mostrarLinhas(vector<string>, \textcolor{keywordtype}{int}, \textcolor{keywordtype}{int});}
-\DoxyCodeLine{25 \};}
-\DoxyCodeLine{26 }
-\DoxyCodeLine{27 \textcolor{keyword}{template} <\textcolor{keyword}{class} ent\textcolor{keywordtype}{id}ade>}
-\DoxyCodeLine{28 \textcolor{keyword}{class }\mbox{\hyperlink{classTelaApresentacao}{TelaApresentacao}}:\textcolor{keyword}{public} \mbox{\hyperlink{classTela}{Tela}} \{}
-\DoxyCodeLine{29  \textcolor{keyword}{public}:}
-\DoxyCodeLine{30     \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} apresentar(entidade) = 0;}
-\DoxyCodeLine{31 \};}
-\DoxyCodeLine{32 }
-\DoxyCodeLine{33 \textcolor{keyword}{class }\mbox{\hyperlink{classTelaMenu}{TelaMenu}}:\textcolor{keyword}{public} \mbox{\hyperlink{classTela}{Tela}} \{}
-\DoxyCodeLine{34  \textcolor{keyword}{public}:}
-\DoxyCodeLine{35     \textcolor{keywordtype}{string} apresentar(\textcolor{keywordtype}{string}, vector<string>);}
-\DoxyCodeLine{36 \};}
-\DoxyCodeLine{37 }
-\DoxyCodeLine{38 \textcolor{keyword}{class }\mbox{\hyperlink{classTelaFormulario}{TelaFormulario}}:\textcolor{keyword}{public} \mbox{\hyperlink{classTela}{Tela}} \{}
-\DoxyCodeLine{39  \textcolor{keyword}{public}:}
-\DoxyCodeLine{40     \textcolor{keywordtype}{void} apresentar(\textcolor{keywordtype}{string}, vector<string>, \textcolor{keywordtype}{string} *);}
-\DoxyCodeLine{41 \};}
-\DoxyCodeLine{42 }
-\DoxyCodeLine{43 \textcolor{keyword}{class }\mbox{\hyperlink{classTelaMensagem}{TelaMensagem}}:\textcolor{keyword}{public} \mbox{\hyperlink{classTela}{Tela}} \{}
-\DoxyCodeLine{44  \textcolor{keyword}{public}:}
-\DoxyCodeLine{45     \textcolor{keywordtype}{void} apresentar(\textcolor{keywordtype}{string});}
-\DoxyCodeLine{46 \};}
-\DoxyCodeLine{47 }
-\DoxyCodeLine{48 \textcolor{keyword}{class }\mbox{\hyperlink{classTelaMensagens}{TelaMensagens}}:\textcolor{keyword}{public} \mbox{\hyperlink{classTela}{Tela}} \{}
-\DoxyCodeLine{49  \textcolor{keyword}{public}:}
-\DoxyCodeLine{50     \textcolor{keywordtype}{void} apresentar(vector<string>);}
-\DoxyCodeLine{51 \};}
-\DoxyCodeLine{52 }
-\DoxyCodeLine{53 \textcolor{keyword}{class }\mbox{\hyperlink{classTelaConsultaUsuario}{TelaConsultaUsuario}}: \textcolor{keyword}{public} \mbox{\hyperlink{classTela}{Tela}} \{}
-\DoxyCodeLine{54  \textcolor{keyword}{public}:}
-\DoxyCodeLine{55     \textcolor{keywordtype}{char} apresentar(\mbox{\hyperlink{classUsuario}{Usuario}}*);}
-\DoxyCodeLine{56 \};}
-\DoxyCodeLine{57 }
-\DoxyCodeLine{58 \textcolor{keyword}{class }\mbox{\hyperlink{classTelaConfirmacao}{TelaConfirmacao}}:\textcolor{keyword}{public} \mbox{\hyperlink{classTela}{Tela}} \{}
-\DoxyCodeLine{59  \textcolor{keyword}{public}:}
-\DoxyCodeLine{60     \textcolor{keywordtype}{bool} apresentar();}
-\DoxyCodeLine{61 \};}
-\DoxyCodeLine{62 }
-\DoxyCodeLine{63 \textcolor{keyword}{class }\mbox{\hyperlink{classTelaAutenticacao}{TelaAutenticacao}}: \textcolor{keyword}{public} \mbox{\hyperlink{classTela}{Tela}} \{}
-\DoxyCodeLine{64 \textcolor{keyword}{public}:}
-\DoxyCodeLine{65     \textcolor{keywordtype}{void} apresentar(\mbox{\hyperlink{classUsuario}{Usuario}}*);}
-\DoxyCodeLine{66 \};}
-\DoxyCodeLine{67 }
-\DoxyCodeLine{68 \textcolor{keyword}{class }\mbox{\hyperlink{classTelaCadastro}{TelaCadastro}}: \textcolor{keyword}{public} \mbox{\hyperlink{classTela}{Tela}} \{}
-\DoxyCodeLine{69 \textcolor{keyword}{public}:}
-\DoxyCodeLine{70     \textcolor{keywordtype}{void} apresentar(\mbox{\hyperlink{classUsuario}{Usuario}}*);}
-\DoxyCodeLine{71 \};}
-\DoxyCodeLine{72 }
-\DoxyCodeLine{73 \textcolor{keyword}{class }\mbox{\hyperlink{classTelaConsultarTurmas}{TelaConsultarTurmas}}: \textcolor{keyword}{public} \mbox{\hyperlink{classTela}{Tela}} \{}
-\DoxyCodeLine{74  \textcolor{keyword}{public}:}
-\DoxyCodeLine{75     \textcolor{keywordtype}{string} apresentar(list<Turma>, \textcolor{keywordtype}{bool});}
-\DoxyCodeLine{76 \};}
-\DoxyCodeLine{77 }
-\DoxyCodeLine{78 \textcolor{keyword}{class }\mbox{\hyperlink{classTelaOpcoesProvas}{TelaOpcoesProvas}}: \textcolor{keyword}{public} \mbox{\hyperlink{classTela}{Tela}} \{}
-\DoxyCodeLine{79 \textcolor{keyword}{public}:}
-\DoxyCodeLine{80     \textcolor{keywordtype}{int} apresentar(list<Prova>);}
-\DoxyCodeLine{81 \};}
-\DoxyCodeLine{82 }
-\DoxyCodeLine{83 \textcolor{keyword}{class }\mbox{\hyperlink{classTelaMenuProva}{TelaMenuProva}}: \textcolor{keyword}{public} \mbox{\hyperlink{classTela}{Tela}} \{}
-\DoxyCodeLine{84 \textcolor{keyword}{public}:}
-\DoxyCodeLine{85     \textcolor{keywordtype}{char} apresentar(\textcolor{keywordtype}{string});}
-\DoxyCodeLine{86 \};}
-\DoxyCodeLine{87 }
-\DoxyCodeLine{88 \textcolor{keyword}{class }\mbox{\hyperlink{classTelaConsultaProva}{TelaConsultaProva}}: \textcolor{keyword}{public} \mbox{\hyperlink{classTela}{Tela}} \{}
-\DoxyCodeLine{89 \textcolor{keyword}{public}:}
-\DoxyCodeLine{90     \textcolor{keywordtype}{char} apresentar(\mbox{\hyperlink{classProva}{Prova}}*);}
-\DoxyCodeLine{91 \};}
-\DoxyCodeLine{92 }
-\DoxyCodeLine{93 \textcolor{keyword}{class }\mbox{\hyperlink{classTelaCadastroProva}{TelaCadastroProva}}: \textcolor{keyword}{public} \mbox{\hyperlink{classTela}{Tela}} \{}
-\DoxyCodeLine{94 \textcolor{keyword}{public}:}
-\DoxyCodeLine{95     \textcolor{keywordtype}{void} apresentar(\mbox{\hyperlink{classProva}{Prova}}*,\textcolor{keywordtype}{int});}
-\DoxyCodeLine{96 \};}
-\DoxyCodeLine{97 }
-\DoxyCodeLine{98 \textcolor{keyword}{class }\mbox{\hyperlink{classTelaBusca}{TelaBusca}}: \textcolor{keyword}{public} \mbox{\hyperlink{classTela}{Tela}} \{}
-\DoxyCodeLine{99 \textcolor{keyword}{public}:}
-\DoxyCodeLine{100     \textcolor{keywordtype}{string} apresentar(\textcolor{keywordtype}{string});}
-\DoxyCodeLine{101 \};}
-\DoxyCodeLine{102 }
-\DoxyCodeLine{103 \textcolor{keyword}{class }\mbox{\hyperlink{classTelaConsultarProvas}{TelaConsultarProvas}}: \textcolor{keyword}{public} \mbox{\hyperlink{classTela}{Tela}} \{}
-\DoxyCodeLine{104 \textcolor{keyword}{public}:}
-\DoxyCodeLine{105     \textcolor{keywordtype}{string} apresentar(list<Prova>);}
-\DoxyCodeLine{106 \};}
-\DoxyCodeLine{107 }
-\DoxyCodeLine{108 \textcolor{keyword}{class }\mbox{\hyperlink{classTelaInfoProvas}{TelaInfoProvas}}: \textcolor{keyword}{public} \mbox{\hyperlink{classTela}{Tela}} \{}
-\DoxyCodeLine{109  \textcolor{keyword}{public}:}
-\DoxyCodeLine{110     \textcolor{keywordtype}{void} apresentar(list<Prova>);}
-\DoxyCodeLine{111 \};}
-\DoxyCodeLine{112 }
-\DoxyCodeLine{113 \textcolor{keyword}{class }\mbox{\hyperlink{classTelaListarAlunos}{TelaListarAlunos}}: \textcolor{keyword}{public} \mbox{\hyperlink{classTela}{Tela}} \{}
-\DoxyCodeLine{114 \textcolor{keyword}{public}:}
-\DoxyCodeLine{115     \textcolor{keywordtype}{void} apresentar(list<Usuario>);}
-\DoxyCodeLine{116 \};}
-\DoxyCodeLine{117 }
-\DoxyCodeLine{118 \textcolor{keyword}{class }\mbox{\hyperlink{classTelaDefinicaoTipoQuestao}{TelaDefinicaoTipoQuestao}}: \textcolor{keyword}{public} \mbox{\hyperlink{classTela}{Tela}}  \{}
-\DoxyCodeLine{119 \textcolor{keyword}{public}:}
-\DoxyCodeLine{120     \textcolor{keywordtype}{char} apresentar();}
-\DoxyCodeLine{121 \};}
-\DoxyCodeLine{122 }
-\DoxyCodeLine{123 \textcolor{keyword}{class }\mbox{\hyperlink{classTelaCadastroQuestao}{TelaCadastroQuestao}}: \textcolor{keyword}{public} \mbox{\hyperlink{classTela}{Tela}}  \{}
-\DoxyCodeLine{124 \textcolor{keyword}{public}:}
-\DoxyCodeLine{125     \textcolor{keywordtype}{void} apresentarCriarMultiplaEscolha(\mbox{\hyperlink{classQuestao}{Questao}}*);}
-\DoxyCodeLine{126     \textcolor{keywordtype}{void} apresentarCriarCertoErrado(\mbox{\hyperlink{classQuestao}{Questao}}*);}
-\DoxyCodeLine{127     \textcolor{keywordtype}{void} apresentarCriarNumerico(\mbox{\hyperlink{classQuestao}{Questao}}*);}
-\DoxyCodeLine{128 \};}
-\DoxyCodeLine{129 }
-\DoxyCodeLine{130 \textcolor{keyword}{class }\mbox{\hyperlink{classTelaConsultaQuestao}{TelaConsultaQuestao}}: \textcolor{keyword}{public} \mbox{\hyperlink{classTela}{Tela}}  \{}
-\DoxyCodeLine{131 \textcolor{keyword}{public}:}
-\DoxyCodeLine{132     \textcolor{keywordtype}{void} apresentar(list<Questao>);}
-\DoxyCodeLine{133 \};}
-\DoxyCodeLine{134 }
-\DoxyCodeLine{135 \textcolor{keyword}{class }\mbox{\hyperlink{classTelaOpcoesQuestoes}{TelaOpcoesQuestoes}}: \textcolor{keyword}{public} \mbox{\hyperlink{classTela}{Tela}}  \{}
-\DoxyCodeLine{136 \textcolor{keyword}{public}:}
-\DoxyCodeLine{137     \textcolor{keywordtype}{int} apresentar(list<Questao>);}
-\DoxyCodeLine{138 \};}
-\DoxyCodeLine{139 }
-\DoxyCodeLine{140 \textcolor{keyword}{class }\mbox{\hyperlink{classTelaRealizarProva}{TelaRealizarProva}}: \textcolor{keyword}{public} \mbox{\hyperlink{classTela}{Tela}} \{}
-\DoxyCodeLine{141  \textcolor{keyword}{public}:}
-\DoxyCodeLine{142     \mbox{\hyperlink{classResposta}{Resposta}} apresentar(list<Questao>);}
-\DoxyCodeLine{143 \};}
-\DoxyCodeLine{144 }
-\DoxyCodeLine{145 \textcolor{keyword}{class }\mbox{\hyperlink{classTelaEdicaoProva}{TelaEdicaoProva}}: \textcolor{keyword}{public} \mbox{\hyperlink{classTela}{Tela}}  \{}
-\DoxyCodeLine{146 \textcolor{keyword}{public}:}
-\DoxyCodeLine{147     \textcolor{keywordtype}{char} apresentar(\mbox{\hyperlink{classProva}{Prova}}*);}
-\DoxyCodeLine{148 \};}
-\DoxyCodeLine{149 }
-\DoxyCodeLine{150 \textcolor{keyword}{class }\mbox{\hyperlink{classTelaMostrarResultados}{TelaMostrarResultados}}: \textcolor{keyword}{public} \mbox{\hyperlink{classTela}{Tela}} \{}
-\DoxyCodeLine{151  \textcolor{keyword}{public}:}
-\DoxyCodeLine{152     \textcolor{keywordtype}{void} apresentar(list<Questao>, list<int>);}
-\DoxyCodeLine{153 \};}
-\DoxyCodeLine{154 }
-\DoxyCodeLine{155 \textcolor{keyword}{class }\mbox{\hyperlink{classTelaMostrarResultadosProva}{TelaMostrarResultadosProva}}: \textcolor{keyword}{public} \mbox{\hyperlink{classTela}{Tela}} \{}
-\DoxyCodeLine{156  \textcolor{keyword}{public}:}
-\DoxyCodeLine{157     \textcolor{keywordtype}{void} apresentar(\mbox{\hyperlink{classProva}{Prova}}, list<Usuario>, list<int>);}
-\DoxyCodeLine{158 \};}
-\DoxyCodeLine{159 }
-\DoxyCodeLine{160 \textcolor{comment}{/*}}
-\DoxyCodeLine{161 \textcolor{comment}{class TelaMensagem:public TelaApresentacao<string> \{}}
-\DoxyCodeLine{162 \textcolor{comment}{ public:}}
-\DoxyCodeLine{163 \textcolor{comment}{    void apresentar(string);}}
-\DoxyCodeLine{164 \textcolor{comment}{\};}}
-\DoxyCodeLine{165 \textcolor{comment}{}}
-\DoxyCodeLine{166 \textcolor{comment}{class TelaMenuUsuario \{}}
-\DoxyCodeLine{167 \textcolor{comment}{public:}}
-\DoxyCodeLine{168 \textcolor{comment}{    char apresentar();}}
-\DoxyCodeLine{169 \textcolor{comment}{\};}}
-\DoxyCodeLine{170 \textcolor{comment}{}}
-\DoxyCodeLine{171 \textcolor{comment}{class TelaDescadastro \{}}
-\DoxyCodeLine{172 \textcolor{comment}{public:}}
-\DoxyCodeLine{173 \textcolor{comment}{    char apresentar();}}
-\DoxyCodeLine{174 \textcolor{comment}{\};}}
-\DoxyCodeLine{175 \textcolor{comment}{}}
-\DoxyCodeLine{176 \textcolor{comment}{class TelaControle \{}}
-\DoxyCodeLine{177 \textcolor{comment}{public:}}
-\DoxyCodeLine{178 \textcolor{comment}{    char apresentar();}}
-\DoxyCodeLine{179 \textcolor{comment}{\};}}
-\DoxyCodeLine{180 \textcolor{comment}{}}
-\DoxyCodeLine{181 \textcolor{comment}{class TelaMenu \{}}
-\DoxyCodeLine{182 \textcolor{comment}{public:}}
-\DoxyCodeLine{183 \textcolor{comment}{    char apresentar();}}
-\DoxyCodeLine{184 \textcolor{comment}{\};}}
-\DoxyCodeLine{185 \textcolor{comment}{}}
-\DoxyCodeLine{186 \textcolor{comment}{}}
-\DoxyCodeLine{187 \textcolor{comment}{//class TelaCodigo \{}}
-\DoxyCodeLine{188 \textcolor{comment}{//public:}}
-\DoxyCodeLine{189 \textcolor{comment}{//    void apresentar(Codigo*);}}
-\DoxyCodeLine{190 \textcolor{comment}{//\};}}
-\DoxyCodeLine{191 \textcolor{comment}{}}
-\DoxyCodeLine{192 \textcolor{comment}{class TelaConsultarUsuario \{}}
-\DoxyCodeLine{193 \textcolor{comment}{public:}}
-\DoxyCodeLine{194 \textcolor{comment}{    void apresentar(Usuario *);}}
-\DoxyCodeLine{195 \textcolor{comment}{\};}}
-\DoxyCodeLine{196 \textcolor{comment}{}}
-\DoxyCodeLine{197 \textcolor{comment}{*/}}
-\DoxyCodeLine{198 }
-\DoxyCodeLine{199 }
-\DoxyCodeLine{200 }
-\DoxyCodeLine{201 \textcolor{preprocessor}{\#endif  }\textcolor{comment}{// INCLUDE\_TELAS\_H\_}}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ INCLUDE\_TELAS\_H\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ INCLUDE\_TELAS\_H\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <iostream>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <list>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{preprocessor}{\#include\ "{}Entidades.h"{}}}
+\DoxyCodeLine{00011\ }
+\DoxyCodeLine{00012\ \textcolor{preprocessor}{\#ifdef\ WIN32}}
+\DoxyCodeLine{00013\ \textcolor{preprocessor}{\ \ \ \ \#include\ "{}curses.h"{}}}
+\DoxyCodeLine{00014\ \textcolor{preprocessor}{\#else}}
+\DoxyCodeLine{00015\ \textcolor{preprocessor}{\ \ \ \ \#include\ <ncurses.h>}}
+\DoxyCodeLine{00016\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ WIN32}}
+\DoxyCodeLine{00017\ }
+\DoxyCodeLine{00018\ \textcolor{preprocessor}{\#include\ <string.h>}}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{using\ }std::vector;}
+\DoxyCodeLine{00021\ \textcolor{keyword}{using\ }std::to\_string;}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTela}{Tela}}\ \{}
+\DoxyCodeLine{00024\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00025\ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{int}\ LIMITE\_CHAR\ =\ 40;}
+\DoxyCodeLine{00026\ \ \textcolor{keyword}{protected}:}
+\DoxyCodeLine{00027\ \ \ \ \ \textcolor{keywordtype}{void}\ mostrarLinhas(vector<string>,\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int});}
+\DoxyCodeLine{00028\ \ \ \ \ \textcolor{keywordtype}{void}\ mostrarLinhas(vector<string>,\ \textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int});}
+\DoxyCodeLine{00029\ \};}
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00031\ \textcolor{keyword}{template}\ <\textcolor{keyword}{class}\ ent\textcolor{keywordtype}{id}ade>}
+\DoxyCodeLine{00032\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTelaApresentacao}{TelaApresentacao}}:\textcolor{keyword}{public}\ \mbox{\hyperlink{classTela}{Tela}}\ \{}
+\DoxyCodeLine{00033\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00034\ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ apresentar(entidade)\ =\ 0;}
+\DoxyCodeLine{00035\ \};}
+\DoxyCodeLine{00036\ }
+\DoxyCodeLine{00037\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTelaMenu}{TelaMenu}}:\textcolor{keyword}{public}\ \mbox{\hyperlink{classTela}{Tela}}\ \{}
+\DoxyCodeLine{00038\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00039\ \ \ \ \ \textcolor{keywordtype}{string}\ apresentar(\textcolor{keywordtype}{string},\ vector<string>);}
+\DoxyCodeLine{00040\ \};}
+\DoxyCodeLine{00041\ }
+\DoxyCodeLine{00042\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTelaFormulario}{TelaFormulario}}:\textcolor{keyword}{public}\ \mbox{\hyperlink{classTela}{Tela}}\ \{}
+\DoxyCodeLine{00043\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00044\ \ \ \ \ \textcolor{keywordtype}{void}\ apresentar(\textcolor{keywordtype}{string},\ vector<string>,\ \textcolor{keywordtype}{string}\ *);}
+\DoxyCodeLine{00045\ \};}
+\DoxyCodeLine{00046\ }
+\DoxyCodeLine{00047\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTelaMensagem}{TelaMensagem}}:\textcolor{keyword}{public}\ \mbox{\hyperlink{classTela}{Tela}}\ \{}
+\DoxyCodeLine{00048\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00049\ \ \ \ \ \textcolor{keywordtype}{void}\ apresentar(\textcolor{keywordtype}{string});}
+\DoxyCodeLine{00050\ \};}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTelaMensagens}{TelaMensagens}}:\textcolor{keyword}{public}\ \mbox{\hyperlink{classTela}{Tela}}\ \{}
+\DoxyCodeLine{00053\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00054\ \ \ \ \ \textcolor{keywordtype}{void}\ apresentar(vector<string>);}
+\DoxyCodeLine{00055\ \};}
+\DoxyCodeLine{00056\ }
+\DoxyCodeLine{00057\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTelaConsultaUsuario}{TelaConsultaUsuario}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classTela}{Tela}}\ \{}
+\DoxyCodeLine{00058\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00059\ \ \ \ \ \textcolor{keywordtype}{char}\ apresentar(\mbox{\hyperlink{classUsuario}{Usuario}}*);}
+\DoxyCodeLine{00060\ \};}
+\DoxyCodeLine{00061\ }
+\DoxyCodeLine{00062\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTelaConfirmacao}{TelaConfirmacao}}:\textcolor{keyword}{public}\ \mbox{\hyperlink{classTela}{Tela}}\ \{}
+\DoxyCodeLine{00063\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00064\ \ \ \ \ \textcolor{keywordtype}{bool}\ apresentar();}
+\DoxyCodeLine{00065\ \};}
+\DoxyCodeLine{00066\ }
+\DoxyCodeLine{00067\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTelaAutenticacao}{TelaAutenticacao}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classTela}{Tela}}\ \{}
+\DoxyCodeLine{00068\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00069\ \ \ \ \ \textcolor{keywordtype}{void}\ apresentar(\mbox{\hyperlink{classUsuario}{Usuario}}*);}
+\DoxyCodeLine{00070\ \};}
+\DoxyCodeLine{00071\ }
+\DoxyCodeLine{00072\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTelaCadastro}{TelaCadastro}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classTela}{Tela}}\ \{}
+\DoxyCodeLine{00073\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00074\ \ \ \ \ \textcolor{keywordtype}{void}\ apresentar(\mbox{\hyperlink{classUsuario}{Usuario}}*);}
+\DoxyCodeLine{00075\ \};}
+\DoxyCodeLine{00076\ }
+\DoxyCodeLine{00077\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTelaConsultarTurmas}{TelaConsultarTurmas}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classTela}{Tela}}\ \{}
+\DoxyCodeLine{00078\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00079\ \ \ \ \ \textcolor{keywordtype}{string}\ apresentar(list<Turma>,\ \textcolor{keywordtype}{bool});}
+\DoxyCodeLine{00080\ \};}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00082\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTelaOpcoesProvas}{TelaOpcoesProvas}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classTela}{Tela}}\ \{}
+\DoxyCodeLine{00083\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00084\ \ \ \ \ \textcolor{keywordtype}{int}\ apresentar(list<Prova>);}
+\DoxyCodeLine{00085\ \};}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTelaMenuProva}{TelaMenuProva}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classTela}{Tela}}\ \{}
+\DoxyCodeLine{00088\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00089\ \ \ \ \ \textcolor{keywordtype}{char}\ apresentar(\textcolor{keywordtype}{string});}
+\DoxyCodeLine{00090\ \};}
+\DoxyCodeLine{00091\ }
+\DoxyCodeLine{00092\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTelaConsultaProva}{TelaConsultaProva}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classTela}{Tela}}\ \{}
+\DoxyCodeLine{00093\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00094\ \ \ \ \ \textcolor{keywordtype}{char}\ apresentar(\mbox{\hyperlink{classProva}{Prova}}*);}
+\DoxyCodeLine{00095\ \};}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00097\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTelaCadastroProva}{TelaCadastroProva}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classTela}{Tela}}\ \{}
+\DoxyCodeLine{00098\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00099\ \ \ \ \ \textcolor{keywordtype}{void}\ apresentar(\mbox{\hyperlink{classProva}{Prova}}*,\textcolor{keywordtype}{int});}
+\DoxyCodeLine{00100\ \};}
+\DoxyCodeLine{00101\ }
+\DoxyCodeLine{00102\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTelaBusca}{TelaBusca}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classTela}{Tela}}\ \{}
+\DoxyCodeLine{00103\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00104\ \ \ \ \ \textcolor{keywordtype}{string}\ apresentar(\textcolor{keywordtype}{string});}
+\DoxyCodeLine{00105\ \};}
+\DoxyCodeLine{00106\ }
+\DoxyCodeLine{00107\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTelaConsultarProvas}{TelaConsultarProvas}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classTela}{Tela}}\ \{}
+\DoxyCodeLine{00108\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00109\ \ \ \ \ \textcolor{keywordtype}{string}\ apresentar(list<Prova>);}
+\DoxyCodeLine{00110\ \};}
+\DoxyCodeLine{00111\ }
+\DoxyCodeLine{00112\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTelaInfoProvas}{TelaInfoProvas}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classTela}{Tela}}\ \{}
+\DoxyCodeLine{00113\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00114\ \ \ \ \ \textcolor{keywordtype}{void}\ apresentar(list<Prova>);}
+\DoxyCodeLine{00115\ \};}
+\DoxyCodeLine{00116\ }
+\DoxyCodeLine{00117\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTelaListarAlunos}{TelaListarAlunos}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classTela}{Tela}}\ \{}
+\DoxyCodeLine{00118\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00119\ \ \ \ \ \textcolor{keywordtype}{void}\ apresentar(list<Usuario>);}
+\DoxyCodeLine{00120\ \};}
+\DoxyCodeLine{00121\ }
+\DoxyCodeLine{00122\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTelaDefinicaoTipoQuestao}{TelaDefinicaoTipoQuestao}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classTela}{Tela}}\ \ \{}
+\DoxyCodeLine{00123\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00124\ \ \ \ \ \textcolor{keywordtype}{char}\ apresentar();}
+\DoxyCodeLine{00125\ \};}
+\DoxyCodeLine{00126\ }
+\DoxyCodeLine{00127\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTelaCadastroQuestao}{TelaCadastroQuestao}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classTela}{Tela}}\ \ \{}
+\DoxyCodeLine{00128\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00129\ \ \ \ \ \textcolor{keywordtype}{void}\ apresentarCriarMultiplaEscolha(\mbox{\hyperlink{classQuestao}{Questao}}*);}
+\DoxyCodeLine{00130\ \ \ \ \ \textcolor{keywordtype}{void}\ apresentarCriarCertoErrado(\mbox{\hyperlink{classQuestao}{Questao}}*);}
+\DoxyCodeLine{00131\ \ \ \ \ \textcolor{keywordtype}{void}\ apresentarCriarNumerico(\mbox{\hyperlink{classQuestao}{Questao}}*);}
+\DoxyCodeLine{00132\ \};}
+\DoxyCodeLine{00133\ }
+\DoxyCodeLine{00134\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTelaConsultaQuestao}{TelaConsultaQuestao}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classTela}{Tela}}\ \ \{}
+\DoxyCodeLine{00135\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{keywordtype}{void}\ apresentar(list<Questao>);}
+\DoxyCodeLine{00137\ \};}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTelaOpcoesQuestoes}{TelaOpcoesQuestoes}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classTela}{Tela}}\ \ \{}
+\DoxyCodeLine{00140\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{keywordtype}{int}\ apresentar(list<Questao>);}
+\DoxyCodeLine{00142\ \};}
+\DoxyCodeLine{00143\ }
+\DoxyCodeLine{00144\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTelaRealizarProva}{TelaRealizarProva}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classTela}{Tela}}\ \{}
+\DoxyCodeLine{00145\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00146\ \ \ \ \ \mbox{\hyperlink{classResposta}{Resposta}}\ apresentar(list<Questao>);}
+\DoxyCodeLine{00147\ \};}
+\DoxyCodeLine{00148\ }
+\DoxyCodeLine{00149\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTelaEdicaoProva}{TelaEdicaoProva}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classTela}{Tela}}\ \ \{}
+\DoxyCodeLine{00150\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00151\ \ \ \ \ \textcolor{keywordtype}{char}\ apresentar(\mbox{\hyperlink{classProva}{Prova}}*);}
+\DoxyCodeLine{00152\ \};}
+\DoxyCodeLine{00153\ }
+\DoxyCodeLine{00154\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTelaMostrarResultados}{TelaMostrarResultados}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classTela}{Tela}}\ \{}
+\DoxyCodeLine{00155\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00156\ \ \ \ \ \textcolor{keywordtype}{void}\ apresentar(list<Questao>,\ list<int>);}
+\DoxyCodeLine{00157\ \};}
+\DoxyCodeLine{00158\ }
+\DoxyCodeLine{00159\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classTelaMostrarResultadosProva}{TelaMostrarResultadosProva}}:\ \textcolor{keyword}{public}\ \mbox{\hyperlink{classTela}{Tela}}\ \{}
+\DoxyCodeLine{00160\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00161\ \ \ \ \ \textcolor{keywordtype}{void}\ apresentar(\mbox{\hyperlink{classProva}{Prova}},\ list<Usuario>,\ list<int>);}
+\DoxyCodeLine{00162\ \};}
+\DoxyCodeLine{00163\ }
+\DoxyCodeLine{00164\ \textcolor{comment}{/*}}
+\DoxyCodeLine{00165\ \textcolor{comment}{class\ TelaMensagem:public\ TelaApresentacao<string>\ \{}}
+\DoxyCodeLine{00166\ \textcolor{comment}{\ public:}}
+\DoxyCodeLine{00167\ \textcolor{comment}{\ \ \ \ void\ apresentar(string);}}
+\DoxyCodeLine{00168\ \textcolor{comment}{\};}}
+\DoxyCodeLine{00169\ \textcolor{comment}{}}
+\DoxyCodeLine{00170\ \textcolor{comment}{class\ TelaMenuUsuario\ \{}}
+\DoxyCodeLine{00171\ \textcolor{comment}{public:}}
+\DoxyCodeLine{00172\ \textcolor{comment}{\ \ \ \ char\ apresentar();}}
+\DoxyCodeLine{00173\ \textcolor{comment}{\};}}
+\DoxyCodeLine{00174\ \textcolor{comment}{}}
+\DoxyCodeLine{00175\ \textcolor{comment}{class\ TelaDescadastro\ \{}}
+\DoxyCodeLine{00176\ \textcolor{comment}{public:}}
+\DoxyCodeLine{00177\ \textcolor{comment}{\ \ \ \ char\ apresentar();}}
+\DoxyCodeLine{00178\ \textcolor{comment}{\};}}
+\DoxyCodeLine{00179\ \textcolor{comment}{}}
+\DoxyCodeLine{00180\ \textcolor{comment}{class\ TelaControle\ \{}}
+\DoxyCodeLine{00181\ \textcolor{comment}{public:}}
+\DoxyCodeLine{00182\ \textcolor{comment}{\ \ \ \ char\ apresentar();}}
+\DoxyCodeLine{00183\ \textcolor{comment}{\};}}
+\DoxyCodeLine{00184\ \textcolor{comment}{}}
+\DoxyCodeLine{00185\ \textcolor{comment}{class\ TelaMenu\ \{}}
+\DoxyCodeLine{00186\ \textcolor{comment}{public:}}
+\DoxyCodeLine{00187\ \textcolor{comment}{\ \ \ \ char\ apresentar();}}
+\DoxyCodeLine{00188\ \textcolor{comment}{\};}}
+\DoxyCodeLine{00189\ \textcolor{comment}{}}
+\DoxyCodeLine{00190\ \textcolor{comment}{}}
+\DoxyCodeLine{00191\ \textcolor{comment}{//class\ TelaCodigo\ \{}}
+\DoxyCodeLine{00192\ \textcolor{comment}{//public:}}
+\DoxyCodeLine{00193\ \textcolor{comment}{//\ \ \ \ void\ apresentar(Codigo*);}}
+\DoxyCodeLine{00194\ \textcolor{comment}{//\};}}
+\DoxyCodeLine{00195\ \textcolor{comment}{}}
+\DoxyCodeLine{00196\ \textcolor{comment}{class\ TelaConsultarUsuario\ \{}}
+\DoxyCodeLine{00197\ \textcolor{comment}{public:}}
+\DoxyCodeLine{00198\ \textcolor{comment}{\ \ \ \ void\ apresentar(Usuario\ *);}}
+\DoxyCodeLine{00199\ \textcolor{comment}{\};}}
+\DoxyCodeLine{00200\ \textcolor{comment}{}}
+\DoxyCodeLine{00201\ \textcolor{comment}{*/}}
+\DoxyCodeLine{00202\ }
+\DoxyCodeLine{00203\ }
+\DoxyCodeLine{00204\ }
+\DoxyCodeLine{00205\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ INCLUDE\_TELAS\_H\_}}
 
 \end{DoxyCode}

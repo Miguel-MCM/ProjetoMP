@@ -1,150 +1,143 @@
 \hypertarget{Interfaces_8h_source}{}\doxysection{Interfaces.\+h}
-\label{Interfaces_8h_source}\index{/home/miguel/Documents/3Semestre/MP/ProjetoDeDisciplina/include/Interfaces.h@{/home/miguel/Documents/3Semestre/MP/ProjetoDeDisciplina/include/Interfaces.h}}
+\label{Interfaces_8h_source}\index{/home/victor\_andre/Documentos/Unb/MP/ProjetoMP/include/Interfaces.h@{/home/victor\_andre/Documentos/Unb/MP/ProjetoMP/include/Interfaces.h}}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{1 \textcolor{preprocessor}{\#ifndef INCLUDE\_INTERFACES\_H\_}}
-\DoxyCodeLine{2 \textcolor{preprocessor}{\#define INCLUDE\_INTERFACES\_H\_}}
-\DoxyCodeLine{3 }
-\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}Entidades.h"{}}}
-\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <map>}}
-\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <string>}}
-\DoxyCodeLine{7 \textcolor{preprocessor}{\#include <list>}}
-\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <vector>}}
-\DoxyCodeLine{9 }
-\DoxyCodeLine{10 \textcolor{keyword}{using }std::string;}
-\DoxyCodeLine{11 \textcolor{keyword}{using }std::list;}
-\DoxyCodeLine{12 \textcolor{keyword}{using }std::vector;}
-\DoxyCodeLine{13 }
-\DoxyCodeLine{14 \textcolor{keyword}{class }\mbox{\hyperlink{classIApresentacaoAutenticacao}{IApresentacaoAutenticacao}};}
-\DoxyCodeLine{15 \textcolor{keyword}{class }\mbox{\hyperlink{classIApresentacaoUsuario}{IApresentacaoUsuario}};}
-\DoxyCodeLine{16 \textcolor{keyword}{class }\mbox{\hyperlink{classIApresentacaoAdmin}{IApresentacaoAdmin}};}
-\DoxyCodeLine{17 \textcolor{keyword}{class }\mbox{\hyperlink{classIApresentacaoTurma}{IApresentacaoTurma}};}
-\DoxyCodeLine{18 \textcolor{keyword}{class }\mbox{\hyperlink{classIApresentacaoProva}{IApresentacaoProva}};}
-\DoxyCodeLine{19 }
-\DoxyCodeLine{20 \textcolor{keyword}{class }\mbox{\hyperlink{classIServicoAutenticacao}{IServicoAutenticacao}};}
-\DoxyCodeLine{21 \textcolor{keyword}{class }\mbox{\hyperlink{classIServicoUsuario}{IServicoUsuario}};}
-\DoxyCodeLine{22 \textcolor{keyword}{class }\mbox{\hyperlink{classIServicoAdmin}{IServicoAdmin}};}
-\DoxyCodeLine{23 \textcolor{keyword}{class }\mbox{\hyperlink{classIServicoTurma}{IServicoTurma}};}
-\DoxyCodeLine{24 \textcolor{keyword}{class }\mbox{\hyperlink{classIServicoProva}{IServicoProva}};}
-\DoxyCodeLine{25 \textcolor{keyword}{class }IServicoQuestao;}
-\DoxyCodeLine{26 }
-\DoxyCodeLine{28 \textcolor{keyword}{class }\mbox{\hyperlink{classIApresentacaoAutenticacao}{IApresentacaoAutenticacao}} \{}
-\DoxyCodeLine{29  \textcolor{keyword}{public}:}
-\DoxyCodeLine{33         \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classIApresentacaoAutenticacao_a618cecade4bcb4fd6f0590bb74ac28e3}{autenticar}}(\mbox{\hyperlink{classUsuario}{Usuario}}*) = 0;}
-\DoxyCodeLine{36         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classIApresentacaoAutenticacao_a285838591d3db83e00ab377169d49787}{setCntrServicoAutenticacao}}(\mbox{\hyperlink{classIServicoAutenticacao}{IServicoAutenticacao}}*) = 0;}
-\DoxyCodeLine{38         \textcolor{keyword}{virtual} \mbox{\hyperlink{classIApresentacaoAutenticacao_abf1863be8e6fa8b487e8e4c5f978aa59}{\string~IApresentacaoAutenticacao}}()\{\}}
-\DoxyCodeLine{39 \};}
-\DoxyCodeLine{40 }
-\DoxyCodeLine{42 \textcolor{keyword}{class }\mbox{\hyperlink{classIApresentacaoUsuario}{IApresentacaoUsuario}} \{}
-\DoxyCodeLine{43  \textcolor{keyword}{public}:}
-\DoxyCodeLine{46         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classIApresentacaoUsuario_a2779e6f6a16b13c4fc449cb3116c501f}{executar}}(\mbox{\hyperlink{classUsuario}{Usuario}}*) = 0;}
-\DoxyCodeLine{48         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classIApresentacaoUsuario_afa952785f0a9e44b1b5cd925df4791d9}{cadastrar}}() = 0;}
-\DoxyCodeLine{51         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classIApresentacaoUsuario_a3e290b1bd61cf4f5e79ab4849b46ca75}{setCntrServicoUsuario}}(\mbox{\hyperlink{classIServicoUsuario}{IServicoUsuario}}*) = 0;}
-\DoxyCodeLine{54         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classIApresentacaoUsuario_a9bbe4e7a9583ffdd1ed8c523e7115546}{setCntrServicoTurma}}(\mbox{\hyperlink{classIServicoTurma}{IServicoTurma}}*) = 0;}
-\DoxyCodeLine{55         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} setCntrApresentacaoTurma(\mbox{\hyperlink{classIApresentacaoTurma}{IApresentacaoTurma}}*) = 0;}
-\DoxyCodeLine{56         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} setCntrServicoProva(\mbox{\hyperlink{classIServicoProva}{IServicoProva}}*) = 0;}
-\DoxyCodeLine{57         }
-\DoxyCodeLine{60         \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} \mbox{\hyperlink{classIApresentacaoUsuario_a257da9889854847f2f8e43f8f79c7db4}{getStatusCadastro}}() = 0;}
-\DoxyCodeLine{63         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classIApresentacaoUsuario_a04abd44db1f80ab1f9f6d71bd8b4e9dc}{setStatusCadastro}}(\textcolor{keywordtype}{bool}) = 0;}
-\DoxyCodeLine{64 }
-\DoxyCodeLine{66         \textcolor{keyword}{virtual} \mbox{\hyperlink{classIApresentacaoUsuario_aa224b8ee9930600a828f3c0feb673c1f}{\string~IApresentacaoUsuario}}()\{\}}
-\DoxyCodeLine{67 \};}
-\DoxyCodeLine{68 }
-\DoxyCodeLine{70 \textcolor{keyword}{class }\mbox{\hyperlink{classIApresentacaoAdmin}{IApresentacaoAdmin}} \{}
-\DoxyCodeLine{71  \textcolor{keyword}{public}:}
-\DoxyCodeLine{74         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classIApresentacaoAdmin_a1abe24923822cb1b48fd37c81ef647b3}{executar}}(\mbox{\hyperlink{classUsuario}{Usuario}}*) = 0;}
-\DoxyCodeLine{77         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classIApresentacaoAdmin_a8e0e348ffa79f3ce04f1487e493c95b1}{setCntrServicoAdmin}}(\mbox{\hyperlink{classIServicoAdmin}{IServicoAdmin}}*) = 0;}
-\DoxyCodeLine{80         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classIApresentacaoAdmin_a460f82d5760129bf317cda0b4963df1a}{setCntrServicoUsuario}}(\mbox{\hyperlink{classIServicoUsuario}{IServicoUsuario}}*) = 0;}
-\DoxyCodeLine{83         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classIApresentacaoAdmin_ad37481f3e1b19f1d892474f66e38a98d}{setCntrServicoTurma}}(\mbox{\hyperlink{classIServicoTurma}{IServicoTurma}}*) = 0;}
-\DoxyCodeLine{86         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classIApresentacaoAdmin_ae27a5e7ce825d7c2405352b65e68db45}{setCntrServicoProva}}(\mbox{\hyperlink{classIServicoProva}{IServicoProva}}*) = 0;}
-\DoxyCodeLine{89         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classIApresentacaoAdmin_acc99c42dfc27e368c41335f9b68a419b}{setCntrApresentacaoUsuario}}(\mbox{\hyperlink{classIApresentacaoUsuario}{IApresentacaoUsuario}}*) = 0;}
-\DoxyCodeLine{92         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classIApresentacaoAdmin_a2f07afb334d81f4a475bed8d241498fd}{setCntrApresentacaoProva}}(\mbox{\hyperlink{classIApresentacaoProva}{IApresentacaoProva}}*) = 0;}
-\DoxyCodeLine{95         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classIApresentacaoAdmin_a0590cbbcef97cebcde34346c0cfc7ffb}{setCntrApresentacaoTurma}}(\mbox{\hyperlink{classIApresentacaoTurma}{IApresentacaoTurma}}*) = 0;}
-\DoxyCodeLine{96 }
-\DoxyCodeLine{98         \textcolor{keyword}{virtual} \mbox{\hyperlink{classIApresentacaoAdmin_a4a7e96678708ee7e0347a42aa0edef89}{\string~IApresentacaoAdmin}}() \{\}}
-\DoxyCodeLine{99 \};}
-\DoxyCodeLine{100 }
-\DoxyCodeLine{102 \textcolor{keyword}{class }\mbox{\hyperlink{classIApresentacaoTurma}{IApresentacaoTurma}} \{}
-\DoxyCodeLine{103  \textcolor{keyword}{public}:}
-\DoxyCodeLine{106         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classIApresentacaoTurma_a87eb418cdbe556245b25237729037e42}{executar}}(\mbox{\hyperlink{classUsuario}{Usuario}}*) = 0;}
-\DoxyCodeLine{109         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classIApresentacaoTurma_aa33f45d912ff95681111b04220238405}{editar}}(\mbox{\hyperlink{classTurma}{Turma}}*) = 0;}
-\DoxyCodeLine{112         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classIApresentacaoTurma_aad156c42f8405311310e461d691ba4ca}{setCntrServicoTurma}}(\mbox{\hyperlink{classIServicoTurma}{IServicoTurma}}*) = 0;}
-\DoxyCodeLine{115         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classIApresentacaoTurma_a8a7f3e2f64787c4481a5901c8637b120}{setCntrServicoUsuario}}(\mbox{\hyperlink{classIServicoUsuario}{IServicoUsuario}}*) = 0;}
-\DoxyCodeLine{118         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classIApresentacaoTurma_a9c9ab67e0ca5bd459f7c60643d009a21}{setCntrApresentacaoProva}}(\mbox{\hyperlink{classIApresentacaoProva}{IApresentacaoProva}}*) = 0;}
-\DoxyCodeLine{120         \textcolor{keyword}{virtual} \mbox{\hyperlink{classIApresentacaoTurma_aac00d9af2025dffc9440f49a4b872135}{\string~IApresentacaoTurma}}() \{\}}
-\DoxyCodeLine{121 \};}
-\DoxyCodeLine{122 }
-\DoxyCodeLine{124 \textcolor{keyword}{class }\mbox{\hyperlink{classIApresentacaoProva}{IApresentacaoProva}} \{}
-\DoxyCodeLine{125  \textcolor{keyword}{public}:}
-\DoxyCodeLine{129         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classIApresentacaoProva_a07d7204ca7455878d8e1890113db92fd}{executar}}(\mbox{\hyperlink{classTurma}{Turma}}*, \mbox{\hyperlink{classUsuario}{Usuario}}) = 0;}
-\DoxyCodeLine{132         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classIApresentacaoProva_aec8cd36992f5f7beb9c153beb36d416e}{gerenciar}}(\mbox{\hyperlink{classProva}{Prova}}*) = 0;}
-\DoxyCodeLine{135         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classIApresentacaoProva_a15a560f5199d0240a0d317aed39c98bd}{editar}}(\mbox{\hyperlink{classProva}{Prova}}*) = 0;}
-\DoxyCodeLine{138         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classIApresentacaoProva_a7cb9d7fb91f4b9e03d5b2e3293aed656}{setCntrServicoProva}}(\mbox{\hyperlink{classIServicoProva}{IServicoProva}}*) = 0;}
-\DoxyCodeLine{141         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} \mbox{\hyperlink{classIApresentacaoProva_ac2a94cb4fb3c7b69165370b48838f754}{setCntrServicoTurma}}(\mbox{\hyperlink{classIServicoTurma}{IServicoTurma}}*) = 0;}
-\DoxyCodeLine{142 }
-\DoxyCodeLine{144         \textcolor{keyword}{virtual} \mbox{\hyperlink{classIApresentacaoProva_a7a643c7698627353b8a3730cabeef60d}{\string~IApresentacaoProva}}() \{\}}
-\DoxyCodeLine{145 \};}
-\DoxyCodeLine{146 }
-\DoxyCodeLine{147 \textcolor{keyword}{class }\mbox{\hyperlink{classIServicoAutenticacao}{IServicoAutenticacao}} \{}
-\DoxyCodeLine{148  \textcolor{keyword}{public}:}
-\DoxyCodeLine{149         \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} autenticar(\mbox{\hyperlink{classUsuario}{Usuario}}*) = 0;}
-\DoxyCodeLine{150         \textcolor{keyword}{virtual} \mbox{\hyperlink{classIServicoAutenticacao}{\string~IServicoAutenticacao}}() \{\}}
-\DoxyCodeLine{151 \};}
-\DoxyCodeLine{152 }
-\DoxyCodeLine{153 \textcolor{keyword}{class }\mbox{\hyperlink{classIServicoUsuario}{IServicoUsuario}} \{}
-\DoxyCodeLine{154  \textcolor{keyword}{public}:}
-\DoxyCodeLine{155         \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} cadastrar(\mbox{\hyperlink{classUsuario}{Usuario}}) = 0;}
-\DoxyCodeLine{156         \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} descadastrar(\textcolor{keywordtype}{int}, \textcolor{keywordtype}{string}) = 0;}
-\DoxyCodeLine{157         \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} editar(\mbox{\hyperlink{classUsuario}{Usuario}}) = 0;}
-\DoxyCodeLine{158         \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} consultar(\mbox{\hyperlink{classUsuario}{Usuario}}*) = 0;}
-\DoxyCodeLine{159         \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} listarTurmasAluno(\textcolor{keywordtype}{int}, list<Turma>*) = 0; \textcolor{comment}{// id aluno}}
-\DoxyCodeLine{160         \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} listarTurmasProfessor(\textcolor{keywordtype}{int}, list<Turma>*) = 0; \textcolor{comment}{// id professor}}
-\DoxyCodeLine{161         \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} consultarEmail(\mbox{\hyperlink{classUsuario}{Usuario}} *usuario) = 0;}
-\DoxyCodeLine{162         \textcolor{keyword}{virtual} \mbox{\hyperlink{classIServicoUsuario}{\string~IServicoUsuario}}() \{\}}
-\DoxyCodeLine{163 \};}
-\DoxyCodeLine{164 }
-\DoxyCodeLine{165 \textcolor{keyword}{class }\mbox{\hyperlink{classIServicoProva}{IServicoProva}} \{}
-\DoxyCodeLine{166  \textcolor{keyword}{public}:}
-\DoxyCodeLine{167         \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} cadastrarProva(\mbox{\hyperlink{classProva}{Prova}}) = 0;}
-\DoxyCodeLine{168         \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} descadastrarProva(\textcolor{keywordtype}{int}) = 0;}
-\DoxyCodeLine{169         \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} editarProva(\mbox{\hyperlink{classProva}{Prova}}) = 0;}
-\DoxyCodeLine{170         \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} consultarProva(\mbox{\hyperlink{classProva}{Prova}}*) = 0;}
-\DoxyCodeLine{171         \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} consultarResposta(\mbox{\hyperlink{classResposta}{Resposta}}*) = 0;}
-\DoxyCodeLine{172         \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} cadastrarResposta(\mbox{\hyperlink{classResposta}{Resposta}}) = 0;}
-\DoxyCodeLine{173         \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} getQtdQuestoes(\mbox{\hyperlink{classProva}{Prova}}, \textcolor{keywordtype}{int}*) = 0;}
-\DoxyCodeLine{174 }
-\DoxyCodeLine{175         \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} cadastrarQuestao(\mbox{\hyperlink{classQuestao}{Questao}}) = 0;}
-\DoxyCodeLine{176         \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} descadastrarQuestao(\textcolor{keywordtype}{int}) = 0;}
-\DoxyCodeLine{177         \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} getListaQuestoes(\textcolor{keywordtype}{int}, list<Questao>*) = 0;}
-\DoxyCodeLine{178         \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} calcularResultado(\mbox{\hyperlink{classResposta}{Resposta}}, list<int> *) = 0;}
-\DoxyCodeLine{179         \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} getListaRespostaAlunos(\mbox{\hyperlink{classProva}{Prova}}, list<Usuario>*, list<int>*) = 0;}
-\DoxyCodeLine{180 }
-\DoxyCodeLine{181 }
-\DoxyCodeLine{182         \textcolor{keyword}{virtual} \mbox{\hyperlink{classIServicoProva}{\string~IServicoProva}}() \{\}}
-\DoxyCodeLine{183 \};}
-\DoxyCodeLine{184 }
-\DoxyCodeLine{185 \textcolor{keyword}{class }\mbox{\hyperlink{classIServicoTurma}{IServicoTurma}} \{}
-\DoxyCodeLine{186  \textcolor{keyword}{public}:}
-\DoxyCodeLine{187         \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} cadastrar(\mbox{\hyperlink{classTurma}{Turma}}) = 0;}
-\DoxyCodeLine{188         \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} entrar(\textcolor{keywordtype}{int}, \textcolor{keywordtype}{int}) = 0; \textcolor{comment}{// id do usuario, id da turma}}
-\DoxyCodeLine{189         \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} descadastrar(\textcolor{keywordtype}{int}) = 0;}
-\DoxyCodeLine{190 }
-\DoxyCodeLine{191         \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} consultar(\mbox{\hyperlink{classTurma}{Turma}}*) = 0;}
-\DoxyCodeLine{192         \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} editar(\mbox{\hyperlink{classTurma}{Turma}}*) = 0;}
-\DoxyCodeLine{193 }
-\DoxyCodeLine{194         \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} listarTurmas(list<Turma>*) = 0;}
-\DoxyCodeLine{195         \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} listarProvas(\textcolor{keywordtype}{int}, list<Prova>*) = 0; \textcolor{comment}{// id da turma, lista de provas}}
-\DoxyCodeLine{196         \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} listarAlunos(\textcolor{keywordtype}{int}, list<Usuario>*) = 0; \textcolor{comment}{// id da turma, lista de alunos}}
-\DoxyCodeLine{197 }
-\DoxyCodeLine{198         \textcolor{keyword}{virtual} \mbox{\hyperlink{classIServicoTurma}{\string~IServicoTurma}}() \{\}}
-\DoxyCodeLine{199 \};}
-\DoxyCodeLine{200 }
-\DoxyCodeLine{201 \textcolor{keyword}{class }\mbox{\hyperlink{classIServicoAdmin}{IServicoAdmin}} \{}
-\DoxyCodeLine{202  \textcolor{keyword}{public}:}
-\DoxyCodeLine{203     \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} estatisticas(vector<string>*) = 0;}
-\DoxyCodeLine{204 }
-\DoxyCodeLine{205     \textcolor{keyword}{virtual} \mbox{\hyperlink{classIServicoAdmin}{\string~IServicoAdmin}}() \{\}}
-\DoxyCodeLine{206 \};}
-\DoxyCodeLine{207 \textcolor{preprocessor}{\#endif  }\textcolor{comment}{//  INCLUDE\_INTERFACES\_H\_}}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#ifndef\ INCLUDE\_INTERFACES\_H\_}}
+\DoxyCodeLine{00002\ \textcolor{preprocessor}{\#define\ INCLUDE\_INTERFACES\_H\_}}
+\DoxyCodeLine{00003\ }
+\DoxyCodeLine{00004\ \textcolor{preprocessor}{\#include\ "{}Entidades.h"{}}}
+\DoxyCodeLine{00005\ \textcolor{preprocessor}{\#include\ <map>}}
+\DoxyCodeLine{00006\ \textcolor{preprocessor}{\#include\ <string>}}
+\DoxyCodeLine{00007\ \textcolor{preprocessor}{\#include\ <list>}}
+\DoxyCodeLine{00008\ \textcolor{preprocessor}{\#include\ <vector>}}
+\DoxyCodeLine{00009\ }
+\DoxyCodeLine{00010\ \textcolor{keyword}{using\ }std::string;}
+\DoxyCodeLine{00011\ \textcolor{keyword}{using\ }std::list;}
+\DoxyCodeLine{00012\ \textcolor{keyword}{using\ }std::vector;}
+\DoxyCodeLine{00013\ }
+\DoxyCodeLine{00014\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classIApresentacaoAutenticacao}{IApresentacaoAutenticacao}};}
+\DoxyCodeLine{00015\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classIApresentacaoUsuario}{IApresentacaoUsuario}};}
+\DoxyCodeLine{00016\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classIApresentacaoAdmin}{IApresentacaoAdmin}};}
+\DoxyCodeLine{00017\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classIApresentacaoTurma}{IApresentacaoTurma}};}
+\DoxyCodeLine{00018\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classIApresentacaoProva}{IApresentacaoProva}};}
+\DoxyCodeLine{00019\ }
+\DoxyCodeLine{00020\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classIServicoAutenticacao}{IServicoAutenticacao}};}
+\DoxyCodeLine{00021\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classIServicoUsuario}{IServicoUsuario}};}
+\DoxyCodeLine{00022\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classIServicoAdmin}{IServicoAdmin}};}
+\DoxyCodeLine{00023\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classIServicoTurma}{IServicoTurma}};}
+\DoxyCodeLine{00024\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classIServicoProva}{IServicoProva}};}
+\DoxyCodeLine{00025\ \textcolor{keyword}{class\ }IServicoQuestao;}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00028\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classIApresentacaoAutenticacao}{IApresentacaoAutenticacao}}\ \{}
+\DoxyCodeLine{00029\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00033\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classIApresentacaoAutenticacao_a618cecade4bcb4fd6f0590bb74ac28e3}{autenticar}}(\mbox{\hyperlink{classUsuario}{Usuario}}*)\ =\ 0;}
+\DoxyCodeLine{00036\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIApresentacaoAutenticacao_a285838591d3db83e00ab377169d49787}{setCntrServicoAutenticacao}}(\mbox{\hyperlink{classIServicoAutenticacao}{IServicoAutenticacao}}*)\ =\ 0;}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classIApresentacaoAutenticacao_abf1863be8e6fa8b487e8e4c5f978aa59}{\string~IApresentacaoAutenticacao}}()\{\}}
+\DoxyCodeLine{00039\ \};}
+\DoxyCodeLine{00040\ }
+\DoxyCodeLine{00042\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classIApresentacaoUsuario}{IApresentacaoUsuario}}\ \{}
+\DoxyCodeLine{00043\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIApresentacaoUsuario_a2779e6f6a16b13c4fc449cb3116c501f}{executar}}(\mbox{\hyperlink{classUsuario}{Usuario}}*)\ =\ 0;}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIApresentacaoUsuario_afa952785f0a9e44b1b5cd925df4791d9}{cadastrar}}()\ =\ 0;}
+\DoxyCodeLine{00051\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIApresentacaoUsuario_a3e290b1bd61cf4f5e79ab4849b46ca75}{setCntrServicoUsuario}}(\mbox{\hyperlink{classIServicoUsuario}{IServicoUsuario}}*)\ =\ 0;}
+\DoxyCodeLine{00054\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIApresentacaoUsuario_a9bbe4e7a9583ffdd1ed8c523e7115546}{setCntrServicoTurma}}(\mbox{\hyperlink{classIServicoTurma}{IServicoTurma}}*)\ =\ 0;}
+\DoxyCodeLine{00055\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ setCntrApresentacaoTurma(\mbox{\hyperlink{classIApresentacaoTurma}{IApresentacaoTurma}}*)\ =\ 0;}
+\DoxyCodeLine{00056\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ setCntrServicoProva(\mbox{\hyperlink{classIServicoProva}{IServicoProva}}*)\ =\ 0;}
+\DoxyCodeLine{00057\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classIApresentacaoUsuario_a257da9889854847f2f8e43f8f79c7db4}{getStatusCadastro}}()\ =\ 0;}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIApresentacaoUsuario_a04abd44db1f80ab1f9f6d71bd8b4e9dc}{setStatusCadastro}}(\textcolor{keywordtype}{bool})\ =\ 0;}
+\DoxyCodeLine{00064\ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classIApresentacaoUsuario_aa224b8ee9930600a828f3c0feb673c1f}{\string~IApresentacaoUsuario}}()\{\}}
+\DoxyCodeLine{00067\ \};}
+\DoxyCodeLine{00068\ }
+\DoxyCodeLine{00070\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classIApresentacaoAdmin}{IApresentacaoAdmin}}\ \{}
+\DoxyCodeLine{00071\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIApresentacaoAdmin_a1abe24923822cb1b48fd37c81ef647b3}{executar}}(\mbox{\hyperlink{classUsuario}{Usuario}}*)\ =\ 0;}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIApresentacaoAdmin_a8e0e348ffa79f3ce04f1487e493c95b1}{setCntrServicoAdmin}}(\mbox{\hyperlink{classIServicoAdmin}{IServicoAdmin}}*)\ =\ 0;}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIApresentacaoAdmin_a460f82d5760129bf317cda0b4963df1a}{setCntrServicoUsuario}}(\mbox{\hyperlink{classIServicoUsuario}{IServicoUsuario}}*)\ =\ 0;}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIApresentacaoAdmin_ad37481f3e1b19f1d892474f66e38a98d}{setCntrServicoTurma}}(\mbox{\hyperlink{classIServicoTurma}{IServicoTurma}}*)\ =\ 0;}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIApresentacaoAdmin_ae27a5e7ce825d7c2405352b65e68db45}{setCntrServicoProva}}(\mbox{\hyperlink{classIServicoProva}{IServicoProva}}*)\ =\ 0;}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIApresentacaoAdmin_acc99c42dfc27e368c41335f9b68a419b}{setCntrApresentacaoUsuario}}(\mbox{\hyperlink{classIApresentacaoUsuario}{IApresentacaoUsuario}}*)\ =\ 0;}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIApresentacaoAdmin_a2f07afb334d81f4a475bed8d241498fd}{setCntrApresentacaoProva}}(\mbox{\hyperlink{classIApresentacaoProva}{IApresentacaoProva}}*)\ =\ 0;}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIApresentacaoAdmin_a0590cbbcef97cebcde34346c0cfc7ffb}{setCntrApresentacaoTurma}}(\mbox{\hyperlink{classIApresentacaoTurma}{IApresentacaoTurma}}*)\ =\ 0;}
+\DoxyCodeLine{00096\ }
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classIApresentacaoAdmin_a4a7e96678708ee7e0347a42aa0edef89}{\string~IApresentacaoAdmin}}()\ \{\}}
+\DoxyCodeLine{00099\ \};}
+\DoxyCodeLine{00100\ }
+\DoxyCodeLine{00102\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classIApresentacaoTurma}{IApresentacaoTurma}}\ \{}
+\DoxyCodeLine{00103\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIApresentacaoTurma_a87eb418cdbe556245b25237729037e42}{executar}}(\mbox{\hyperlink{classUsuario}{Usuario}}*)\ =\ 0;}
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIApresentacaoTurma_aa33f45d912ff95681111b04220238405}{editar}}(\mbox{\hyperlink{classTurma}{Turma}}*)\ =\ 0;}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIApresentacaoTurma_aad156c42f8405311310e461d691ba4ca}{setCntrServicoTurma}}(\mbox{\hyperlink{classIServicoTurma}{IServicoTurma}}*)\ =\ 0;}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIApresentacaoTurma_a8a7f3e2f64787c4481a5901c8637b120}{setCntrServicoUsuario}}(\mbox{\hyperlink{classIServicoUsuario}{IServicoUsuario}}*)\ =\ 0;}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIApresentacaoTurma_a9c9ab67e0ca5bd459f7c60643d009a21}{setCntrApresentacaoProva}}(\mbox{\hyperlink{classIApresentacaoProva}{IApresentacaoProva}}*)\ =\ 0;}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classIApresentacaoTurma_aac00d9af2025dffc9440f49a4b872135}{\string~IApresentacaoTurma}}()\ \{\}}
+\DoxyCodeLine{00121\ \};}
+\DoxyCodeLine{00122\ }
+\DoxyCodeLine{00124\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classIApresentacaoProva}{IApresentacaoProva}}\ \{}
+\DoxyCodeLine{00125\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIApresentacaoProva_a07d7204ca7455878d8e1890113db92fd}{executar}}(\mbox{\hyperlink{classTurma}{Turma}}*,\ \mbox{\hyperlink{classUsuario}{Usuario}})\ =\ 0;}
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIApresentacaoProva_aec8cd36992f5f7beb9c153beb36d416e}{gerenciar}}(\mbox{\hyperlink{classProva}{Prova}}*)\ =\ 0;}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIApresentacaoProva_a15a560f5199d0240a0d317aed39c98bd}{editar}}(\mbox{\hyperlink{classProva}{Prova}}*)\ =\ 0;}
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIApresentacaoProva_a7cb9d7fb91f4b9e03d5b2e3293aed656}{setCntrServicoProva}}(\mbox{\hyperlink{classIServicoProva}{IServicoProva}}*)\ =\ 0;}
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{classIApresentacaoProva_ac2a94cb4fb3c7b69165370b48838f754}{setCntrServicoTurma}}(\mbox{\hyperlink{classIServicoTurma}{IServicoTurma}}*)\ =\ 0;}
+\DoxyCodeLine{00142\ }
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classIApresentacaoProva_a7a643c7698627353b8a3730cabeef60d}{\string~IApresentacaoProva}}()\ \{\}}
+\DoxyCodeLine{00145\ \};}
+\DoxyCodeLine{00146\ }
+\DoxyCodeLine{00148\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classIServicoAutenticacao}{IServicoAutenticacao}}\ \{}
+\DoxyCodeLine{00149\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classIServicoAutenticacao_a6e7f168745d25b2de8c5c05e99d91afd}{autenticar}}(\mbox{\hyperlink{classUsuario}{Usuario}}*)\ =\ 0;}
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classIServicoAutenticacao_aa2f9ad33148b3b12a205e992079e4368}{\string~IServicoAutenticacao}}()\ \{\}}
+\DoxyCodeLine{00156\ \};}
+\DoxyCodeLine{00157\ }
+\DoxyCodeLine{00159\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classIServicoUsuario}{IServicoUsuario}}\ \{}
+\DoxyCodeLine{00160\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classIServicoUsuario_a1c53249d6be797cf8a20aca26736e96f}{cadastrar}}(\mbox{\hyperlink{classUsuario}{Usuario}})\ =\ 0;}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classIServicoUsuario_a0f6db987373ff5f74424b61f22ea422c}{descadastrar}}(\textcolor{keywordtype}{int},\ \textcolor{keywordtype}{string})\ =\ 0;}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classIServicoUsuario_a5c29a3cc8bdc2dbfd00f22ef0e146e62}{editar}}(\mbox{\hyperlink{classUsuario}{Usuario}})\ =\ 0;}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classIServicoUsuario_ac0a1cbab52d5479be53db27c1f732b70}{consultar}}(\mbox{\hyperlink{classUsuario}{Usuario}}*)\ =\ 0;}
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classIServicoUsuario_a7a14bbed0440a8c595f95ee2ca3c7ed3}{listarTurmasAluno}}(\textcolor{keywordtype}{int},\ list<Turma>*)\ =\ 0;}
+\DoxyCodeLine{00187\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classIServicoUsuario_aa476a88085fc58a15bb34669f080b0b8}{listarTurmasProfessor}}(\textcolor{keywordtype}{int},\ list<Turma>*)\ =\ 0;}
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classIServicoUsuario_a3e79d732081e304a241e688746ee856a}{consultarEmail}}(\mbox{\hyperlink{classUsuario}{Usuario}}\ *usuario)\ =\ 0;}
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classIServicoUsuario_a5dcc8309a3929de1166af43db7bba05d}{\string~IServicoUsuario}}()\ \{\}}
+\DoxyCodeLine{00194\ \};}
+\DoxyCodeLine{00195\ }
+\DoxyCodeLine{00197\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classIServicoProva}{IServicoProva}}\ \{}
+\DoxyCodeLine{00198\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classIServicoProva_abd30f393e5094e8af15bf7cf6ae204a2}{cadastrarProva}}(\mbox{\hyperlink{classProva}{Prova}})\ =\ 0;}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classIServicoProva_a59383e7667877a9d737c6bb3953914da}{descadastrarProva}}(\textcolor{keywordtype}{int})\ =\ 0;}
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classIServicoProva_ab9c7ee7df71aaf1c55d265dcae8279e4}{editarProva}}(\mbox{\hyperlink{classProva}{Prova}})\ =\ 0;}
+\DoxyCodeLine{00214\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classIServicoProva_a63626b6d8ee6dc3ae7a70c352255c92d}{consultarProva}}(\mbox{\hyperlink{classProva}{Prova}}*)\ =\ 0;}
+\DoxyCodeLine{00218\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classIServicoProva_a9e4a253302790615f16a9c7cf43956c6}{consultarResposta}}(\mbox{\hyperlink{classResposta}{Resposta}}*)\ =\ 0;}
+\DoxyCodeLine{00222\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classIServicoProva_aea1c6530c8649d67062e5dd8b8ca8099}{cadastrarResposta}}(\mbox{\hyperlink{classResposta}{Resposta}})\ =\ 0;}
+\DoxyCodeLine{00227\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classIServicoProva_aa84a4aaa40e6f18360370fe970d566af}{getQtdQuestoes}}(\mbox{\hyperlink{classProva}{Prova}},\ \textcolor{keywordtype}{int}*)\ =\ 0;}
+\DoxyCodeLine{00231\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classIServicoProva_a38473399f1ee1724297ee55a6bd0c378}{cadastrarQuestao}}(\mbox{\hyperlink{classQuestao}{Questao}})\ =\ 0;}
+\DoxyCodeLine{00235\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classIServicoProva_accc2cf827843eb8d563b22eb26e312ba}{descadastrarQuestao}}(\textcolor{keywordtype}{int})\ =\ 0;}
+\DoxyCodeLine{00240\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classIServicoProva_a1a54b82df5e7137d46e825579fe71cdd}{getListaQuestoes}}(\textcolor{keywordtype}{int},\ list<Questao>*)\ =\ 0;}
+\DoxyCodeLine{00245\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classIServicoProva_a54694782ef4a9afbe93d01467b8ef1fc}{calcularResultado}}(\mbox{\hyperlink{classResposta}{Resposta}},\ list<int>\ *)\ =\ 0;}
+\DoxyCodeLine{00251\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classIServicoProva_a9eb8544b501414a439d3d96ca65a2950}{getListaRespostaAlunos}}(\mbox{\hyperlink{classProva}{Prova}},\ list<Usuario>*,\ list<int>*)\ =\ 0;}
+\DoxyCodeLine{00253\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classIServicoProva_a1a229c21095d0fad3abd748cf31e5298}{\string~IServicoProva}}()\ \{\}}
+\DoxyCodeLine{00254\ \};}
+\DoxyCodeLine{00255\ }
+\DoxyCodeLine{00257\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classIServicoTurma}{IServicoTurma}}\ \{}
+\DoxyCodeLine{00258\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00262\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classIServicoTurma_aa15e955634066765be56ecad6dbccd61}{cadastrar}}(\mbox{\hyperlink{classTurma}{Turma}})\ =\ 0;}
+\DoxyCodeLine{00267\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classIServicoTurma_a59510ececb0686fe1b3beef9a54ea1d9}{entrar}}(\textcolor{keywordtype}{int},\ \textcolor{keywordtype}{int})\ =\ 0;}
+\DoxyCodeLine{00271\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classIServicoTurma_a24f0b20d6c5e3088fff5012d42453934}{descadastrar}}(\textcolor{keywordtype}{int})\ =\ 0;}
+\DoxyCodeLine{00275\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classIServicoTurma_a0db2cba64d92840023282cdf60822a23}{consultar}}(\mbox{\hyperlink{classTurma}{Turma}}*)\ =\ 0;}
+\DoxyCodeLine{00279\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classIServicoTurma_a7b2c07214c82996f9b805ab0c04d4b9c}{editar}}(\mbox{\hyperlink{classTurma}{Turma}}*)\ =\ 0;}
+\DoxyCodeLine{00283\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classIServicoTurma_a3f1717b680bebdd36504092c73b6bf30}{listarTurmas}}(list<Turma>*)\ =\ 0;}
+\DoxyCodeLine{00288\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classIServicoTurma_a59def2912c4c85674f6ab30b500280ed}{listarProvas}}(\textcolor{keywordtype}{int},\ list<Prova>*)\ =\ 0;}
+\DoxyCodeLine{00293\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classIServicoTurma_a6092f45ec8695a651561d3b78fc971a4}{listarAlunos}}(\textcolor{keywordtype}{int},\ list<Usuario>*)\ =\ 0;}
+\DoxyCodeLine{00295\ \ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classIServicoTurma_a71e319b6d91121cb0e3dda2e816496ae}{\string~IServicoTurma}}()\ \{\}}
+\DoxyCodeLine{00296\ \};}
+\DoxyCodeLine{00297\ }
+\DoxyCodeLine{00299\ \textcolor{keyword}{class\ }\mbox{\hyperlink{classIServicoAdmin}{IServicoAdmin}}\ \{}
+\DoxyCodeLine{00300\ \ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00304\ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{classIServicoAdmin_a061c829983b39d28a62384cd4feec647}{estatisticas}}(vector<string>*)\ =\ 0;}
+\DoxyCodeLine{00306\ \ \ \ \ \ \ \ \textcolor{keyword}{virtual}\ \mbox{\hyperlink{classIServicoAdmin_a24c09ce843e91f091de7c6fdabcdf190}{\string~IServicoAdmin}}()\ \{\}}
+\DoxyCodeLine{00307\ \};}
+\DoxyCodeLine{00308\ \textcolor{preprocessor}{\#endif\ \ }\textcolor{comment}{//\ \ INCLUDE\_INTERFACES\_H\_}}
 
 \end{DoxyCode}

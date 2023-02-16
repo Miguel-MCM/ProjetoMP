@@ -1,5 +1,14 @@
 \hypertarget{classComandoConsultarProva}{}\doxysection{Comando\+Consultar\+Prova Class Reference}
 \label{classComandoConsultarProva}\index{ComandoConsultarProva@{ComandoConsultarProva}}
+
+
+Comando SQL utilizado para consultar uma prova no banco.  
+
+
+
+
+{\ttfamily \#include $<$Comandos\+SQL.\+h$>$}
+
 Inheritance diagram for Comando\+Consultar\+Prova\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -9,15 +18,13 @@ Inheritance diagram for Comando\+Consultar\+Prova\+:\begin{figure}[H]
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classComandoConsultarProva_a7d8897c4a815b9b714178fab15a4ebef}\label{classComandoConsultarProva_a7d8897c4a815b9b714178fab15a4ebef}} 
-{\bfseries Comando\+Consultar\+Prova} (int)
-\item 
-\mbox{\Hypertarget{classComandoConsultarProva_a5f8b5e7a51deacd7b9e502e6bf2740ea}\label{classComandoConsultarProva_a5f8b5e7a51deacd7b9e502e6bf2740ea}} 
-\mbox{\hyperlink{classProva}{Prova}} {\bfseries get\+Resultado} ()
-\item 
+\mbox{\hyperlink{classComandoConsultarProva_a7d8897c4a815b9b714178fab15a4ebef}{Comando\+Consultar\+Prova}} (int)
+\begin{DoxyCompactList}\small\item\em Construtor da classe para consultar uma prova do banco. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classProva}{Prova}} \mbox{\hyperlink{classComandoConsultarProva_a5f8b5e7a51deacd7b9e502e6bf2740ea}{get\+Resultado}} ()
+\begin{DoxyCompactList}\small\item\em Retorna a prova procurada pelo cliente no banco de dados. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classComandoSQL_a449f64885fdeb1d0b350b612bcb45e05}\label{classComandoSQL_a449f64885fdeb1d0b350b612bcb45e05}} 
 void {\bfseries executar} ()
-\begin{DoxyCompactList}\small\item\em Executa o comendo SQL. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Executa o comando SQL. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -32,6 +39,43 @@ static list$<$ \mbox{\hyperlink{classElementoResultado}{Elemento\+Resultado}} $>
 \begin{DoxyCompactList}\small\item\em Lista de Resultados da consulta. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
+\doxysubsection{Detailed Description}
+Comando SQL utilizado para consultar uma prova no banco. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classComandoConsultarProva_a7d8897c4a815b9b714178fab15a4ebef}\label{classComandoConsultarProva_a7d8897c4a815b9b714178fab15a4ebef}} 
+\index{ComandoConsultarProva@{ComandoConsultarProva}!ComandoConsultarProva@{ComandoConsultarProva}}
+\index{ComandoConsultarProva@{ComandoConsultarProva}!ComandoConsultarProva@{ComandoConsultarProva}}
+\doxysubsubsection{\texorpdfstring{ComandoConsultarProva()}{ComandoConsultarProva()}}
+{\footnotesize\ttfamily Comando\+Consultar\+Prova\+::\+Comando\+Consultar\+Prova (\begin{DoxyParamCaption}\item[{int}]{ }\end{DoxyParamCaption})}
+
+
+
+Construtor da classe para consultar uma prova do banco. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em -\/prarâmetro} & int\+: id da prova procurada. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classComandoConsultarProva_a5f8b5e7a51deacd7b9e502e6bf2740ea}\label{classComandoConsultarProva_a5f8b5e7a51deacd7b9e502e6bf2740ea}} 
+\index{ComandoConsultarProva@{ComandoConsultarProva}!getResultado@{getResultado}}
+\index{getResultado@{getResultado}!ComandoConsultarProva@{ComandoConsultarProva}}
+\doxysubsubsection{\texorpdfstring{getResultado()}{getResultado()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classProva}{Prova}} Comando\+Consultar\+Prova\+::get\+Resultado (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retorna a prova procurada pelo cliente no banco de dados. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{classProva}{Prova} 
+\end{DoxyReturn}
+
+
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-/home/miguel/\+Documents/3\+Semestre/\+MP/\+Projeto\+De\+Disciplina/include/Comandos\+SQL.\+h\end{DoxyCompactItemize}
+/home/victor\+\_\+andre/\+Documentos/\+Unb/\+MP/\+Projeto\+MP/include/Comandos\+SQL.\+h\end{DoxyCompactItemize}

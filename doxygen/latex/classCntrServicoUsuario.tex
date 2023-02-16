@@ -10,19 +10,19 @@ Inheritance diagram for Cntr\+Servico\+Usuario\+:\begin{figure}[H]
 \begin{DoxyCompactItemize}
 \item 
 bool \mbox{\hyperlink{classCntrServicoUsuario_a4eaf537d558d8d76c6c8b3754a121610}{cadastrar}} (\mbox{\hyperlink{classUsuario}{Usuario}})
-\item 
+\begin{DoxyCompactList}\small\item\em Solicita serviço de cadastramento de usuário ao banco de dados. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classCntrServicoUsuario_a3003bcb245950e78b257dd475d5a64e8}{descadastrar}} (int, string)
-\item 
+\begin{DoxyCompactList}\small\item\em Solicita serviço de descadastramento de usuário ao banco de dados. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classCntrServicoUsuario_a96979593053e2a2a9c32a6a74cf5e77c}{editar}} (\mbox{\hyperlink{classUsuario}{Usuario}})
-\item 
+\begin{DoxyCompactList}\small\item\em Solicita serviço de edição de usuário ao banco de dados. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classCntrServicoUsuario_ab5182f6d9d695a11dec6abdf0cdf10f9}{consultar}} (\mbox{\hyperlink{classUsuario}{Usuario}} $\ast$)
-\item 
+\begin{DoxyCompactList}\small\item\em Solicita serviço de consulta de usuário ao banco de dados. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classCntrServicoUsuario_af73fe3b721fff66e572c566be0dd61d3}{listar\+Turmas\+Aluno}} (int, list$<$ \mbox{\hyperlink{classTurma}{Turma}} $>$ $\ast$)
-\item 
+\begin{DoxyCompactList}\small\item\em Solicita serviço de listagem de turmas às quais um aluno pertence ao banco de dados. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classCntrServicoUsuario_ac4eb343cef25d6840b5f6f2fe4cb4ff5}{listar\+Turmas\+Professor}} (int, list$<$ \mbox{\hyperlink{classTurma}{Turma}} $>$ $\ast$)
-\item 
+\begin{DoxyCompactList}\small\item\em Solicita serviço de listagem de turmas de um professor ao banco de dados. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classCntrServicoUsuario_a074e6c10893b02e0a0db1b2f5cbe210e}{consultar\+Email}} (\mbox{\hyperlink{classUsuario}{Usuario}} $\ast$usuario)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Solicita serviço de consulta de um usuário pelo email ao banco de dados. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Member Function Documentation}
@@ -34,7 +34,19 @@ bool \mbox{\hyperlink{classCntrServicoUsuario_a074e6c10893b02e0a0db1b2f5cbe210e}
 
 
 
-Implements \mbox{\hyperlink{classIServicoUsuario}{IServico\+Usuario}}.
+Solicita serviço de cadastramento de usuário ao banco de dados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parametro} & \doxylink{classUsuario}{Usuario}\+: usuário com os dados preenchidos a ser cadastrado. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool indicando sucesso ou falha no processo. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIServicoUsuario_a1c53249d6be797cf8a20aca26736e96f}{IServico\+Usuario}}.
 
 \mbox{\Hypertarget{classCntrServicoUsuario_ab5182f6d9d695a11dec6abdf0cdf10f9}\label{classCntrServicoUsuario_ab5182f6d9d695a11dec6abdf0cdf10f9}} 
 \index{CntrServicoUsuario@{CntrServicoUsuario}!consultar@{consultar}}
@@ -44,7 +56,19 @@ Implements \mbox{\hyperlink{classIServicoUsuario}{IServico\+Usuario}}.
 
 
 
-Implements \mbox{\hyperlink{classIServicoUsuario}{IServico\+Usuario}}.
+Solicita serviço de consulta de usuário ao banco de dados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parametro} & ponteiro do tipo \doxylink{classUsuario}{Usuario}\+: usuário a ser preenchido com os dados do banco. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool indicando sucesso ou falha no processo. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIServicoUsuario_ac0a1cbab52d5479be53db27c1f732b70}{IServico\+Usuario}}.
 
 \mbox{\Hypertarget{classCntrServicoUsuario_a074e6c10893b02e0a0db1b2f5cbe210e}\label{classCntrServicoUsuario_a074e6c10893b02e0a0db1b2f5cbe210e}} 
 \index{CntrServicoUsuario@{CntrServicoUsuario}!consultarEmail@{consultarEmail}}
@@ -54,7 +78,19 @@ Implements \mbox{\hyperlink{classIServicoUsuario}{IServico\+Usuario}}.
 
 
 
-Implements \mbox{\hyperlink{classIServicoUsuario}{IServico\+Usuario}}.
+Solicita serviço de consulta de um usuário pelo email ao banco de dados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parametro} & ponteiro do tipo \doxylink{classUsuario}{Usuario}\+: usuario a ser preenchido pelos dados do banco. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool indicando sucesso ou falha no processo. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIServicoUsuario_a3e79d732081e304a241e688746ee856a}{IServico\+Usuario}}.
 
 \mbox{\Hypertarget{classCntrServicoUsuario_a3003bcb245950e78b257dd475d5a64e8}\label{classCntrServicoUsuario_a3003bcb245950e78b257dd475d5a64e8}} 
 \index{CntrServicoUsuario@{CntrServicoUsuario}!descadastrar@{descadastrar}}
@@ -64,7 +100,21 @@ Implements \mbox{\hyperlink{classIServicoUsuario}{IServico\+Usuario}}.
 
 
 
-Implements \mbox{\hyperlink{classIServicoUsuario}{IServico\+Usuario}}.
+Solicita serviço de descadastramento de usuário ao banco de dados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parametro} & int\+: id do usuário a ser descadastrado. \\
+\hline
+{\em parametro} & string\+: cargo do usuário a ser descadastrado. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool indicando sucesso ou falha no processo. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIServicoUsuario_a0f6db987373ff5f74424b61f22ea422c}{IServico\+Usuario}}.
 
 \mbox{\Hypertarget{classCntrServicoUsuario_a96979593053e2a2a9c32a6a74cf5e77c}\label{classCntrServicoUsuario_a96979593053e2a2a9c32a6a74cf5e77c}} 
 \index{CntrServicoUsuario@{CntrServicoUsuario}!editar@{editar}}
@@ -74,7 +124,19 @@ Implements \mbox{\hyperlink{classIServicoUsuario}{IServico\+Usuario}}.
 
 
 
-Implements \mbox{\hyperlink{classIServicoUsuario}{IServico\+Usuario}}.
+Solicita serviço de edição de usuário ao banco de dados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parametro} & \doxylink{classUsuario}{Usuario}\+: usuário com os novos dados preenchidos a ser editado. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool indicando sucesso ou falha no processo. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIServicoUsuario_a5c29a3cc8bdc2dbfd00f22ef0e146e62}{IServico\+Usuario}}.
 
 \mbox{\Hypertarget{classCntrServicoUsuario_af73fe3b721fff66e572c566be0dd61d3}\label{classCntrServicoUsuario_af73fe3b721fff66e572c566be0dd61d3}} 
 \index{CntrServicoUsuario@{CntrServicoUsuario}!listarTurmasAluno@{listarTurmasAluno}}
@@ -84,7 +146,21 @@ Implements \mbox{\hyperlink{classIServicoUsuario}{IServico\+Usuario}}.
 
 
 
-Implements \mbox{\hyperlink{classIServicoUsuario}{IServico\+Usuario}}.
+Solicita serviço de listagem de turmas às quais um aluno pertence ao banco de dados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parametro} & int\+: id do aluno a ser consultado. \\
+\hline
+{\em parametro} & ponteiro do tipo lista de turmas\+: lista a ser preenchida com os dados do banco. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool indicando sucesso ou falha no processo. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIServicoUsuario_a7a14bbed0440a8c595f95ee2ca3c7ed3}{IServico\+Usuario}}.
 
 \mbox{\Hypertarget{classCntrServicoUsuario_ac4eb343cef25d6840b5f6f2fe4cb4ff5}\label{classCntrServicoUsuario_ac4eb343cef25d6840b5f6f2fe4cb4ff5}} 
 \index{CntrServicoUsuario@{CntrServicoUsuario}!listarTurmasProfessor@{listarTurmasProfessor}}
@@ -94,10 +170,24 @@ Implements \mbox{\hyperlink{classIServicoUsuario}{IServico\+Usuario}}.
 
 
 
-Implements \mbox{\hyperlink{classIServicoUsuario}{IServico\+Usuario}}.
+Solicita serviço de listagem de turmas de um professor ao banco de dados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parametro} & int\+: id do professor a ser consultado. \\
+\hline
+{\em parametro} & ponteiro do tipo lista de turmas\+: lista a ser preenchida com os dados do banco. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool indicando sucesso ou falha no processo. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIServicoUsuario_aa476a88085fc58a15bb34669f080b0b8}{IServico\+Usuario}}.
 
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-/home/miguel/\+Documents/3\+Semestre/\+MP/\+Projeto\+De\+Disciplina/include/Controladoras.\+h\end{DoxyCompactItemize}
+/home/victor\+\_\+andre/\+Documentos/\+Unb/\+MP/\+Projeto\+MP/include/Controladoras.\+h\end{DoxyCompactItemize}

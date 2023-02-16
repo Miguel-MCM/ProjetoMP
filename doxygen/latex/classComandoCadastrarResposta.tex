@@ -1,5 +1,14 @@
 \hypertarget{classComandoCadastrarResposta}{}\doxysection{Comando\+Cadastrar\+Resposta Class Reference}
 \label{classComandoCadastrarResposta}\index{ComandoCadastrarResposta@{ComandoCadastrarResposta}}
+
+
+Comando SQL utilizado para cadastrar uma prova no banco.  
+
+
+
+
+{\ttfamily \#include $<$Comandos\+SQL.\+h$>$}
+
 Inheritance diagram for Comando\+Cadastrar\+Resposta\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -9,15 +18,13 @@ Inheritance diagram for Comando\+Cadastrar\+Resposta\+:\begin{figure}[H]
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classComandoCadastrarResposta_ae50f31fb9b53bdcd5cb78aee46789165}\label{classComandoCadastrarResposta_ae50f31fb9b53bdcd5cb78aee46789165}} 
-{\bfseries Comando\+Cadastrar\+Resposta} (\mbox{\hyperlink{classResposta}{Resposta}})
-\item 
-\mbox{\Hypertarget{classComandoCadastrarResposta_a0ebe770d2365248d173ad457f889baa2}\label{classComandoCadastrarResposta_a0ebe770d2365248d173ad457f889baa2}} 
-int {\bfseries get\+Resultado} ()
-\item 
+\mbox{\hyperlink{classComandoCadastrarResposta_ae50f31fb9b53bdcd5cb78aee46789165}{Comando\+Cadastrar\+Resposta}} (\mbox{\hyperlink{classResposta}{Resposta}})
+\begin{DoxyCompactList}\small\item\em Construtor da classe para cadastrar resposta no banco. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classComandoCadastrarResposta_a0ebe770d2365248d173ad457f889baa2}{get\+Resultado}} ()
+\begin{DoxyCompactList}\small\item\em Retorna o id da resposta cadastrada no banco de dados. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classComandoSQL_a449f64885fdeb1d0b350b612bcb45e05}\label{classComandoSQL_a449f64885fdeb1d0b350b612bcb45e05}} 
 void {\bfseries executar} ()
-\begin{DoxyCompactList}\small\item\em Executa o comendo SQL. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Executa o comando SQL. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -32,6 +39,43 @@ static list$<$ \mbox{\hyperlink{classElementoResultado}{Elemento\+Resultado}} $>
 \begin{DoxyCompactList}\small\item\em Lista de Resultados da consulta. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
+\doxysubsection{Detailed Description}
+Comando SQL utilizado para cadastrar uma prova no banco. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classComandoCadastrarResposta_ae50f31fb9b53bdcd5cb78aee46789165}\label{classComandoCadastrarResposta_ae50f31fb9b53bdcd5cb78aee46789165}} 
+\index{ComandoCadastrarResposta@{ComandoCadastrarResposta}!ComandoCadastrarResposta@{ComandoCadastrarResposta}}
+\index{ComandoCadastrarResposta@{ComandoCadastrarResposta}!ComandoCadastrarResposta@{ComandoCadastrarResposta}}
+\doxysubsubsection{\texorpdfstring{ComandoCadastrarResposta()}{ComandoCadastrarResposta()}}
+{\footnotesize\ttfamily Comando\+Cadastrar\+Resposta\+::\+Comando\+Cadastrar\+Resposta (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classResposta}{Resposta}}}]{ }\end{DoxyParamCaption})}
+
+
+
+Construtor da classe para cadastrar resposta no banco. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em -\/prarâmetro} & \doxylink{classResposta}{Resposta}\+: objeto resposta do aluno. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classComandoCadastrarResposta_a0ebe770d2365248d173ad457f889baa2}\label{classComandoCadastrarResposta_a0ebe770d2365248d173ad457f889baa2}} 
+\index{ComandoCadastrarResposta@{ComandoCadastrarResposta}!getResultado@{getResultado}}
+\index{getResultado@{getResultado}!ComandoCadastrarResposta@{ComandoCadastrarResposta}}
+\doxysubsubsection{\texorpdfstring{getResultado()}{getResultado()}}
+{\footnotesize\ttfamily int Comando\+Cadastrar\+Resposta\+::get\+Resultado (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retorna o id da resposta cadastrada no banco de dados. 
+
+\begin{DoxyReturn}{Returns}
+int id 
+\end{DoxyReturn}
+
+
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-/home/miguel/\+Documents/3\+Semestre/\+MP/\+Projeto\+De\+Disciplina/include/Comandos\+SQL.\+h\end{DoxyCompactItemize}
+/home/victor\+\_\+andre/\+Documentos/\+Unb/\+MP/\+Projeto\+MP/include/Comandos\+SQL.\+h\end{DoxyCompactItemize}

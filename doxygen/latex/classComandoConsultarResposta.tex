@@ -1,5 +1,14 @@
 \hypertarget{classComandoConsultarResposta}{}\doxysection{Comando\+Consultar\+Resposta Class Reference}
 \label{classComandoConsultarResposta}\index{ComandoConsultarResposta@{ComandoConsultarResposta}}
+
+
+Comando SQL utilizado para consultar respostas a uma prova.  
+
+
+
+
+{\ttfamily \#include $<$Comandos\+SQL.\+h$>$}
+
 Inheritance diagram for Comando\+Consultar\+Resposta\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -9,18 +18,15 @@ Inheritance diagram for Comando\+Consultar\+Resposta\+:\begin{figure}[H]
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classComandoConsultarResposta_aa7d81880e14d2ca265fe3d14ccc91490}\label{classComandoConsultarResposta_aa7d81880e14d2ca265fe3d14ccc91490}} 
-{\bfseries Comando\+Consultar\+Resposta} (int)
-\item 
-\mbox{\Hypertarget{classComandoConsultarResposta_a39e7aa23b10ccb872fa98024d2d3fe5d}\label{classComandoConsultarResposta_a39e7aa23b10ccb872fa98024d2d3fe5d}} 
-{\bfseries Comando\+Consultar\+Resposta} (int, int)
-\item 
-\mbox{\Hypertarget{classComandoConsultarResposta_ad67eb8e7da7aa03cf51ea79c477576fc}\label{classComandoConsultarResposta_ad67eb8e7da7aa03cf51ea79c477576fc}} 
-\mbox{\hyperlink{classResposta}{Resposta}} {\bfseries get\+Resultado} ()
-\item 
+\mbox{\hyperlink{classComandoConsultarResposta_aa7d81880e14d2ca265fe3d14ccc91490}{Comando\+Consultar\+Resposta}} (int)
+\begin{DoxyCompactList}\small\item\em Construtor da classe para consultar respostas a uma prova no banco. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classComandoConsultarResposta_a39e7aa23b10ccb872fa98024d2d3fe5d}{Comando\+Consultar\+Resposta}} (int, int)
+\begin{DoxyCompactList}\small\item\em Construtor da classe para consultar resposta de uma aluno a uma prova no banco. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classResposta}{Resposta}} \mbox{\hyperlink{classComandoConsultarResposta_ad67eb8e7da7aa03cf51ea79c477576fc}{get\+Resultado}} ()
+\begin{DoxyCompactList}\small\item\em Retorna um objeto \doxylink{classResposta}{Resposta} com os dados no banco. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classComandoSQL_a449f64885fdeb1d0b350b612bcb45e05}\label{classComandoSQL_a449f64885fdeb1d0b350b612bcb45e05}} 
 void {\bfseries executar} ()
-\begin{DoxyCompactList}\small\item\em Executa o comendo SQL. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Executa o comando SQL. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -35,6 +41,58 @@ static list$<$ \mbox{\hyperlink{classElementoResultado}{Elemento\+Resultado}} $>
 \begin{DoxyCompactList}\small\item\em Lista de Resultados da consulta. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
+\doxysubsection{Detailed Description}
+Comando SQL utilizado para consultar respostas a uma prova. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classComandoConsultarResposta_aa7d81880e14d2ca265fe3d14ccc91490}\label{classComandoConsultarResposta_aa7d81880e14d2ca265fe3d14ccc91490}} 
+\index{ComandoConsultarResposta@{ComandoConsultarResposta}!ComandoConsultarResposta@{ComandoConsultarResposta}}
+\index{ComandoConsultarResposta@{ComandoConsultarResposta}!ComandoConsultarResposta@{ComandoConsultarResposta}}
+\doxysubsubsection{\texorpdfstring{ComandoConsultarResposta()}{ComandoConsultarResposta()}\hspace{0.1cm}{\footnotesize\ttfamily [1/2]}}
+{\footnotesize\ttfamily Comando\+Consultar\+Resposta\+::\+Comando\+Consultar\+Resposta (\begin{DoxyParamCaption}\item[{int}]{ }\end{DoxyParamCaption})}
+
+
+
+Construtor da classe para consultar respostas a uma prova no banco. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em -\/parâmetro} & int\+: inteiro que representa o id da \doxylink{classProva}{Prova}. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classComandoConsultarResposta_a39e7aa23b10ccb872fa98024d2d3fe5d}\label{classComandoConsultarResposta_a39e7aa23b10ccb872fa98024d2d3fe5d}} 
+\index{ComandoConsultarResposta@{ComandoConsultarResposta}!ComandoConsultarResposta@{ComandoConsultarResposta}}
+\index{ComandoConsultarResposta@{ComandoConsultarResposta}!ComandoConsultarResposta@{ComandoConsultarResposta}}
+\doxysubsubsection{\texorpdfstring{ComandoConsultarResposta()}{ComandoConsultarResposta()}\hspace{0.1cm}{\footnotesize\ttfamily [2/2]}}
+{\footnotesize\ttfamily Comando\+Consultar\+Resposta\+::\+Comando\+Consultar\+Resposta (\begin{DoxyParamCaption}\item[{int}]{,  }\item[{int}]{ }\end{DoxyParamCaption})}
+
+
+
+Construtor da classe para consultar resposta de uma aluno a uma prova no banco. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em -\/parâmetros} & int\+: inteiros que representam o id do Aluno e o id da \doxylink{classProva}{Prova}. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classComandoConsultarResposta_ad67eb8e7da7aa03cf51ea79c477576fc}\label{classComandoConsultarResposta_ad67eb8e7da7aa03cf51ea79c477576fc}} 
+\index{ComandoConsultarResposta@{ComandoConsultarResposta}!getResultado@{getResultado}}
+\index{getResultado@{getResultado}!ComandoConsultarResposta@{ComandoConsultarResposta}}
+\doxysubsubsection{\texorpdfstring{getResultado()}{getResultado()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classResposta}{Resposta}} Comando\+Consultar\+Resposta\+::get\+Resultado (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retorna um objeto \doxylink{classResposta}{Resposta} com os dados no banco. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{classResposta}{Resposta} 
+\end{DoxyReturn}
+
+
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-/home/miguel/\+Documents/3\+Semestre/\+MP/\+Projeto\+De\+Disciplina/include/Comandos\+SQL.\+h\end{DoxyCompactItemize}
+/home/victor\+\_\+andre/\+Documentos/\+Unb/\+MP/\+Projeto\+MP/include/Comandos\+SQL.\+h\end{DoxyCompactItemize}

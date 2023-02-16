@@ -1,5 +1,14 @@
 \hypertarget{classComandoConsultarQuestao}{}\doxysection{Comando\+Consultar\+Questao Class Reference}
 \label{classComandoConsultarQuestao}\index{ComandoConsultarQuestao@{ComandoConsultarQuestao}}
+
+
+Comando SQL utilizado para consultar uma questão no banco.  
+
+
+
+
+{\ttfamily \#include $<$Comandos\+SQL.\+h$>$}
+
 Inheritance diagram for Comando\+Consultar\+Questao\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -9,15 +18,13 @@ Inheritance diagram for Comando\+Consultar\+Questao\+:\begin{figure}[H]
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classComandoConsultarQuestao_ab216d84c3bc6201bcf17aef822499543}\label{classComandoConsultarQuestao_ab216d84c3bc6201bcf17aef822499543}} 
-{\bfseries Comando\+Consultar\+Questao} (int)
-\item 
-\mbox{\Hypertarget{classComandoConsultarQuestao_a14cab0713206ba623be6d6e8daf0da4d}\label{classComandoConsultarQuestao_a14cab0713206ba623be6d6e8daf0da4d}} 
-\mbox{\hyperlink{classQuestao}{Questao}} {\bfseries get\+Resultado} ()
-\item 
+\mbox{\hyperlink{classComandoConsultarQuestao_ab216d84c3bc6201bcf17aef822499543}{Comando\+Consultar\+Questao}} (int)
+\begin{DoxyCompactList}\small\item\em Construtor da classe para consultar uma questão no banco. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classQuestao}{Questao}} \mbox{\hyperlink{classComandoConsultarQuestao_a14cab0713206ba623be6d6e8daf0da4d}{get\+Resultado}} ()
+\begin{DoxyCompactList}\small\item\em Retorna o resultado da consulta ao cliente do banco de dados. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classComandoSQL_a449f64885fdeb1d0b350b612bcb45e05}\label{classComandoSQL_a449f64885fdeb1d0b350b612bcb45e05}} 
 void {\bfseries executar} ()
-\begin{DoxyCompactList}\small\item\em Executa o comendo SQL. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Executa o comando SQL. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -32,6 +39,43 @@ static list$<$ \mbox{\hyperlink{classElementoResultado}{Elemento\+Resultado}} $>
 \begin{DoxyCompactList}\small\item\em Lista de Resultados da consulta. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
+\doxysubsection{Detailed Description}
+Comando SQL utilizado para consultar uma questão no banco. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classComandoConsultarQuestao_ab216d84c3bc6201bcf17aef822499543}\label{classComandoConsultarQuestao_ab216d84c3bc6201bcf17aef822499543}} 
+\index{ComandoConsultarQuestao@{ComandoConsultarQuestao}!ComandoConsultarQuestao@{ComandoConsultarQuestao}}
+\index{ComandoConsultarQuestao@{ComandoConsultarQuestao}!ComandoConsultarQuestao@{ComandoConsultarQuestao}}
+\doxysubsubsection{\texorpdfstring{ComandoConsultarQuestao()}{ComandoConsultarQuestao()}}
+{\footnotesize\ttfamily Comando\+Consultar\+Questao\+::\+Comando\+Consultar\+Questao (\begin{DoxyParamCaption}\item[{int}]{ }\end{DoxyParamCaption})}
+
+
+
+Construtor da classe para consultar uma questão no banco. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em -\/parâmetro} & inteiro\+: id da questão a ser consultada. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classComandoConsultarQuestao_a14cab0713206ba623be6d6e8daf0da4d}\label{classComandoConsultarQuestao_a14cab0713206ba623be6d6e8daf0da4d}} 
+\index{ComandoConsultarQuestao@{ComandoConsultarQuestao}!getResultado@{getResultado}}
+\index{getResultado@{getResultado}!ComandoConsultarQuestao@{ComandoConsultarQuestao}}
+\doxysubsubsection{\texorpdfstring{getResultado()}{getResultado()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classQuestao}{Questao}} Comando\+Consultar\+Questao\+::get\+Resultado (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retorna o resultado da consulta ao cliente do banco de dados. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{classQuestao}{Questao} 
+\end{DoxyReturn}
+
+
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-/home/miguel/\+Documents/3\+Semestre/\+MP/\+Projeto\+De\+Disciplina/include/Comandos\+SQL.\+h\end{DoxyCompactItemize}
+/home/victor\+\_\+andre/\+Documentos/\+Unb/\+MP/\+Projeto\+MP/include/Comandos\+SQL.\+h\end{DoxyCompactItemize}

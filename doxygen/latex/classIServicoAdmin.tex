@@ -1,5 +1,14 @@
 \hypertarget{classIServicoAdmin}{}\doxysection{IServico\+Admin Class Reference}
 \label{classIServicoAdmin}\index{IServicoAdmin@{IServicoAdmin}}
+
+
+Interface para serviços de administrador.  
+
+
+
+
+{\ttfamily \#include $<$Interfaces.\+h$>$}
+
 Inheritance diagram for IServico\+Admin\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -9,11 +18,41 @@ Inheritance diagram for IServico\+Admin\+:\begin{figure}[H]
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
+virtual bool \mbox{\hyperlink{classIServicoAdmin_a061c829983b39d28a62384cd4feec647}{estatisticas}} (vector$<$ string $>$ $\ast$)=0
+\begin{DoxyCompactList}\small\item\em Solicita estatísticas do sistema ao banco de dados. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{classIServicoAdmin_a24c09ce843e91f091de7c6fdabcdf190}\label{classIServicoAdmin_a24c09ce843e91f091de7c6fdabcdf190}} 
+virtual {\bfseries $\sim$\+IServico\+Admin} ()
+\begin{DoxyCompactList}\small\item\em Método destrutor para a interface. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Interface para serviços de administrador. 
+
+\doxysubsection{Member Function Documentation}
 \mbox{\Hypertarget{classIServicoAdmin_a061c829983b39d28a62384cd4feec647}\label{classIServicoAdmin_a061c829983b39d28a62384cd4feec647}} 
-virtual bool {\bfseries estatisticas} (vector$<$ string $>$ $\ast$)=0
-\end{DoxyCompactItemize}
+\index{IServicoAdmin@{IServicoAdmin}!estatisticas@{estatisticas}}
+\index{estatisticas@{estatisticas}!IServicoAdmin@{IServicoAdmin}}
+\doxysubsubsection{\texorpdfstring{estatisticas()}{estatisticas()}}
+{\footnotesize\ttfamily virtual bool IServico\+Admin\+::estatisticas (\begin{DoxyParamCaption}\item[{vector$<$ string $>$ $\ast$}]{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [pure virtual]}}
+
+
+
+Solicita estatísticas do sistema ao banco de dados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parametro} & ponteiro do tipo vetor de strings\+: vetor a ser preenchido com os dados do banco. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool indicando sucesso ou falha no processo. 
+\end{DoxyReturn}
+
+
+Implemented in \mbox{\hyperlink{classCntrServicoAdmin_a9263493f94f7fc5645e87595071b3c00}{Cntr\+Servico\+Admin}}.
+
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-/home/miguel/\+Documents/3\+Semestre/\+MP/\+Projeto\+De\+Disciplina/include/Interfaces.\+h\end{DoxyCompactItemize}
+/home/victor\+\_\+andre/\+Documentos/\+Unb/\+MP/\+Projeto\+MP/include/Interfaces.\+h\end{DoxyCompactItemize}

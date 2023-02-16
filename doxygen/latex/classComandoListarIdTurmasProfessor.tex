@@ -1,5 +1,14 @@
 \hypertarget{classComandoListarIdTurmasProfessor}{}\doxysection{Comando\+Listar\+Id\+Turmas\+Professor Class Reference}
 \label{classComandoListarIdTurmasProfessor}\index{ComandoListarIdTurmasProfessor@{ComandoListarIdTurmasProfessor}}
+
+
+Comando SQL utilizado para executar a listagem de turmas de um professor.  
+
+
+
+
+{\ttfamily \#include $<$Comandos\+SQL.\+h$>$}
+
 Inheritance diagram for Comando\+Listar\+Id\+Turmas\+Professor\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -9,15 +18,13 @@ Inheritance diagram for Comando\+Listar\+Id\+Turmas\+Professor\+:\begin{figure}[
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classComandoListarIdTurmasProfessor_a3bfee59b7df1367b13120caa30443c49}\label{classComandoListarIdTurmasProfessor_a3bfee59b7df1367b13120caa30443c49}} 
-{\bfseries Comando\+Listar\+Id\+Turmas\+Professor} (int)
-\item 
-\mbox{\Hypertarget{classComandoListarIdTurmasProfessor_a01affe974c1343020a86b42d87255ccb}\label{classComandoListarIdTurmasProfessor_a01affe974c1343020a86b42d87255ccb}} 
-list$<$ \mbox{\hyperlink{classTurma}{Turma}} $>$ {\bfseries get\+Resultado} ()
-\item 
+\mbox{\hyperlink{classComandoListarIdTurmasProfessor_a3bfee59b7df1367b13120caa30443c49}{Comando\+Listar\+Id\+Turmas\+Professor}} (int)
+\begin{DoxyCompactList}\small\item\em Construtor da classe para listar as turmas de um professor. \end{DoxyCompactList}\item 
+list$<$ \mbox{\hyperlink{classTurma}{Turma}} $>$ \mbox{\hyperlink{classComandoListarIdTurmasProfessor_a01affe974c1343020a86b42d87255ccb}{get\+Resultado}} ()
+\begin{DoxyCompactList}\small\item\em Retorna um objeto lista de Turmas do professor. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classComandoSQL_a449f64885fdeb1d0b350b612bcb45e05}\label{classComandoSQL_a449f64885fdeb1d0b350b612bcb45e05}} 
 void {\bfseries executar} ()
-\begin{DoxyCompactList}\small\item\em Executa o comendo SQL. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Executa o comando SQL. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -32,6 +39,43 @@ static list$<$ \mbox{\hyperlink{classElementoResultado}{Elemento\+Resultado}} $>
 \begin{DoxyCompactList}\small\item\em Lista de Resultados da consulta. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
+\doxysubsection{Detailed Description}
+Comando SQL utilizado para executar a listagem de turmas de um professor. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classComandoListarIdTurmasProfessor_a3bfee59b7df1367b13120caa30443c49}\label{classComandoListarIdTurmasProfessor_a3bfee59b7df1367b13120caa30443c49}} 
+\index{ComandoListarIdTurmasProfessor@{ComandoListarIdTurmasProfessor}!ComandoListarIdTurmasProfessor@{ComandoListarIdTurmasProfessor}}
+\index{ComandoListarIdTurmasProfessor@{ComandoListarIdTurmasProfessor}!ComandoListarIdTurmasProfessor@{ComandoListarIdTurmasProfessor}}
+\doxysubsubsection{\texorpdfstring{ComandoListarIdTurmasProfessor()}{ComandoListarIdTurmasProfessor()}}
+{\footnotesize\ttfamily Comando\+Listar\+Id\+Turmas\+Professor\+::\+Comando\+Listar\+Id\+Turmas\+Professor (\begin{DoxyParamCaption}\item[{int}]{ }\end{DoxyParamCaption})}
+
+
+
+Construtor da classe para listar as turmas de um professor. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em -\/parâmetro} & int\+: inteiro que representa o id do professor. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classComandoListarIdTurmasProfessor_a01affe974c1343020a86b42d87255ccb}\label{classComandoListarIdTurmasProfessor_a01affe974c1343020a86b42d87255ccb}} 
+\index{ComandoListarIdTurmasProfessor@{ComandoListarIdTurmasProfessor}!getResultado@{getResultado}}
+\index{getResultado@{getResultado}!ComandoListarIdTurmasProfessor@{ComandoListarIdTurmasProfessor}}
+\doxysubsubsection{\texorpdfstring{getResultado()}{getResultado()}}
+{\footnotesize\ttfamily list$<$ \mbox{\hyperlink{classTurma}{Turma}} $>$ Comando\+Listar\+Id\+Turmas\+Professor\+::get\+Resultado (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retorna um objeto lista de Turmas do professor. 
+
+\begin{DoxyReturn}{Returns}
+list$<$\+Turma$>$ 
+\end{DoxyReturn}
+
+
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-/home/miguel/\+Documents/3\+Semestre/\+MP/\+Projeto\+De\+Disciplina/include/Comandos\+SQL.\+h\end{DoxyCompactItemize}
+/home/victor\+\_\+andre/\+Documentos/\+Unb/\+MP/\+Projeto\+MP/include/Comandos\+SQL.\+h\end{DoxyCompactItemize}

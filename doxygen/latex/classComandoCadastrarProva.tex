@@ -1,5 +1,14 @@
 \hypertarget{classComandoCadastrarProva}{}\doxysection{Comando\+Cadastrar\+Prova Class Reference}
 \label{classComandoCadastrarProva}\index{ComandoCadastrarProva@{ComandoCadastrarProva}}
+
+
+Comando SQL utilizado para cadastrar uma prova no banco.  
+
+
+
+
+{\ttfamily \#include $<$Comandos\+SQL.\+h$>$}
+
 Inheritance diagram for Comando\+Cadastrar\+Prova\+:\begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -9,15 +18,13 @@ Inheritance diagram for Comando\+Cadastrar\+Prova\+:\begin{figure}[H]
 \doxysubsection*{Public Member Functions}
 \begin{DoxyCompactItemize}
 \item 
-\mbox{\Hypertarget{classComandoCadastrarProva_ad6e7c8edae9ebbb11fceed4e5e451ec4}\label{classComandoCadastrarProva_ad6e7c8edae9ebbb11fceed4e5e451ec4}} 
-{\bfseries Comando\+Cadastrar\+Prova} (\mbox{\hyperlink{classProva}{Prova}})
-\item 
-\mbox{\Hypertarget{classComandoCadastrarProva_a8ffbfdf70f5ce7a8481103710a9a934a}\label{classComandoCadastrarProva_a8ffbfdf70f5ce7a8481103710a9a934a}} 
-int {\bfseries get\+Resultado} ()
-\item 
+\mbox{\hyperlink{classComandoCadastrarProva_ad6e7c8edae9ebbb11fceed4e5e451ec4}{Comando\+Cadastrar\+Prova}} (\mbox{\hyperlink{classProva}{Prova}})
+\begin{DoxyCompactList}\small\item\em Construtor da classe para cadastrar uma questão no banco. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classComandoCadastrarProva_a8ffbfdf70f5ce7a8481103710a9a934a}{get\+Resultado}} ()
+\begin{DoxyCompactList}\small\item\em Retorna o id da prova cadastrada ao cliente do banco de dados. \end{DoxyCompactList}\item 
 \mbox{\Hypertarget{classComandoSQL_a449f64885fdeb1d0b350b612bcb45e05}\label{classComandoSQL_a449f64885fdeb1d0b350b612bcb45e05}} 
 void {\bfseries executar} ()
-\begin{DoxyCompactList}\small\item\em Executa o comendo SQL. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Executa o comando SQL. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \doxysubsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
@@ -32,6 +39,43 @@ static list$<$ \mbox{\hyperlink{classElementoResultado}{Elemento\+Resultado}} $>
 \begin{DoxyCompactList}\small\item\em Lista de Resultados da consulta. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
+\doxysubsection{Detailed Description}
+Comando SQL utilizado para cadastrar uma prova no banco. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classComandoCadastrarProva_ad6e7c8edae9ebbb11fceed4e5e451ec4}\label{classComandoCadastrarProva_ad6e7c8edae9ebbb11fceed4e5e451ec4}} 
+\index{ComandoCadastrarProva@{ComandoCadastrarProva}!ComandoCadastrarProva@{ComandoCadastrarProva}}
+\index{ComandoCadastrarProva@{ComandoCadastrarProva}!ComandoCadastrarProva@{ComandoCadastrarProva}}
+\doxysubsubsection{\texorpdfstring{ComandoCadastrarProva()}{ComandoCadastrarProva()}}
+{\footnotesize\ttfamily Comando\+Cadastrar\+Prova\+::\+Comando\+Cadastrar\+Prova (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{classProva}{Prova}}}]{ }\end{DoxyParamCaption})}
+
+
+
+Construtor da classe para cadastrar uma questão no banco. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em -\/parâmetro} & \doxylink{classProva}{Prova}\+: objeto prova com os dados informados. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classComandoCadastrarProva_a8ffbfdf70f5ce7a8481103710a9a934a}\label{classComandoCadastrarProva_a8ffbfdf70f5ce7a8481103710a9a934a}} 
+\index{ComandoCadastrarProva@{ComandoCadastrarProva}!getResultado@{getResultado}}
+\index{getResultado@{getResultado}!ComandoCadastrarProva@{ComandoCadastrarProva}}
+\doxysubsubsection{\texorpdfstring{getResultado()}{getResultado()}}
+{\footnotesize\ttfamily int Comando\+Cadastrar\+Prova\+::get\+Resultado (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Retorna o id da prova cadastrada ao cliente do banco de dados. 
+
+\begin{DoxyReturn}{Returns}
+int id 
+\end{DoxyReturn}
+
+
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-/home/miguel/\+Documents/3\+Semestre/\+MP/\+Projeto\+De\+Disciplina/include/Comandos\+SQL.\+h\end{DoxyCompactItemize}
+/home/victor\+\_\+andre/\+Documentos/\+Unb/\+MP/\+Projeto\+MP/include/Comandos\+SQL.\+h\end{DoxyCompactItemize}

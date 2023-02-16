@@ -10,21 +10,21 @@ Inheritance diagram for Cntr\+Servico\+Turma\+:\begin{figure}[H]
 \begin{DoxyCompactItemize}
 \item 
 bool \mbox{\hyperlink{classCntrServicoTurma_a684c6a18c99eea7f13cae97635a627fe}{cadastrar}} (\mbox{\hyperlink{classTurma}{Turma}})
-\item 
+\begin{DoxyCompactList}\small\item\em Solicita serviço de cadastramento de turma ao banco de dados. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classCntrServicoTurma_a11fd7e2083208c6bbca3c80cda942d86}{consultar}} (\mbox{\hyperlink{classTurma}{Turma}} $\ast$)
-\item 
+\begin{DoxyCompactList}\small\item\em Solicita serviço de consulta de turma ao banco de dados. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classCntrServicoTurma_a82074808907b4194a0fc8d6b5371cb84}{descadastrar}} (int)
-\item 
+\begin{DoxyCompactList}\small\item\em Solicita serviço de descadastramento de turma ao banco de dados. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classCntrServicoTurma_a1f9bab9bf19367dfb6d9617959e6f610}{editar}} (\mbox{\hyperlink{classTurma}{Turma}} $\ast$)
-\item 
+\begin{DoxyCompactList}\small\item\em Solicita serviço de edição de turma ao banco de dados. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classCntrServicoTurma_aec3f2bce769caa82acbc3c1b239a76b9}{entrar}} (int, int)
-\item 
+\begin{DoxyCompactList}\small\item\em Solicita serviço para um aluno entrar em uma turma ao banco de dados. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classCntrServicoTurma_afb322d48d6fdc177fffb8e9ab13cbedb}{listar\+Turmas}} (list$<$ \mbox{\hyperlink{classTurma}{Turma}} $>$ $\ast$)
-\item 
+\begin{DoxyCompactList}\small\item\em Solicita serviço de listagem de turmas ao banco de dados. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classCntrServicoTurma_af0030214bda11612990a3d442755a7b7}{listar\+Provas}} (int, list$<$ \mbox{\hyperlink{classProva}{Prova}} $>$ $\ast$)
-\item 
+\begin{DoxyCompactList}\small\item\em Solicita serviço de listagem de provas de uma turma ao banco de dados. \end{DoxyCompactList}\item 
 bool \mbox{\hyperlink{classCntrServicoTurma_a29892c93813e4745a4046743f6b4abbe}{listar\+Alunos}} (int, list$<$ \mbox{\hyperlink{classUsuario}{Usuario}} $>$ $\ast$)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Solicita serviço de listagem de alunos de uma turma ao banco de dados. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \doxysubsection{Member Function Documentation}
@@ -36,7 +36,19 @@ bool \mbox{\hyperlink{classCntrServicoTurma_a29892c93813e4745a4046743f6b4abbe}{l
 
 
 
-Implements \mbox{\hyperlink{classIServicoTurma}{IServico\+Turma}}.
+Solicita serviço de cadastramento de turma ao banco de dados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parametro} & \doxylink{classTurma}{Turma}\+: turma com os dados preenchidos a ser cadastrada. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool indicando sucesso ou falha no processo. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIServicoTurma_aa15e955634066765be56ecad6dbccd61}{IServico\+Turma}}.
 
 \mbox{\Hypertarget{classCntrServicoTurma_a11fd7e2083208c6bbca3c80cda942d86}\label{classCntrServicoTurma_a11fd7e2083208c6bbca3c80cda942d86}} 
 \index{CntrServicoTurma@{CntrServicoTurma}!consultar@{consultar}}
@@ -46,7 +58,19 @@ Implements \mbox{\hyperlink{classIServicoTurma}{IServico\+Turma}}.
 
 
 
-Implements \mbox{\hyperlink{classIServicoTurma}{IServico\+Turma}}.
+Solicita serviço de consulta de turma ao banco de dados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parametro} & ponteiro do tipo \doxylink{classTurma}{Turma}\+: turma a ser preenchida com os dados do banco. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool indicando sucesso ou falha no processo. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIServicoTurma_a0db2cba64d92840023282cdf60822a23}{IServico\+Turma}}.
 
 \mbox{\Hypertarget{classCntrServicoTurma_a82074808907b4194a0fc8d6b5371cb84}\label{classCntrServicoTurma_a82074808907b4194a0fc8d6b5371cb84}} 
 \index{CntrServicoTurma@{CntrServicoTurma}!descadastrar@{descadastrar}}
@@ -56,7 +80,19 @@ Implements \mbox{\hyperlink{classIServicoTurma}{IServico\+Turma}}.
 
 
 
-Implements \mbox{\hyperlink{classIServicoTurma}{IServico\+Turma}}.
+Solicita serviço de descadastramento de turma ao banco de dados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parametro} & int\+: id da turma a ser descadastrada. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool indicando sucesso ou falha no processo. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIServicoTurma_a24f0b20d6c5e3088fff5012d42453934}{IServico\+Turma}}.
 
 \mbox{\Hypertarget{classCntrServicoTurma_a1f9bab9bf19367dfb6d9617959e6f610}\label{classCntrServicoTurma_a1f9bab9bf19367dfb6d9617959e6f610}} 
 \index{CntrServicoTurma@{CntrServicoTurma}!editar@{editar}}
@@ -66,7 +102,19 @@ Implements \mbox{\hyperlink{classIServicoTurma}{IServico\+Turma}}.
 
 
 
-Implements \mbox{\hyperlink{classIServicoTurma}{IServico\+Turma}}.
+Solicita serviço de edição de turma ao banco de dados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parametro} & ponteiro do tipo \doxylink{classTurma}{Turma}\+: turma a ser preenchida com os dados do banco. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool indicando sucesso ou falha no processo. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIServicoTurma_a7b2c07214c82996f9b805ab0c04d4b9c}{IServico\+Turma}}.
 
 \mbox{\Hypertarget{classCntrServicoTurma_aec3f2bce769caa82acbc3c1b239a76b9}\label{classCntrServicoTurma_aec3f2bce769caa82acbc3c1b239a76b9}} 
 \index{CntrServicoTurma@{CntrServicoTurma}!entrar@{entrar}}
@@ -76,7 +124,21 @@ Implements \mbox{\hyperlink{classIServicoTurma}{IServico\+Turma}}.
 
 
 
-Implements \mbox{\hyperlink{classIServicoTurma}{IServico\+Turma}}.
+Solicita serviço para um aluno entrar em uma turma ao banco de dados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parametro} & int\+: id do usuario. \\
+\hline
+{\em parametro} & int\+: id da turma. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool indicando sucesso ou falha no processo. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIServicoTurma_a59510ececb0686fe1b3beef9a54ea1d9}{IServico\+Turma}}.
 
 \mbox{\Hypertarget{classCntrServicoTurma_a29892c93813e4745a4046743f6b4abbe}\label{classCntrServicoTurma_a29892c93813e4745a4046743f6b4abbe}} 
 \index{CntrServicoTurma@{CntrServicoTurma}!listarAlunos@{listarAlunos}}
@@ -86,7 +148,21 @@ Implements \mbox{\hyperlink{classIServicoTurma}{IServico\+Turma}}.
 
 
 
-Implements \mbox{\hyperlink{classIServicoTurma}{IServico\+Turma}}.
+Solicita serviço de listagem de alunos de uma turma ao banco de dados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parametro} & int\+: id da turma a ser consultada. \\
+\hline
+{\em parametro} & ponteiro do tipo lista de Alunos\+: lista a ser preenchida com os dados do banco. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool indicando sucesso ou falha no processo. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIServicoTurma_a6092f45ec8695a651561d3b78fc971a4}{IServico\+Turma}}.
 
 \mbox{\Hypertarget{classCntrServicoTurma_af0030214bda11612990a3d442755a7b7}\label{classCntrServicoTurma_af0030214bda11612990a3d442755a7b7}} 
 \index{CntrServicoTurma@{CntrServicoTurma}!listarProvas@{listarProvas}}
@@ -96,7 +172,21 @@ Implements \mbox{\hyperlink{classIServicoTurma}{IServico\+Turma}}.
 
 
 
-Implements \mbox{\hyperlink{classIServicoTurma}{IServico\+Turma}}.
+Solicita serviço de listagem de provas de uma turma ao banco de dados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parametro} & int\+: id da turma a ser consultada. \\
+\hline
+{\em parametro} & ponteiro do tipo lista de Provas\+: lista a ser preenchida com os dados do banco. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool indicando sucesso ou falha no processo. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIServicoTurma_a59def2912c4c85674f6ab30b500280ed}{IServico\+Turma}}.
 
 \mbox{\Hypertarget{classCntrServicoTurma_afb322d48d6fdc177fffb8e9ab13cbedb}\label{classCntrServicoTurma_afb322d48d6fdc177fffb8e9ab13cbedb}} 
 \index{CntrServicoTurma@{CntrServicoTurma}!listarTurmas@{listarTurmas}}
@@ -106,10 +196,22 @@ Implements \mbox{\hyperlink{classIServicoTurma}{IServico\+Turma}}.
 
 
 
-Implements \mbox{\hyperlink{classIServicoTurma}{IServico\+Turma}}.
+Solicita serviço de listagem de turmas ao banco de dados. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em parametro} & ponteiro do tipo lista de Turmas\+: lista a ser preenchida com os dados do banco. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool indicando sucesso ou falha no processo. 
+\end{DoxyReturn}
+
+
+Implements \mbox{\hyperlink{classIServicoTurma_a3f1717b680bebdd36504092c73b6bf30}{IServico\+Turma}}.
 
 
 
 The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
 \item 
-/home/miguel/\+Documents/3\+Semestre/\+MP/\+Projeto\+De\+Disciplina/include/Controladoras.\+h\end{DoxyCompactItemize}
+/home/victor\+\_\+andre/\+Documentos/\+Unb/\+MP/\+Projeto\+MP/include/Controladoras.\+h\end{DoxyCompactItemize}
