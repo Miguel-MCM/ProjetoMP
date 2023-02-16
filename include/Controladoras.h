@@ -4,10 +4,15 @@
 #include <map>
 #include <string>
 #include <list>
-#include "Interfaces.h"
 #include <vector>
+#include <numeric>
+#include <iostream>
+#include <algorithm>
+
+#include "Interfaces.h"
 #include "./curses.h"
 #include "ComandosSQL.h"
+#include "Telas.h"
 
 using std::string;
 using std::list;

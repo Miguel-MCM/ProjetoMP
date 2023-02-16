@@ -1,6 +1,5 @@
 #include "Telas.h"
-#include <string.h>
-#include <iostream>
+
 
 using std::list;
 using std::vector;

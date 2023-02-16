@@ -1,9 +1,4 @@
 #include "Controladoras.h"
-#include "ComandosSQL.h"
-#include "Telas.h"
-#include <string>
-#include <numeric>
-#include <iostream>
 
 using std::list;
 

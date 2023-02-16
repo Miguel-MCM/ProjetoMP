@@ -4,9 +4,10 @@
 
 #include <list>
 #include <string>
-#include "Entidades.h"
+#include <iostream>
 
-#include "sqlite3.h"
+#include "./sqlite3.h"
+#include "Entidades.h"
 
 using std::string;
 using std::list;
