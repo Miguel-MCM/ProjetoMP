@@ -15,7 +15,7 @@ CntrApresentacaoControle* BuilderSistema::construir(){
 
     cntrServicoUsuario = new CntrServicoUsuario();
     cntrServicoAutenticacao = new CntrServicoAutenticacao();
-    // cntrServicoProva = new CntrServicoProva();
+    cntrServicoProva = new CntrServicoProva();
     cntrServicoAdmin = new CntrServicoAdmin();
     cntrServicoTurma = new CntrServicoTurma(); 
 
@@ -36,6 +36,9 @@ CntrApresentacaoControle* BuilderSistema::construir(){
 
     cntrApresentacaoUsuario->setCntrApresentacaoTurma(cntrApresentacaoTurma);
     cntrApresentacaoUsuario->setCntrServicoUsuario(cntrServicoUsuario);
+    cntrApresentacaoUsuario->setCntrServicoTurma(cntrServicoTurma);
+    cntrApresentacaoUsuario->setCntrServicoProva(cntrServicoProva);
+
 
     cntrApresentacaoAutenticacao->setCntrServicoAutenticacao(cntrServicoAutenticacao);
     cntrApresentacaoProva->setCntrServicoProva(cntrServicoProva);
