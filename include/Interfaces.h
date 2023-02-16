@@ -112,7 +112,7 @@ class IServicoProva {
         virtual bool descadastrarQuestao(int) = 0;
         virtual bool editarQuestao(Questao) = 0;
         virtual bool consultarQuestao(Questao*) = 0;
-        virtual bool getListaQuestoes(list<int>, list<Questao>*) = 0;
+        virtual bool getListaQuestoes(int, list<Questao>*) = 0;
         virtual bool calcularResultado(Resposta, list<int> *) = 0;
         virtual bool getListaRespostaAlunos(Prova, list<Usuario>*, list<int>*) = 0;
 

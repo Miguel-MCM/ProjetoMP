@@ -250,9 +250,12 @@ class CntrServicoProva:public IServicoProva{
         bool descadastrarQuestao(int);
         bool editarQuestao(Questao);
         bool consultarQuestao(Questao*);
-        bool getListaQuestoes(list<int>, list<Questao>*);
+        bool getListaQuestoes(int, list<Questao>*);
         bool calcularResultado(Resposta, list<int> *);
         bool getListaRespostaAlunos(Prova, list<Usuario>*, list<int>*);
+
+        bool consultarResposta(Resposta*);
+        bool cadastrarResposta(Resposta); 
 };
 
 #endif   // INCLUDE_CONTROLADORAS_H_
