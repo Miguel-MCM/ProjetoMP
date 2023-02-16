@@ -556,13 +556,16 @@ Resposta TelaRealizarProva::apresentar(list<Questao> listaQuestao) {
     int j = 0;
     initscr();
     getmaxyx(stdscr, linha, coluna);
-    
+
+
+    j=0;
     for (int i = 0; i < questoes.size(); i++) {
         mvprintw(linha / 2 - 6, (coluna - questoes[i].getTexto().length()) / 2, "%s", questoes[i].getTexto().c_str());
         if (questoes[i].getAlternativas().size() != 0) {
             campo = "Escolha um numero de alternativa: ";
-            for (list<string>::iterator it = questoes[i].getAlternativas().begin(); it != questoes[i].getAlternativas().end(); ++it) {
-                std::cout << *it << std::endl;
+
+            list<string> alternativas = questoes[i].getAlternativas();
+            for (list<string>::iterator it = alternativas.begin(); j < alternativas.size(); it++) {
                 mvprintw(linha / 2 - 4 + (2 * j), (coluna - it->length()) / 2, "%s", it->c_str());
                 j++;
             }
@@ -580,7 +583,7 @@ Resposta TelaRealizarProva::apresentar(list<Questao> listaQuestao) {
             respostas.insert(pair<int, int>(questoes[i].getId(), 0));
         }
 
-        it2++;
+        // it2++;
 
         clear();
     }

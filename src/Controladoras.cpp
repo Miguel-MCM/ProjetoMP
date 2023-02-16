@@ -905,6 +905,7 @@ void CntrApresentacaoProva::executar(Turma* turma, Usuario usuario) {
                         continue;
                     }
                     consultar(&prova, turma, usuario);
+
                 }else if (usuario.getCargo() == "professor") {
                     try{
                         telaCadastroProva.apresentar(&prova, turma->getId());
@@ -938,7 +939,8 @@ void CntrApresentacaoProva::consultar(Prova* prova, Turma* turma, Usuario usuari
         "2 - Ver resultado"
     });
 
-    while (true) {
+    bool finalizou = false;
+    while (!finalizou) {
         opcao = telaMenu.apresentar("Menu de consulta", opcoes);
         list<Questao> * questoes = new list<Questao>;
 
@@ -952,11 +954,14 @@ void CntrApresentacaoProva::consultar(Prova* prova, Turma* turma, Usuario usuari
                         telaMensagem.apresentar("Voce ja realizou essa prova.");
                         continue;
                     }
+                    
                     if (!cntrServicoProva->getListaQuestoes(prova->getId(), questoes)) {  //retorna true se possivel assinar lista de questões à "questoes"
                         telaMensagem.apresentar("A prova nao tem questoes.");
                         continue;
                     }
                     resposta = telaRealizarProva.apresentar(*questoes);
+                    resposta.setIdEstudante(usuario.getId());
+                    resposta.setIdProva(prova->getId());
                     if (!cntrServicoProva->cadastrarResposta(resposta)) { //Retorna true se a resposta for cadastrada
                         telaMensagem.apresentar("Houve um erro ao cadastrar a resposta, tente novamente.");
                     }
@@ -967,7 +972,7 @@ void CntrApresentacaoProva::consultar(Prova* prova, Turma* turma, Usuario usuari
             }
             case '2': {
                 Resposta resposta;
-                list<int> * notas;
+                list<int> notas;
                 resposta.setIdProva(prova->getId());
                 resposta.setIdEstudante(usuario.getId());
                 
@@ -975,22 +980,24 @@ void CntrApresentacaoProva::consultar(Prova* prova, Turma* turma, Usuario usuari
                     telaMensagem.apresentar("Voce nao realizou essa prova.");
                     continue;
                 }
-                if (!cntrServicoProva->calcularResultado(resposta, notas)) {  //Transforma objeto notas, designando lista de inteiros, com 1 para resposta correta e 0 para resposta errada
+                if (!cntrServicoProva->calcularResultado(resposta, &notas)) {  //Transforma objeto notas, designando lista de inteiros, com 1 para resposta correta e 0 para resposta errada
                     telaMensagem.apresentar("Nao foi possivel calcular o resultado, tente novamente mais tarde");
                     continue;
                 }
-                list<Questao> * questoes;
-                if (!cntrServicoProva->getListaQuestoes(prova->getId(), questoes)) {  //retorna true se possivel assinar lista de questões à "questoes"
+                list<Questao> questoes;
+                if (!cntrServicoProva->getListaQuestoes(prova->getId(), &questoes)) {  //retorna true se possivel assinar lista de questões à "questoes"
                     telaMensagem.apresentar("Houve um erro ao obter as questoes.");
                     continue;
                 }
-                telaMostrarResultados.apresentar(*questoes, *notas);
+                telaMostrarResultados.apresentar(questoes, notas);
                 break;
             }
+            case '3':
+                finalizou=true;
+                break;
             default:
                 telaMensagem.apresentar("Opcao invalida.");
         }
-        delete questoes;
     }
 }
 

@@ -896,11 +896,16 @@ list<Turma> ComandoListarIdTurmasProfessor::getResultado() {
 
 ComandoBuscarRespostaAluno::ComandoBuscarRespostaAluno(int idProva, int idAluno) {
         comandoSQL = "SELECT * FROM Resposta_Prova WHERE Prova_idProva = ";
-        comandoSQL += to_string(idProva) + "and" + to_string(idAluno) + ";";
+        comandoSQL += to_string(idProva) + " AND " + to_string(idAluno) + ";";
 }
 
 bool ComandoBuscarRespostaAluno::getResultado() {
+        if(listaResultado.empty()) 
+                throw EErroPersistencia("lista de resultados vazia");
+
         int numeroDeRespostas = stoi(listaResultado.back().getValorColuna());
+        listaResultado.pop_back();
+        listaResultado.pop_back();
         listaResultado.pop_back();
         if (numeroDeRespostas == 0) {
                 return true;
