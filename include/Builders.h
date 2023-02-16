@@ -4,6 +4,8 @@
 #include "Interfaces.h"
 #include "Controladoras.h"
 
+/// @brief A classe Builder constroi o sistema, interligando os módulos através das interfaces
+
 class BuilderSistema {
     private:
         CntrApresentacaoControle* cntrApresentacaoControle;
@@ -19,6 +21,8 @@ class BuilderSistema {
         IServicoProva* cntrServicoProva;
         IServicoTurma * cntrServicoTurma;
     public:
+        /// @brief Método responsável por interligar as controladoras
+        /// @return ponteiro do tipo CntrApresentacaoControle
         CntrApresentacaoControle* construir();
         ~BuilderSistema();
 };
