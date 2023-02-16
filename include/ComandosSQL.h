@@ -121,7 +121,7 @@ class ComandoCadastrarTurma:public ComandoSQL {
         int getResultado();
 };
 
-class ComandoConsultarTurma:public ComandoSQL {
+class ComandoConsultarTurma:public ComandoSQL {  //
  public:
         ComandoConsultarTurma(int);
         Turma getResultado();
@@ -148,27 +148,27 @@ class ComandoCadastrarQuestao:public ComandoSQL {
         int getResultado();
 };
 
-class ComandoCadastrarAlternativa:public ComandoSQL {
+class ComandoCadastrarAlternativa:public ComandoSQL {  
  public:
         ComandoCadastrarAlternativa(int, string);
 };
 
-class CadastrarQuestao {
+class CadastrarQuestao {  
  public:
         int cadastrar(Questao);
 };
 
-class ComandoDescadastrarQuestao:public ComandoSQL {
+class ComandoDescadastrarQuestao:public ComandoSQL {    
  public:
         ComandoDescadastrarQuestao(int);
 };
 
-class ComandoEditarQuestao:public ComandoSQL {
+class ComandoEditarQuestao:public ComandoSQL {   
  public:
         ComandoEditarQuestao(Questao);
 };
 
-class ComandoConsultarQuestao:public ComandoSQL {
+class ComandoConsultarQuestao:public ComandoSQL {   
  public:
         ComandoConsultarQuestao(int);
         Questao getResultado();
@@ -180,7 +180,7 @@ class ComandoCadastrarProva:public ComandoSQL {
         int getResultado();
 };
 
-class ComandoAssociarQuestaoProva:public ComandoSQL {
+class ComandoAssociarQuestaoProva:public ComandoSQL { 
  public:
         ComandoAssociarQuestaoProva(int, int);
 };
@@ -212,7 +212,7 @@ class ComandoCadastrarResposta:public ComandoSQL {
         int getResultado();
 };
 
-class ComandoAssociarRespostaQuestaoRespostaProva:public ComandoSQL {
+class ComandoAssociarRespostaQuestaoRespostaProva:public ComandoSQL { //
  public:
         ComandoAssociarRespostaQuestaoRespostaProva(int, int, int);     
 };
@@ -225,6 +225,7 @@ class CadastrarResposta {
 class ComandoConsultarResposta:public ComandoSQL {
  public:
         ComandoConsultarResposta(int);
+        ComandoConsultarResposta(int, int);
         Resposta getResultado();
 };
 
@@ -247,7 +248,7 @@ class ComandoListarIDAlunosTurma:public ComandoSQL {
         list<int> getResultado();
 };
 
-class ListarAlunosTurma {
+class ListarAlunosTurma {   //
  public:
         list<Usuario> executar(int);
 };
@@ -258,7 +259,7 @@ class ComandoListarIDQuestoesProva:public ComandoSQL {
         list<int> getResultado();
 };
 
-class ListarQuestoesProva {
+class ListarQuestoesProva {  //
  public:
         list<Questao> executar(int);
 };
@@ -297,6 +298,12 @@ class ComandoListarIdTurmasProfessor:public ComandoSQL {
  public:
 	ComandoListarIdTurmasProfessor(int);
 	list<Turma> getResultado();
+};
+
+class ComandoBuscarRespostaAluno:public ComandoSQL {
+ public:
+    ComandoBuscarRespostaAluno(int, int); // Id Prova, Id Aluno;
+    bool getResultado();
 };
 
 #endif  //  INCLUDE_COMANDOSSQL_H_

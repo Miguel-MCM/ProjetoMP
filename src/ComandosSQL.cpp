@@ -513,6 +513,14 @@ ComandoConsultarResposta::ComandoConsultarResposta(int id){
     comandoSQL += to_string(id) + ";";
 }
 
+ComandoConsultarResposta::ComandoConsultarResposta(int idAluno, int idProva){
+    comandoSQL = "SELECT * FROM Resposta_Prova WHERE Prova_idProva = ";
+    comandoSQL += to_string(idProva) + " AND Aluno_idAluno = ";
+    comandoSQL += to_string(idAluno) + ";";
+    comandoSQL += "SELECT * FROM Resposta_questao WHERE idResposta_Prova = ";
+    comandoSQL += to_string(id) + ";";
+}
+
 Resposta ComandoConsultarResposta::getResultado() {
         ElementoResultado resultado;
         Resposta resposta;
@@ -884,4 +892,18 @@ list<Turma> ComandoListarIdTurmasProfessor::getResultado() {
         }
 
         return turmas;
+}
+
+ComandoBuscarRespostaAluno::ComandoBuscarRespostaAluno(int idProva, int idAluno) {
+        comandoSQL = "SELECT * FROM Resposta_Prova WHERE Prova_idProva = ";
+        comandoSQL += to_string(idProva) + "and" + to_string(idAluno) + ";";
+}
+
+bool ComandoBuscarRespostaAluno::getResultado() {
+        int numeroDeRespostas = stoi(listaResultado.back().getValorColuna());
+        listaResultado.pop_back();
+        if (numeroDeRespostas == 0) {
+                return true;
+        }
+        return false;
 }
