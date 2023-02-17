@@ -76,6 +76,9 @@ class CntrApresentacaoControle{
         IApresentacaoAdmin* cntrApresentacaoAdmin;
         IApresentacaoProva* cntrApresentacaoProva;
         IApresentacaoTurma* cntrApresentacaoTurma;
+
+        void menuComum();
+        void menuAdmin();
  public:
         void executar();
         void setCntrApresentacaoAutenticacao(IApresentacaoAutenticacao*);

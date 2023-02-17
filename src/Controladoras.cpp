@@ -3,90 +3,128 @@
 using std::list;
 
 void CntrApresentacaoControle::executar() {
-    string titulo1 = "Aprenda comigo!";
-    vector<string> campos1({"1 - Login", "2 - Cadastrar", "3 - Fechar programa"});
     TelaMenu telaControle;
-    string opcaoControle;
-
-    string titulo2 = "Tela Menu";
-    vector<string> campos2({"1 - Meu Usuario", "2 - Turmas", "3 - Sair"});
-    TelaMenu telaMenu;
-    string opcaoMenu;
-
-    string titulo3 = "Tela Menu";
-    vector<string> campos3({"1 - Meu Usuario", "2 - Administracao", "3 - Sair"});
-    TelaMenu telaMenuAdmin;
-    string opcaoMenuAdmin;
-
     TelaMensagem telaMensagem;
 
-    while (true) {
-        opcaoControle = telaControle.apresentar(titulo1, campos1);
+    char opcaoControle;
 
-        if (opcaoControle == "1") {
-            if (cntrApresentacaoAutenticacao->autenticar(&usuario)) {
-                cntrApresentacaoUsuario->setStatusCadastro(true);
-                if (usuario.getCargo() != "admin") {
-                    while (cntrApresentacaoUsuario->getStatusCadastro()) {
-                        opcaoMenu = telaMenu.apresentar(titulo2, campos2);
-                        if (opcaoMenu == "1") {
-                            cntrApresentacaoUsuario->executar(&usuario);
-                        } else if (opcaoMenu == "2") {
-                            cntrApresentacaoTurma->executar(&usuario);
-                        } else if (opcaoMenu == "3") {
-                            break;
-                        } else {
-                            telaMensagem.apresentar("Dado em formato incorreto");
-                        }
+    bool finalizou = false;
+
+    const string titulo = "Aprenda comigo!";
+    const vector<string> campos({
+        "1 - Login", 
+        "2 - Cadastrar", 
+        "3 - Fechar programa"
+    });
+
+    while (!finalizou) {
+        opcaoControle = telaControle.apresentar(titulo, campos).c_str()[0];
+
+        switch (opcaoControle) {
+            case '1': {
+                if (cntrApresentacaoAutenticacao->autenticar(&usuario)) {
+                    cntrApresentacaoUsuario->setStatusCadastro(true);
+                    if (usuario.getCargo() != "admin") {
+                        menuComum();
+                    } else {
+                        menuAdmin();
                     }
                 } else {
-                    while (cntrApresentacaoUsuario->getStatusCadastro()) {
-                        opcaoMenuAdmin = telaMenuAdmin.apresentar(titulo3, campos3);
-                        if (opcaoMenuAdmin == "1") {
-                            cntrApresentacaoUsuario->executar(&usuario);
-                        } else if (opcaoMenuAdmin == "2") {
-                            cntrApresentacaoAdmin->executar(&usuario);
-                        } else if (opcaoMenuAdmin == "3") {
-                            break;
-                        } else {
-                            telaMensagem.apresentar("Dado em formato incorreto");
-                        }
-                    }
+                    telaMensagem.apresentar("Falha na autenticacao");
                 }
-            } else {
-                telaMensagem.apresentar("Falha na autenticacao");
+                break;
+            } case '2': {
+                cntrApresentacaoUsuario->cadastrar();
+                break;
+            } case '3': {
+                finalizou = true;
+                break;
+            } default: {
+                telaMensagem.apresentar("Opcao invalida.");
             }
-        } else if (opcaoControle == "2") {
-            cntrApresentacaoUsuario->cadastrar();
-        } else if (opcaoControle == "3") {
-            return;
-        } else {
-            telaMensagem.apresentar("Opcao invalida.");
         }
     }
-    return;
+}
+
+void CntrApresentacaoControle::menuComum() {
+    TelaMenu telaMenu;
+    TelaMensagem telaMensagem;
+
+    char opcaoMenu;
+
+    const string titulo = "Tela Menu";
+    const vector<string> campos({
+        "1 - Meu Usuario", 
+        "2 - Turmas", 
+        "3 - Sair"
+    });
+
+    while (cntrApresentacaoUsuario->getStatusCadastro()) {
+        opcaoMenu = telaMenu.apresentar(titulo, campos).c_str()[0];
+
+        switch (opcaoMenu) {
+            case '1': {
+                cntrApresentacaoUsuario->executar(&usuario);
+                break;
+            } case '2': {
+                cntrApresentacaoTurma->executar(&usuario);
+                break;
+            } case '3': {
+                cntrApresentacaoUsuario->setStatusCadastro(false);
+                break;
+            } default: {
+                telaMensagem.apresentar("Dado em formato incorreto");
+            }
+        }
+    }
+}
+
+void CntrApresentacaoControle::menuAdmin() {
+    TelaMenu telaMenuAdmin;
+    TelaMensagem telaMensagem;
+
+    char opcaoMenuAdmin;
+
+    const string titulo = "Tela Menu";
+    const vector<string> campos({
+        "1 - Meu Usuario", 
+        "2 - Administracao", 
+        "3 - Sair"
+    });
+
+    while (cntrApresentacaoUsuario->getStatusCadastro()) {
+        opcaoMenuAdmin = telaMenuAdmin.apresentar(titulo, campos).c_str()[0];
+
+        switch (opcaoMenuAdmin) {
+            case '1': {
+                cntrApresentacaoUsuario->executar(&usuario);
+                break;
+            } case '2': {
+                cntrApresentacaoAdmin->executar(&usuario);
+                break;
+            } case '3': {
+                cntrApresentacaoUsuario->setStatusCadastro(false);
+                break;
+            } default: {
+                telaMensagem.apresentar("Dado em formato incorreto");
+            }
+        }
+    }
 }
 
 bool CntrApresentacaoAutenticacao::autenticar(Usuario* usuario) {
+    TelaMensagem telaMensagem;
+    TelaAutenticacao telaAutenticacao;
 
-    bool resultado;
-
-    while (true) {
-        try {
-            TelaAutenticacao telaAutenticacao;
-            telaAutenticacao.apresentar(usuario);
-            break;
-        }
-        catch (const invalid_argument &exp) {
-            TelaMensagem telaMensagem;
-            telaMensagem.apresentar("Dado em formato incorreto.");
-            return false;
-        }
+    try {
+        telaAutenticacao.apresentar(usuario);
+    }
+    catch (const invalid_argument &exp) {
+        telaMensagem.apresentar("Dado em formato incorreto.");
+        return false;
     }
 
-    resultado = cntrServicoAutenticacao->autenticar(usuario);
-
-    return resultado;
+    return cntrServicoAutenticacao->autenticar(usuario);
 }
 
 bool CntrServicoAutenticacao::autenticar(Usuario *usuario) {
@@ -115,41 +153,53 @@ bool CntrServicoAutenticacao::autenticar(Usuario *usuario) {
 }
 
 void CntrApresentacaoUsuario::cadastrar() {
-    bool resultado;
-    Usuario* usuario = new Usuario();
     TelaMensagem telaMensagem;
     TelaCadastro telaCadastro;
-    string titulo = "Qual o seu cargo?";
-    vector<string> campos({"1 - Aluno", "2 - Professor"});
     TelaMenu telaCargo;
-    string cargo;
 
-    while (true) {
+    char cargo;
+
+    Usuario* usuario = new Usuario();
+
+    const string titulo = "Qual o seu cargo?";
+    const vector<string> campos({
+        "1 - Aluno", 
+        "2 - Professor"
+    });
+
+    bool finalizou = false;
+
+    while (!finalizou) {
         try {
             telaCadastro.apresentar(usuario);
-            break;
+            finalizou = true;
         }
         catch (const invalid_argument &exp) {
             telaMensagem.apresentar("Dado em formato incorreto.");
         }
     }
 
-    while (true) {
-        cargo = telaCargo.apresentar(titulo, campos);
-        if (cargo == "1") {
-            usuario->setCargo("aluno");
-            break;
-        } else if (cargo == "2") {
-            usuario->setCargo("professor");
-            break;
-        } else {
-            telaMensagem.apresentar("Dado em formato incorreto");
+    finalizou = false;
+
+    while (!finalizou) {
+        cargo = telaCargo.apresentar(titulo, campos).c_str()[0];
+
+        switch (cargo) {
+            case '1': {
+                usuario->setCargo("aluno");
+                finalizou = true;
+                break;
+            } case '2': {
+                usuario->setCargo("professor");
+                finalizou = true;
+                break;
+            } default: {
+                telaMensagem.apresentar("Dado em formato incorreto");
+            }
         }
     }
 
-    resultado = cntrServicoUsuario->cadastrar(*usuario);
-
-    if (resultado) {
+    if (cntrServicoUsuario->cadastrar(*usuario)) {
         telaMensagem.apresentar("Cadastro realizado com sucesso.");
     } else {
         telaMensagem.apresentar("Falha no cadastro.");
@@ -157,11 +207,15 @@ void CntrApresentacaoUsuario::cadastrar() {
 }
 
 void CntrApresentacaoUsuario::executar(Usuario* usuario) {
-    
     TelaMensagem telaMensagem;
     TelaConsultaUsuario telaConsultaUsuario;
+    TelaConfirmacao telaConfirmacao;
 
     bool finalizou = false;
+
+    list<Turma> turmas;
+    list<Prova> provas;
+
     while(!finalizou) {
         if (!cntrServicoUsuario->consultar(usuario)) {
             telaMensagem.apresentar("Houve um erro na consulta do usuario");
@@ -172,17 +226,14 @@ void CntrApresentacaoUsuario::executar(Usuario* usuario) {
             case '1':
                 try {
                     editar(usuario);
-                } catch (invalid_argument &e) {
+                } catch (const invalid_argument &e) {
                     telaMensagem.apresentar("Formato de dado invalido.");
                 }
                 break;
             case '2':
                 if(usuario->getCargo() != "admin") {
-                    TelaConfirmacao telaConfirmacao;
                     if(telaConfirmacao.apresentar()) {
-                        list<Turma> turmas;
                         if (cntrServicoUsuario->listarTurmasProfessor(usuario->getId(), &turmas)) {
-                            list<Prova> provas;
                             for (list<Turma>::iterator turma = turmas.begin(); turma != turmas.end(); ++turma) {
                                 if (cntrServicoTurma->listarProvas(turma->getId(), &provas)) {
                                     for (list<Prova>::iterator prova = provas.begin(); prova != provas.end(); ++prova) {
@@ -209,7 +260,6 @@ void CntrApresentacaoUsuario::executar(Usuario* usuario) {
                 break;
             default:
                 telaMensagem.apresentar("Opcao Invalida.");
-                break;
         }
     }
 }
@@ -217,12 +267,14 @@ void CntrApresentacaoUsuario::executar(Usuario* usuario) {
 void CntrApresentacaoUsuario::editar(Usuario* usuario) {
     TelaMensagem telaMensagem;
     TelaFormulario telaFormulario;
+
     const string TITULO = "Edicao de Usuario";
     const vector<string> DADOS({
         "Nome: ",
         "Email: ",
         "Senha: "
     });
+
     string novosDados[DADOS.size()];
 
     telaFormulario.apresentar(TITULO, DADOS, novosDados);
@@ -1125,7 +1177,7 @@ void CntrApresentacaoProva::editar(Prova* prova){
                     telaMensagem.apresentar("Opcao Invalida.");
             }
         }
-    } catch(invalid_argument &e){
+    } catch(const invalid_argument &e){
         telaMensagem.apresentar("Formato de dado invalido.");
     }
 }
